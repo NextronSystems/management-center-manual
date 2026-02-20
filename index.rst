@@ -7,7 +7,7 @@ Welcome to Nextron System's Manual for the ASGARD Management
 Center v4.
 
 .. note::
-   If you are still using an version 3 of the Management Center,
+   If you are still using version 3 of the Management Center,
    please click `here <https://asgard-manual.nextron-systems.com/en/v3>`__ 
    to see the older version of the documentation.
 
