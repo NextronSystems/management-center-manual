@@ -1,6 +1,6 @@
 .. index:: Home
 
-Nextron Systems - Management Center 4
+Nextron Systems - Management Center v4
 ======================================
 
 Welcome to Nextron System's Manual for the ASGARD Management
