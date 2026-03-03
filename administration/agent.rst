@@ -97,7 +97,7 @@ To install the agent on macOS, you can just run the PKG file or execute the foll
 Starting with macOS Big Sur (v11.0), Apple requires software developers
 to notarize applications. Our ``asgard2-agent`` installer is notarized.
 
-You can test it, by executing the following command in Terminal:
+You can test it by executing the following command in Terminal:
 
 .. code-block:: console
    

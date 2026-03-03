@@ -17,30 +17,32 @@ by setting a suitable threshold for ``Hide inactive Assets``.
 
    Advanced Settings
 
-SigDev Signatures
------------------
+Preview Signatures
+------------------
 
-We offer a "preview" of our newest signatures, which contains our newest
-rules. Those signatures have been processed by our automated pipeline and
-passed the quality check - however our manual testing of those new rules
-did not take place yet.
+We offer a "preview" (formerly known as ``SigDev``) of our newest
+signatures, which contains our newest rules. Those signatures have
+been processed by our automated pipeline and passed the quality
+check - however our manual testing of those new rules did not take place yet.
 
 We have those signatures to offer the newest rules to our customers in time
 critical engagements. You have to carefully consider if the potential higher
 rate of false positive warrants the usage of those rules. We generally recommend
 to only use those rules if the currently available signatures are a few days old.
 
-To enable the ``SigDev`` / ``Preview`` Signatures, simply activate the checkbox
-``Show Signature SigDev Option`` and submit your changes.
+To enable the ``Preview`` Channel for THOR Signatures in the ``Version Pinning``
+section, simply activate the checkbox ``Show Signature Preview Channel`` and
+submit your changes.
 
-.. figure:: ../images/mc_sigdev-signatures.png
-   :alt: Sigdev / Preview Signatures
+.. figure:: ../images/mc_preview-signatures.png
+   :alt: Preview Signatures
 
-   Sigdev / Preview Signatures
+   Preview Signatures
 
-Once you enabled the signatures, you can select them when creating a new (Group) Scan:
+Once you enabled the option, you can create a version constraint in the
+Version Pinning section:
 
-.. figure:: ../images/mc_sigdev-thor.png
-   :alt: Sigdev / Preview Signatures Scanning
+.. figure:: ../images/mc_preview-constraint.png
+   :alt: Preview Signatures Scanning
 
-   Sigdev / Preview Signatures Scanning
+   Preview Signatures Scanning

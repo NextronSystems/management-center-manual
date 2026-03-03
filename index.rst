@@ -34,6 +34,7 @@ find useful.
    advanced/index
    troubleshooting/index
    issues/index
+   upgrade/index
    appendix/index
    changelog/index
 

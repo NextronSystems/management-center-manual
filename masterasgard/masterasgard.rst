@@ -146,11 +146,11 @@ Updates
 The ``Updates`` section contains a tab in which upgrades for
 ASGARD can be installed. 
 
-The menu ``THOR and Signatures`` gives you an overview of
-the used scanner and signature versions on all connected ASGARDs.
+The menu ``Version Pinning`` gives you the possibility to configure
+version constraints of THOR and the signatures.
 
 This view is identical to a standalone ASGARD Management Center
-installation (see :ref:`administration/updates:updates of thor and thor signatures`)
+installation (see :ref:`administration/updates:version pinning`)
 
 The view in your connected ASGARD Management Centers however
 will be different:

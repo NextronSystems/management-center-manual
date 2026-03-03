@@ -32,12 +32,6 @@ delete any files older than the current day.
 Potentially Unneeded / Dated Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Bifrost quarantined files
-
-If you use Bifrost, the collected files are not deleted by default.
-If dated files are no longer needed, you can define a retention
-period at ``Settings`` > ``Bifrost``.
-
 - ``/var/lib/asgard-management-center/scan-results/*.gz``
 - ``/var/lib/asgard-management-center/generic-results/*``
 - ``/var/lib/asgard-management-center/remote-console/protocol/*.gz``
