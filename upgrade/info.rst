@@ -4,12 +4,14 @@ General Information
 ===================
 
 Management Center v4 introduces significant improvements
-including THOR 11 integration, Software Inventory, Live
-Event Streaming, and a modernized codebase foundation.
-
-Connected to a Master ASGARD?
+including the preparation for our upcoming THOR 11 Techpreview
+Release, Software Inventory, Live Event Streaming, and a
+modernized codebase foundation.
 
 .. important::
+
+   Connected to a Master ASGARD?
+
    If your Management Center is connected to a Master ASGARD,
    it is recommended to upgrade the Master ASGARD to v4 first,
    followed by the connected Management Centers. If a Management
@@ -23,8 +25,10 @@ The following changes require careful migration planning:
 
 - **Database Schema**: Primary keys migrated to UUIDs for
   Assets, Asset Requests, Tasks/Scans, Group Tasks/Scans,
-  Scheduled Group Tasks/Scans, MISP data, Users, Roles, and LDAP Roles
-- **API Updates**: Various endpoints now use UUIDs instead of integer IDs
+  Scheduled Group Tasks/Scans, MISP data, Users, Roles, and LDAP Roles.
+  Please see our `DB Breaking Changes Guide <https://knowledge.nextron-systems.com/asgard-management-center/db-breaking-changes-guide>`_
+- **API Updates**: Various endpoints now use UUIDs instead of integer IDs.
+  Please see our `API Breaking Changes Guide <https://knowledge.nextron-systems.com/asgard-management-center/api-breaking-changes-guide>`_
 - **Configuration**: Migrated from key-value pairs to structured YAML format
 - **Product Updates**: THOR & THOR Signatures, Aurora & Aurora Signatures
   now managed through version pinnings with constraint-based updates
