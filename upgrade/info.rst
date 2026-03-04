@@ -71,7 +71,8 @@ Frequently Asked Questions
 
   - Yes, v4 introduces significant API changes. Many endpoints now use UUIDs instead of integer IDs,
     and product update management has been restructured to use version pinnings. Please review the
-    API Migration Guide for detailed information about all breaking changes.
+    `API Breaking Changes Guide <https://knowledge.nextron-systems.com/asgard-management-center/api-breaking-changes-guide>`_
+    for detailed information about all breaking changes.
 
 - Where can I find help if I encounter issues during the upgrade?
 
