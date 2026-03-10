@@ -51,3 +51,9 @@ This can be done with a find-remove combination using the command line:
 
 Where ``<directory>`` is one of ``scan-results/*.gz``, ``generic-results/*`` or ``remote-console/protocol/*``
 and ``<days>`` the number of days you want to keep. Files and folders older than ``<days>`` days will be deleted.
+
+Example to delete Task results older than 30 days:
+
+.. code-block:: console
+
+   root@asgard:~# find /var/lib/asgard-management-center/generic-results/* -mtime +30 -print0 | xargs -0 -r rm
