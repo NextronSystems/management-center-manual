@@ -88,6 +88,9 @@ Import Labels
 The import function allows you to add or remove labels on assets based on columns in
 the previously generated CSV formatted file. 
 
+.. note::
+   This function is not available in the Master ASGARD. 
+
 The import function processes the values in the columns ``Add Labels ...`` and ``Remove Labels ...``
 only. In order to change labels, use the already exported list, add values in these
 columns and re-import it by using the ``Apply Labels from CSV`` button.
