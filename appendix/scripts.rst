@@ -1,11 +1,11 @@
 .. index:: Helpful scripts
 
-Installing ASGARD Agent via Powershell Script
+Installing ASGARD Agent via PowerShell Script
 ---------------------------------------------
 
-You can find a simple script to install the ASGARD Agent via
-Powershell. Place the installer and script in the same folder.
-Change the script as needed.
+The following example script installs the ASGARD Agent with PowerShell.
+Place the installer and script in the same folder. Adjust the script as
+needed.
 
 .. literalinclude:: ../scripts/install_agent.ps1
    :language: powershell
@@ -15,22 +15,23 @@ Deploy ASGARD Agents via SCCM
 -----------------------------
 
 To deploy the ASGARD Agent (or any other .exe installer) via SCCM, you
-have to write a Powershell script with a few conditions to mark an
-installation correctly as successful or failed.
+need a PowerShell script with conditions that mark an installation as
+successful or failed.
 
-Please refer to Microsoft's `Create applications in Configuration Manager <https://learn.microsoft.com/en-us/mem/configmgr/apps/deploy-use/create-applications#about-custom-script-detection-methods>`_ .
+Refer to Microsoft's `Create applications in Configuration Manager <https://learn.microsoft.com/en-us/mem/configmgr/apps/deploy-use/create-applications#about-custom-script-detection-methods>`_.
 
 .. literalinclude:: ../scripts/install_agent_sccm.ps1
    :language: powershell
    :linenos:
 
 .. warning::
-   This is just an example script which should work with SCCM.
+   This is an example script for SCCM.
    If you encounter any problems, refer to the link provided
    above for additional information.
 
-SCCM Applications can also use a script to detect the Deployment.
-You can use this part of the script to detect if the installation was successful:
+SCCM applications can also use a script to detect the deployment.
+You can use this part of the script to detect whether the installation was
+successful:
 
 .. code-block:: powershell
    :linenos:
