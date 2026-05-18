@@ -3,16 +3,15 @@
 Bypass Apple verification during installation of asgard2-agent
 ==============================================================
 
-This section aims to describe possible workarounds, intended to be a
-reference for IT administrators or IT packaging teams to bypass Apple
-verifications and install the personalized ``asgard2-agents`` on macOS
-Big Sur (or newer) workstations.
+This section describes workarounds for IT administrators and IT packaging
+teams that need to bypass Apple verification and install the personalized
+``asgard2-agent`` on macOS Big Sur or newer workstations.
 
 
 Starting with macOS 15
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Option 1: Remove the quarantine flag from the ASGARD Agent installer via terminal session**
+**Option 1: Remove the quarantine flag from the ASGARD Agent installer in a terminal session**
 
 .. code-block:: console
 
@@ -21,7 +20,7 @@ Starting with macOS 15
 **Option 2: Unblock the installer via the Security Settings**
 
 1. Navigate to ``System Settings`` > ``Privacy & Security`` > ``Security``
-2. Click on button ``Open anyway`` next to ``asgard2-agent-macos-arm64.pkg ...``
+2. Click the ``Open anyway`` button next to ``asgard2-agent-macos-arm64.pkg ...``
 
 .. figure:: ../images/macos_privacy_and_security_security.png
    :scale: 72
@@ -30,16 +29,15 @@ Starting with macOS 15
 Before macOS 15
 ~~~~~~~~~~~~~~~
 .. warning::
-   Executing this workaround puts your system at risk for a short period of time. 
-   It will deactivate global security mechanisms of the operating system, which are intended to
-   protect the integrity of the system. Please make sure to follow the below
-   steps carefully and enable those security mechanisms after you are done.
+   Executing this workaround puts your system at risk for a short period of
+   time. It temporarily disables global operating system security mechanisms
+   that protect system integrity. Follow the steps carefully and enable those
+   security mechanisms again after you are done.
 
-Please always keep in mind to check your system after performing any of
-the described actions, to ensure that all security mechanisms are in
-place and are re-activated after performing the described actions.
+After performing any of the described actions, check your system to ensure that
+all security mechanisms are in place and reactivated.
 
-Please follow the below steps to install the ASGARD Agent on macOS.
+Follow these steps to install the ASGARD Agent on macOS.
 
 1. Open a new terminal session
 
@@ -59,8 +57,8 @@ Please follow the below steps to install the ASGARD Agent on macOS.
 
    * ``sudo spctl --master-enable``
 
-.. warning:: 
-   Make sure to activate the macOS Gatekeeper once you are done:
+.. warning::
+   Make sure to activate macOS Gatekeeper when you are done:
    
    ``sudo spctl --master-enable``
 
@@ -71,4 +69,4 @@ You can verify the state of the macOS Gatekeeper with:
    MacBook-Pro:~ nextron$ spctl --status
    assessments enabled
 
-On a system with activated Gatekeeper, the output has to be ``assessments enabled``.
+On a system with activated Gatekeeper, the output must be ``assessments enabled``.
