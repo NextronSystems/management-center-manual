@@ -43,7 +43,7 @@ remote file system.
     * The ``Run Scan`` button might be greyed out in new installations - this is
       because the ASGARD Management Center did not download the THOR packages yet.
       You can either wait for a few minutes, or see the chapter
-      :ref:`administration/updates:updates of thor and thor signatures`,
+      :ref:`administration/updates:version pinning`,
       to trigger a download manually.
 
 Asset Labels

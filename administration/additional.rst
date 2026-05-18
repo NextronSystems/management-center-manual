@@ -67,10 +67,6 @@ Subsequently, this TLS Certificate can be uploaded in the ``Settings`` > ``TLS``
 
    Upload a TLS Certificate
 
-.. note:: 
-   Please see :ref:`appendix/tls:install tls certificates on asgard and master asgard`
-   for a guide on how to sign the CSR and install it in your ASGARD.
-
 Manage Services
 ^^^^^^^^^^^^^^^
 
@@ -97,40 +93,6 @@ The current NTP configuration can be found ``Settings`` >
 You can add or delete NTP servers by adding/changing the values
 in the text fields. After you are done with your changes, click
 ``Save and Restart NTP`` to save your changes.
-
-Settings for Bifrost
-^^^^^^^^^^^^^^^^^^^^
-
-Bifrost allows you to automatically upload suspicious files to your
-ASGARD during a THOR scan. If an Analysis Cockpit is connected,
-these files get automatically forwarded to the Analysis Cockpit
-in order to drop them into a connected Sandbox system. However,
-the collected files will stay on ASGARD for the amount of time
-specified in ``Retention time`` (0 days represent an indefinite amount of time). 
-
-.. figure:: ../images/mc_bifrost-settings.png
-   :alt: Settings for Bifrost
-
-   Settings for Bifrost
-
-The collected files can be downloaded in the ``Evidence Collection``
-section. All files are zip archived and password protected with the password ``infected``.
-
-In order to automatically collect suspicious files, you have to
-create a scan with Bifrost enabled. Check the ``Send Suspicious Files to ASGARD``
-option to send samples to the system set as ``bifrost2Server``. Use the placeholder 
-``%asgard-host%`` to use the hostname of you ASGARD instance as the Bifrost server.
-
-.. figure:: ../images/mc_thor-bifrost-flag.png
-   :alt: Bifrost Options
-
-   Scan option for Bifrost 
-
-This will collect all files with a score of 60 or higher and make
-them available for download in ASGARDs ``Collected Files`` section.
-
-For Details on how to automatically forward to a sandbox system please
-refer to the `Analysis Cockpit Manual <https://analysis-cockpit-manual.nextron-systems.com/>`_ .
 
 Link Analysis Cockpit
 ^^^^^^^^^^^^^^^^^^^^^

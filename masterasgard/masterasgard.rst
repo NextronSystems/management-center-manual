@@ -146,29 +146,28 @@ Updates
 The ``Updates`` section contains a tab in which upgrades for
 ASGARD can be installed. 
 
-The menu ``THOR and Signatures`` gives you an overview of
-the used scanner and signature versions on all connected ASGARDs.
+The menu ``Version Pinning`` gives you the possibility to configure
+version constraints for THOR, Aurora, and their respective signatures.
+When a Master ASGARD is in use, it takes over the role of fetching and
+distributing updates to the connected Management Centers, so the version
+pinnings configured on the Master apply to all connected Management Centers.
 
 This view is identical to a standalone ASGARD Management Center
-installation (see :ref:`administration/updates:updates of thor and thor signatures`)
+installation (see :ref:`administration/updates:version pinning`)
 
 The view in your connected ASGARD Management Centers however
 will be different:
 
-.. figure:: ../images/mc_master-mc-thor-sig.png
-   :alt: ASGARD THOR and Signatures Update view when connected to a Master ASGARD
+.. figure:: ../images/mc_master-mc-version-pinning.png
+   :alt: Version Pinning view in a Management Center connected to a Master ASGARD
 
-   ASGARD THOR and Signatures Update view when connected to a Master ASGARD
+   Version Pinning view in a Management Center connected to a Master ASGARD
 
-It is possible to set a certain THOR and Signatures version for each
-connected ASGARD. However, if automatic updates are configured, this
-setting has only effect until a new version gets downloaded.
-
-Customers use this feature in cases where they want to test a certain
-THOR version before using it in production. In this use case the ASGARD
-system that runs the test scans is set to automatic updates, while the
-ASGARD systems in production use versions that administrators set manually
-after successful test runs. 
+Version pinnings are configured on the Master ASGARD and are propagated
+to every connected Management Center. It is not possible to set a
+different version for an individual connected Management Center —
+all connected Management Centers use the same pinning configuration
+defined on the Master.
 
 User Management
 ---------------

@@ -59,9 +59,12 @@ and click ``Deactivate Two Factor Authentication``.
 .. figure:: ../images/mc_deactivate-2fa.png
    :alt: Deactivate 2FA
 
-.. note:: 
-   If a user is unable to log into ASGARD to disable their own 2FA,
-   follow the instructions at :ref:`troubleshooting/2fa:resetting two factor authentication`
+If you have admin permissions and want to disable 2FA for another user, navigate to
+``Settings`` > ``Authentication`` > ``Users`` and click "Edit" on the user
+you want to disable 2FA for. Untick ``2FA Active`` and click "Edit User".
+
+.. figure:: ../images/mc_admin-deactivate-2fa.png
+   :alt: Deactivate 2FA as administrative user
 
 API Key
 ^^^^^^^

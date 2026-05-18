@@ -19,36 +19,42 @@ re-login. Generally update MASTER ASGARD before the connected ASGARDs.
 
    Updating ASGARD
 
-Updates of THOR and THOR Signatures
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Version Pinning
+^^^^^^^^^^^^^^^
 
-By default, ASGARD will search for signature updates and THOR
-updates on an hourly basis. These updates will be set to active
-automatically. Therefore, a triggered scan will always employ the
-current THOR version and current signature version. You may disable
-or modify the automatic THOR and Signature updates by deleting or
-modifying the entries in this section.
+The ``Version Pinning`` section allows you to create constraints
+to "pin" a specific version of THOR, Aurora, or any signatures.
+This allows you to stick with certain major or minor versions
+of our products.
 
-.. figure:: ../images/mc_update-thor-and-sigs.png
-   :alt: Automatic Scanner and Signature Updates
+By default, ASGARD will search for signature updates every hour
+and for THOR/Aurora updates every day. You can change the update
+interval if needed, though the default values are usually sufficient
+for most cases.
 
-   Automatic Scanner and Signature Updates
+If you want to manually check if a new update is available, you can
+do so by clicking ``Check for Updates``. This will not download new
+versions, but only check if new versions - according to your pinning
+constraints - are available.
 
-It is possible to intentionally scan with an old scanner version by
-clicking on the pencil icon and selecting the respective version
-from the drop-down menu. 
+If new updates are available, you can manually download them via the
+``Update Products Now`` button.
 
-Please be aware, that this is a global setting and will affect all scans!
+.. figure:: ../images/mc_version-pinning.png
+   :alt: Version Pinning
 
-.. figure:: ../images/mc_update-thor-manually.png
-   :alt: Selecting a Scanner Version manually
+   Version Pinning
 
-   Selecting a Scanner Version manually
+Setting a new version pinning configuration is straightforward:
 
-.. hint:: 
-   You can trigger a Manual Check and download new THOR packages by clicking
-   ``Manually Check for Updates``. This can also be used in new ASGARD 
-   installations, as sometimes it takes a while until ASGARD does this automatically.
+- Select your Product
+- Select the Channel
+- Select a Constraint
+
+.. figure:: ../images/mc_version-constraint.png
+   :alt: Version Constraint
+
+   Version Constraint
 
 Agent Updates
 ^^^^^^^^^^^^^

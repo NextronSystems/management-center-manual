@@ -118,12 +118,6 @@ you can continue with the installation.
 .. figure:: ../images/setup_nextronInstaller-fqdn.png
    :alt: FQDN Verification of the Universal Installer
 
-If you are in a time critical engagement and need to proceed
-with the installation, you can just confirm the displayed (and
-technically invalid) FQDN and change it later (before you deploy
-your Agents). To do this, see
-:ref:`troubleshooting/certificates:regenerate asgard server certificate agent communication`
-
 Proxy and NTP Settings
 ~~~~~~~~~~~~~~~~~~~~~~
 

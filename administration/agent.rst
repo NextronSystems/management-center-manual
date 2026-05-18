@@ -97,7 +97,7 @@ To install the agent on macOS, you can just run the PKG file or execute the foll
 Starting with macOS Big Sur (v11.0), Apple requires software developers
 to notarize applications. Our ``asgard2-agent`` installer is notarized.
 
-You can test it, by executing the following command in Terminal:
+You can test it by executing the following command in Terminal:
 
 .. code-block:: console
    
@@ -131,9 +131,6 @@ following tasks.
 If you need to grant Full Disk Access via MDM, please have a look at the chapter
 :ref:`appendix/mdm-fulldiskaccess:Full Disk Access for macOS asgard2-agent-service via MDM`.
 
-Prior to macos Tahoe 26
-"""""""""""""""""""""""
-
 To do this, navigate on your Mac to ``System Settings`` > ``Privacy &
 Security`` > ``Full Disk Access``:
 
@@ -147,70 +144,6 @@ You need to enable the ``asgard2-agent-service`` slider:
    :scale: 40
    :alt: macOS 13 Full Disk Access
 
-Starting with macOS Tahoe 26
-""""""""""""""""""""""""""""
-Starting with version 26, we noticed that macOS no longer displays the entry ``asgard2-agent-service`` in the Full Disk Access UI.
-
-.. figure:: ../images/macos_missing_asgard2-agent_service.png
-   :scale: 50
-   :alt: Missing asgard2-agent.service
-
-If you have updated from macOS 15 Sequoia you should check in ASGARD the THOR scan protocol for a warning about Full Disk Access or query your operating system's ``TCC.db`` database.
-
-To query the database, open the Terminal App and perform the following SQL command:
-
-.. code-block:: console
-   :emphasize-lines: 2
-   
-   MacBook-Pro:~ nextron$ sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db 'select * from access' | grep asgard
-   kTCCServiceSystemPolicyAllFiles|/private/var/lib/asgard2-agent/asgard2-agent-service|1|2|4|1|??||0|UNUSED|0|176962327|||UNUSED|0
-   MacBook-Pro:~ nextron$
-
-This value section must match:
-
-.. code-block:: console
-   :emphasize-lines: 1
-   
-   |1|2|4|1|
-
-If the values do NOT match at this point, or if you originally installed our agent on macOS 26, please proceed with the following instructions.
-
-Temporarily adjust the permissions for the directory /private/var/lib/asgard2-agent via Terminal:
-
-.. code-block:: console
-   
-   MacBook-Pro:~ nextron$ sudo chmod 777 -R /private/var/lib/asgard2-agent/
-   MacBook-Pro:~ nextron$
-
-Open the Full Disk Access UI (``System Settings`` > ``Privacy &
-Security`` > ``Full Disk Access``) and click on the ``+ Symbol`` bottom left. Enter the admin credentials.
-
-Open the search window by clicking on ``Command + SHIFT + G`` and enter the path to the service binary, ``/private/var/lib/asgard2-agent``.
-
-.. figure:: ../images/macos_path_asgard2-agent_service.png
-   :scale: 45
-   :alt: Path to asgard2-agent-service
-
-Choose the ``asgard2-agent-service`` and click ``Open``.
-
-.. figure:: ../images/macos_choose_asgard2-agent_service.png
-   :scale: 45
-   :alt: Path to asgard2-agent-service
-
-Check that the permissions have now been granted correctly by reopening the Terminal App and executing the following SQL command:
-
-.. code-block:: console
-   :emphasize-lines: 2
-   
-   MacBook-Pro:~ nextron$ sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db 'select * from access' | grep asgard
-   kTCCServiceSystemPolicyAllFiles|/private/var/lib/asgard2-agent/asgard2-agent-service|1|2|4|1|??||0|UNUSED|0|176962327|||UNUSED|0
-   MacBook-Pro:~ nextron$
-
-Please note that ``asgard2-agent-service`` is still not displayed in the UI.
-
-Finally adjust the permissions again:
-
-.. code-block:: console
-   
-   MacBook-Pro:~ nextron$ sudo chmod 700 -R /private/var/lib/asgard2-agent/
-   MacBook-Pro:~ nextron$
+.. note::
+   Starting with macOS Tahoe 26, we noticed that macOS no longer displays the entry ``asgard2-agent-service`` in the Full Disk Access UI.
+   This has been fixed with macOS Tahoe 26.3.

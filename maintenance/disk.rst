@@ -32,12 +32,6 @@ delete any files older than the current day.
 Potentially Unneeded / Dated Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Bifrost quarantined files
-
-If you use Bifrost, the collected files are not deleted by default.
-If dated files are no longer needed, you can define a retention
-period at ``Settings`` > ``Bifrost``.
-
 - ``/var/lib/asgard-management-center/scan-results/*.gz``
 - ``/var/lib/asgard-management-center/generic-results/*``
 - ``/var/lib/asgard-management-center/remote-console/protocol/*.gz``
@@ -57,3 +51,9 @@ This can be done with a find-remove combination using the command line:
 
 Where ``<directory>`` is one of ``scan-results/*.gz``, ``generic-results/*`` or ``remote-console/protocol/*``
 and ``<days>`` the number of days you want to keep. Files and folders older than ``<days>`` days will be deleted.
+
+Example to delete Task results older than 30 days:
+
+.. code-block:: console
+
+   root@asgard:~# find /var/lib/asgard-management-center/generic-results/* -mtime +30 -print0 | xargs -0 -r rm

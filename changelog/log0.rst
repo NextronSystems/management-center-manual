@@ -1,86 +1,119 @@
-Management Center v3.0
+Management Center v4.0
 ======================
 
-Management Center 3.0.16
-------------------------
+Management Center 4.0.0
+-----------------------
 
-Release Date: Tue,  2 Jul 2024 09:50:00 +0200
+Release Date: Fri, 15 May 2026 14:07:00 +0200
 
-.. list-table::
-    :header-rows: 1
-    :widths: 15, 85
+----
 
-    * - Type
-      - Description
-    * - Security
-      - OS Security Fix
+**Breaking Changes**
 
-Management Center 3.0.15
-------------------------
+- The below tables have been updated to use UUIDs as primary keys instead of
+  auto-incrementing integers:
 
-Release Date: Tue, 18 Jun 2024 16:45:00 +0200
+  - Assets
+  - Asset Requests
+  - Tasks/Scans
+  - Group Tasks/Scans
+  - Scheduled Group Tasks/Scans
+  - MISP data (misp_events, misp_attributes, misp_tags, and mapping tables)
+  - Users
+  - Roles
+  - LDAP Roles
 
-.. list-table::
-    :header-rows: 1
-    :widths: 15, 85
+  For further information please refer to the `database migration guide
+  <https://knowledge.nextron-systems.com/asgard-management-center/db-breaking-changes-guide>`_
 
-    * - Type
-      - Description
-    * - Bugfix
-      - Normalized hostnames during license generation to reduce quota usage in the long term
-    * - Bugfix
-      - Fixed issues with the http proxy configuration on fresh installations
+- Various API endpoints have been updated to use UUIDs instead of integer IDs. Please
+  refer to the updated API documentation for details. You can find a list of `all
+  changes here
+  <https://knowledge.nextron-systems.com/asgard-management-center/api-breaking-changes-guide>`_
+- The config has been migrated from key-value pairs to a structured yaml format.
+- Product update behavior changed. v4 uses version pinning and constraints to control
+  which THOR, Aurora and signature versions are used. Each product can be configured
+  with one or multiple constraints (e.g., ``10.*``, ``10.7.*``, etc.) to define which
+  versions should be used. Existing update settings are migrated, but you should review
+  them after the upgrade.
+- All playbook file uploads now use zip format instead of tar.gz. Existing files
+  collected by the Collect File and Collect Directory playbooks will be automatically
+  converted during the update process. The Collect File and Collect Directory playbooks
+  now support a password for encrypting the resulting zip. Collected files will include
+  the base directory name in their path (e.g., report/file.txt instead of file.txt)
+- Endpoint license handling has been revised: THOR and Aurora endpoint licenses now
+  expire after a maximum of 90 days, ensuring that licenses assigned to decommissioned
+  or inactive systems automatically return to the license pool. Licenses already
+  assigned to assets before the update will not be affected.
+- Legacy components removed: Bifrost sample quarantine and LogWatcher realtime event
+  monitoring have been removed.
 
-Management Center 3.0.12
-------------------------
+----
 
-Release Date:  Thu, 28 Mar 2024 11:46:00 +0200
+**Highlights**
 
-.. list-table::
-    :header-rows: 1
-    :widths: 15, 85
+- THOR 11 Integration: Added support for the upcoming THOR 11, which is expected in 2026.
+  This includes revised scan flags, updated output formats, and a reworked THOR
+  versioning and update server layout.
+- AIX is now officially supported through the new ASGARD Agent for AIX and the dedicated
+  THOR for AIX scanner. THOR for AIX uses its own license type, purchasable alongside
+  the Asgard Management Center license.
+- Software Inventory: Software installed on assets is now accessible in a dedicated
+  Software Inventory section. This section provides a comprehensive overview of all
+  installed software across all assets, either in a per-asset or aggregated view. The
+  software list tab in the asset details now also allows searching and filtering
+  installed software.
+- Live Event Streaming: Real-time THOR event forwarding to Asgard Analysis Cockpit has
+  been added. The option can be enabled with a checkbox in the Scan Settings for single,
+  group and scheduled scans.
+- Encrypted Evidence Collection: Collect File and Collect Directory playbooks now
+  support password-encrypted zip files.
+- Improved Update Version Control: Better control over product versions with
+  constraint-based pinning.
 
-    * - Type
-      - Description
-    * - Bugfix
-      - Improved performance of the asset table and the task statistics
-    * - Bugfix
-      - Fixed non-working API key generation for read-only users
-    * - Bugfix
-      - Fixed non-working CSR generation for HTTPS TLS certificate
-    * - Bugfix
-      - Removed some major upgrade leftovers from the diagnostics pack
+----
 
-Management Center 3.0.11
-------------------------
+**Features**
 
-Release Date:  Wed, 28 Feb 2024 09:19:00 +0200
+- New license type "THOR for Legacy" has been added to support scanning older Windows
+  and Linux systems no longer covered by standard THOR. The Asgard Management Center can
+  now issue Legacy licenses, with full Legacy support planned for an upcoming release,
+  in which the agent will automatically determine whether a system should be scanned
+  using THOR or THOR Legacy and which license type is required.
 
-.. list-table::
-    :header-rows: 1
-    :widths: 15, 85
+----
 
-    * - Type
-      - Description
-    * - Bugfix
-      - Fixed non-working diagnostics pack generation on some Management Centers
+**Improvements**
 
-Management Center 3.0.10
-------------------------
+- MISP entities (except the rulesets) are now stored with an internal UUID, the original
+  id is preserved in a new column `source_id`
+- Scans Table > Scan Arguments now only shows actually set arguments, empty values are
+  hidden for a cleaner look
+- API Keys now use improved security standards for storage
+- Custom Hash and C2 IOCs now support assigning a custom score to each IOC
+- Generating and downloading a Diagnostics Pack now requires admin privileges
 
-Release Date:  Tue, 20 Feb 2024 13:01:00 +0200
+----
 
-.. list-table::
-    :header-rows: 1
-    :widths: 15, 85
+**Changed**
 
-    * - Type
-      - Description
-    * - Operating System Upgrade
-      - Upgraded operating system from Debian 10 to Debian 12
-    * - Switched update server
-      - Changed update server from update3.nextron-systems.com to update-301.nextron-systems.com. Please adjust your firewall to allow connections to the new server.
-    * - Time service transition
-      - Switched from ntp to timesyncd for time synchronization.
-    * - UI Enhancements
-      - A fresh, improved look and feel that makes the UI more intuitive and easier to use.
+- Default playbooks are now only created during installation or updates, not on every
+  start of the Asgard Management Center.
+- Default sigma rulesets are now only created during installation or updates, not on
+  every start of the Asgard Management Center.
+- Default service configurations are now only created during installation or updates,
+  not on every start of the Asgard Management Center.
+
+----
+
+**Bugfixes**
+
+- Fixed wrong value being stored for `3 day` option in Advanced Settings > Hide
+  Assets/Resume Deadline
+- Fixed wrong thunderstorm collector example on Thunderstorm page
+- Assets can no longer be deleted while they have any active service
+- Fixed new license installs not replacing the old client certificate
+- Fixed path-splitting in File Browser for MacOS agents
+- Fixed File Browser zips from Windows Assets containing backslashes instead of forward
+  slashes
+- Fixed Playbook CommandLine output not being collected when command failed
