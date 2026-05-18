@@ -61,7 +61,7 @@ and click ``Deactivate Two Factor Authentication``.
 
 If you have admin permissions and want to disable 2FA for another user, navigate to
 ``Settings`` > ``Authentication`` > ``Users`` and click "Edit" on the user
-you want to disable 2FA for. Untick ``2FA Active`` and click "Edit User"
+you want to disable 2FA for. Untick ``2FA Active`` and click "Edit User".
 
 .. figure:: ../images/mc_admin-deactivate-2fa.png
    :alt: Deactivate 2FA as administrative user

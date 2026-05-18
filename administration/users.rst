@@ -12,8 +12,8 @@ user has ``Two Factor Authentication`` enabled or not.
 When creating a user, you can enforce a password change
 and the usage of 2FA. If those options are selected, the
 user can only use the Management Center with very limited
-functionality as long as the password was not changed and/or
-2FA was enabled.
+functionality as long as the password has not been changed
+and/or 2FA has not been enabled.
 
 .. figure:: ../images/mc_add-user.png
    :alt: Add User Account
@@ -32,8 +32,8 @@ User Defaults
 ^^^^^^^^^^^^^
 
 You can set user defaults to pre-select certain options when
-a new user is created. Those are not strict enforcements, but
-rather are options which set the default value when the User
+a new user is created. These are not strict enforcements, but
+rather options that set the default value when the User
 Creation modal is opened.
 
 .. figure:: ../images/mc_user-defaults.png

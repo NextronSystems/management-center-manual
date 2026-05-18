@@ -144,6 +144,6 @@ You need to enable the ``asgard2-agent-service`` slider:
    :scale: 40
    :alt: macOS 13 Full Disk Access
 
-.. note:: 
-   Starting with version Tahoe 26, we noticed that macOS no longer displays the entry ``asgard2-agent-service`` in the Full Disk Access UI.
-   This has been fixed with version Tahoe 26.3.
+.. note::
+   Starting with macOS Tahoe 26, we noticed that macOS no longer displays the entry ``asgard2-agent-service`` in the Full Disk Access UI.
+   This has been fixed with macOS Tahoe 26.3.

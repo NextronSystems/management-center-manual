@@ -8,23 +8,20 @@ need the following ports opened within the network. For a detailed and up
 to date list of our update and licensing servers, please visit https://www.nextron-systems.com/hosts/.
 
 .. important::
-   
-  The use of a web proxy performing TLS/SSL interception during or after
-  installation is not supported. TLS interception alters the server
-  certificate presented to the appliance, which breaks server authentication
-  with the update servers. Because certificate validation is an integral
-  part of the trust chain, interception will cause update communication to fail.
 
-  Doing so anyway might result in errors like the one below:
+  The use of a web proxy performing TLS/SSL interception is not supported.
+  TLS interception will break both the agent-to-Management-Center
+  connection and the connection to our update and licensing servers.
+  Installing the intercepting proxy's CA on the ASGARD appliance does
+  not work around this.
+
+  Attempting this might result in errors like the one below:
 
   .. code-block:: none
 
     Certificate verification failed: The certificate is NOT trusted.
     The certificate issuer is unknown.
     Could not handshake: Error in the certificate verification.
-
-  We do not support setups in which the CA of the intercepting proxy
-  is used on our ASGARD appliances. 
 
 From ASGARD Agent to ASGARD Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

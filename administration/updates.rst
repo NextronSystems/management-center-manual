@@ -38,14 +38,14 @@ versions, but only check if new versions - according to your pinning
 constraints - are available.
 
 If new updates are available, you can manually download them via the
-``Update Products now`` button.
+``Update Products Now`` button.
 
 .. figure:: ../images/mc_version-pinning.png
    :alt: Version Pinning
 
    Version Pinning
 
-Setting a new version pinning configuration is straight forward:
+Setting a new version pinning configuration is straightforward:
 
 - Select your Product
 - Select the Channel

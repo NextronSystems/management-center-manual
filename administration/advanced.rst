@@ -23,12 +23,12 @@ Preview Signatures
 We offer a "preview" (formerly known as ``SigDev``) of our newest
 signatures, which contains our newest rules. Those signatures have
 been processed by our automated pipeline and passed the quality
-check - however our manual testing of those new rules did not take place yet.
+check - however, our manual testing of these new rules has not yet taken place.
 
 We have those signatures to offer the newest rules to our customers in time
 critical engagements. You have to carefully consider if the potential higher
-rate of false positive warrants the usage of those rules. We generally recommend
-to only use those rules if the currently available signatures are a few days old.
+rate of false positives warrants the usage of those rules. We generally recommend
+only using those rules if the currently available signatures are a few days old.
 
 To enable the ``Preview`` Channel for THOR Signatures in the ``Version Pinning``
 section, simply activate the checkbox ``Show Signature Preview Channel`` and
@@ -39,7 +39,7 @@ submit your changes.
 
    Preview Signatures
 
-Once you enabled the option, you can create a version constraint in the
+Once you have enabled the option, you can create a version constraint in the
 Version Pinning section:
 
 .. figure:: ../images/mc_preview-constraint.png
