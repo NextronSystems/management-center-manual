@@ -3,16 +3,15 @@
 Setup Guide
 ===========
 
-In this chapter we will show an example installation with
-VMware ESXi and the provided ISO image to install the
-Management Center. Please pay good attention to the setup
-during the Debian Installer, since this contains important
-steps which might break your installation!
+This chapter shows an example installation of the Management Center
+on VMware ESXi using the provided ISO image. Pay close attention to
+the Debian Installer steps, as incorrect settings can cause installation
+or runtime problems.
 
 .. important:: 
-    ASGARD products require a FQDN, which needs to be resolvable
+    ASGARD products require an FQDN, which must be resolvable
     from all onboarded assets. If assets cannot resolve the FQDN
-    specified during installation, a connection will not be possible.
+    specified during installation, they cannot connect.
 
 .. toctree::
     :caption: Contents

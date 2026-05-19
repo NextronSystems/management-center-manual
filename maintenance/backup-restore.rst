@@ -6,7 +6,7 @@ Backup & Restore
 You can schedule, create, and restore backups of your ASGARD Management Center
 from the ``Settings`` > ``Backup & Restore`` section.
 
-Additionally, if you have old backups which were created via SSH on the system,
+If you have older backups that were created via SSH on the system,
 you can upload them here as well.
 
 .. figure:: ../images/mc_backup-restore.png
@@ -14,15 +14,15 @@ you can upload them here as well.
 
    Backup & Restore
 
-The backup contains everything necessary to restore a freshly installed Management
-Center to the point of when the backup was created. Scan and Playbook results are
-not contained in those backups. If you need to store a backup of all the
-:ref:`maintenance/logs:scan logs` on a separate server, you can transfer those via
-built in tools (like ``rsync``) to a remote system.
+The backup contains everything required to restore a freshly installed Management
+Center to the point when the backup was created. Scan and Playbook results are
+not included in these backups. If you need to store all
+:ref:`maintenance/logs:scan logs` on a separate server, you can transfer them with
+built-in tools, such as ``rsync``, to a remote system.
 
 Backups are located at ``/var/lib/asgard-management-center/backups`` on the file system.
 
-To restore a backup, you can upload the ``.tar`` file into the ``Backup & Restore``
+To restore a backup, upload the ``.tar`` file in the ``Backup & Restore``
 section of your Management Center and click the restore button.
 
 .. figure:: ../images/mc_backup-restore2.png

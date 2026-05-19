@@ -3,13 +3,13 @@
 Create a new ESX VM and Mount the ISO
 -------------------------------------
 
-Create a new VM with your virtualization software. In this case,
-we will use VMWare ESX managed through a VMWare VCenter.
+Create a new VM with your virtualization software. This example uses
+VMware ESXi managed through VMware vCenter.
 
 The new VM must be configured with a Linux base system and Debian
-GNU/Linux 12 (64 bits) as target version. It is recommended to
-upload the ASGARD or Master ASGARD ISO to an accessible data
-store and mount the same to your newly created VM. 
+GNU/Linux 12 (64-bit) as the target version. We recommend uploading
+the ASGARD or Master ASGARD ISO to an accessible datastore and mounting
+it on the newly created VM.
 
 .. figure:: ../images/setup_esx1.png
    :alt: New Virtual Machine - ESX
@@ -23,6 +23,6 @@ store and mount the same to your newly created VM.
 .. figure:: ../images/setup_esx4.png
    :alt: New Virtual Machine - ESX
 
-Please make sure to select a suitable v-switch or physical interface that
-reflects the IP address scheme you are planning to use for the new ASGARD.
-Only use one Hard Disk for the installation.
+Select a suitable vSwitch or physical interface that matches the IP
+address scheme you plan to use for the new ASGARD system. Use only one
+hard disk for the installation.

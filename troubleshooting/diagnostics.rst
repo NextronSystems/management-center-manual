@@ -3,18 +3,18 @@
 Diagnostic Pack
 ===============
 
-The diagnostic package is an archive generated on ASGARD server to help
-Nextron support engineers with the debugging of your problem. It contains
-the system configuration and log data of an ASGARD instance. 
+The diagnostic package is an archive generated on the ASGARD server to help
+Nextron Support troubleshoot an issue. It contains the system configuration and
+log data of an ASGARD instance.
 
-You can generate a Diagnostic Package in ``Systems Status`` > ``Logs`` >
-``Diagnostics Package``. 
+You can generate a Diagnostic Package in ``System Status`` > ``Logs`` >
+``Diagnostics Package``.
 
 .. figure:: ../images/mc_diagnostic-pack.png
    :alt: Diagnostics Pack
 
-The package can have a size that cannot be shared via Email. In this case you can either
+The package can be too large to share by email. In this case, you can either:
 
-1. ask us for an upload link (secure file sharing) or
-2. remove big log files from the package (e.g. the file ``/var/log/asgard-management-center/agent-access.log``
+1. ask Nextron Support for an upload link (secure file sharing), or
+2. remove large log files from the package (e.g. the file ``/var/log/asgard-management-center/agent-access.log``
    is often responsible for 97% of the package size)

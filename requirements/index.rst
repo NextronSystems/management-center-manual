@@ -3,11 +3,11 @@
 Requirements
 ============
 
-In this chapter we will go over the requirements
-needed to get your Management Center up and running.
-Please follow the following steps carefully and don't
-skip anything, as you might encounter problems during or
-after the installation.
+This chapter describes the requirements for installing and running
+your Management Center.
+
+Follow each step carefully. Skipping requirements can cause problems
+during or after the installation.
 
 .. toctree::
     :caption: Contents

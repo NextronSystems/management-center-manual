@@ -6,23 +6,22 @@ User Management
 Access user management via ``Settings`` > ``Users``. This section
 allows administrators to add or edit user accounts.
 
-The field ``2FA`` in the overview indicates if a
-user has ``Two Factor Authentication`` enabled or not.
+The ``2FA`` field in the overview indicates whether a
+user has ``Two Factor Authentication`` enabled.
 
 When creating a user, you can enforce a password change
-and the usage of 2FA. If those options are selected, the
-user can only use the Management Center with very limited
-functionality as long as the password has not been changed
-and/or 2FA has not been enabled.
+and the use of 2FA. If those options are selected, the
+user can only use the Management Center with limited
+functionality until the password has been changed and
+2FA has been enabled.
 
 .. figure:: ../images/mc_add-user.png
    :alt: Add User Account
 
    Add User Account
 
-Editing a user account does not require a password although
-the fields are shown in the dialogue. An initial password
-has to be provided for user creation, though.
+Editing a user account does not require a password, even though the fields
+are shown in the dialog. An initial password is required for user creation.
 
 Access the user roles in ``Settings`` > ``Roles``.
 
@@ -31,10 +30,9 @@ You can download a list of all users in CSV format.
 User Defaults
 ^^^^^^^^^^^^^
 
-You can set user defaults to pre-select certain options when
-a new user is created. These are not strict enforcements, but
-rather options that set the default value when the User
-Creation modal is opened.
+You can set user defaults to preselect certain options when
+a new user is created. These are not strict enforcements. They
+set the default values when the User Creation modal is opened.
 
 .. figure:: ../images/mc_user-defaults.png
    :alt: User Defaults
@@ -54,9 +52,10 @@ deleted. The ASGARD role model is fully configurable.
 
    User Roles – Factory Defaults
 
-Note that all users except users with the right ``Readonly`` have the right to run scans on endpoints.
+All users except users with the ``Readonly`` right can run scans on endpoints.
 
-The following section describes these predefined rights and restrictions that each role can have.
+The following section describes the predefined rights and restrictions that
+each role can have.
 
 Rights
 ^^^^^^
@@ -70,7 +69,7 @@ Rights
    * - Administrator
      - Unrestricted
    * - Manage Scan Templates
-     - Allows scan templates management
+     - Allows scan template management
    * - Remote Console
      - Connect to endpoints via remote console
    * - View Remote Console Log
@@ -78,7 +77,7 @@ Rights
    * - Response Control
      - Run playbooks, including playbooks for evidence collection, to kill processes or isolate an endpoint
    * - Service Control
-     - User can manage services on endpoint, e.g. Aurora
+     - User can manage services on endpoints, e.g. Aurora
 
 Restrictions
 ^^^^^^^^^^^^
@@ -94,21 +93,22 @@ Restrictions
    * - No Inactive Assets [2]_
      - Cannot view inactive assets in asset management.
    * - No Task Start [2]_
-     - Cannot start scans or task (playbooks)
+     - Cannot start scans or tasks (playbooks)
    * - Readonly [2]_
-     - Can't change anything, can't run scans or response tasks. Used to generate read-only API keys
+     - Cannot change anything or run scans or response tasks. Used to generate read-only API keys
 
-.. [2] Restricted Roles have a yellow font in the UI
+.. [2] Restricted roles have a yellow font in the UI.
 
 LDAP Configuration
 ^^^^^^^^^^^^^^^^^^
 
-In order to configure LDAP, navigate to ``Settings`` > ``LDAP``.
+To configure LDAP, navigate to ``Settings`` > ``LDAP``.
 In the left column you can test and configure the LDAP connection itself.
 In the right column, the mapping of LDAP groups to ASGARD groups
 (and its associated permissions) is defined.
 
-First check if your LDAP server is reachable by ASGARD by clicking "Test Connection".
+First, check whether your LDAP server is reachable by ASGARD by clicking
+"Test Connection".
 
 .. note::
    If you are using LDAPS with a self-signed certificate or a custom CA, you must trust the signer on the ASGARD server.
@@ -123,7 +123,7 @@ First check if your LDAP server is reachable by ASGARD by clicking "Test Connect
 
 Then check the bind user you want to use for ASGARD. Read
 permissions on the bind user are sufficient. To find out
-the distinguished name you can use an LDAP browser or query
+the distinguished name, use an LDAP browser or query it
 using the PowerShell AD module command ``Get-ADUser <username>``.
 
 .. figure:: ../images/mc_ldap-bind.png
@@ -131,11 +131,11 @@ using the PowerShell AD module command ``Get-ADUser <username>``.
 
    Configure the LDAP Bind User
 
-Next configure the LDAP filters used to identify the groups and
+Next, configure the LDAP filters used to identify the groups and
 users and their preferred attributes in your LDAP structure.
 A default for LDAP and AD in a flat structure is given in the
 **"Use recommended filters"** drop-down menu, but you can
-adapt it to your liking. The test button shows you if a login
+adapt it to your environment. The test button shows whether a login
 with that user would be successful and which groups ASGARD identified
 and could be used for a mapping to ASGARD groups.
 
@@ -146,18 +146,19 @@ and could be used for a mapping to ASGARD groups.
 
 If you need to adapt the recommended configuration or want to customize it,
 we recommend an LDAP browser such as `ADExplorer <https://docs.microsoft.com/en-us/sysinternals/downloads/adexplorer>`_
-from Sysinternals to browse your LDAP structure. As an example you could
-use your organization's e-mail address as a user login name if you change the "User Filter"
+from Sysinternals to browse your LDAP structure. For example, you could
+use your organization's email address as a user login name if you change the "User Filter"
 to ``(&(objectClass=user)(objectCategory=user)(userPrincipalName=%s))``
 
 .. note::
    You need to save the configuration by clicking ``Update LDAP Config``.
    Using the test buttons only uses the data in the forms, but does not
-   save it, so that you can use it for testing purposes anytime,
+   save it. You can use the test buttons for testing at any time
    without changing your working configuration.
 
-After the LDAP configuration is set up, you need to provide role mapping from LDAP groups to ASGARD groups.
-This is done in the right column by using the ``Add LDAP Role`` feature.
+After the LDAP configuration is set up, provide role mappings from LDAP
+groups to ASGARD groups. This is done in the right column with the
+``Add LDAP Role`` feature.
 
 .. figure:: ../images/mc_ldap-roles.png
    :alt: LDAP Group to ASGARD Role Mapping

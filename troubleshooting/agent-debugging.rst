@@ -3,7 +3,7 @@
 Agent Debugging
 ===============
 
-This chapter contains debugging information for our ASGARD Agent.
+This chapter contains debugging information for the ASGARD Agent.
 
 SLES 11 Installation
 ~~~~~~~~~~~~~~~~~~~~
@@ -16,7 +16,7 @@ of the ASGARD Agent might fail with the following error:
    error: Failed dependencies:
         rpmlib(FileDigests) <= 4.6.0-1 is needed by asgard2-agent-1-1.6.5.x86_64
 
-To circumvent this error savely, you can just add the ``--nodeps`` flag to install
+To work around this error safely, add the ``--nodeps`` flag when installing
 the package:
 
 .. code-block:: console
@@ -29,26 +29,23 @@ the package:
 Aurora Diagnostics Pack
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-If Aurora does not behave like it should, e.g. using more resources
-than you expected, you can create a diagnostics pack for our support
-to help in troubleshooting the issue. This can be conveniently done
-using the playbook ``[Default] Create and Collect Aurora Agent Diagnostics Pack (Windows)``.
+If Aurora does not behave as expected, for example, if it uses more resources
+than expected, you can create a diagnostics pack for Nextron Support. Use the
+playbook ``[Default] Create and Collect Aurora Agent Diagnostics Pack (Windows)``.
 
 It can be run from ``Asset Management`` > ``Response Action`` (Play button)
-or from ``Response Control`` > ``Tasks`` > ``Add Task`` or if needed
-as a group task. The resulting ``diagnostics.zip`` can be downloaded
+or from ``Response Control`` > ``Tasks`` > ``Add Task``. If needed, run it as
+a group task. The resulting ``diagnostics.zip`` can be downloaded
 from the third step in the ``Playbook Result`` tab of the expanded task.
 
 Duplicate Assets Remediation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``Duplicate Assets`` view in your Management Center lists
-assets, which appear to be active on multiple endpoints at
-the same time, often due to system cloning. This can cause
-issues like a changing hostname and failing tasks. Deleting
-these duplicate assets will allow each endpoint to reconnect
-as a new asset with its own authentication, resolving these
-problems.
+The ``Duplicate Assets`` view in your Management Center lists assets that
+appear to be active on multiple endpoints at the same time, often due to
+system cloning. This can cause issues such as changing hostnames and failing
+tasks. Deleting these duplicate assets allows each endpoint to reconnect as a
+new asset with its own authentication, resolving these problems.
 
 .. figure:: ../images/mc_duplicate_assets.png
    :alt: Troubleshooting Duplicate Assets

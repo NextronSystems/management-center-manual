@@ -3,9 +3,9 @@
 Advanced Configuration
 ======================
 
-This chapter contains advanced configuiration options, which
-can be helpful in different scenarios. Please have a look if
-some options could be helpful for your environment.
+This chapter covers advanced configuration options for specific
+deployment scenarios. Review these options to determine whether they
+are useful for your environment.
 
 .. toctree:: 
     :caption: Contents

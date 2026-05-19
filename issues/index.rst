@@ -3,7 +3,7 @@
 Known Issues
 ============
 
-You can find a list of known issues in this section.
+This section lists known issues.
 
 .. toctree::
     :caption: Contents

@@ -3,13 +3,12 @@
 Troubleshooting
 ===============
 
-This chapter contains information to help with debugging
-and troubleshooting potential problems with your Management
-Center.
+This chapter provides information for debugging and troubleshooting
+potential problems with your Management Center.
 
 .. hint::
-   Some troubleshooting topics got moved to our knowledge base.
-   If you cannot find certain help topics, try to have a look at
+   Some troubleshooting topics have moved to our knowledge base.
+   If you cannot find a specific help topic, check
    https://knowledge.nextron-systems.com
 
 .. toctree:: 

@@ -3,11 +3,9 @@
 Appendix
 ========
 
-This chapter contains random scripts and tips for various
-tasks you might encounter. Please keep in mind that we
-want to provide guidance with the scripts in this chapter,
-and you should still try to understand what they do and
-modify them accordingly to your needs.
+This chapter contains scripts and tips for various tasks you might
+encounter. Use the scripts as guidance, review what they do, and adapt
+them to your environment as needed.
 
 .. toctree:: 
     :caption: Contents

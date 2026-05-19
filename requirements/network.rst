@@ -3,19 +3,19 @@
 Network Requirements
 --------------------
 
-ASGARD and other systems which will have to communicate with each other,
-need the following ports opened within the network. For a detailed and up
-to date list of our update and licensing servers, please visit https://www.nextron-systems.com/hosts/.
+ASGARD and the systems that communicate with it require the following
+ports to be open in the network. For a detailed and up-to-date list of
+our update and licensing servers, see https://www.nextron-systems.com/hosts/.
 
 .. important::
 
-  The use of a web proxy performing TLS/SSL interception is not supported.
+  The use of a web proxy that performs TLS/SSL interception is not supported.
   TLS interception will break both the agent-to-Management-Center
   connection and the connection to our update and licensing servers.
   Installing the intercepting proxy's CA on the ASGARD appliance does
   not work around this.
 
-  Attempting this might result in errors like the one below:
+  Attempting this can result in errors like the one below:
 
   .. code-block:: none
 
@@ -39,12 +39,12 @@ From ASGARD Agent to ASGARD Server
    * - ASGARD online check (optional)
      - ICMP
 
-The syslog port is optional, since your agents will work fine without it.
-Please see :ref:`administration/syslog:syslog forwarding` for more information.
+The syslog port is optional because agents can operate without it.
+See :ref:`administration/syslog:syslog forwarding` for more information.
 
 .. hint:: 
-  Your ASGARD Agents will check if they can reach your ASGARD
-  via HTTPs. ICMP is not necessary, but helps during troubleshooting.
+  ASGARD Agents check whether they can reach ASGARD via HTTPS.
+  ICMP is not required, but it helps during troubleshooting.
 
 From Management Workstation to ASGARD Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -81,7 +81,7 @@ From ASGARD to Analysis Cockpit
 
    * - Description
      - Ports
-   * - Asset Synchronization, Log- and Sample forwarding
+   * - Asset Synchronization, Log and Sample forwarding
      - 7443/tcp
    * - Syslog forwarder (optional)
      - 514/udp [1]_
@@ -105,11 +105,11 @@ following remote systems via HTTPS on port 443/tcp:
    * - THOR, Aurora, and Signature updates
      - update2.nextron-systems.com
 
-All proxy systems should be configured to allow access to these URLs
-without TLS/SSL interception. (ASGARD uses client-side SSL certificates
-for authentication). It is possible to configure a proxy server, username
-and password during the setup process of the ASGARD platform. Only
-BASIC authentication is supported (no NTLM authentication support).
+Configure all proxy systems to allow access to these URLs without TLS/SSL
+interception. ASGARD uses client-side SSL certificates for authentication.
+You can configure a proxy server, username, and password during the ASGARD
+platform setup process. Only Basic authentication is supported. NTLM
+authentication is not supported.
 
 From Master ASGARD to ASGARD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -142,9 +142,8 @@ From Management Workstation to Master ASGARD
 Thunderstorm (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The following ports are being used by Thunderstorm.
-This is optional and only needed if you plan on using
-Thunderstorm in your ASGARD.
+Thunderstorm uses the following ports. This is optional and only required
+if you plan to use Thunderstorm in ASGARD.
 
 .. list-table:: 
    :header-rows: 1
@@ -152,21 +151,20 @@ Thunderstorm in your ASGARD.
 
    * - Description
      - Port
-   * - HTTPs
+   * - HTTPS
      - 9443/tcp
    * - HTTP
      - 8080/tcp
 
-Please see chapter :ref:`administration/thunderstorm:Thunderstorm`
-for more information.
+See :ref:`administration/thunderstorm:Thunderstorm` for more information.
 
 Secure Communication
 ^^^^^^^^^^^^^^^^^^^^
 
-Any connection within our products (with the exception of syslog over plaintext)
-is done via TLS. Clients verify the server certificate used by the ASGARD Management
-Center when connecting. This ensures that no attacker can read any sensitive
-information if a Man in the Middle-attack-would-take place.
+Connections within our products use TLS, except for syslog over plaintext.
+Clients verify the server certificate used by ASGARD Management Center when
+connecting. This helps prevent attackers from reading sensitive information
+during a man-in-the-middle attack.
 
 Time Synchronization
 ^^^^^^^^^^^^^^^^^^^^
@@ -194,32 +192,31 @@ DNS
 ASGARD needs to be able to resolve internal and external IP addresses.
 
 .. warning:: 
-  Please make sure that you install your ASGARD with a ``domain name``
+  Make sure that you install ASGARD with a ``domain name``
   (see :ref:`setup/network:network configuration`). If you do not set the
-  Domain Name and install the ASGARD package, your clients won't be able
-  to connect to your ASGARD.
+  Domain Name before installing the ASGARD package, your clients will not
+  be able to connect to ASGARD.
 
-  All components you install should have a proper domain name configured
-  to avoid issues further during the configuration.
+  All installed components should have a valid domain name configured to
+  avoid issues later in the configuration.
 
 
 Internet Access during Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Nextron Universal Installer requires Internet access during the
-setup. The installation process will fail if required packages cannot be
-loaded from https://update-301.nextron-systems.com
+The Nextron Universal Installer requires Internet access during setup.
+The installation process fails if required packages cannot be loaded from
+https://update-301.nextron-systems.com.
 
 SSL/TLS Interception
 ~~~~~~~~~~~~~~~~~~~~
 
 The installation and update processes do not accept an unknown but valid
-SSL/TLS certificate presented by an intercepting entity and therefore
-don't support SSL/TLS interception.
+SSL/TLS certificate presented by an intercepting entity and therefore do
+not support SSL/TLS interception.
 
-Since our products are usually used in possibly compromised
-environments, the integrity of our software and update packages has
-highest priority.
+Because our products are often used in potentially compromised environments,
+the integrity of our software and update packages has highest priority.
 
 Architecture Overview
 ^^^^^^^^^^^^^^^^^^^^^

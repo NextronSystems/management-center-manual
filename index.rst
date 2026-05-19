@@ -3,23 +3,20 @@
 Nextron Systems - Management Center v4
 ======================================
 
-Welcome to Nextron System's Manual for the ASGARD Management
-Center v4.
+Welcome to the Nextron Systems manual for ASGARD Management Center v4.
 
 .. note::
-   If you are still using version 3 of the Management Center,
-   please click `here <https://asgard-manual.nextron-systems.com/en/v3>`__ 
-   to see the older version of the documentation.
+   If you are still using Management Center version 3,
+   use the `version 3 documentation <https://asgard-manual.nextron-systems.com/en/v3>`__.
 
 ASGARD Management Center is the central management platform for THOR
 scans. It manages distributed THOR scans on thousands of systems,
-collects and forwards scan results.
+and collects and forwards scan results.
 
-Furthermore, ASGARD can control and execute complex response tasks,
-if needed. It features built-in response playbooks for quarantining
-endpoints, creating and collecting triage packs, opening a remote
-command line and other actions incident response specialists will
-find useful.
+ASGARD can also control and execute response tasks when needed. It
+includes built-in response playbooks for quarantining endpoints, creating
+and collecting triage packs, opening a remote command line, and other
+actions used during incident response.
 
 .. toctree::
    :maxdepth: 2

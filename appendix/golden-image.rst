@@ -3,23 +3,22 @@
 Installing ASGARD Agent on a Golden Image
 =========================================
 
-If you want to implement the ASGARD Agent into your Golden Image, you
-can do this by following the steps in this section. Make sure to download
-the right Agent Installer package from your ASGARD.
+If you want to include the ASGARD Agent in your Golden Image, follow the
+steps in this section. Make sure to download the correct Agent Installer
+package from your ASGARD system.
 
-You have two options to deploy an Agent on your Golden Image, with the
-first one being the easier method.
+You have two options for deploying an agent on your Golden Image. The first
+option is the easier method.
 
 Offline Installation
 ^^^^^^^^^^^^^^^^^^^^
 
-.. note:: 
-   Before continuing, make sure the host can't reach your ASGARD.
+.. note::
+   Before continuing, make sure the host cannot reach your ASGARD system.
 
-In this method we make sure that the host system, which is being prepared
-for the Golden Image, is either offline or can't reach the ASGARD. Go ahead
-and install your ASGARD agent as you do normally. Once the installation is
-done, you can stop the ``asgard2-agent`` service.
+In this method, make sure that the host system being prepared for the Golden
+Image is either offline or cannot reach ASGARD. Install the ASGARD Agent as
+usual. Once the installation is complete, stop the ``asgard2-agent`` service.
 
 Windows (administrative command prompt):
 
@@ -33,18 +32,17 @@ Linux:
 
    user@golden:~$ sudo systemctl stop asgard2-agent.service
 
-You ASGARD Agent should be ready now. You have to make sure that the Agent
-is not communicating with your ASGARD during the whole process. If the agent
-is for some reason communicating with the ASGARD and creating an Asset 
-Request, make sure that you stop the ``asgard2-agent`` service again and
-inspect the following file:
+Your ASGARD Agent should be ready now. Make sure that the agent does not
+communicate with ASGARD during the process. If the agent communicates with
+ASGARD and creates an Asset Request, stop the ``asgard2-agent`` service again
+and inspect the following file:
 
 * Windows: ``C:\Windows\System32\asgard2-agent\asgard2-agent.yaml``
 * Linux: ``/var/lib/asgard2-agent/asgard2-agent.yaml``
 
 The file should not contain the marked lines in the next example. If both lines
-exist, make sure you delete them and save the file. Make also sure to deny the
-Asset Request in your ASGARD to avoid confusion:
+exist, delete them and save the file. Also deny the Asset Request in ASGARD to
+avoid confusion:
 
 .. code-block:: yaml
    :linenos:
@@ -58,18 +56,17 @@ Asset Request in your ASGARD to avoid confusion:
    labels: []
    write_log: false
 
-.. warning:: 
+.. warning::
    Your Golden Image will not work if the two lines in the ``asgard2-agent.yaml``
-   file exist, it instead will create a ``Duplicate Asset``. So make sure that
-   they are not present when you are creating the Golden Image!
+   file exist. It will create a ``Duplicate Asset`` instead. Make sure that
+   these lines are not present when you create the Golden Image.
 
 Online Installation
 ^^^^^^^^^^^^^^^^^^^
 
-If for some reason you can not prevent your host, which is being used for
-the Golden Image, to communicate with your ASGARD, then follow the next
-steps. Go ahead and install your ASGARD agent as you do normally. Once the
-installation is done, you can stop the ``asgard2-agent`` service.
+If you cannot prevent the host being used for the Golden Image from
+communicating with ASGARD, follow these steps. Install the ASGARD Agent as
+usual. Once the installation is complete, stop the ``asgard2-agent`` service.
 
 Windows (administrative command prompt):
 
@@ -83,14 +80,13 @@ Linux:
 
    user@golden:~$ sudo systemctl stop asgard2-agent.service
 
-Once the service is stopped, we have to alter the configuration file of the
-agent. This is necessary because your agent will have communicated with your
-ASGARD by now, thus having generated an ``token``, which should be unique.
-If you would create your Golden Image now, you would have the
-systems, installed with the Golden Image, appear as ``Duplicate Asset`` (see
+Once the service is stopped, edit the agent configuration file. This is
+necessary because the agent has already communicated with ASGARD and generated
+a ``token``, which should be unique. If you create the Golden Image now, the
+systems installed from that image will appear as ``Duplicate Asset`` (see
 :ref:`troubleshooting/agent-debugging:duplicate assets remediation`).
 
-Open the ``asgard2-agent.yaml`` file and delete the marked lines in our example.
+Open the ``asgard2-agent.yaml`` file and delete the marked lines in this example.
 
 * Windows: ``C:\Windows\System32\asgard2-agent\asgard2-agent.yaml``
 * Linux: ``/var/lib/asgard2-agent/asgard2-agent.yaml``
@@ -107,13 +103,13 @@ Open the ``asgard2-agent.yaml`` file and delete the marked lines in our example.
    labels: []
    write_log: false
 
-After you deleted the two lines and saved the file, your host is ready. Make
-sure those two lines are not present, as well as your ``asgard2-agent`` service
-is still not running. We delete the ``token`` because it is unique to ASGARD.
-If two agents are presenting the same token, they will be flagged as duplicate
-assets. The ``registered`` value tells the agent if it has to send a new asset
-request or not. Once it is set to ``true`` it would not send a new request.
+After you delete the two lines and save the file, your host is ready. Make
+sure those two lines are not present and the ``asgard2-agent`` service is still
+not running. Delete the ``token`` because it is unique to ASGARD. If two agents
+present the same token, they will be flagged as duplicate assets. The
+``registered`` value tells the agent whether it has to send a new asset
+request. Once it is set to ``true``, it will not send a new request.
 
 .. hint::
-   Make sure to deny the Asset Request, which we just created while installing
-   the agent on our host, in ASGARD. This is to avoid confusion down the road.
+   Deny the Asset Request that was created while installing the agent on the
+   host in ASGARD. This avoids confusion later.

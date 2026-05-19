@@ -6,13 +6,13 @@ Updates
 ASGARD Updates
 ^^^^^^^^^^^^^^
 
-ASGARD will search for ASGARD updates on a daily basis. Available
-updates will automatically be shown in the section ``Updates``. 
+ASGARD checks for ASGARD updates daily. Available
+updates are shown automatically in the ``Updates`` section.
 
-As soon as an ASGARD update is available, a button ``Upgrade from ... to ...``
-appears. Clicking this button will start the update process. The
-ASGARD service will be restarted and the user will be forced to
-re-login. Generally update MASTER ASGARD before the connected ASGARDs.
+As soon as an ASGARD update is available, the ``Upgrade from ... to ...``
+button appears. Click this button to start the update process. The
+ASGARD service restarts and the user must log in again. In general, update
+Master ASGARD before connected ASGARD systems.
 
 .. figure:: ../images/mc_update-asgard.png
    :alt: Updating ASGARD
@@ -24,7 +24,7 @@ Version Pinning
 
 The ``Version Pinning`` section allows you to create constraints
 to "pin" a specific version of THOR, Aurora, or any signatures.
-This allows you to stick with certain major or minor versions
+This allows you to stay on specific major or minor versions
 of our products.
 
 By default, ASGARD will search for signature updates every hour
@@ -32,10 +32,9 @@ and for THOR/Aurora updates every day. You can change the update
 interval if needed, though the default values are usually sufficient
 for most cases.
 
-If you want to manually check if a new update is available, you can
-do so by clicking ``Check for Updates``. This will not download new
-versions, but only check if new versions - according to your pinning
-constraints - are available.
+To manually check whether a new update is available, click
+``Check for Updates``. This does not download new versions. It only checks
+whether new versions are available according to your pinning constraints.
 
 If new updates are available, you can manually download them via the
 ``Update Products Now`` button.
@@ -59,7 +58,7 @@ Setting a new version pinning configuration is straightforward:
 Agent Updates
 ^^^^^^^^^^^^^
 
-If an asset or an agent can be update, there will be a notice
+If an asset or an agent can be updated, a notice is
 shown in the ``Updates`` > ``Agents`` tab.
 
 .. figure:: ../images/mc_agent-update.png

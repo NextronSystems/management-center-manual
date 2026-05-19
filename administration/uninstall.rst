@@ -1,14 +1,15 @@
 .. index:: Uninstall ASGARD Agents
 
-Uninstall ASGARD Agents 
+Uninstall ASGARD Agents
 =======================
 
-The following listings contain commands to uninstall ASGARD Agents on endpoints. 
+The following sections contain commands for uninstalling ASGARD Agents on
+endpoints.
 
 .. note::
    The commands contain names used by the default installer packages.
    If you have generated custom installer packages with a custom service
-   and binary name, you have to adjust the commands accordingly. 
+   and binary name, adjust the commands accordingly.
 
 Uninstall ASGARD Agents on Windows
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -25,7 +26,8 @@ Open a Command Prompt **as Administrator** and run the following commands:
    C:\Windows\system32>rmdir /S /Q C:\ProgramData\thor
 
 .. note::
-   Change `system32` to `SysWOW64` if you are running the agent on a x86 machine.
+   Change ``system32`` to ``SysWOW64`` if you are running the agent on an
+   x86 machine.
 
 These commands perform the following actions in order:
 
@@ -72,4 +74,5 @@ Uninstall ASGARD Agents on macOS
    user@mac:~$ sudo rm -r /var/lib/asgard2-agent
    user@mac:~$ sudo rm -r /var/lib/thor
 
-Remove manually the ``asgard2-agent-service`` from  ``System Settings`` > ``Privacy & Security`` > ``Full Disk Access``.
+Manually remove ``asgard2-agent-service`` from ``System Settings`` >
+``Privacy & Security`` > ``Full Disk Access``.
