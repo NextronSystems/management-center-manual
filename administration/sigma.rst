@@ -3,10 +3,10 @@
 Sigma
 =====
 
-THOR and Aurora are using Sigma in order to improve detections.
+THOR and Aurora use Sigma to improve detections.
 
-What is Sigma
-~~~~~~~~~~~~~
+What is Sigma?
+~~~~~~~~~~~~~~
 
 From the `project website <https://github.com/SigmaHQ/sigma>`_:
 
@@ -25,24 +25,22 @@ From the `project website <https://github.com/SigmaHQ/sigma>`_:
 Creating a Ruleset
 ~~~~~~~~~~~~~~~~~~
 
-Rulesets are used to group rules to manageable units. As an asset
+Rulesets group rules into manageable units. As an asset
 can only have one service configuration, rulesets are used to determine
-which rules are used in which service configuration. There exist default
-rulesets for high and critical Sigma rules. If you want to create a
-custom ruleset go to ``Service Control`` > ``Sigma`` > ``Rulesets`` > ``Create Ruleset``.
+which rules are used in each service configuration. Default rulesets are
+available for high and critical Sigma rules. To create a custom ruleset, go
+to ``Service Control`` > ``Sigma`` > ``Rulesets`` > ``Create Ruleset``.
 
 .. figure:: ../images/sc_create-ruleset.png
    :alt: Create a Ruleset
 
    Create a Ruleset
 
-If you have chosen that new Sigma rules should be added automatically
-to the new ruleset, they will be added now. If you didn't set any Sigma
-levels to automatically add to this rule, you now need to add the desired
-rules manually by going to ``Service Control`` > ``Sigma`` > ``Rules``.
-Choose the rules that should be added to this ruleset by selecting the
-checkboxes and then ``Add to Ruleset``. A rule can be assigned to multiple
-rulesets.
+If you selected automatic addition of new Sigma rules to the new ruleset,
+they are added now. If you did not select any Sigma levels for automatic
+addition, add the desired rules manually by going to ``Service Control`` >
+``Sigma`` > ``Rules``. Select the checkboxes for the rules you want to add,
+then click ``Add to Ruleset``. A rule can be assigned to multiple rulesets.
 
 .. figure:: ../images/sc_add-to-ruleset.png
    :alt: Add a Rule to Rulesets
@@ -51,10 +49,10 @@ rulesets.
 
 .. note::
     You need to commit and push your changes after editing a ruleset.
-    ASGARD has to restart the service controller to read new configurations.
-    In order to prevent multiple restarts in the case of an admin performing
-    several configuration changes in succession, the admin has to initiate
-    the reloading of the new configuration by going to ``Service Control`` >
+    ASGARD must restart the service controller to read new configurations.
+    To prevent multiple restarts when an administrator performs several
+    configuration changes in succession, the administrator must initiate
+    the reload of the new configuration by going to ``Service Control`` >
     ``Sigma`` > ``Rulesets`` and performing the **Compile ruleset** action
     (gear wheels). The need for compiling is indicated in the **Uncompiled Changes**
     column.
@@ -64,36 +62,36 @@ rulesets.
     
        Uncompiled Changes Indicator
 
-Choosing which Rules to activate
+Choosing which Rules to Activate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It is not advised to enable all available rules on an asset. We suggest
-to start with all "critical" and then advance to all "high" rules. We
-already provide a default ruleset for those two levels for you to use.
-"Medium" rules should not be enabled in bulk, and "low"/"informational"
-at all . Single medium rules, which increase an organization's detection
-coverage and do not trigger a bigger number of false positives, can be added
-to the active configuration, but should be tested rule by rule.
+We do not recommend enabling all available rules on an asset. Start with all
+"critical" rules, then advance to all "high" rules. Default rulesets are
+available for both levels. "Medium" rules should not be enabled in bulk, and
+"low" or "informational" rules should generally remain disabled. Individual
+medium rules that increase an organization's detection coverage without
+triggering many false positives can be added to the active configuration, but
+should be tested rule by rule.
 
-In order to easily add rules to a ruleset you can use the column filters
-to select the desired rules and add the bulk to a ruleset. As an example
-you can add all rules of level "critical" to a ruleset:
+To add rules to a ruleset more easily, use the column filters to select the
+desired rules and add them in bulk to a ruleset. For example, you can add all
+rules with level "critical" to a ruleset:
 
     .. figure:: ../images/sc_choose-rules1.png
        :alt: Add all critical rules to a ruleset
     
        Add All Critical Rules to a Ruleset
 
-Another great way to pivot the Sigma rule database is the usage of MITRE ATT&CK® IDs.
+Another useful way to pivot the Sigma rule database is to use MITRE ATT&CK® IDs.
 
     .. figure:: ../images/sc_choose-rules2.png
        :alt: Search by MITRE ATT&CK® ID
     
        Search by MITRE ATT&CK® ID
 
-Or you can just search the title or description field of the rules. You can also search
-the rule itself using the "Rule" column. (the "Rule" column is not shown by default and
-has to be added using the gear wheel button).
+You can also search the title or description field of the rules. To search
+the rule itself, use the "Rule" column. The "Rule" column is not shown by
+default and must be added with the gear wheel button.
 
     .. figure:: ../images/sc_choose-rules3.png
        :alt: Search by Rule Title or Description
@@ -103,45 +101,47 @@ has to be added using the gear wheel button).
 False Positive Tuning of Sigma Rules
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Not every environment is the same. It is expected that some rules will trigger false
-positive matches in your environment. You have
-multiple options to tackle that issue.
+Each environment is different. Some rules may trigger false positive matches
+in your environment. You have multiple options to address this.
 
-1. If it is a general false positive, probably not only occurring in your environment,
-   consider reporting it at as a `Github issue <https://github.com/SigmaHQ/sigma/issues>`_
-   or e-mail to us at rules@nextron-systems.com. We
-   will take care of the tuning for you and your peers.
+1. If it is a general false positive that is not limited to your environment,
+   consider reporting it as a `GitHub issue <https://github.com/SigmaHQ/sigma/issues>`_
+   or by email to rules@nextron-systems.com. We will take care of the tuning
+   for you and other users.
 2. If the false positive is specific to your environment, you can tune single Sigma rules
    at ``Service Control`` > ``Sigma`` > ``Rules``, filter for the rule in question and
-   choose the "Edit false positive filters of this rule" action. Here you can do simple
-   rule tunings on your own. By clicking the ``Add False Positive Filter`` button you can
-   add single lines that filter the event for false positives (i.e. they are OR-connected
-   meaning: "Do not match the event if any of those lines matches). They are applied on top
-   of the rule logic and persist automatic rule updates.
+   choose the "Edit false positive filters of this rule" action. Here you can
+   perform simple rule tuning. Click the ``Add False Positive Filter`` button
+   to add individual lines that filter the event for false positives. These
+   lines are OR-connected, which means: "Do not match the event if any of
+   those lines matches." They are applied on top of the rule logic and persist
+   through automatic rule updates.
 
     .. figure:: ../images/sc_sigma-fp-tuning.png
        :alt: Example of the false positive tuning of a Sigma rule
     
        Example of the false positive tuning of a Sigma rule
 
-    To see the resulting rule you can click the "Show Preview" button or look at the
-    "Compiled Rule" row in the rule's drop down menu.
+    To see the resulting rule, click the "Show Preview" button or look at the
+    "Compiled Rule" row in the rule's drop-down menu.
 
-    If you want to review the tuned rules: To filter for all rules containing a custom
-    false positive tuning, you have to add the "Filters" column to your view (gear wheels
-    icon) and show all non-empty rows by using the ``NOT -`` column filter.
+    To review tuned rules, add the "Filters" column to your view using the
+    gear wheels icon, then show all non-empty rows by using the ``NOT -``
+    column filter.
 
-3. If the rule is adding too much noise and tuning is not sensible, you can remove the
-   rule from the ruleset for a subset of your machines (maybe you need to define and use
-   a separate ruleset for that use-case) or you can disable the rule altogether. This
-   is done using the ``Disable this rule`` action of the rule. Disabling the rule affects the rule in all rulesets.
+3. If the rule adds too much noise and tuning is not practical, you can remove
+   the rule from the ruleset for a subset of your systems. This may require a
+   separate ruleset for that use case. You can also disable the rule entirely
+   with the ``Disable this rule`` action. Disabling the rule affects it in all
+   rulesets.
 
-After tuning a rule, the rulesets using that rule have to be re-compiled at ``Service Control`` > ``Sigma`` > ``Rulesets``.
+After tuning a rule, the rulesets using that rule must be recompiled at
+``Service Control`` > ``Sigma`` > ``Rulesets``.
        
 Adding Custom Rules
 ~~~~~~~~~~~~~~~~~~~
 
-Custom rules can be added using the sigma format complying with the
+Custom rules can be added using the Sigma format according to the
 `specification <https://github.com/SigmaHQ/sigma/wiki/Specification>`_. You can
 upload single files or a ZIP compressed archive. This can be done at
 ``Service Control`` > ``Sigma`` > ``Rules`` > ``Upload Rules``.
@@ -154,37 +154,37 @@ upload single files or a ZIP compressed archive. This can be done at
 Rule and Response Updates
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If new rules or rule updates are provides by the Aurora signatures, the updates
-have to be applied by the user manually in order to be affecting Aurora agents
-managed by ASGARD. An indicator is shown in the WebUI and the rules changes can
-be reviewed and applied at ``Service Control`` > ``Sigma`` > ``Rule Updates``. 
+If new rules or rule updates are provided by the Aurora signatures, the user
+must apply the updates manually before they affect Aurora agents managed by
+ASGARD. An indicator is shown in the Web UI, and rule changes can be reviewed
+and applied at ``Service Control`` > ``Sigma`` > ``Rule Updates``.
 
     .. figure:: ../images/sc_update-sigma-rules.png
        :alt: Sigma Rule Updates for Aurora
     
        Sigma Rule Updates for Aurora
 
-Clicking on the ``Update`` button in the "Update Available" column opens a diff
-view in which the changes are shown and where the user can apply or discard the
-changes. If you do not need to review each single change, you can apply all
+Clicking the ``Update`` button in the "Update Available" column opens a diff
+view that shows the changes and allows the user to apply or discard them. If
+you do not need to review each individual change, you can apply all
 changes using the ``Update All Rules`` button.
 
-Analogous the updates of response actions can be viewed and applied at
+Response action updates can be viewed and applied at
 ``Service Control`` > ``Sigma`` > ``Response Updates``.
 
-How to activate Responses
+How to Activate Responses
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-As a fail safe and for administration purposes, responses are generally
+As a fail-safe and for administration purposes, responses are generally
 only simulated if not explicitly set to active.
-This has to be done on different levels:
+This must be done at different levels:
 
 - Service configuration level
 - Ruleset configuration level (on updates)
 - Ruleset rule level
 
-If on one level a rule is simulated, it will not execute the response
-actions but only generate a log line that describes the action that
-would have been performed. You can see an overview of the state of all
+If a rule is simulated at any level, it does not execute the response
+actions. It only generates a log line that describes the action that would
+have been performed. You can see an overview of the state of all
 responses in the ``Service Control`` > ``Aurora`` > ``Configurations`` menu.
 
 
@@ -193,13 +193,13 @@ responses in the ``Service Control`` > ``Aurora`` > ``Configurations`` menu.
     
        Aurora Configuration Response Action Overview
 
-(1) indicates whether responses are activated on configuration level. Edit the configuration to change it.
-(2) indicates how many rules are only simulated in that ruleset (or in sum).
-(3) indicates  how many rules have active responses in that ruleset (or in sum)
+(1) indicates whether responses are activated at the configuration level. Edit the configuration to change it.
+(2) indicates how many rules are simulated in that ruleset, or in total.
+(3) indicates how many rules have active responses in that ruleset, or in total.
 
-To change the status of a response in the ruleset click the ruleset link.
+To change the status of a response in the ruleset, click the ruleset link.
 You can view all simulated or all active responses. Use the checkbox and
-the button in the upper right to switch the response status of the rules
+the button in the upper-right corner to switch the response status of the rules
 between active and simulated.
 
     .. figure:: ../images/sc_aurora-ruleset-responses.png
@@ -216,8 +216,7 @@ behavior of response updates. It can be seen at ``Service Control`` >
     
        Ruleset Default Response Mode
 
-If "Simulation" is selected, response actions of new and updated rules
-will be put in simulation mode. If "Active" is selected, new rules will
-automatically be put in active mode and updated rules will not change
-their current response mode. We advise to leave the default response
-mode in "Simulation" mode.
+If "Simulation" is selected, response actions of new and updated rules are
+put in simulation mode. If "Active" is selected, new rules are automatically
+put in active mode and updated rules do not change their current response
+mode. We recommend leaving the default response mode set to "Simulation".

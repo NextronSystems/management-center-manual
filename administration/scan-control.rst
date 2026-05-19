@@ -3,21 +3,21 @@
 Scan Control
 ------------
 
-The Scan Control in your Management Center allows you to run different kind of
-scans on one or multiple assets. Additionally, you can create ``Scan Templates``
-to use with new scans, so all your default options won't need to be configured
-for every new scan. You can also use ``Scan Templates`` to only allow certain
-users to execute new scans with them. ``False-Positive Filters`` can be set to
-exclude certain files from scan results, or even whole directories.
+Scan Control in your Management Center allows you to run different kinds of
+scans on one or multiple assets. You can also create ``Scan Templates`` for
+new scans, so default options do not need to be configured for every scan.
+``Scan Templates`` can also restrict which users are allowed to execute new
+scans with them. ``False-Positive Filters`` can exclude specific files or
+entire directories from scan results.
 
-Your Management Center will also take care of THOR scans which stopped (e.g.
-the asset rebooted or lost connection to your Management Center during a scan), so that
-a scan will not fail if the asset is temporarily offline.
+Your Management Center also handles stopped THOR scans, for example if an
+asset reboots or loses connection during a scan. A scan will not fail solely
+because the asset is temporarily offline.
 
 .. warning::
    When creating a scan job, the Management Center offers almost all possible scan
-   options that can be used with THOR. Please consider their use with care as there
-   are options that may lead to incompatibilities, failing scans, or errors.
+   options that can be used with THOR. Use these options carefully because some
+   options may lead to incompatibilities, failed scans, or errors.
  
 - Example 1: A combination of ``--truncate 0`` and ``--allreasons`` may lead to
   very long THOR event log lines (> 64 KB), which `cannot be processed by the Analysis
@@ -26,41 +26,40 @@ a scan will not fail if the asset is temporarily offline.
 - Example 2: The use of the ``--processdump`` flag will create files on endpoints
   that are **not** automatically cleaned up.
  
-All options can be used in certain scenarios, but they have to be chosen with care.
+All options can be useful in specific scenarios, but choose them carefully.
 
 Managing Scan Templates
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Scan templates are the most convenient way to make use of THOR's rich set of
-scan options. It is possible to define scan parameters for THOR 10 and store
+scan options. You can define scan parameters for THOR 10 and store
 them in different templates for later use in single scans and grouped scans.
-The scan templates are also very helpful if you want to automate scanning via
-the API, as you don't have to specify all the options, but rather only the
-template. This also means you don't have to change your API request, but only
-the template.
+Scan templates are also useful if you want to automate scanning via the API,
+because you only need to specify the template instead of every option. This
+also means you can change the template without changing your API request.
 
-Imagine you want to use dedicated scan options for different system groups (e.g.
-Linux Servers, Domain Controllers, Workstations, etc.) and make sure to use exactly
-the same set of scan options every time you scan a particular group of systems.
-With your Management Center you can now add a scan template for every group.
+For example, you might want to use dedicated scan options for different
+system groups, such as Linux servers, domain controllers, or workstations,
+and use the same set of scan options every time you scan a group. With your
+Management Center, you can add a scan template for each group.
 
-A popular use case for scan templates is providing additional resource control – for
-example telling THOR to set the lowest process priority for itself and never
-use more than 50% of CPU.
+A common use case for scan templates is additional resource control, for
+example instructing THOR to set the lowest process priority for itself and
+never use more than 50% of CPU.
 
-Please keep in mind, that we have already optimized THOR to use the most relevant
-scan options for a particular system (based on type, numbers of CPUs, and system
-resources) and a comprehensive resource control is enabled by default. 
+THOR is already optimized to use the most relevant scan options for a
+particular system, based on system type, number of CPUs, and system resources.
+Comprehensive resource control is enabled by default.
 
-For more details please refer to the `THOR manual <https://thor-manual.nextron-systems.com>`_.
-Only use the scan templates if you want to deviate from the default.
+For more details, see the `THOR manual <https://thor-manual.nextron-systems.com>`_.
+Use scan templates when you want to deviate from the default behavior.
 
 Scan templates are protected from being modified by users without the
-``Manage Scan Templates``-permission, and can also be restricted from being used
-by users in case the flag ``Force Scan Template`` is set for this user.
+``Manage Scan Templates`` permission. They can also be restricted from being
+used by users if the ``Force Scan Template`` flag is set for the user.
 (See section :ref:`administration/users:restrictions` for details).
 
-By clicking the ``Import Scan Template`` button you can import a previously
+Click the ``Import Scan Template`` button to import a previously
 exported scan template.
 
 .. figure:: ../images/mc_scan-templates.png
@@ -68,27 +67,29 @@ exported scan template.
 
    Scan Templates Overview
 
-In order to create a scan template, navigate to ``Scan Control`` > ``Scan Templates``
-and click the ``Add Scan Template`` button. The ``Add Scan Template`` dialogue appears.
-The current THOR scanner version is chosen for you by default but can be changed if needed.
+To create a scan template, navigate to ``Scan Control`` > ``Scan Templates``
+and click the ``Add Scan Template`` button. The ``Add Scan Template`` dialog
+appears. The current THOR scanner version is selected by default, but you
+can change it if needed.
 
-After choosing or changing a scanner you will find the most frequently used options on
-the top of this page in the "Favorite Flags" category. View all THOR options by
-clicking on the other categories or quickly search for known flags in the search bar.
-By clicking on the star symbols you can also edit your personal favorites. 
+After choosing or changing a scanner, the most frequently used options are
+shown at the top of the page in the "Favorite Flags" category. View all THOR
+options by clicking the other categories, or search for known flags in the
+search bar. Click the star symbols to edit your personal favorites.
 
 .. figure:: ../images/mc_add-scan-template.png
    :alt: Scan Flags
 
    Scan Flags
 
-By checking the "Default" box, you can make this scan template the default template
-for every new scan. There can only be one default template at a time and selecting
-the box will uncheck a previous default, if set.
-Checking the "Restricted" flag will make the template restricted, meaning only a
-restricted set of users can use the template for scans. The set of users consists
-of all users who do not have the "Force Scan Template" restriction set (by default
-those are all users who are not a member of the group "Operator Level 1").
+By checking the "Default" box, you can make this scan template the default
+template for every new scan. There can only be one default template at a
+time, and selecting the box clears any previous default.
+Checking the "Restricted" flag makes the template restricted. This means only
+a limited set of users can use the template for scans. The set of users
+consists of all users who do not have the "Force Scan Template" restriction
+set. By default, these are all users who are not members of the group
+"Operator Level 1".
 
 THOR Excludes and False-Positive Filters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -103,5 +104,20 @@ These features can be globally defined in ASGARD at ``Scan Control`` > ``THOR Co
    Scan Control - Global Directory Exclude and FP Filtering
 
 .. warning::
-   Be careful and do not use too broad filters or excludes, as this might
-   reduce THOR's detection capabilities, if done incorrectly.
+   Be careful and do not use overly broad filters or excludes. Incorrect
+   filters or excludes can reduce THOR's detection capabilities.
+
+Live Event Streaming
+^^^^^^^^^^^^^^^^^^^^
+
+Live Event Streaming forwards THOR events to the ASGARD Analysis Cockpit in
+real time while a scan is still running, so findings become available for
+review without waiting for the scan to finish.
+
+Enable Live Event Streaming with the corresponding checkbox in the scan
+settings when creating a single, grouped, or scheduled scan.
+
+.. figure:: ../images/mc_live-event-streaming.png
+   :alt: Live Event Streaming
+
+   Live Event Streaming

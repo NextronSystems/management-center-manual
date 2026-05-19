@@ -3,9 +3,7 @@
 Changelog
 =========
 
-This chapter contains a list of all changes.
-Those changes are only related to the Management
-Center version 3 and its components.
+This chapter lists changes for Management Center v4 and its components.
 
 .. toctree:: 
     :caption: Contents

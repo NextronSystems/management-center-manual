@@ -3,8 +3,8 @@
 Administration
 ==============
 
-This chapter focuses on the initial setup of your Management Center,
-installing agents and performing routine tasks in the Web UI.
+This chapter covers the initial setup of your Management Center,
+agent installation, and routine tasks in the Web UI.
 
 .. toctree:: 
     :caption: Contents

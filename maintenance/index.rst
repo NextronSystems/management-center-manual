@@ -3,8 +3,7 @@
 Maintenance
 ===========
 
-This chapter contains basic maintenance tasks you
-can perform on your Management Center.
+This chapter covers basic maintenance tasks for your Management Center.
 
 .. toctree:: 
     :caption: Contents

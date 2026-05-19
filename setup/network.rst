@@ -25,17 +25,16 @@ Network Configuration
    :alt: Configure the network
 
 .. important::
-   **Important:** Make sure that the combination of hostname and domain
-   creates an FQDN that can be resolved from the endpoints on which you
-   intend to install the ASGARD agents. If you've configured a FQDN (hostname +
-   domain) that cannot be resolved on the clients, no agent will be able
-   to find and reconnect to the ASGARD server.
+   Make sure that the combination of hostname and domain creates an FQDN
+   that can be resolved from the endpoints on which you intend to install
+   the ASGARD Agents. If the configured FQDN (hostname + domain) cannot be
+   resolved on the endpoints, agents cannot find and connect to the ASGARD
+   server.
 
-   This is especially important since your Management Center will create
-   some certificates during the installation, which will not contain an
-   IP Address as its Subject Alternative Name (SAN), but only the FQDN!
-   You will not be able to connect your ASGARD Management Center with
-   your Analysis Cockpit via IP Address.
+   This is especially important because your Management Center creates
+   certificates during installation. These certificates contain the FQDN as
+   the Subject Alternative Name (SAN), not the IP address. You cannot connect
+   ASGARD Management Center to your Analysis Cockpit by IP address.
 
 .. figure:: ../images/setup_network7.png
    :alt: Configure the network

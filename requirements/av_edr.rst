@@ -3,17 +3,16 @@
 Antivirus and EDR Exclusions
 ----------------------------
 
-We recommend excluding certain folders and binaries from Antivirus scanning. 
+We recommend excluding specific folders and binaries from antivirus scanning.
 
-The exclusions will not only prevent Antivirus engines from removing the
-agents and scanner executables but also increase scan speed, since their
-real-time engines won't check every file that the scanner has opened for
-analysis. This can improve the scan speed by up to 30% and also reduces
-the system's CPU load. 
+These exclusions help prevent antivirus engines from removing agent and
+scanner executables. They can also improve scan speed because real-time
+engines do not check every file that the scanner opens for analysis. This
+can improve scan speed by up to 30% and reduce the system's CPU load.
 
 General Recommendation
 ^^^^^^^^^^^^^^^^^^^^^^
-We recommend using this list - include all sub folders:
+We recommend using this list and including all subfolders:
 
 .. list-table:: 
   :header-rows: 1
@@ -45,9 +44,9 @@ We recommend using this list - include all sub folders:
 .. note::
    If you have obfuscated the agent name, replace *asgard2-agent* with your custom agent name.
 
-If you have to create a more specific list that can use wildcards, use
-the following list (and replace [random] with the wildcard). If you have
-the choice, the broader approach above should be preferred.
+If you need a more specific list that can use wildcards, use the following
+list and replace [random] with the wildcard. If possible, use the broader
+approach above.
 
 .. list-table:: 
   :header-rows: 1
@@ -116,18 +115,18 @@ the choice, the broader approach above should be preferred.
   * -
     - /var/tmp/asgard2-agent/[random]/thor/thor-macosx
 
-Using the more specific list, we've experienced problems with some
-AV solutions that even trigger on certain keywords in filenames. They
-don't kill the excluded executable but block write access to disk if
-certain keywords like ``bloodhound`` or ``mimikatz`` appear in filenames.
-In these cases, the executable exclusions are not enough and you should
-use the recommended list of two folders and all sub folders (see above). 
+With the more specific list, some AV solutions can still trigger on certain
+keywords in filenames. They do not terminate the excluded executable, but
+they block write access to disk if keywords such as ``bloodhound`` or
+``mimikatz`` appear in filenames. In these cases, executable exclusions are
+not enough. Use the recommended list of folders and all subfolders above.
 
 McAfee EDR Exclusions
 ^^^^^^^^^^^^^^^^^^^^^
 
-McAfee needs Exclusions set in multiple locations. In addition to the
-general recommendation, customers with McAfee EDR need to set the following exclusions.
+McAfee requires exclusions in multiple locations. In addition to the
+general recommendation, customers with McAfee EDR need to set the following
+exclusions.
 
 McAfee On-Access Scan
 """""""""""""""""""""

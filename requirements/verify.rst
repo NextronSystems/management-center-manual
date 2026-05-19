@@ -4,15 +4,16 @@ Verify the Downloaded ISO (Optional)
 ------------------------------------
 
 You can do a quick hash check to verify that the download was not corrupted.
-We recommend to verify the downloaded ISO's signature as this is the cryptographically sound method.
+We recommend verifying the downloaded ISO's signature because this is the
+cryptographically sound method.
 
-The hash and signature file are both part of the ZIP archive you download
+The hash and signature files are both part of the ZIP archive you download
 from our `portal server <https://portal.nextron-systems.com>`__.
 
 Via Hash
 ^^^^^^^^
 
-Extract the ZIP and check the sha256 hash:
+Extract the ZIP and check the SHA256 hash:
 
 On Linux
 
@@ -21,7 +22,7 @@ On Linux
   user@unix:~/nextron-universal-installer$ sha256sum -c nextron-universal-installer.iso.sha256
   nextron-universal-installer.iso: OK
 
-or in Windows command prompt
+or in Windows Command Prompt
 
 .. code-block:: doscon
 
@@ -32,7 +33,7 @@ or in Windows command prompt
   efccb4df0a95aa8e562d42707cb5409b866bd5ae8071c4f05eec6a10778f354b
   CertUtil: -hashfile command completed successfully.
 
-or in Powershell
+or in PowerShell
 
 .. code-block:: ps1con
 
@@ -47,7 +48,7 @@ or in Powershell
 Via Signature (Recommended)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Extract the ZIP, `download the public signature <https://www.nextron-systems.com/certificates-and-keys>`__
+Extract the ZIP, `download the public signature <https://www.nextron-systems.com/certificates-and-keys>`__,
 and verify the signed ISO:
 
 On Linux
@@ -58,7 +59,7 @@ On Linux
   use@unix:~/temp$ openssl dgst -sha256 -verify codesign.pem -signature nextron-universal-installer.iso.sig nextron-universal-installer.iso
   Verified OK
 
-or in Powershell
+or in PowerShell
 
 .. code-block:: ps1con
 
@@ -67,5 +68,5 @@ or in Powershell
   Verified OK
 
 .. note::
-  If ``openssl`` is not present on your system you can easily install
+  If ``openssl`` is not installed on your system, you can install
   it using winget: ``winget install openssl``.

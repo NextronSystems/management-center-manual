@@ -4,18 +4,16 @@ Syslog Forwarding
 =================
 
 .. hint::
-   This chapter is optional
+   This chapter is optional.
 
-To configure Syslog Forwarding of THOR logs in real-time, you can set
-the ``--syslog`` flag during scans. You have multiple options as to
-where you can send the logs.
+To configure real-time syslog forwarding of THOR logs, set the ``--syslog``
+flag during scans. You have multiple options for where to send the logs.
 
 .. figure:: ../images/mc_syslog-flag.png
    :alt: Syslog Forwarding via --syslog flag
 
-The ``--syslog`` value is constructed of the following arguments. Please
-keep in mind that the fields need to be in the correct order. Values are
-separated with the colon sign ``:``
+The ``--syslog`` value consists of the following arguments. The fields must
+be in the correct order. Values are separated with a colon (``:``).
 
 .. list-table::
    :header-rows: 1
@@ -26,7 +24,7 @@ separated with the colon sign ``:``
      - Possible Values
    * - 1
      - Server
-     - The receiving server, ``%asgard-host%`` is the ASGARD which issued the Scan for the Agent
+     - The receiving server. ``%asgard-host%`` is the ASGARD system that issued the scan for the Agent
      - FQDN or IP of remote host
    * - 2
      - Port
@@ -46,7 +44,7 @@ separated with the colon sign ``:``
        \- SYSLOGKV
    * - 4
      - Socket
-     - **optional** - The socket type, default is ``UDP``
+     - **optional** - the socket type, default is ``UDP``
      - \- UDP
 
        \- TCP
@@ -67,17 +65,17 @@ Examples:
 * ``arcsight.dom.int:514:CEF:UDP``
 
 If you choose to use the ``--syslog`` flag, please make sure that the
-necessary ports are allowed within your network/firewall. If you decide
-to forward your logs via ASGARD to a SIEM, please have a look at
+necessary ports are allowed in your network or firewall. If you decide
+to forward your logs via ASGARD to a SIEM, see
 :ref:`administration/additional:rsyslog forwarding`.
 
 .. note::
-   If Syslog Forwarding is selected for a new THOR Scan, the default
+   If Syslog Forwarding is selected for a new THOR scan, the default
    target will be set to ``%asgard-host%``, which is your Management
    Center. Syslog Forwarding is optional and you do not lose any
    functionality if you are not using it (in most cases). If you
-   want to forward logs in real-time from your Management Center to
-   a SIEM (for example), you do however have to enable Syslog Forwarding.
+   want to forward logs in real time from your Management Center to
+   a SIEM, you must enable Syslog Forwarding.
 
-   Please see :ref:`administration/additional:rsyslog forwarding` for more
-   information
+   See :ref:`administration/additional:rsyslog forwarding` for more
+   information.

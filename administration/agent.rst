@@ -6,22 +6,22 @@ ASGARD Agent Deployment
 There are currently two modes of operation for the ASGARD Agent:
 
 - **Normal** - This is the default mode and allows usage of all ASGARD features.
-- **Essential** - This is a lightweight mode which only allows THOR scanning
+- **Essential** - This is a lightweight mode that only allows THOR scanning
   and Aurora deployment.
 
-Please note that the Agent in Essential Mode is a separate installer and
+The Agent in Essential Mode uses a separate installer and
 needs to be created in the :ref:`advanced/custom-agent:creating custom agent installers`.
 
-In order to connect a new endpoint to the ASGARD Management Center,
-download and install the ASGARD Agent on the system you want to onboard.
+To connect a new endpoint to ASGARD Management Center, download and install
+the ASGARD Agent on the system you want to onboard.
 
 The ASGARD Agent can be directly downloaded from the Management Center
 login screen through the button ``Download Agent Installers``. A list
 of available agents for various operating systems appears. 
 
 .. hint::
-   You can disable the downloading of agents on the login screen. Please
-   see :ref:`administration/advanced:advanced settings`.
+   You can disable agent downloads on the login screen. See
+   :ref:`administration/advanced:advanced settings`.
 
 .. figure:: ../images/mc_login-screen.png
    :alt: Download Agent Installers from Login Screen
@@ -34,18 +34,18 @@ of available agents for various operating systems appears.
    Agents Overview
 
 After the installation, the endpoints will connect to your Management
-Center, register automatically and appear in the Asset Management Section
-in the tab ``Asset Requests``. Please allow two or three minutes for systems to show
-up. The agents use the FQDN to connect to your Management Center, so ensure that
-your endpoints can resolve and reach the Management Center via FQDN.
+Center, register automatically, and appear in the Asset Management section
+on the ``Asset Requests`` tab. Allow two or three minutes for systems to
+appear. The agents use the FQDN to connect to your Management Center, so
+make sure your endpoints can resolve and reach the Management Center by FQDN.
 
 .. note::
-   Full administrative privileges are required for the ASGARD agent
+   Full administrative privileges are required for the ASGARD Agent
    and THOR to operate properly.
 
-In the requests tab, select the agents you want to allow on your Management
-Center to manage and click ``Accept Asset Requests``. After that, the
-endpoint shows up in the assets overview and is now ready to be managed and scanned.
+On the requests tab, select the agents you want your Management Center to
+manage and click ``Accept Asset Requests``. The endpoint then appears in
+the assets overview and is ready to be managed and scanned.
 
 .. figure:: ../images/mc_accept-asset-request.png
    :alt: Accepting ASGARD Agent Requests
@@ -55,20 +55,20 @@ endpoint shows up in the assets overview and is now ready to be managed and scan
 Windows Agent Deployment
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Since the Agent Installer for Windows is a normal ``.exe`` file and not a
-``.msi`` file, you need to write your own scripts to deploy the agent via
-your management system of choice. We have written an example script in 
-PowerShell, which should work for most of the tools. Please see the section
+Because the Windows Agent Installer is an ``.exe`` file and not an
+``.msi`` file, you need to use custom scripts to deploy the agent through
+your management system of choice. We provide an example PowerShell script
+that should work with most tools. See
 :ref:`appendix/scripts:installing asgard agent via powershell script` and
 :ref:`appendix/scripts:deploy asgard agents via sccm`.
 
 Alternatively, if you want to deploy the ASGARD Agent manually, you can
-just execute the installer by hand.
+run the installer manually.
 
 Linux Agent Deployment
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To deploy the ASGARD Agent on a linux system, you can use the following
+To deploy the ASGARD Agent on a Linux system, use the following
 commands:
 
 .. code-block:: console
@@ -81,14 +81,14 @@ commands:
 
    user@unix:~/Downloads$ sudo rpm -i asgard2-agent-linux-amd64.rpm
 
-You will be able to deploy your agents via most of the common linux tools,
-just make sure that the installer is being installed with administrative
-privileges.
+You can deploy agents with most common Linux tools. Make sure the installer
+runs with administrative privileges.
 
 macOS Agent Deployment
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To install the agent on macOS, you can just run the PKG file or execute the following command in terminal:
+To install the agent on macOS, run the PKG file or execute the following
+command in Terminal:
 
 .. code-block:: console
    
@@ -97,7 +97,7 @@ To install the agent on macOS, you can just run the PKG file or execute the foll
 Starting with macOS Big Sur (v11.0), Apple requires software developers
 to notarize applications. Our ``asgard2-agent`` installer is notarized.
 
-You can test it by executing the following command in Terminal:
+You can verify the signature by executing the following command in Terminal:
 
 .. code-block:: console
    
@@ -108,42 +108,43 @@ You can test it by executing the following command in Terminal:
    Signed with a trusted timestamp on: XXXX-XX-XX XX:XX:XX +0000
    ...
 
-If you are facing issues concerning the installation, please have a look in the chapter
+If you encounter installation issues, see
 :ref:`appendix/gatekeeper:Bypass Apple verification during installation of asgard2-agent`.
 
 macOS Full Disk Access
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Since macOS Ventura (v13.0) the ASGARD Agent needs full disk access
+Since macOS Ventura (v13.0), the ASGARD Agent needs Full Disk Access
 to function properly. After you have deployed the ASGARD Agent, you need
-to grant the service the required access permissions. Please keep in mind
-that administrative privileges on the machine are needed to perform the
+to grant the service the required access permissions. Administrative
+privileges on the machine are required to perform the
 following tasks.
 
 .. note:: 
-   There is no workaround to these steps, since it is an integral
-   part of the security design of Apple devices. If you are having trouble
-   with THOR scans via ASGARD on macOS, please check if the ``Full Disk
-   Access`` permission for the ASGARD agent was granted. Since macOS Mojave
-   (v10.14), you need to grant the same permissions to removable volumes,
-   if you plan on scanning those.
+   There is no workaround for these steps because they are part of the
+   security design of Apple devices. If you have trouble with THOR scans
+   via ASGARD on macOS, check whether the ``Full Disk Access`` permission
+   for the ASGARD Agent was granted. Since macOS Mojave (v10.14), you also
+   need to grant the same permissions to removable volumes if you plan to
+   scan them.
 
-If you need to grant Full Disk Access via MDM, please have a look at the chapter
+If you need to grant Full Disk Access via MDM, see
 :ref:`appendix/mdm-fulldiskaccess:Full Disk Access for macOS asgard2-agent-service via MDM`.
 
-To do this, navigate on your Mac to ``System Settings`` > ``Privacy &
-Security`` > ``Full Disk Access``:
+To grant access manually, navigate on your Mac to ``System Settings`` >
+``Privacy & Security`` > ``Full Disk Access``:
 
 .. figure:: ../images/macos_privacy_and_security.png
    :scale: 36
    :alt: macOS 13 Privacy & Security
 
-You need to enable the ``asgard2-agent-service`` slider:
+Enable the ``asgard2-agent-service`` slider:
 
 .. figure:: ../images/macos_full_disk_access.png
    :scale: 40
    :alt: macOS 13 Full Disk Access
 
 .. note::
-   Starting with macOS Tahoe 26, we noticed that macOS no longer displays the entry ``asgard2-agent-service`` in the Full Disk Access UI.
-   This has been fixed with macOS Tahoe 26.3.
+   In macOS Tahoe 26 versions earlier than 26.3, macOS may not display the
+   ``asgard2-agent-service`` entry in the Full Disk Access UI. This is fixed
+   in macOS Tahoe 26.3.

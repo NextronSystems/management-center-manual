@@ -3,20 +3,19 @@
 Installation
 ------------
 
-Master ASGARD is a single central management console that can control
-all of your ASGARD systems. It is meant to centrally manage controlled
-scans on all your ASGARD systems. Master ASGARD also provides one central
-point of management for your Response Playbooks, Evidence Collection
-and IOC Management. A special license for this is needed.
+Master ASGARD is a central management console for controlling multiple
+ASGARD systems. It centrally manages scans across your ASGARD systems and
+provides one central point for Response Playbooks, Evidence Collection, and
+IOC Management. A dedicated license is required.
 
-To install a Master ASGARD, you can use our Nextron Universal Installer.
-Please follow the instructions in the following chapter:
+To install Master ASGARD, use the Nextron Universal Installer.
+Follow the instructions in the following chapter:
 :ref:`setup/components:install the asgard management center service`.
 
 Hardware Requirements for Master ASGARD
 ---------------------------------------
 
-The Master ASGARD has the following hardware requirements:
+Master ASGARD has the following hardware requirements:
 
 .. list-table::
    :header-rows: 1
@@ -34,7 +33,7 @@ The Master ASGARD has the following hardware requirements:
 License Management
 ------------------
 
-Once you connect your ASGARD Management Centers to your Master ASGARD,
+Once you connect your ASGARD Management Centers to Master ASGARD,
 the licensing sections on connected ASGARD Management Centers become inactive.
 The local ASGARD license will be replaced with the Master ASGARD license.
 Every ASGARD can issue scanning licenses to assets as long as the
@@ -45,10 +44,10 @@ Setting up Master ASGARD
 ------------------------
 
 The setup procedure for Master ASGARD is identical to the setup procedure for
-ASGARD Management Center, see :ref:`setup/index:setup guide`. The only
+ASGARD Management Center; see :ref:`setup/index:setup guide`. The only
 difference is that you need to provide a Master ASGARD license file.
 
-Link ASGARD Systems with Master ASGARD 
+Link ASGARD Systems with Master ASGARD
 --------------------------------------
 
 On your ASGARD server, go to ``Settings`` > ``Master ASGARD``, generate a
@@ -60,9 +59,9 @@ one-time code and copy it.
    Generate One Time Token on ASGARD
 
 In Master ASGARD go to ``Connected ASGARDs``, click the ``Add ASGARD``
-button in the upper right corner, and use the hostname and one-time token to
+button in the upper-right corner, and use the hostname and one-time token to
 connect that ASGARD system. You can use a description to provide more
-information on that ASGARD server, e.g. ``DMZ 1`` or ``Region EMEA - HQ 1``. 
+information about that ASGARD server, e.g. ``DMZ 1`` or ``Region EMEA - HQ 1``.
 
 .. figure:: ../images/mc_master-add-asgard.png
    :alt: Link ASGARD in Master ASGARD
@@ -70,7 +69,7 @@ information on that ASGARD server, e.g. ``DMZ 1`` or ``Region EMEA - HQ 1``.
    Link ASGARD in Master ASGARD
 
 .. note::
-   You don't have to provide a port in the hostname field. Don't use a
+   You do not have to provide a port in the hostname field. Do not use a
    URL like ``https://``, just the FQDN. Remember that Master ASGARD
    must be able to reach ASGARD v2 systems on port 5443/tcp and ASGARD
    v1 systems on port 9443/tcp. Also make sure that the Master ASGARD
@@ -80,7 +79,8 @@ Scan Control
 ------------
 
 Scan Control in Master ASGARD looks the same as in an ASGARD server.
-The only difference is that you can select an ASGARD Server or "All ASGARDs" to run the scans on.  
+The only difference is that you can select an ASGARD server or "All ASGARDs"
+to run the scans on.
 
 .. figure:: ../images/mc_master-scan-control.png
    :alt: Master ASGARD Scan Control
@@ -90,7 +90,7 @@ The only difference is that you can select an ASGARD Server or "All ASGARDs" to 
 Asset Management
 ----------------
 
-Asset Management in Master ASGARD is very similar to the asset management in ASGARD. 
+Asset Management in Master ASGARD is very similar to Asset Management in ASGARD.
 
 The only differences are:
 
@@ -104,36 +104,30 @@ On Master ASGARD you can manage IOCs exactly like on ASGARD. The only
 limitation is that IOCs in Master ASGARD and ASGARD are isolated. That
 means if you want to use the IOCs from Master ASGARD, you need to initiate
 the scan from Master ASGARD and if you want to use the IOCs from ASGARD,
-you need to initiate the scan from ASGARD. In general we suggest to
+you need to initiate the scan from ASGARD. In general, we recommend
 manage IOCs in Master ASGARD for maximum flexibility.
 
 Service Control
 ---------------
 
-Service Control lists the asset with an installed service controller.
+Service Control lists assets with an installed service controller.
 An asset is either managed by Master ASGARD or its connected ASGARD, not
 by both. If an asset is managed by Master ASGARD it can still be viewed
-by the connected ASGARD (and vice versa). If Master ASGARD or ASGARD
-edits a configuration of an asset it will take over the "leadership"
-over this asset, no matter by which it was managed beforehand.
+by the connected ASGARD, and vice versa. If Master ASGARD or ASGARD edits
+an asset configuration, it takes over management of that asset regardless of
+which system managed it before.
 
-.. screenshot needed after fix
-   .. figure:: ../images/mc_master-service-controller.png
-      :alt: Example: Service Controller listed in ASGARD but managed by Master ASGARD
-
-      Example: Service Controller listed in ASGARD but managed by Master ASGARD
-
-Evidence Collection 
+Evidence Collection
 -------------------
 
-All collected evidence is available in Master ASGARD's ``Evidence Collection`` section. 
+All collected evidence is available in Master ASGARD's ``Evidence Collection`` section.
 
-Download Section 
+Download Section
 ----------------
 
-The ``Downloads`` section of Master ASGARD allows to generate and
-download Agent Installers on all your connected ASGARDs. This
-allows for a central management of the Installers.
+The ``Downloads`` section of Master ASGARD allows you to generate and
+download Agent Installers on all connected ASGARD systems. This allows
+central management of the installers.
 
 .. figure:: ../images/mc_master-download-section.png
    :alt: Example: Download Section in ASGARD but managed by Master ASGARD
@@ -144,18 +138,18 @@ Updates
 -------
 
 The ``Updates`` section contains a tab in which upgrades for
-ASGARD can be installed. 
+ASGARD can be installed.
 
-The menu ``Version Pinning`` gives you the possibility to configure
+The ``Version Pinning`` menu allows you to configure
 version constraints for THOR, Aurora, and their respective signatures.
 When a Master ASGARD is in use, it takes over the role of fetching and
 distributing updates to the connected Management Centers, so the version
 pinnings configured on the Master apply to all connected Management Centers.
 
 This view is identical to a standalone ASGARD Management Center
-installation (see :ref:`administration/updates:version pinning`)
+installation (see :ref:`administration/updates:version pinning`).
 
-The view in your connected ASGARD Management Centers however
+The view in your connected ASGARD Management Centers, however,
 will be different:
 
 .. figure:: ../images/mc_master-mc-version-pinning.png
@@ -172,27 +166,27 @@ defined on the Master.
 User Management
 ---------------
 
-Master ASGARD offers no central user and role management for all connected
-ASGARD servers. Since Master ASGARD and ASGARD allow to use LDAP for
-authentication, we believe that complex and centralized user management
-should be based on LDAP.
+Master ASGARD does not provide central user and role management for all
+connected ASGARD servers. Since Master ASGARD and ASGARD can use LDAP for
+authentication, complex and centralized user management should be based on
+LDAP.
 
 Master ASGARD and Analysis Cockpit
 ----------------------------------
 
 It is not possible to link a Master ASGARD with an Analysis Cockpit and
 transmit all scan logs via Master ASGARD to a single Analysis Cockpit
-instance. Each ASGARD has to deliver its logs separately to a connected
+instance. Each ASGARD must deliver its logs separately to a connected
 Analysis Cockpit.
 
 Master ASGARD API
 -----------------
 
 The Master ASGARD API is documented in the ``API Documentation``
-section and resembles the API in ASGARD systems. 
+section and resembles the API in ASGARD systems.
 
 However, many API endpoints contain a field in which users select the
-corresponding ASGARD (via ``ID``) or all ASGARDs (``ID=0``) 
+corresponding ASGARD (via ``ID``) or all ASGARDs (``ID=0``).
 
 .. figure:: ../images/master-api1.png
    :alt: Master ASGARD API Peculiarity

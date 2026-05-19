@@ -6,12 +6,12 @@ Thunderstorm
 Since version 3.1 of the ASGARD Management Center, you can
 enable THOR Thunderstorm directly on your ASGARD system.
 This allows you to scan many unsupported endpoints with THOR
-Thunderstorm. Please note that you need a valid THOR Thunderstorm
-license to use this feature. The license has to be issued to
-the same hostname as the ASGARD Management Center, since the
+Thunderstorm. You need a valid THOR Thunderstorm
+license to use this feature. The license must be issued to
+the same hostname as ASGARD Management Center because the
 license is still host-based.
 
-For usage of Thunderstorm Collectors, please refer to ``Downloads`` >
+For usage of Thunderstorm Collectors, see ``Downloads`` >
 ``Thunderstorm``.
 
 .. figure:: ../images/mc_thunderstorm.png
@@ -19,13 +19,12 @@ For usage of Thunderstorm Collectors, please refer to ``Downloads`` >
 
    Thunderstorm Overview Page
 
-The Thunderstorm Service listens only locally (127.0.0.1). Your
-ASGARD Management Center is acting as a reverse proxy for the
-Thunderstorm service. To see which ports are being used,
-please have a look at the :ref:`requirements/network:Thunderstorm (optional)`
+The Thunderstorm service listens locally only (127.0.0.1). ASGARD Management
+Center acts as a reverse proxy for the Thunderstorm service. To see which
+ports are used, see the :ref:`requirements/network:Thunderstorm (optional)`
 section.
 
-This also means you will see logs similar to the one below:
+This also means you will see logs similar to the following:
 
 .. code-block:: none
 
@@ -35,7 +34,7 @@ This is normal behavior and does not indicate a problem.
 
 .. hint::
    The Thunderstorm API uses the same certificate as the
-   ASGARD Management Center Web UI (port 8443). Please see
+   ASGARD Management Center Web UI (port 8443). See
    :ref:`administration/additional:tls certificate installation`
    for more information.
 
@@ -55,14 +54,14 @@ section of the ASGARD Management Center (``Upload License`` button).
 .. hint::
    When you install a license for the first time, Thunderstorm
    will start automatically. If you upload a new license, you
-   have to restart Thunderstorm manually.
+   must restart Thunderstorm manually.
 
 Thunderstorm Logs
 -----------------
 
 The Thunderstorm service is meant to forward any findings to
 the ASGARD Analysis Cockpit. If you want to inspect the findings
-directly on the ASGARD Management Center, you can do so by
+directly on ASGARD Management Center, you can do so by
 navigating to ``System Status`` > ``Logs`` > ``Thunderstorm``.
 
 .. figure:: ../images/mc_thunderstorm-logs.png
@@ -70,12 +69,12 @@ navigating to ``System Status`` > ``Logs`` > ``Thunderstorm``.
 
    Thunderstorm Logs
 
-Thunderstorm configuration
+Thunderstorm Configuration
 --------------------------
 
 You can change certain settings for Thunderstorm in the
-the Thunderstorm overview page. Click the cog icon in the
-top right corner to open the settings page.
+Thunderstorm overview page. Click the cog icon in the
+upper-right corner to open the settings page.
 
 .. figure:: ../images/mc_thunderstorm-configuration.png
    :alt: Thunderstorm Configuration
@@ -83,4 +82,4 @@ top right corner to open the settings page.
    Thunderstorm Configuration
 
 You can also stop and start the Thunderstorm service from
-settings modal.
+the settings modal.
