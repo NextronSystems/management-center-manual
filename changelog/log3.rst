@@ -1,6 +1,24 @@
 Management Center v3.3
 ======================
 
+Management Center 3.3.1
+-----------------------
+
+Release Date: Thu, 21 May 2026 12:52:00 +0200
+
+.. list-table::
+    :header-rows: 1
+    :widths: 15, 85
+
+    * - Type
+      - Description
+    * - Bugfix
+      - Cleaned up orphaned duplicate tasks and legacy logwatcher table
+    * - Bugfix
+      - Fixed ASGARD Management Center 4.0 showing as compatible on Master ASGARD 3.3
+    * - Bugfix
+      - Fixed major upgrade page showing for ASGARDs not eligible for upgrade
+
 Management Center 3.3.0
 -----------------------
 
