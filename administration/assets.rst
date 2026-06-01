@@ -198,8 +198,9 @@ This approach ensures that deleting an asset prevents future communication while
 preserving historical information for reference and compliance purposes.
 
 .. warning::
-   Deleted assets can no longer communicate with ASGARD. Use this action with
-   caution. This cannot be undone, and you must manually fix the asset.
+   Deleted assets can no longer communicate with the ASGARD Management Center.
+   Use this action with caution. Ensure the agent is also removed from the endpoint,
+   otherwise it will automatically re-register itself as a new asset within 10–15 minutes.
 
 .. figure:: ../images/mc_deleted-only.png
    :alt: Deleted Assets
