@@ -176,14 +176,26 @@ migrated.
 Delete Assets
 ^^^^^^^^^^^^^
 
-Deleting assets removes them from the ``Active Only`` asset view and
-invalidates authentication for those assets.
+When an asset is deleted, it is **not** permanently removed from the system.
+Instead, the asset is **deactivated**.
 
-To delete an asset, go to the ``Assets`` view and select the assets you want
-to delete. Click the ``Delete Assets`` button in the upper-right corner and
-confirm that you want to delete the assets.
+During deactivation:
 
-To see all the deleted assets, change your view from ``Active Only`` to ``Deleted Only``.
+- The asset's authentication token is invalidated, preventing it from
+  communicating with the ASGARD Management Center.
+- The asset is marked as deleted in the backend and no longer appears as an
+  active asset.
+- Historical data associated with the asset is retained.
+
+Keeping asset records allows the ASGARD Management Center to preserve information
+that may be required for auditing, reporting, and investigation purposes, including:
+
+- Playbook execution history
+- Remote console sessions
+- Other activities and records linked to the asset
+
+This approach ensures that deleting an asset prevents future communication while
+preserving historical information for reference and compliance purposes.
 
 .. warning::
    Deleted assets can no longer communicate with ASGARD. Use this action with
