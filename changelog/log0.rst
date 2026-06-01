@@ -1,6 +1,28 @@
 Management Center v4.0
 ======================
 
+Management Center 4.0.1
+-----------------------
+
+Release Date: Mon,  1 Jun 2026 11:07:00 +0200
+
+.. list-table::
+    :header-rows: 1
+    :widths: 15, 85
+
+    * - Type
+      - Description
+    * - Bugfix
+      - Fixed agents not restarting after their asset was deleted, preventing them from creating a new asset request
+    * - Bugfix
+      - Fixed incorrect migration of LDAP host entries containing a protocol prefix
+    * - Bugfix
+      - Fixed missing UUIDs for group tasks and scheduled group tasks on Master ASGARDs
+    * - Bugfix
+      - Fixed large syncs to Master ASGARD exceeding the MariaDB transaction placeholder limit
+    * - Bugfix
+      - Fixed 2FA failing after upgrade by encrypting TOTP secrets at rest and auto-migrating legacy v3 and v4.0.0 secrets to the new format.
+
 Management Center 4.0.0
 -----------------------
 
