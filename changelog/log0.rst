@@ -1,6 +1,22 @@
 Management Center v4.0
 ======================
 
+Management Center 4.0.2
+-----------------------
+
+Release Date: Wed, 03 Jun 2026 09:53:00 +0200
+
+.. list-table::
+    :header-rows: 1
+    :widths: 15, 85
+
+    * - Type
+      - Description
+    * - Bugfix
+      - Fixed a bug that prevented legacy hash migrations for very old hashes from working.
+    * - Bugfix
+      - Fixed ldap users not being able to save preferences in the UI.
+
 Management Center 4.0.1
 -----------------------
 
