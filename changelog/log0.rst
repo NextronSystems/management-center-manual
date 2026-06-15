@@ -1,6 +1,21 @@
 Management Center v4.0
 ======================
 
+Management Center 4.0.3
+-----------------------
+
+Release Date: Fri, 12 Jun 2026 13:58:00 +0200
+
+.. list-table::
+    :header-rows: 1
+    :widths: 15, 85
+
+    * - Type
+      - Description
+    * - Bugfix
+      - Fixed assets with nil system information causing issues with Master ASGARD and Analysis Cockpit synchronization.
+        This could affect assets from older installations that never had a hostname stored; such assets are now handled gracefully.
+
 Management Center 4.0.2
 -----------------------
 
