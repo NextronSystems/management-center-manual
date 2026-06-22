@@ -52,7 +52,7 @@ Logs
 ^^^^
 
 The logs section shows the latest and most relevant logs.
-Complete logs can be found at ``/var/lib/asgard-management-center/log``.
+Complete logs can be found at ``/var/log/asgard-management-center/log``.
 You can also download the selected log type directly.
 
 .. figure:: ../images/mc_logs-section.png
