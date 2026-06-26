@@ -1,6 +1,24 @@
 Management Center v4.0
 ======================
 
+Management Center 4.0.4
+-----------------------
+
+Release Date: Thu, 25 Jun 2026 15:20:00 +0200
+
+.. list-table::
+    :header-rows: 1
+    :widths: 15, 85
+
+    * - Type
+      - Description
+    * - Bugfix
+      - Fixed assets failing to update their system information and software inventory when the agent reported duplicate software entries.
+    * - Bugfix
+      - Fixed Analysis Cockpit synchronization failing with "unknown grouped task" when a scan referenced a group scan who's uuid was never synced, affected group scans are now re-synced automatically to recover.
+    * - Bugfix
+      - Adjusted logging behavior for specific audit events so they are recorded in the intended audit log file.
+
 Management Center 4.0.3
 -----------------------
 
