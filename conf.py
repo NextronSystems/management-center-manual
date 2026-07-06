@@ -2,7 +2,7 @@ import os
 
 project = 'ASGARD Management Center v4 Manual'
 version="3.0"
-copyright = '2025, Nextron Systems GmbH'
+copyright = '2026, Nextron Systems GmbH'
 author = 'Nextron Systems'
 extensions = [
     'sphinx.ext.autosectionlabel',
