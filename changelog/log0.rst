@@ -1,6 +1,20 @@
 Management Center v4.0
 ======================
 
+Management Center 4.0.5
+-----------------------
+
+Release Date: Mon, 13 Jul 2026 15:00:00 +0200
+
+.. list-table::
+    :header-rows: 1
+    :widths: 15, 85
+
+    * - Type
+      - Description
+    * - Bugfix
+      - Improved the reliability of synchronization with the Analysis Cockpit during the launch of new Group Scans in large environments.
+
 Management Center 4.0.4
 -----------------------
 
