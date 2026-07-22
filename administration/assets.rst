@@ -206,3 +206,22 @@ preserving historical information for reference and compliance purposes.
    :alt: Deleted Assets
 
    Deleted Assets View
+
+Software Inventory
+^^^^^^^^^^^^^^^^^^
+
+The Software Inventory lists the software installed on your endpoints. The
+data is collected during the interrogate task and can be used, for example,
+to look for outdated software across your environment.
+
+The inventory can be viewed in two modes:
+
+- **Aggregated** shows the number of assets that match each software entry.
+  Click an entry to open a sidebar listing all affected assets.
+- **Asset Based** shows every entry individually per asset, which allows you
+  to filter the inventory per asset.
+
+.. figure:: ../images/mc_software-inventory.png
+   :alt: Software Inventory
+
+   Software Inventory
