@@ -35,11 +35,10 @@ We recommend using this list and including all subfolders:
   * - 
     -
   * - **macOS**
-    - /var/lib/asgard2-agent/
+    - /private/var/lib/asgard2-agent/
   * - 
     - /var/tmp/asgard2-agent/
-  * -
-    - /private/var/tmp/asgard2-agent/ 
+  
 
 .. note::
    If you have obfuscated the agent name, replace *asgard2-agent* with your custom agent name.
