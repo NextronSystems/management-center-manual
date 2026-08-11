@@ -1,6 +1,22 @@
 Management Center v4.1
 ======================
 
+Management Center 4.1.2
+-----------------------
+
+Release Date: Tue, 11 Aug 2026 13:40:00 +0200
+
+.. list-table::
+    :header-rows: 1
+    :widths: 15, 85
+
+    * - Type
+      - Description
+    * - Bugfix
+      - Fixed scheduled backups not being executed.
+    * - Bugfix
+      - Fixed playbook commands being mangled when they contain literal dollar signs, e.g. shell variables.
+
 Management Center 4.1.1
 -----------------------
 
