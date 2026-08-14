@@ -1,6 +1,22 @@
 Management Center v4.1
 ======================
 
+Management Center 4.1.3
+-----------------------
+
+Release Date: Thu, 13 Aug 2026 21:30:00 +0200
+
+.. list-table::
+    :header-rows: 1
+    :widths: 15, 85
+
+    * - Type
+      - Description
+    * - Improvements
+      - Reduced log volume: routine operational messages are now logged at debug level, so the default log level only records events that need attention.
+    * - Bugfix
+      - Fixed validation of custom signatures failing on Management Centers with a Managed Service license.
+
 Management Center 4.1.2
 -----------------------
 
