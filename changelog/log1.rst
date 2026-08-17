@@ -1,6 +1,20 @@
 Management Center v4.1
 ======================
 
+Management Center 4.1.4
+-----------------------
+
+Release Date: Mon, 17 Aug 2026 10:20:00 +0200
+
+.. list-table::
+    :header-rows: 1
+    :widths: 15, 85
+
+    * - Type
+      - Description
+    * - Bugfix
+      - Fixed 2FA logins failing after an upgrade. Affected users can log in with their existing 2FA setup again, a re-enrollment is not required.
+
 Management Center 4.1.3
 -----------------------
 
