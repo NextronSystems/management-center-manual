@@ -142,7 +142,7 @@ dialog within the Master ASGARD frontend.
 
    Link MASTER ASGARD
 
-See :ref:`masterasgard/masterasgard:link asgard systems with master asgard`
+See :ref:`master-mc/master-mc:link asgard systems with master asgard`
 for more information.
 
 Link MISP

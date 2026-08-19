@@ -115,7 +115,7 @@ This would run the task on all Linux systems in the subnet 172.16.50.0/24.
 The following operators are available:
 
 .. csv-table::
-     :file: ../csv/asgard-query-operators.csv
+     :file: ../csv/mc-query-operators.csv
      :widths: 30, 70
      :delim: ;
      :header-rows: 1
@@ -130,7 +130,7 @@ queries:
 The following keys for the asset query are available:
 
 .. csv-table::
-     :file: ../csv/asgard-query-fields.csv
+     :file: ../csv/mc-query-fields.csv
      :widths: 50, 50
      :delim: ;
      :header-rows: 1
@@ -139,7 +139,7 @@ The following keys for the asset query are available:
    You can see which query name a field has by enabling the column in your asset view
    and clicking into the query text field:
 
-   .. figure:: ../images/asgard_asset_query_fieldnames.png
+   .. figure:: ../images/asset_query_fieldnames.png
 
 The ASGARD Search Query is the preferred tool to manage scans and assets.
 If you are using Analysis Cockpit and need labels, you can still use them.

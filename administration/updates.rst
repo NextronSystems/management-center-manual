@@ -14,7 +14,7 @@ button appears. Click this button to start the update process. The
 ASGARD service restarts and the user must log in again. In general, update
 Master ASGARD before connected ASGARD systems.
 
-.. figure:: ../images/mc_update-asgard.png
+.. figure:: ../images/mc_update.png
    :alt: Updating ASGARD
 
    Updating ASGARD

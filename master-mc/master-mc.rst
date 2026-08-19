@@ -53,7 +53,7 @@ Link ASGARD Systems with Master ASGARD
 On your ASGARD server, go to ``Settings`` > ``Master ASGARD``, generate a
 one-time code and copy it.
 
-.. figure:: ../images/mc_master-asgard-code.png
+.. figure:: ../images/mc_master-link-code.png
    :alt: Generate One Time Token
 
    Generate One Time Token on ASGARD
@@ -63,7 +63,7 @@ button in the upper-right corner, and use the hostname and one-time token to
 connect that ASGARD system. You can use a description to provide more
 information about that ASGARD server, e.g. ``DMZ 1`` or ``Region EMEA - HQ 1``.
 
-.. figure:: ../images/mc_master-add-asgard.png
+.. figure:: ../images/mc_master-add-mgmt.png
    :alt: Link ASGARD in Master ASGARD
 
    Link ASGARD in Master ASGARD

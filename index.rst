@@ -26,7 +26,7 @@ actions used during incident response.
    requirements/index
    setup/index
    administration/index
-   masterasgard/index
+   master-mc/index
    maintenance/index
    advanced/index
    troubleshooting/index
