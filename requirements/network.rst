@@ -3,16 +3,17 @@
 Network Requirements
 --------------------
 
-ASGARD and the systems that communicate with it require the following
-ports to be open in the network. For a detailed and up-to-date list of
-our update and licensing servers, see https://www.nextron-systems.com/hosts/.
+The Management Center and the systems that communicate with it require
+the following ports to be open in the network. For a detailed and
+up-to-date list of our update and licensing servers, see
+https://www.nextron-systems.com/hosts/.
 
 .. important::
 
   The use of a web proxy that performs TLS/SSL interception is not supported.
   TLS interception will break both the agent-to-Management-Center
   connection and the connection to our update and licensing servers.
-  Installing the intercepting proxy's CA on the ASGARD appliance does
+  Installing the intercepting proxy's CA on the appliance does
   not work around this.
 
   Attempting this can result in errors like the one below:
@@ -23,8 +24,8 @@ our update and licensing servers, see https://www.nextron-systems.com/hosts/.
     The certificate issuer is unknown.
     Could not handshake: Error in the certificate verification.
 
-From ASGARD Agent to ASGARD Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Endpoint Agent to Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -36,18 +37,18 @@ From ASGARD Agent to ASGARD Server
      - 443/tcp
    * - Syslog Forwarder (optional)
      - 514/udp [1]_
-   * - ASGARD online check (optional)
+   * - Management Center online check (optional)
      - ICMP
 
 The syslog port is optional because agents can operate without it.
 See :ref:`administration/syslog:syslog forwarding` for more information.
 
 .. hint:: 
-  ASGARD Agents check whether they can reach ASGARD via HTTPS.
+  Endpoint Agents check whether they can reach the Management Center via HTTPS.
   ICMP is not required, but it helps during troubleshooting.
 
-From Management Workstation to ASGARD Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Management Workstation to Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -60,8 +61,8 @@ From Management Workstation to ASGARD Server
    * - Command line administration
      - 22/tcp
 
-From ASGARD to SIEM
-^^^^^^^^^^^^^^^^^^^
+From Management Center to SIEM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -72,8 +73,8 @@ From ASGARD to SIEM
    * - Syslog forwarder
      - 514/udp [1]_
 
-From ASGARD to Analysis Cockpit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Management Center to Analysis Cockpit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -86,10 +87,10 @@ From ASGARD to Analysis Cockpit
    * - Syslog forwarder (optional)
      - 514/udp [1]_
 
-From ASGARD and Master ASGARD to the Internet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Management Center and Master Management Center to the Internet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ASGARD systems are configured to retrieve updates from the
+The Management Centers are configured to retrieve updates from the
 following remote systems via HTTPS on port 443/tcp:
 
 .. list-table:: 
@@ -98,7 +99,7 @@ following remote systems via HTTPS on port 443/tcp:
 
    * - Product
      - Remote Systems
-   * - ASGARD and system updates
+   * - Management Center and system updates
      - update-301.nextron-systems.com
    * - THOR, Aurora, and Signature updates
      - update1.nextron-systems.com
@@ -106,13 +107,13 @@ following remote systems via HTTPS on port 443/tcp:
      - update2.nextron-systems.com
 
 Configure all proxy systems to allow access to these URLs without TLS/SSL
-interception. ASGARD uses client-side SSL certificates for authentication.
-You can configure a proxy server, username, and password during the ASGARD
-platform setup process. Only Basic authentication is supported. NTLM
-authentication is not supported.
+interception. The Management Center uses client-side SSL certificates
+for authentication. You can configure a proxy server, username, and
+password during the platform setup process. Only Basic authentication is
+supported. NTLM authentication is not supported.
 
-From Master ASGARD to ASGARD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Master Management Center to Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -123,10 +124,11 @@ From Master ASGARD to ASGARD
    * - Management Backend
      - 5443/tcp
 
-You cannot manage ASGARD v4 systems from a Master ASGARD v3 and vice versa.
+You cannot manage Management Center v4 systems from a Master Management
+Center v3 and vice versa.
 
-From Management Workstation to Master ASGARD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Management Workstation to Master Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -143,7 +145,7 @@ Thunderstorm (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Thunderstorm uses the following ports. This is optional and only required
-if you plan to use Thunderstorm in ASGARD.
+if you plan to use Thunderstorm in the Management Center.
 
 .. list-table:: 
    :header-rows: 1
@@ -162,14 +164,14 @@ Secure Communication
 ^^^^^^^^^^^^^^^^^^^^
 
 Connections within our products use TLS, except for syslog over plaintext.
-Clients verify the server certificate used by ASGARD Management Center when
+Clients verify the server certificate used by Management Center when
 connecting. This helps prevent attackers from reading sensitive information
 during a man-in-the-middle attack.
 
 Time Synchronization
 ^^^^^^^^^^^^^^^^^^^^
 
-ASGARD tries to reach the public Debian time servers by default.
+The Management Center tries to reach the public Debian time servers by default.
 
 .. list-table:: 
    :header-rows: 1
@@ -189,13 +191,14 @@ The NTP server configuration can be changed.
 DNS
 ^^^
 
-ASGARD needs to be able to resolve internal and external IP addresses.
+The Management Center needs to be able to resolve internal and external
+IP addresses.
 
 .. warning:: 
-  Make sure that you install ASGARD with a ``domain name``
+  Make sure that you install the Management Center with a ``domain name``
   (see :ref:`setup/network:network configuration`). If you do not set the
-  Domain Name before installing the ASGARD package, your clients will not
-  be able to connect to ASGARD.
+  Domain Name before installing the package, your clients will not
+  be able to connect to the Management Center.
 
   All installed components should have a valid domain name configured to
   avoid issues later in the configuration.

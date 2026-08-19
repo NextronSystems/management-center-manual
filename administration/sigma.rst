@@ -49,7 +49,8 @@ then click ``Add to Ruleset``. A rule can be assigned to multiple rulesets.
 
 .. note::
     You need to commit and push your changes after editing a ruleset.
-    ASGARD must restart the service controller to read new configurations.
+    The Management Center must restart the service controller to read new
+    configurations.
     To prevent multiple restarts when an administrator performs several
     configuration changes in succession, the administrator must initiate
     the reload of the new configuration by going to ``Service Control`` >
@@ -156,8 +157,9 @@ Rule and Response Updates
 
 If new rules or rule updates are provided by the Aurora signatures, the user
 must apply the updates manually before they affect Aurora agents managed by
-ASGARD. An indicator is shown in the Web UI, and rule changes can be reviewed
-and applied at ``Service Control`` > ``Sigma`` > ``Rule Updates``.
+the Management Center. An indicator is shown in the Web UI, and rule changes
+can be reviewed and applied at ``Service Control`` > ``Sigma`` >
+``Rule Updates``.
 
     .. figure:: ../images/sc_update-sigma-rules.png
        :alt: Sigma Rule Updates for Aurora

@@ -14,13 +14,13 @@ can be:
   - Upgrade Agent
   - Upgrade Service Controller
   - Configure the asset's proxy
-  - Move asset to another ASGARD
+  - Move asset to another Management Center
 
 Several other tasks can also appear in the Response Control section,
 including:
 
 * Directory Listing (Browse the file system)
-* Log (view the ASGARD Agent Log)
+* Log (view the Endpoint Agent Log)
 * System Stats (view the system load)
 
 These tasks can only be started from the Details view of an asset,
@@ -55,8 +55,9 @@ the bottom row.
 
    Replay Remote Shell Session
 
-ASGARD users can only see their own remote console sessions. Only users with
-the ``View Remote Console Log`` permission can replay sessions from all users.
+Management Center users can only see their own remote console sessions.
+Only users with the ``View Remote Console Log`` permission can replay
+sessions from all users.
 
 .. note::
    The permission ``View Remote Console Log`` requires the ``Response Control``
@@ -73,7 +74,7 @@ connected systems. These actions can be executed on one or multiple
 endpoints at once.
 
 It is also possible to download specific suspicious files. You can transfer
-a suspicious file to ASGARD Management Center for offline analysis.
+a suspicious file to Management Center for offline analysis.
 
 .. figure:: ../images/mc_built-in-playbooks.png
    :alt: Built-in Playbooks
@@ -90,11 +91,11 @@ corner. A dialog opens where you can select the desired action.
 
    Execute Playbook on Endpoints
 
-In this example, we collect the ASGARD Agent Logs.
+In this example, we collect the Endpoint Agent Logs.
 
-ASGARD ships with pre-defined playbooks for the following tasks:
+The Management Center ships with pre-defined playbooks for the following tasks:
 
-* Collect ASGARD Agent Log
+* Collect Endpoint Agent Log
 * Create and Collect Aurora Agent Diagnostics Pack (Windows only)
 * Collect full triage pack (Windows only)
 * Isolate endpoint (Windows only)
@@ -112,8 +113,9 @@ ASGARD ships with pre-defined playbooks for the following tasks:
     tested on all supported Windows operating systems with various patch
     levels. On Linux systems, memory collection depends on kernel settings
     and loaded modules. Memory dumps also require temporary free disk space
-    on the system drive and consume significant disk space on ASGARD. The
-    ASGARD Agent checks whether enough disk space is available on the system
+    on the system drive and consume significant disk space on the
+    Management Center. The
+    Endpoint Agent checks whether enough disk space is available on the system
     drive and adds a 50% safety buffer. If there is not enough free disk
     space, the memory dump fails.
 
@@ -129,7 +131,7 @@ tab or the ``New Scheduled Group Task`` tab.
    Execute Playbook on Group of Endpoints
 
 This view is similar to the Group Scan view. You can select targets by
-specifying one or more labels or by using the ASGARD Search Query.
+specifying one or more labels or by using the Search Query.
 
 Response Control with Custom Playbooks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -161,8 +163,8 @@ the ``Add Step`` button.
 You can create the following types of playbook steps:
 
 - Run Command Line on Endsystem
-- Upload File to ASGARD Management Center
-- Download File from ASGARD Management Center
+- Upload File to Management Center
+- Download File from Management Center
 
 This allows you to download files from the Management Center to your endpoint
 and upload files from your endpoint to the Management Center. This way, you
@@ -170,7 +172,7 @@ can directly collect evidence from endpoints.
 
 If you need custom files for your playbook, such as scripts, configurations,
 or binaries, select ``Upload New File`` when setting the type to ``Download File
-from ASGARD Management Center`` during playbook step creation. Alternatively,
+from Management Center`` during playbook step creation. Alternatively,
 upload and manage files at ``Response Control`` > ``Playbook Files``.
 
 .. figure:: ../images/mc_upload-playbook-file.png

@@ -116,7 +116,7 @@ response actions under ``Service Control`` > ``Aurora`` > ``Response Action Logs
 Best Practices for Managing Aurora
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Install the ASGARD Agent on the asset (see :ref:`administration/agent:asgard agent deployment`).
+1. Install the Endpoint Agent on the asset (see :ref:`administration/agent:endpoint agent deployment`).
 2. Deploy the Aurora service on the asset using the ``[Default] Standard configuration with critical and high Sigma rules`` configuration (see :ref:`administration/aurora:deploy aurora on asset`).
 
 .. figure:: ../images/mc_aurora-best-practices.png
@@ -153,7 +153,7 @@ message in the ``Service Control`` > ``Aurora`` > ``Response Action Logs``:
 
 More tests are available from the
 `Function Tests section of the Aurora manual <https://aurora-agent-manual.nextron-systems.com/en/latest/usage/function-tests.html>`_.
-Those tests only generate detection events, not responses. If your ASGARD
+Those tests only generate detection events, not responses. If your
 Management Center is connected to an Analysis Cockpit, you can see the
 detection events at ``Events`` > ``Aurora Events`` or in the Windows Event Log
 of the asset.

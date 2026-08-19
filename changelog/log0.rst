@@ -45,7 +45,7 @@ Release Date: Fri, 12 Jun 2026 13:58:00 +0200
     * - Type
       - Description
     * - Bugfix
-      - Fixed assets with nil system information causing issues with Master ASGARD and Analysis Cockpit synchronization.
+      - Fixed assets with nil system information causing issues with Master Management Center and Analysis Cockpit synchronization.
         This could affect assets from older installations that never had a hostname stored; such assets are now handled gracefully.
 
 Management Center 4.0.2
@@ -80,9 +80,9 @@ Release Date: Mon,  1 Jun 2026 11:07:00 +0200
     * - Bugfix
       - Fixed incorrect migration of LDAP host entries containing a protocol prefix
     * - Bugfix
-      - Fixed missing UUIDs for group tasks and scheduled group tasks on Master ASGARDs
+      - Fixed missing UUIDs for group tasks and scheduled group tasks on Master Management Centers
     * - Bugfix
-      - Fixed large syncs to Master ASGARD exceeding the MariaDB transaction placeholder limit
+      - Fixed large syncs to Master Management Center exceeding the MariaDB transaction placeholder limit
     * - Bugfix
       - Fixed 2FA failing after upgrade by encrypting TOTP secrets at rest and auto-migrating legacy v3 and v4.0.0 secrets to the new format.
 
@@ -140,15 +140,15 @@ Release Date: Fri, 15 May 2026 14:07:00 +0200
 - THOR 11 Integration: Added support for THOR 11 readiness.
   This includes revised scan flags, updated output formats, and a reworked THOR
   versioning and update server layout.
-- AIX is now officially supported through the new ASGARD Agent for AIX and the dedicated
+- AIX is now officially supported through the new Endpoint Agent for AIX and the dedicated
   THOR for AIX scanner. THOR for AIX uses its own license type, purchasable alongside
-  the ASGARD Management Center license.
+  the Management Center license.
 - Software Inventory: Software installed on assets is now accessible in a dedicated
   Software Inventory section. This section provides a comprehensive overview of all
   installed software across all assets, either in a per-asset or aggregated view. The
   software list tab in the asset details now also allows searching and filtering
   installed software.
-- Live Event Streaming: Real-time THOR event forwarding to ASGARD Analysis Cockpit has
+- Live Event Streaming: Real-time THOR event forwarding to Analysis Cockpit has
   been added. The option can be enabled with a checkbox in the Scan Settings for single,
   group, and scheduled scans.
 - Encrypted Evidence Collection: Collect File and Collect Directory playbooks now
@@ -161,7 +161,7 @@ Release Date: Fri, 15 May 2026 14:07:00 +0200
 **Features**
 
 - New license type "THOR for Legacy" has been added to support scanning older Windows
-  and Linux systems no longer covered by standard THOR. The ASGARD Management Center can
+  and Linux systems no longer covered by standard THOR. The Management Center can
   now issue Legacy licenses.
 
 ----
@@ -181,11 +181,11 @@ Release Date: Fri, 15 May 2026 14:07:00 +0200
 **Changed**
 
 - Default playbooks are now only created during installation or updates, not on every
-  start of the ASGARD Management Center.
+  start of the Management Center.
 - Default Sigma rulesets are now only created during installation or updates, not on
-  every start of the ASGARD Management Center.
+  every start of the Management Center.
 - Default service configurations are now only created during installation or updates,
-  not on every start of the ASGARD Management Center.
+  not on every start of the Management Center.
 
 ----
 

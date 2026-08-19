@@ -1,8 +1,8 @@
 Broken File and Folder Permissions
 ----------------------------------
 
-In a normal installation, the ASGARD Agent folder uses specific permissions.
-The ASGARD Agent regularly checks for broken permissions and tries to fix
+In a normal installation, the Endpoint Agent folder uses specific permissions.
+The Endpoint Agent regularly checks for broken permissions and tries to fix
 them. If this process fails, check and change the permissions manually.
 
 .. code-block:: none

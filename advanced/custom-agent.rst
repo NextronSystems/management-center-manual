@@ -3,7 +3,8 @@
 Creating Custom Agent Installers
 ================================
 
-ASGARD supports custom agent installers. You can configure custom installers
+The Management Center supports custom agent installers. You can configure
+custom installers
 so agents appear with a preset label or use a preset proxy configuration.
 
 Go to ``Downloads`` > ``Agent Installers`` > ``Add Agent Installer``.
@@ -18,7 +19,8 @@ to make each custom installer easy to identify.
    Custom Agent Installer from the WebUI
 
 .. note::
-   If a new version of the agent installer is available, ASGARD shows a notice
+   If a new version of the agent installer is available, the Management
+   Center shows a notice
    that agent installers need repacking. Click ``Repack Outdated Agent
    Installers`` and wait for the process to finish. This ensures that newly
    downloaded installers use the newest version.
