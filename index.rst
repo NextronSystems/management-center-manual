@@ -30,7 +30,6 @@ actions used during incident response.
    maintenance/index
    advanced/index
    troubleshooting/index
-   issues/index
    upgrade/index
    appendix/index
    changelog/index
