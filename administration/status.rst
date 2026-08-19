@@ -12,8 +12,9 @@ most important system components.
 It also includes the current resource consumption (disk,
 CPU and memory) and lists the currently installed Management
 Center software version, along with available versions of THOR.
-It also shows the connection status to the update servers, Master ASGARD,
-and Cockpit, as well as graphs for asset connections and asset streams.
+It also shows the connection status to the update servers, the Master
+Management Center, and Cockpit, as well as graphs for asset connections
+and asset streams.
 
 .. note::
    The THOR version numbers may be missing in a new installation.
@@ -68,13 +69,13 @@ Available logs and their contents:
 
    * - Log Type
      - Explanation
-   * - ASGARD Management Center
+   * - Management Center
      - Overall status of the Management Center, general errors and warnings
    * - Audit
      - User login and logout events and changes made in the UI
-   * - ASGARD Agent
+   * - Endpoint Agent
      - Status of the agents deployed on assets
-   * - ASGARD Agent Access Log
+   * - Endpoint Agent Access Log
      - Logs of agents communicating with the Management Center
    * - THOR via Syslog
      - Received syslog events of THOR scans. Partial results if a scan did not complete

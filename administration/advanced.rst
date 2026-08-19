@@ -5,9 +5,9 @@ Advanced Settings
 
 The Advanced tab lets you specify additional global settings.
 The session timeout for the web-based UI can be configured. The default
-is one hour. If ``Show Advanced Tasks`` is set, ASGARD will
-show system maintenance jobs (e.g. update ASGARD Agent on endpoints)
-within the Response Control section.
+is one hour. If ``Show Advanced Tasks`` is set, the Management
+Center will show system maintenance jobs (e.g. update Endpoint Agent
+on endpoints) within the Response Control section.
 
 Inactive assets can be hidden in the Asset Management section
 by setting a suitable threshold for ``Hide inactive Assets``.

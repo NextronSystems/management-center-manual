@@ -12,7 +12,7 @@ Partitioning the Hard Disk
 --------------------------
 
 .. warning:: 
-   ASGARD is intended to be installed with only one disk.
+   The Management Center is intended to be installed with only one disk.
    Do not configure your server with multiple disks.
    The system will not configure additional disks. Make sure
    that the disk has the recommended size. See
@@ -33,10 +33,10 @@ Proxy Configuration
 
 If you use a proxy to access the Internet, enter the proxy details in the
 next step. ``Internet connectivity is required`` for the next step, which
-installs the ASGARD service.
+installs the Management Center service.
 
 .. figure:: ../images/setup_proxy.png
    :alt: Finish the installation
 
-The base installation is now complete. The next step installs the ASGARD
-service. ``Internet connectivity is required`` for this step.
+The base installation is now complete. The next step installs the
+Management Center service. ``Internet connectivity is required`` for this step.

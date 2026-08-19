@@ -24,7 +24,7 @@ Click the "THOR" button in the Action column in the Asset Management view.
 In this form, you can choose the maximum runtime, module, scanner, scan
 flags, signatures, or a template.
 
-If your Management Center is connected to an ASGARD Analysis Cockpit, you
+If your Management Center is connected to an Analysis Cockpit, you
 can enable :ref:`administration/scan-control:live event streaming` in the
 scan settings. This forwards THOR events to the Analysis Cockpit while
 the scan is still running. Without Live Event Streaming, scan results
@@ -35,7 +35,7 @@ clicking the ``Add Scan`` button.
 
 .. note::
    If the scan is interrupted because the asset restarts unexpectedly, or
-   because THOR or the ASGARD Agent stops due to insufficient resources, the
+   because THOR or the Endpoint Agent stops due to insufficient resources, the
    Agent resumes the scan from where it left off as soon as the asset is
    available again by adding the "--resume" flag.
    By default, this happens a maximum of five times (``Max. THOR Resumes``)
@@ -44,7 +44,8 @@ clicking the ``Add Scan`` button.
    The default values for ``Max. THOR Resumes`` and ``THOR Resume Deadline``
    can be modified in the :ref:`administration/advanced:advanced settings`.
 
-   Manually setting the "--resume" flag has no effect when scanning via ASGARD.
+   Manually setting the "--resume" flag has no effect when scanning via
+   the Management Center.
 
 Stopping a Single Scan
 ~~~~~~~~~~~~~~~~~~~~~~

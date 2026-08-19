@@ -3,9 +3,9 @@
 Diagnostic Pack
 ===============
 
-The diagnostic package is an archive generated on the ASGARD server to help
+The diagnostic package is an archive generated on the Management Center to help
 Nextron Support troubleshoot an issue. It contains the system configuration and
-log data of an ASGARD instance.
+log data of a Management Center instance.
 
 You can generate a Diagnostic Package in ``System Status`` > ``Logs`` >
 ``Diagnostics Package``.
