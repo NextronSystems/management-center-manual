@@ -1,9 +1,9 @@
 .. index:: Helpful scripts
 
-Installing ASGARD Agent via PowerShell Script
----------------------------------------------
+Installing Endpoint Agent via PowerShell Script
+-----------------------------------------------
 
-The following example script installs the ASGARD Agent with PowerShell.
+The following example script installs the Endpoint Agent with PowerShell.
 Place the installer and script in the same folder. Adjust the script as
 needed.
 
@@ -11,10 +11,10 @@ needed.
    :language: powershell
    :linenos:
 
-Deploy ASGARD Agents via SCCM
------------------------------
+Deploy Endpoint Agents via SCCM
+-------------------------------
 
-To deploy the ASGARD Agent (or any other .exe installer) via SCCM, you
+To deploy the Endpoint Agent (or any other .exe installer) via SCCM, you
 need a PowerShell script with conditions that mark an installation as
 successful or failed.
 
@@ -38,9 +38,9 @@ successful:
 
    $servicename = "asgard2-agent"
    if (Get-Service -Name $servicename -ErrorAction SilentlyContinue) {
-      Write-Host "ASGARD Agent installed"
+      Write-Host "Endpoint Agent installed"
       exit 0
    } else {
-      $Host.UI.WriteErrorLine("ASGARD Agent not installed")
+      $Host.UI.WriteErrorLine("Endpoint Agent not installed")
       exit 1
    }

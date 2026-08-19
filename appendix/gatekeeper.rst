@@ -11,7 +11,7 @@ teams that need to bypass Apple verification and install the personalized
 Starting with macOS 15
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Option 1: Remove the quarantine flag from the ASGARD Agent installer in a terminal session**
+**Option 1: Remove the quarantine flag from the Endpoint Agent installer in a terminal session**
 
 .. code-block:: console
 
@@ -37,7 +37,7 @@ Before macOS 15
 After performing any of the described actions, check your system to ensure that
 all security mechanisms are in place and reactivated.
 
-Follow these steps to install the ASGARD Agent on macOS.
+Follow these steps to install the Endpoint Agent on macOS.
 
 1. Open a new terminal session
 

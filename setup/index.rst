@@ -9,7 +9,7 @@ the Debian Installer steps, as incorrect settings can cause installation
 or runtime problems.
 
 .. important:: 
-    ASGARD products require an FQDN, which must be resolvable
+    Nextron products require an FQDN, which must be resolvable
     from all onboarded assets. If assets cannot resolve the FQDN
     specified during installation, they cannot connect.
 

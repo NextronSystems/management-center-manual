@@ -1,23 +1,23 @@
-$asgardAgent = "C:\Windows\System32\asgard2-agent"
-$asgardAgentTemp = "C:\Windows\Temp\asgard2-agent"
+$endpointAgent = "C:\Windows\System32\asgard2-agent"
+$endpointAgentTemp = "C:\Windows\Temp\asgard2-agent"
 
-if (Get-Item -Path $asgardAgent | Get-Acl | where {$_.Access.IsInherited -eq $false}) {
-    Write-Host "ASGARD Agent folder permission broken. Trying to fix: $asgardAgent"
+if (Get-Item -Path $endpointAgent | Get-Acl | where {$_.Access.IsInherited -eq $false}) {
+    Write-Host "Endpoint Agent folder permission broken. Trying to fix: $endpointAgent"
     # Set the new Access Rule to inherit permissions
-    $newAcl = Get-Acl -Path $asgardAgent
+    $newAcl = Get-Acl -Path $endpointAgent
     $newAcl.SetAccessRuleProtection($false, $true)
-    Set-Acl $asgardAgent -AclObject $newAcl -WhatIf
+    Set-Acl $endpointAgent -AclObject $newAcl -WhatIf
 }
-if (Get-Item -Path $asgardAgentTemp | Get-Acl | where {$_.Access.IsInherited -eq $false}) {
-    Write-Host "ASGARD Agent folder permission broken. Trying to fix: $asgardAgentTemp"
+if (Get-Item -Path $endpointAgentTemp | Get-Acl | where {$_.Access.IsInherited -eq $false}) {
+    Write-Host "Endpoint Agent folder permission broken. Trying to fix: $endpointAgentTemp"
     # Set the new Access Rule to inherit permissions
-    $newAcl = Get-Acl -Path $asgardAgentTemp
+    $newAcl = Get-Acl -Path $endpointAgentTemp
     $newAcl.SetAccessRuleProtection($false, $true)
-    Set-Acl $asgardAgentTemp -AclObject $newAcl -WhatIf
+    Set-Acl $endpointAgentTemp -AclObject $newAcl -WhatIf
 }
-get-childitem -path $asgardAgent -Recurse -Depth 1 | Get-Acl | where {$_.Access.IsInherited -eq $false} | % {
+get-childitem -path $endpointAgent -Recurse -Depth 1 | Get-Acl | where {$_.Access.IsInherited -eq $false} | % {
     $fullPath = Convert-Path $_.Path
-    Write-Host "ASGARD Agent folder permission broken. Trying to fix: $fullPath"
+    Write-Host "Endpoint Agent folder permission broken. Trying to fix: $fullPath"
     # Set the new Access Rule to inherit permissions
     $newAcl = Get-Acl -Path $_.Path
     $newAcl.SetAccessRuleProtection($false, $true)

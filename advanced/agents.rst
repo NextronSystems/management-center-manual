@@ -3,7 +3,7 @@
 Agent and Agent Installer Update
 ================================
 
-When a new ASGARD agent version is available, an indicator appears on the
+When a new Endpoint Agent version is available, an indicator appears on the
 ``Update`` menu item and on the ``Update`` > ``Agents`` submenu. Two tasks are
 required: update the agents on your assets and update the agent installer for
 future asset deployments.
@@ -11,7 +11,7 @@ future asset deployments.
 Agent Update
 ^^^^^^^^^^^^
 
-If this is the first agent update performed on this ASGARD system, you might
+If this is the first agent update performed on this Management Center, you might
 need to enable the ``Update Agent`` module under ``Settings`` > ``Advanced`` >
 ``Show Advanced Tasks``.
 

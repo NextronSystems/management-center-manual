@@ -1,9 +1,9 @@
-.. index:: Uninstall ASGARD Agents
+.. index:: Uninstall Endpoint Agents
 
-Uninstall ASGARD Agents
-=======================
+Uninstall Endpoint Agents
+=========================
 
-The following sections contain commands for uninstalling ASGARD Agents on
+The following sections contain commands for uninstalling Endpoint Agents on
 endpoints.
 
 .. note::
@@ -11,10 +11,10 @@ endpoints.
    If you have generated custom installer packages with a custom service
    and binary name, adjust the commands accordingly.
 
-Uninstall ASGARD Agents on Windows
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Uninstall Endpoint Agents on Windows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You need administrative privileges to remove the ASGARD Agent from Windows.
+You need administrative privileges to remove the Endpoint Agent from Windows.
 Open a Command Prompt **as Administrator** and run the following commands:
 
 .. code-block:: doscon
@@ -31,13 +31,13 @@ Open a Command Prompt **as Administrator** and run the following commands:
 
 These commands perform the following actions in order:
 
-- Stop the ASGARD Agent service
-- Uninstall the ASGARD Agent service
-- Delete all ASGARD Agent files
+- Stop the Endpoint Agent service
+- Uninstall the Endpoint Agent service
+- Delete all Endpoint Agent files
 - Remove THOR-related data from ProgramData
 
-Uninstall ASGARD Agents on Linux
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Uninstall Endpoint Agents on Linux
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 RPMs via ``yum``
 
@@ -64,8 +64,8 @@ Manual uninstall
    user@host:~$ sudo rm -r /var/lib/asgard2-agent
    user@host:~$ sudo rm -r /var/lib/thor
 
-Uninstall ASGARD Agents on macOS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Uninstall Endpoint Agents on macOS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console 
 

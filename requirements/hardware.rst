@@ -3,7 +3,7 @@
 Hardware Requirements
 ---------------------
 
-ASGARD's hardware requirements depend on the number of connected
+The Management Center's hardware requirements depend on the number of connected
 endpoints and the intended use.
 
 .. list-table::

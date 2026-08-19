@@ -24,7 +24,7 @@ be in the correct order. Values are separated with a colon (``:``).
      - Possible Values
    * - 1
      - Server
-     - The receiving server. ``%asgard-host%`` is the ASGARD system that issued the scan for the Agent
+     - The receiving server. ``%asgard-host%`` is the Management Center that issued the scan for the Agent
      - FQDN or IP of remote host
    * - 2
      - Port
@@ -66,7 +66,7 @@ Examples:
 
 If you choose to use the ``--syslog`` flag, please make sure that the
 necessary ports are allowed in your network or firewall. If you decide
-to forward your logs via ASGARD to a SIEM, see
+to forward your logs via the Management Center to a SIEM, see
 :ref:`administration/additional:rsyslog forwarding`.
 
 .. note::

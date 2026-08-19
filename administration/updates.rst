@@ -3,21 +3,22 @@
 Updates
 =======
 
-ASGARD Updates
-^^^^^^^^^^^^^^
+Management Center Updates
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-ASGARD checks for ASGARD updates daily. Available
+The Management Center checks for updates daily. Available
 updates are shown automatically in the ``Updates`` section.
 
-As soon as an ASGARD update is available, the ``Upgrade from ... to ...``
+As soon as an update is available, the ``Upgrade from ... to ...``
 button appears. Click this button to start the update process. The
-ASGARD service restarts and the user must log in again. In general, update
-Master ASGARD before connected ASGARD systems.
+Management Center service restarts and the user must log in again. In
+general, update the Master Management Center before connected
+Management Centers.
 
 .. figure:: ../images/mc_update.png
-   :alt: Updating ASGARD
+   :alt: Updating the Management Center
 
-   Updating ASGARD
+   Updating the Management Center
 
 Version Pinning
 ^^^^^^^^^^^^^^^
@@ -27,7 +28,7 @@ to "pin" a specific version of THOR, Aurora, or any signatures.
 This allows you to stay on specific major or minor versions
 of our products.
 
-By default, ASGARD will search for signature updates every hour
+By default, the Management Center will search for signature updates every hour
 and for THOR/Aurora updates every day. You can change the update
 interval if needed, though the default values are usually sufficient
 for most cases.

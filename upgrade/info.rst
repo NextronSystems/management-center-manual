@@ -9,12 +9,12 @@ updated product version controls.
 
 .. important::
 
-   Connected to a Master ASGARD?
+   Connected to a Master Management Center?
 
-   If this Management Center is connected to a Master ASGARD,
-   upgrade the Master ASGARD to v4 first, followed by the connected
+   If this Management Center is connected to a Master Management Center,
+   upgrade the Master Management Center to v4 first, followed by the connected
    Management Centers. Synchronization between v3 and v4 systems
-   is not possible. After upgrading the Master ASGARD, synced
+   is not possible. After upgrading the Master Management Center, synced
    data will be unavailable until each Management Center is also
    upgraded to v4 and resynced. Plan to upgrade all systems within
    the same maintenance window.
@@ -53,13 +53,13 @@ New Features & Highlights
 
 - **THOR 11 Readiness**: Preparation for the upcoming THOR 11
   Techpreview Release
-- **AIX Support**: Official AIX support with dedicated ASGARD Agent
+- **AIX Support**: Official AIX support with dedicated Endpoint Agent
   and THOR for AIX scanner with its own license type
 - **THOR for Legacy**: New license type for scanning older Windows and
   Linux systems no longer covered by standard THOR (this is only relevant
   for THOR 11)
 - **Software Inventory**: Comprehensive software asset management and tracking
-- **Live Event Streaming**: Real-time THOR event forwarding to ASGARD Analysis Cockpit
+- **Live Event Streaming**: Real-time THOR event forwarding to Analysis Cockpit
 - **Encrypted Evidence Collection**: Collect File and Collect Directory now
   support password-encrypted zip files
 - **Improved Update Version Control**: More control over product versions
@@ -113,16 +113,18 @@ Frequently Asked Questions
 - Will there be any downtime during the upgrade?
 
   - Yes, the Management Center will be unavailable during the upgrade process.
-    In Master ASGARD environments, synced data will be unavailable until all
-    connected Management Centers are also upgraded to v4 and have resynced.
-    Plan accordingly and schedule the upgrade of the Master ASGARD and all
-    connected Management Centers within the same maintenance window.
+    In Master Management Center environments, synced data will be unavailable
+    until all connected Management Centers are also upgraded to v4 and have
+    resynced. Plan accordingly and schedule the upgrade of the Master
+    Management Center and all connected Management Centers within the same
+    maintenance window.
 
-- In what order should I upgrade a Master ASGARD environment?
+- In what order should I upgrade a Master Management Center environment?
 
-  - Upgrade the Master ASGARD to v4 first, followed by the connected Management
-    Centers. During the Master upgrade, the local synced copy of data from connected
-    Management Centers is removed and rebuilt by resyncing after the upgrade.
+  - Upgrade the Master Management Center to v4 first, followed by the
+    connected Management Centers. During the Master upgrade, the local
+    synced copy of data from connected Management Centers is removed and
+    rebuilt by resyncing after the upgrade.
     Synchronization between v3 and v4 systems is not possible, so each Management
     Center must also be upgraded to v4 before it can resync with the Master. Plan
     to upgrade all systems within the same maintenance window.
@@ -134,7 +136,7 @@ Frequently Asked Questions
 
 - Will the upgrade also upgrade the underlying operating system to the latest major version?
 
-  - No. The upgrade only updates the ASGARD Management Center and required package
+  - No. The upgrade only updates the Management Center and required package
     dependencies. It does not upgrade the underlying OS to a new major version.
 
 - What should I do before upgrading?

@@ -15,9 +15,9 @@ Timeout /T 15
 
 $servicename = "asgard2-agent"
 if (Get-Service -Name $servicename -ErrorAction SilentlyContinue) {
-    Write-Host "ASGARD Agent installed"
+    Write-Host "Endpoint Agent installed"
     exit 0
 } else {
-    $Host.UI.WriteErrorLine("ASGARD Agent not installed")
+    $Host.UI.WriteErrorLine("Endpoint Agent not installed")
     exit 1
 }

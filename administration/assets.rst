@@ -3,9 +3,9 @@
 Asset Management
 ================
 
-The ``Assets`` view shows all connected ASGARD Agents. New assets are
+The ``Assets`` view shows all connected Endpoint Agents. New assets are
 listed under ``Asset Requests`` and require manual approval before they
-can connect to ASGARD. For automatic acceptance, see
+can connect to the Management Center. For automatic acceptance, see
 :ref:`administration/advanced:advanced settings`.
 
 If the ``Duplicate Assets`` view is visible, remediate the issue promptly
@@ -14,7 +14,7 @@ to avoid unwanted side effects on duplicate hosts.
 .. warning::
    Assets in the ``Duplicate Assets`` view indicate that one or more
    agents are running on multiple endpoints. This might be caused by
-   cloning a system with an already installed ASGARD Agent. Undesirable
+   cloning a system with an already installed Endpoint Agent. Undesirable
    side effects of duplicate assets are alternating hostnames and tasks
    that fail immediately.
 
@@ -23,9 +23,9 @@ For remediation, see :ref:`troubleshooting/agent-debugging:duplicate assets reme
 Asset Overview
 ^^^^^^^^^^^^^^
 
-Use Asset Management to manage all endpoints registered with ASGARD. Assets
-are shown in a table with their individual ASGARD ID, IP addresses, and
-hostnames.
+Use Asset Management to manage all endpoints registered with the
+Management Center. Assets are shown in a table with their individual
+ID, IP addresses, and hostnames.
 
 .. figure:: ../images/mc_assets-view.png
    :alt: Asset View
@@ -40,7 +40,7 @@ remote file system.
 
     * Depending on the user's role, some of the control buttons may be disabled
     * The ``Run Scan`` button might be greyed out in new installations because
-      ASGARD Management Center has not downloaded the THOR packages yet.
+      Management Center has not downloaded the THOR packages yet.
       You can either wait for a few minutes, or see the chapter
       :ref:`administration/updates:version pinning`,
       to trigger a download manually.
@@ -98,10 +98,10 @@ stripped from the labels.
 
    Asset Labeling via CSV
 
-ASGARD Search Query
-^^^^^^^^^^^^^^^^^^^
+Search Query
+^^^^^^^^^^^^
 
-You can search for assets in your Management Center with the ``ASGARD Search Query``.
+You can search for assets in your Management Center with the ``Search Query``.
 This allows you to write more complex queries for assets. It also gives you
 more flexibility for scan and response tasks because you can specify a query
 instead of assigning labels to all assets first. For example, you might want
@@ -141,7 +141,7 @@ The following keys for the asset query are available:
 
    .. figure:: ../images/asset_query_fieldnames.png
 
-The ASGARD Search Query is the preferred tool to manage scans and assets.
+The Search Query is the preferred tool to manage scans and assets.
 If you are using Analysis Cockpit and need labels, you can still use them.
 
 Asset Migration
@@ -149,15 +149,16 @@ Asset Migration
 
 .. hint::
    You must enable the option ``Show Response Control Advanced Tasks``
-   in the ``Settings`` > ``Advanced`` section of your ASGARD Management
+   in the ``Settings`` > ``Advanced`` section of your Management
    Center to allow Asset Migration.
 
 You can move an asset from one Management Center to another via the Maintenance
 module of Response Control. To do this, navigate to ``Assets`` and select the
 assets you want to migrate. Alternatively, navigate to ``Response Control`` and
 add a new task. Click ``Add Task`` to open the task menu. Choose the
-``Maintenance`` module and then the ``Move asset to another ASGARD`` type.
-Upload an agent installer from the ASGARD system to which you want to migrate
+``Maintenance`` module and then the ``Move asset to another Management
+Center`` type.
+Upload an agent installer from the Management Center to which you want to migrate
 the asset.
 
 .. figure:: ../images/mc_migrate-asset.png
@@ -182,12 +183,12 @@ Instead, the asset is **deactivated**.
 During deactivation:
 
 - The asset's authentication token is invalidated, preventing it from
-  communicating with the ASGARD Management Center.
+  communicating with the Management Center.
 - The asset is marked as deleted in the backend and no longer appears as an
   active asset.
 - Historical data associated with the asset is retained.
 
-Keeping asset records allows the ASGARD Management Center to preserve information
+Keeping asset records allows the Management Center to preserve information
 that may be required for auditing, reporting, and investigation purposes, including:
 
 - Playbook execution history
@@ -198,7 +199,7 @@ This approach ensures that deleting an asset prevents future communication while
 preserving historical information for reference and compliance purposes.
 
 .. warning::
-   Deleted assets can no longer communicate with the ASGARD Management Center.
+   Deleted assets can no longer communicate with the Management Center.
    Use this action with caution. Ensure the agent is also removed from the endpoint,
    otherwise it will automatically re-register itself as a new asset within 10–15 minutes.
 

@@ -4,14 +4,14 @@ $dir = Split-Path $scriptpath
 $installer = "asgard2-agent-windows-amd64.exe"
 $servicename = "asgard2-agent"
 
-# Checking if ASGARD Agent is already installed
+# Checking if Endpoint Agent is already installed
 if (Get-Service -Name $servicename -ErrorAction SilentlyContinue) {
-    Write-Host "ASGARD Agent already installed, exiting"
+    Write-Host "Endpoint Agent already installed, exiting"
     exit 0
 } else {
-    Write-Host "ASGARD Agent not found, trying to install..."
+    Write-Host "Endpoint Agent not found, trying to install..."
 
-    # Install ASGARD Agent
+    # Install Endpoint Agent
     Start-Process -Wait -FilePath "$dir\$installer" -WorkingDirectory $dir -WindowStyle Hidden -PassThru
 
     # Timeout just to make sure the service is up and running
@@ -19,10 +19,10 @@ if (Get-Service -Name $servicename -ErrorAction SilentlyContinue) {
 
     # Checking service to see if agent was installed
     if (Get-Service -Name $servicename -ErrorAction SilentlyContinue) {
-        Write-Host "Installed ASGARD Agent successfully"
+        Write-Host "Installed Endpoint Agent successfully"
         exit 0
     } else {
-        $Host.UI.WriteErrorLine("Could not install ASGARD Agent")
+        $Host.UI.WriteErrorLine("Could not install Endpoint Agent")
         exit 1
     }
 }

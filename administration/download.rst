@@ -6,7 +6,7 @@ Download Links
 The ``Downloads`` section lets you create and download a full
 THOR package including scanner, custom IOCs and MISP rulesets
 along with a valid license for a specific host. This package can
-then be used for systems that cannot be equipped with an ASGARD
+then be used for systems that cannot be equipped with an Endpoint
 Agent. For example, you can use it on air-gapped
 networks. Copy the package to a flash drive or CD-ROM and use it
 where needed.
@@ -14,7 +14,7 @@ where needed.
 You can choose to disable the download token altogether using
 ``Disable Download Token``. If disabled, anyone with network
 access can download and issue licenses, which may lead to
-unwanted exhaustion of the ASGARD license pool. You can reset
+unwanted exhaustion of the license pool. You can reset
 the download token by disabling and then re-enabling it with ``New Download Token``.
 
 .. figure:: ../images/mc_download-thor-package.png
@@ -27,14 +27,14 @@ correct scanner, operating system and target hostname (not FQDN),
 you can copy the download link and use it to retrieve a full
 scanner package including a license file for that host. These download
 links can be sent to administrators or team members that don't have
-access to ASGARD Management Center. Recipients of
-that link still need to be able to reach ASGARD's web server port
-(443/tcp). The token can be used to download THOR or a THOR license
-without an ASGARD account.
+access to Management Center. Recipients of
+that link still need to be able to reach the Management Center's web
+server port (443/tcp). The token can be used to download THOR or a THOR
+license without a Management Center account.
 
 .. warning::
    If you disable the token, anyone with network access can download THOR
-   from this ASGARD system or generate licenses.
+   from this Management Center or generate licenses.
 
 .. note::
    The scanner package will not contain a license file if you do not
@@ -76,14 +76,14 @@ Use Case 3 - Use the URL in Scripts
 By default, the generated download link is protected with a
 token that makes it impossible to download a package or
 generate a license without knowing that token. This token
-is specific to each ASGARD instance.
+is specific to each Management Center instance.
 
 You can use that URL in Bash or PowerShell scripts to automate
-scans on systems without an installed ASGARD Agent.
+scans on systems without an installed Endpoint Agent.
 
 .. code-block:: powershell 
 
    $Type = "server"
    $Hostname = "server1"
    $Token = "my-unique-token"
-   $Download_Url = "https://asgard2.nextron:8443/api/v1/downloads/thor?os=windows&type=$($Type)&scanner=thor10%4010.6&signatures=signatures&hostname=$($Hostname)&token=$($Token)"
+   $Download_Url = "https://mc.nextron:8443/api/v1/downloads/thor?os=windows&type=$($Type)&scanner=thor10%4010.6&signatures=signatures&hostname=$($Hostname)&token=$($Token)"
