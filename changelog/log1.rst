@@ -1,6 +1,28 @@
 Management Center v4.1
 ======================
 
+Management Center 4.1.5
+-----------------------
+
+Release Date: Thu, 27 Aug 2026 14:45:00 +0200
+
+.. list-table::
+    :header-rows: 1
+    :widths: 15, 85
+
+    * - Type
+      - Description
+    * - Bugfix
+      - Fixed the filesystem browser timing out after 30 seconds on large directories or slow asset connections, the limit is now 90 seconds
+    * - Bugfix
+      - Fixed the Software Inventory failing to load when software entries have no version or publisher, or match no asset
+    * - Bugfix
+      - Fixed the scan template selection for users with the "Force Scan Template" restriction showing only restricted templates, which the server then rejected, instead of the templates they are allowed to use
+    * - Bugfix
+      - Fixed scan templates being creatable, editable, cloneable, deletable and importable without the "Manage Scan Templates" right
+    * - Bugfix
+      - Fixed THOR download URLs being rejected when custom IOC or MISP rulesets were selected, the selected rulesets are now encoded in a format the download endpoint accepts
+
 Management Center 4.1.4
 -----------------------
 
