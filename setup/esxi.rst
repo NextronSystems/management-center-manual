@@ -8,7 +8,8 @@ we will use VMWare ESX managed through a VMWare VCenter.
 
 The new VM must be configured with a Linux base system and Debian
 GNU/Linux 12 (64 bits) as target version. It is recommended to
-upload the ASGARD or Master ASGARD ISO to an accessible data
+upload the Management Center or Master Management Center ISO to an
+accessible data
 store and mount the same to your newly created VM. 
 
 .. figure:: ../images/setup_esx1.png
@@ -24,5 +25,6 @@ store and mount the same to your newly created VM.
    :alt: New Virtual Machine - ESX
 
 Please make sure to select a suitable v-switch or physical interface that
-reflects the IP address scheme you are planning to use for the new ASGARD.
+reflects the IP address scheme you are planning to use for the new
+Management Center.
 Only use one Hard Disk for the installation.

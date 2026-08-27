@@ -3,22 +3,22 @@
 Licensing
 =========
 
-ASGARD requires an Issuer-License in order to scan systems.
+The Management Center requires an Issuer-License in order to scan systems.
 The Issuer-License contains the number of asset-, server- and
-workstation systems that can be scanned with ASGARD Management
+workstation systems that can be scanned with the Management
 Center as well as the Aurora service licenses.
 
-ASGARD will automatically issue a valid single-license for a
+The Management Center will automatically issue a valid single-license for a
 particular system during its initial THOR scan. 
 
-The screenshot below shows the licensing section of an ASGARD.
+The screenshot below shows the licensing section of a Management Center.
 
 .. figure:: ../images/mc_licensing.png
-   :alt: ASGARD licensing
+   :alt: Licensing
 
-   ASGARD licensing
+   Licensing
 
-In addition, ASGARD can create single-licenses that can be used
+In addition, the Management Center can create single-licenses that can be used
 for agent-less scanning. In this case the license is generated
 and downloaded through the Web frontend. 
 
@@ -46,4 +46,4 @@ Thunderstorm
 
 You can upload your THOR Thunderstorm license lower box of the
 ``Licenses`` view. Please note that the Thunderstorm license
-needs to have the same hostname as the ASGARD system.
+needs to have the same hostname as the Management Center.

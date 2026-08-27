@@ -12,7 +12,7 @@ Big Sur (or newer) workstations.
 Starting with macOS 15
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Option 1: Remove the quarantine flag from the ASGARD Agent installer via terminal session**
+**Option 1: Remove the quarantine flag from the Endpoint Agent installer via terminal session**
 
 .. code-block:: console
 
@@ -39,7 +39,7 @@ Please always keep in mind to check your system after performing any of
 the described actions, to ensure that all security mechanisms are in
 place and are re-activated after performing the described actions.
 
-Please follow the below steps to install the ASGARD Agent on macOS.
+Please follow the below steps to install the Endpoint Agent on macOS.
 
 1. Open a new terminal session
 

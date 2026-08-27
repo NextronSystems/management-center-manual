@@ -14,7 +14,6 @@ Center.
     agent-debugging
     ssl
     hostname-fqdn
-    errors
     certificates
     admin-pass
     2fa

@@ -21,12 +21,12 @@ The following log sources can be forwarded individually:
 
    * - Log
      - Description
-   * - ASGARD Log
-     - Everything related to the ASGARD service, processes, task and scan jobs
-   * - ASGARD Audit Log
+   * - Management Center Log
+     - Everything related to the Management Center service, processes, task and scan jobs
+   * - Management Center Audit Log
      - Detailed audit log of all user activity within the system
    * - Agent Log
-     - All ASGARD agent activities
+     - All Endpoint Agent activities
    * - THOR Log
      - THOR scan results
    * - THOR Log (Realtime)
@@ -37,16 +37,17 @@ The following log sources can be forwarded individually:
 .. [1] ``The THOR (Realtime)`` logs are the same logs as THOR logs,
        except that they are collected via udp syslog instead of
        https. To forward THOR logs in realtime, you have to
-       configure your scans to forward syslog to ASGARD, see
+       configure your scans to forward syslog to the Management Center,
+       see
        :ref:`administration/syslog:syslog forwarding`. Make
        sure the necessary firewall rules are in place to allow
-       the asset to communicate with the ASGARD.
+       the asset to communicate with the Management Center.
 
 TLS Certificate Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instead of using the pre-installed self-signed TLS Certificate,
-users can upload their own TLS Certificate for ASGARD. 
+users can upload their own TLS Certificate for the Management Center.
 
 .. figure:: ../images/mc_generate-csr.png
    :alt: Generate a Certificate Signing Request (CSR)
@@ -68,13 +69,15 @@ Subsequently, this TLS Certificate can be uploaded in the ``Settings`` > ``TLS``
    Upload a TLS Certificate
 
 .. note:: 
-   Please see :ref:`appendix/tls:install tls certificates on asgard and master asgard`
-   for a guide on how to sign the CSR and install it in your ASGARD.
+   Please see
+   :ref:`appendix/tls:install tls certificates on management center and master management center`
+   for a guide on how to sign the CSR and install it in your Management
+   Center.
 
 Manage Services
 ^^^^^^^^^^^^^^^
 
-The individual ASGARD services can be managed in ``Settings`` >
+The individual Management Center services can be managed in ``Settings`` >
 ``System`` > ``Services``. The services can be stopped or restarted
 with the respective buttons in the ``Actions`` column. 
 
@@ -102,10 +105,10 @@ Settings for Bifrost
 ^^^^^^^^^^^^^^^^^^^^
 
 Bifrost allows you to automatically upload suspicious files to your
-ASGARD during a THOR scan. If an Analysis Cockpit is connected,
+Management Center during a THOR scan. If an Analysis Cockpit is connected,
 these files get automatically forwarded to the Analysis Cockpit
 in order to drop them into a connected Sandbox system. However,
-the collected files will stay on ASGARD for the amount of time
+the collected files will stay on the Management Center for the amount of time
 specified in ``Retention time`` (0 days represent an indefinite amount of time). 
 
 .. figure:: ../images/mc_bifrost-settings.png
@@ -117,9 +120,10 @@ The collected files can be downloaded in the ``Evidence Collection``
 section. All files are zip archived and password protected with the password ``infected``.
 
 In order to automatically collect suspicious files, you have to
-create a scan with Bifrost enabled. Check the ``Send Suspicious Files to ASGARD``
+create a scan with Bifrost enabled. Check the
+``Send Suspicious Files to Management Center``
 option to send samples to the system set as ``bifrost2Server``. Use the placeholder 
-``%asgard-host%`` to use the hostname of you ASGARD instance as the Bifrost server.
+``%asgard-host%`` to use the hostname of you Management Center instance as the Bifrost server.
 
 .. figure:: ../images/mc_thor-bifrost-flag.png
    :alt: Bifrost Options
@@ -127,7 +131,7 @@ option to send samples to the system set as ``bifrost2Server``. Use the placehol
    Scan option for Bifrost 
 
 This will collect all files with a score of 60 or higher and make
-them available for download in ASGARDs ``Collected Files`` section.
+them available for download in Management Centers ``Collected Files`` section.
 
 For Details on how to automatically forward to a sandbox system please
 refer to the `Analysis Cockpit Manual <https://analysis-cockpit-manual.nextron-systems.com/>`_ .
@@ -154,46 +158,48 @@ The Cockpit's API key can be found at ``Settings`` >
 
    Analysis Cockpit API Key
 
-ASGARD must be able to connect to the Analysis Cockpit
+The Management Center must be able to connect to the Analysis Cockpit
 on port 443/TCP for a successful integration. Once connected,
-the Cockpit will show up in ASGARDs ``System Status`` > ``Overview``
+the Cockpit will show up in Management Centers ``System Status`` > ``Overview``
 section together with the other connectivity tests. 
 
 Please wait up to five minutes for the status to
-change on ASGARD's system status page. It will change from ``Not linked`` to ``Online``.
+change on the Management Center's system status page. It will change
+from ``Not linked`` to ``Online``.
 
 .. figure:: ../images/mc_connectivity-test.png
    :alt: Connectivity Test
 
    Connectivity Test
 
-Link MASTER ASGARD
-^^^^^^^^^^^^^^^^^^
+Link Master Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to control your ASGARD with a MASTER ASGARD,
-you must generate a One-Time Code and use it in the "Add ASGARD"
-dialogue within the MASTER ASGARD frontend. 
+In order to control your Management Center with a Master Management
+Center, you must generate a One-Time Code and use it in the
+"Add Management Center" dialogue within the Master Management Center
+frontend.
 
 
 .. figure:: ../images/mc_link-master.png
-   :alt: Link MASTER ASGARD
+   :alt: Link Master Management Center
 
-   Link MASTER ASGARD
+   Link Master Management Center
 
-Please see :ref:`masterasgard/masterasgard:link asgard systems with master asgard`
+Please see :ref:`master-mc/master-mc:link management centers with master management center`
 for more information.
 
 Link MISP
 ^^^^^^^^^
 
-In order to connect to a MISP with your ASGARD Management Center,
+In order to connect to a MISP with your Management Center,
 navigate to ``Settings`` > ``MISP``. Insert the MISP's address,
 along with the API Key and click ``Test and Link MISP``.
 
 .. figure:: ../images/mc_link-misp.png
-   :alt: Linking a MISP to ASGARD
+   :alt: Linking a MISP to the Management Center
 
-   Linking a MISP to ASGARD
+   Linking a MISP to the Management Center
 
 The MISP connectivity status is shown in the ``Overview`` section.
 Please allow five minutes for the connection status to indicate the
@@ -208,9 +214,9 @@ correct status, and also MISP rules to be downloaded and shown in
 Change Proxy Settings
 ^^^^^^^^^^^^^^^^^^^^^
 
-In this dialogue, you can add or modify ASGARDs proxy
-configuration. Please note, you need to restart the ASGARD
-service (Tab ``Services``) afterwards. 
+In this dialogue, you can add or modify the Management Center's proxy
+configuration. Please note, you need to restart the Management Center
+service (Tab ``Services``) afterwards.
 
 .. figure:: ../images/mc_proxy-setup.png
    :alt: Change Proxy Settings

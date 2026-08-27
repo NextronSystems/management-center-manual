@@ -1,21 +1,22 @@
-.. index:: ASGARD Agent Deployment
+.. index:: Endpoint Agent Deployment
 
-ASGARD Agent Deployment
------------------------
+Endpoint Agent Deployment
+-------------------------
 
-There are currently two modes of operation for the ASGARD Agent:
+There are currently two modes of operation for the Endpoint Agent:
 
-- **Normal** - This is the default mode and allows usage of all ASGARD features.
+- **Normal** - This is the default mode and allows usage of all
+  Management Center features.
 - **Essential** - This is a lightweight mode which only allows THOR scanning
   and Aurora deployment.
 
 Please note that the Agent in Essential Mode is a separate installer and
 needs to be created in the :ref:`advanced/custom-agent:creating custom agent installers`.
 
-In order to connect a new endpoint to the ASGARD Management Center,
-download and install the ASGARD Agent on the system you want to onboard.
+In order to connect a new endpoint to the Management Center,
+download and install the Endpoint Agent on the system you want to onboard.
 
-The ASGARD Agent can be directly downloaded from the Management Center
+The Endpoint Agent can be directly downloaded from the Management Center
 login screen through the button ``Download Agent Installers``. A list
 of available agents for various operating systems appears. 
 
@@ -40,7 +41,7 @@ up. The agents use the FQDN to connect to your Management Center, so ensure that
 your endpoints can resolve and reach the Management Center via FQDN.
 
 .. note::
-   Full administrative privileges are required for the ASGARD agent
+   Full administrative privileges are required for the Endpoint Agent
    and THOR to operate properly.
 
 In the requests tab, select the agents you want to allow on your Management
@@ -48,9 +49,9 @@ Center to manage and click ``Accept Asset Requests``. After that, the
 endpoint shows up in the assets overview and is now ready to be managed and scanned.
 
 .. figure:: ../images/mc_accept-asset-request.png
-   :alt: Accepting ASGARD Agent Requests
+   :alt: Accepting Endpoint Agent Requests
 
-   Accepting ASGARD Agent Requests
+   Accepting Endpoint Agent Requests
 
 Windows Agent Deployment
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -59,16 +60,16 @@ Since the Agent Installer for Windows is a normal ``.exe`` file and not a
 ``.msi`` file, you need to write your own scripts to deploy the agent via
 your management system of choice. We have written an example script in 
 PowerShell, which should work for most of the tools. Please see the section
-:ref:`appendix/scripts:installing asgard agent via powershell script` and
-:ref:`appendix/scripts:deploy asgard agents via sccm`.
+:ref:`appendix/scripts:installing endpoint agent via powershell script` and
+:ref:`appendix/scripts:deploy endpoint agents via sccm`.
 
-Alternatively, if you want to deploy the ASGARD Agent manually, you can
+Alternatively, if you want to deploy the Endpoint Agent manually, you can
 just execute the installer by hand.
 
 Linux Agent Deployment
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To deploy the ASGARD Agent on a linux system, you can use the following
+To deploy the Endpoint Agent on a linux system, you can use the following
 commands:
 
 .. code-block:: console
@@ -114,8 +115,8 @@ If you are facing issues concerning the installation, please have a look in the 
 macOS Full Disk Access
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Since macOS Ventura (v13.0) the ASGARD Agent needs full disk access
-to function properly. After you have deployed the ASGARD Agent, you need
+Since macOS Ventura (v13.0) the Endpoint Agent needs full disk access
+to function properly. After you have deployed the Endpoint Agent, you need
 to grant the service the required access permissions. Please keep in mind
 that administrative privileges on the machine are needed to perform the
 following tasks.
@@ -123,9 +124,10 @@ following tasks.
 .. note:: 
    There is no workaround to these steps, since it is an integral
    part of the security design of Apple devices. If you are having trouble
-   with THOR scans via ASGARD on macOS, please check if the ``Full Disk
-   Access`` permission for the ASGARD agent was granted. Since macOS Mojave
-   (v10.14), you need to grant the same permissions to removable volumes,
+   with THOR scans via the Management Center on macOS, please check if the
+   ``Full Disk Access`` permission for the Endpoint Agent was granted.
+   Since macOS Mojave (v10.14), you need to grant the same permissions to
+   removable volumes,
    if you plan on scanning those.
 
 If you need to grant Full Disk Access via MDM, please have a look at the chapter

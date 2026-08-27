@@ -21,7 +21,7 @@ The Management Center will store all system logs under ``/var/log/asgard-managem
 Below you can find a list of logs and where they originate from:
 
 .. csv-table::
-   :file: ../csv/asgard-logs.csv
+   :file: ../csv/mc-logs.csv
    :widths: 22 42 37
    :delim: ;
    :header-rows: 1

@@ -9,7 +9,7 @@ current installation, please log into your server and execute the following comm
 
 .. code-block:: console
 
-    nextron@asgard:~$ timedatectl
+    nextron@mc:~$ timedatectl
                    Local time: Mon 2022-10-24 09:52:03 BST
                Universal time: Mon 2022-10-24 08:52:03 UTC
                      RTC time: Mon 2022-10-24 08:52:04
@@ -27,8 +27,8 @@ Now that you have the correct timezone you can set it the following way:
 
 .. code-block:: console
 
-	nextron@asgard:~$ sudo timedatectl set-timezone Europe/Prague
-	nextron@asgard:~$ timedatectl
+	nextron@mc:~$ sudo timedatectl set-timezone Europe/Prague
+	nextron@mc:~$ timedatectl
  	               Local time: Mon 2022-10-24 10:56:45 CEST
             	   Universal time: Mon 2022-10-24 08:56:45 UTC
  	                 RTC time: Mon 2022-10-24 08:56:46

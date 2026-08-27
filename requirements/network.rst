@@ -3,12 +3,13 @@
 Network Requirements
 --------------------
 
-ASGARD and other systems which will have to communicate with each other,
+The Management Center and other systems which will have to communicate
+with each other,
 need the following ports opened within the network. For a detailed and up
 to date list of our update and licensing servers, please visit https://www.nextron-systems.com/hosts/.
 
-From ASGARD Agent to ASGARD Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Endpoint Agent to Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -20,18 +21,18 @@ From ASGARD Agent to ASGARD Server
      - 443/tcp
    * - Syslog Forwarder (optional)
      - 514/udp [1]_
-   * - ASGARD online check (optional)
+   * - Management Center online check (optional)
      - ICMP
 
 The syslog port is optional, since your agents will work fine without it.
 Please see :ref:`administration/syslog:syslog forwarding` for more information.
 
 .. hint:: 
-  Your ASGARD Agents will check if they can reach your ASGARD
-  via HTTPs. ICMP is not necessary, but helps during troubleshooting.
+  Your Endpoint Agents will check if they can reach your Management
+  Center via HTTPs. ICMP is not necessary, but helps during troubleshooting.
 
-From Management Workstation to ASGARD Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Management Workstation to Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -44,8 +45,8 @@ From Management Workstation to ASGARD Server
    * - Command line administration
      - 22/tcp
 
-From ASGARD to SIEM
-^^^^^^^^^^^^^^^^^^^
+From Management Center to SIEM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -56,8 +57,8 @@ From ASGARD to SIEM
    * - Syslog forwarder
      - 514/udp [1]_
 
-From ASGARD to Analysis Cockpit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Management Center to Analysis Cockpit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -70,10 +71,10 @@ From ASGARD to Analysis Cockpit
    * - Syslog forwarder (optional)
      - 514/udp [1]_
 
-From ASGARD and Master ASGARD to the Internet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Management Center and Master Management Center to the Internet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ASGARD systems are configured to retrieve updates from the
+The Management Centers are configured to retrieve updates from the
 following remote systems via HTTPS on port 443/tcp:
 
 .. list-table:: 
@@ -82,7 +83,7 @@ following remote systems via HTTPS on port 443/tcp:
 
    * - Product
      - Remote Systems
-   * - ASGARD and system updates
+   * - Management Center and system updates
      - update-301.nextron-systems.com
    * - THOR, Aurora, and Signature updates
      - update1.nextron-systems.com
@@ -90,13 +91,13 @@ following remote systems via HTTPS on port 443/tcp:
      - update2.nextron-systems.com
 
 All proxy systems should be configured to allow access to these URLs
-without TLS/SSL interception. (ASGARD uses client-side SSL certificates
-for authentication). It is possible to configure a proxy server, username
-and password during the setup process of the ASGARD platform. Only
+without TLS/SSL interception. (The Management Center uses client-side SSL
+certificates for authentication). It is possible to configure a proxy
+server, username and password during the setup process of the platform. Only
 BASIC authentication is supported (no NTLM authentication support).
 
-From Master ASGARD to ASGARD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Master Management Center to Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -107,10 +108,11 @@ From Master ASGARD to ASGARD
    * - Management Backend
      - 5443/tcp
 
-You cannot manage ASGARD v3 systems from a Master ASGARD v2.
+You cannot manage Management Center v3 systems from a Master Management
+Center v2.
 
-From Management Workstation to Master ASGARD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Management Workstation to Master Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -128,7 +130,7 @@ Thunderstorm (optional)
 
 The following ports are being used by Thunderstorm.
 This is optional and only needed if you plan on using
-Thunderstorm in your ASGARD.
+Thunderstorm in your Management Center.
 
 .. list-table:: 
    :header-rows: 1
@@ -148,14 +150,14 @@ Secure Communication
 ^^^^^^^^^^^^^^^^^^^^
 
 Any connection within our products (with the exception of syslog over plaintext)
-is done via TLS. Clients verify the server certificate used by the ASGARD Management
-Center when connecting. This ensures that no attacker can read any sensitive
+is done via TLS. Clients verify the server certificate used by the
+Management Center when connecting. This ensures that no attacker can read any sensitive
 information if a Man in the Middle-attack-would-take place.
 
 Time Synchronization
 ^^^^^^^^^^^^^^^^^^^^
 
-ASGARD tries to reach the public Debian time servers by default.
+The Management Center tries to reach the public Debian time servers by default.
 
 .. list-table:: 
    :header-rows: 1
@@ -175,13 +177,15 @@ The NTP server configuration can be changed.
 DNS
 ^^^
 
-ASGARD needs to be able to resolve internal and external IP addresses.
+The Management Center needs to be able to resolve internal and external
+IP addresses.
 
 .. warning:: 
-  Please make sure that you install your ASGARD with a ``domain name``
+  Please make sure that you install your Management Center with a
+  ``domain name``
   (see :ref:`setup/network:network configuration`). If you do not set the
-  Domain Name and install the ASGARD package, your clients won't be able
-  to connect to your ASGARD.
+  Domain Name and install the package, your clients won't be able
+  to connect to your Management Center.
 
   All components you install should have a proper domain name configured
   to avoid issues further during the configuration.

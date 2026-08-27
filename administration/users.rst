@@ -25,13 +25,13 @@ You can download a list of all users in CSV format.
 Roles
 ^^^^^
 
-By default, ASGARD ships with the following pre-configured
+By default, the Management Center ships with the following pre-configured
 user roles. The pre-configured roles can be modified or
-deleted. The ASGARD role model is fully configurable.
+deleted. The role model is fully configurable.
 
 
 .. figure:: ../images/mc_roles-factory-defaults.png
-   :alt: ASGARD User Roles
+   :alt: User Roles
 
    User Roles – Factory Defaults
 
@@ -86,23 +86,26 @@ LDAP Configuration
 
 In order to configure LDAP, navigate to ``Settings`` > ``LDAP``.
 In the left column you can test and configure the LDAP connection itself.
-In the right column, the mapping of LDAP groups to ASGARD groups
+In the right column, the mapping of LDAP groups to Management Center groups
 (and its associated permissions) is defined.
 
-First check if your LDAP server is reachable by ASGARD by clicking "Test Connection".
+First check if your LDAP server is reachable by the Management Center by
+clicking "Test Connection".
 
 .. note::
-   If you are using LDAPS with a self-signed certificate or a custom CA, you must trust the signer on the ASGARD server.
+   If you are using LDAPS with a self-signed certificate or a custom CA,
+   you must trust the signer on the Management Center.
    Copy the CA certificate to ``/usr/local/share/ca-certificates``.
    Run ``sudo update-ca-certificates``.
-   Restart the ASGARD service: ``sudo systemctl restart asgard-management-center``.
+   Restart the Management Center service:
+   ``sudo systemctl restart asgard-management-center``.
 
 .. figure:: ../images/mc_ldap-server.png
    :alt: Configure the LDAP Server
 
    Configure the LDAP Server
 
-Then check the bind user you want to use for ASGARD. Read
+Then check the bind user you want to use for the Management Center. Read
 permissions on the bind user are sufficient. To find out
 the distinguished name you can use an LDAP browser or query
 using the PowerShell AD module command ``Get-ADUser <username>``.
@@ -117,8 +120,8 @@ users and their preferred attributes in your LDAP structure.
 A default for LDAP and AD in a flat structure is given in the
 **"Use recommended filters"** drop-down menu, but you can
 adapt it to your liking. The test button shows you if a login
-with that user would be successful and which groups ASGARD identified
-and could be used for a mapping to ASGARD groups.
+with that user would be successful and which groups the Management Center
+identified and could be used for a mapping to Management Center groups.
 
 .. figure:: ../images/mc_ldap-filter.png
    :alt: Configure the LDAP User and Group Filters
@@ -137,10 +140,11 @@ to ``(&(objectClass=user)(objectCategory=user)(userPrincipalName=%s))``
    save it, so that you can use it for testing purposes anytime,
    without changing your working configuration.
 
-After the LDAP configuration is set up, you need to provide role mapping from LDAP groups to ASGARD groups.
+After the LDAP configuration is set up, you need to provide role mapping
+from LDAP groups to Management Center groups.
 This is done in the right column by using the ``Add LDAP Role`` feature.
 
 .. figure:: ../images/mc_ldap-roles.png
-   :alt: LDAP Group to ASGARD Role Mapping
+   :alt: LDAP Group to Role Mapping
 
-   LDAP Group to ASGARD Role Mapping
+   LDAP Group to Role Mapping

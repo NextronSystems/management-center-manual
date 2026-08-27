@@ -5,7 +5,7 @@ Scan a Group of Systems
 
 A group scan is a scan task which is assigned to one or
 more asset. You define conditions, which can either be labels
-or the ASGARD Search Query, to specify which assets should be
+or the Search Query, to specify which assets should be
 scanned. Group scans are used to assign identical scans (in terms
 of settings and configuration) to multiple assets.
 
@@ -35,7 +35,7 @@ mentioned parameters, you can also configure the following:
      - Define which assets should be scanned with this group scan.
        You can either use the ``Simple`` target option, which uses labels,
        or you can use the ``Advanced`` target options, which makes use of
-       labels or the ASGARD Search Query. Leaving this option empty will scan all assets.
+       labels or the Search Query. Leaving this option empty will scan all assets.
    * - **Expires**
      - After this time frame, no scan orders will be issued to the connected agents. 
    * - **Scheduled Start**
@@ -44,12 +44,14 @@ mentioned parameters, you can also configure the following:
      - This specifies the maximum scans this group scan is assigning. Once the
        limit is reached, no more scans will be issued. Therefore you need to set
        a limit higher than the number of hosts you want to scan or enter ``0`` for
-       no limit. If you are using MASTER ASGARD, this limit is applied on each single
-       selected ASGARD.
+       no limit. If you are using a Master Management Center, this limit is
+       applied on each single selected Management Center.
    * - **Rate**
-     - The rate at which new scans are being issued by the ASGARD. You can control
+     - The rate at which new scans are being issued by the Management Center.
+       You can control
        network load with this option, since a scan also means that the asset needs to
-       download THOR from the ASGARD. We recommend to use this parameter in virtualized
+       download THOR from the Management Center. We recommend to use this
+       parameter in virtualized
        and oversubscribed environments in order to limit the number of parallel scans
        on your endpoints.
    * - **Max. Concurrent Scans**
@@ -89,7 +91,7 @@ The Status field can have the following values:
      - The group scan has not yet started. Either click play or wait
        for the scheduled start date (the job will start in a 5 minute window around the scheduled time).
    * - **Active**
-     - Scan is started, ASGARD will issue scans with the given parameters.
+     - Scan is started, the Management Center will issue scans with the given parameters.
    * - **Inactive**
      - No additional scan jobs are being issued. All single scans that are currently running will continue to do so.
    * - **Completed**

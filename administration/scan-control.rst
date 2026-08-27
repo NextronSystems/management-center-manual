@@ -95,7 +95,8 @@ THOR Excludes and False-Positive Filters
 
 In THOR you can define `directory and file excludes <https://thor-manual.nextron-systems.com/en/latest/usage/configuration.html#files-and-directories>`_
 and `false positive filters <https://thor-manual.nextron-systems.com/en/latest/usage/configuration.html#false-positives>`_.
-These features can be globally defined in ASGARD at ``Scan Control`` > ``THOR Config``.
+These features can be globally defined in the Management Center at
+``Scan Control`` > ``THOR Config``.
 
 .. figure:: ../images/mc_thor-config.png
    :alt: Scan Control - Global Directory Exclude and FP Filtering

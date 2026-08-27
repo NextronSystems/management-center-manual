@@ -1,9 +1,9 @@
 .. index:: Evidence Collection
 
-Evidence Collection 
+Evidence Collection
 ===================
 
-ASGARD provides two forms of collected evidence: 
+The Management Center provides two forms of collected evidence:
 
 1. Playbook output (file or memory collection, command output)
 2. Sample quarantine (sent by THOR via Bifrost protocol during the scan)
