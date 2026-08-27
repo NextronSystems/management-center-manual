@@ -3,10 +3,10 @@
 Hardware Requirements
 ---------------------
 
-ASGARDs hardware requirements depend on the number of connected
+The Management Center's hardware requirements depend on the number of connected
 endpoints and also on the intended use. For example, you should
 consider using more disk space if you are planning to use Bifrost
-or ASGARD's evidence collection feature extensively.
+or the Management Center's evidence collection feature extensively.
 
 .. list-table::
    :header-rows: 1

@@ -3,13 +3,13 @@
 Agent Debugging
 ===============
 
-This chapter contains debugging information for our ASGARD Agent.
+This chapter contains debugging information for our Endpoint Agent.
 
 SLES 11 Installation
 ~~~~~~~~~~~~~~~~~~~~
 
 On older SLES (SUSE Linux Enterprise Server) versions, the installation
-of the ASGARD Agent might fail with the following error:
+of the Endpoint Agent might fail with the following error:
 
 .. code-block:: none
 

@@ -21,10 +21,10 @@ Section of the Settings. The error message will look like this:
     * - <= 3.0.11
       - 3.0.12
 
-This bug will only occur if you upgraded your ASGARD Management
+This bug will only occur if you upgraded your Management
 Center from version 2.x to 3.x. The issue is caused by the
 ``controller.key`` file not being present in the ``/etc/asgard-management-center``
-directory. If you installed a fresh ASGARD Management Center 3.x,
+directory. If you installed a fresh Management Center 3.x,
 with the new web based installer, this issue will not occur.
 
 AMC#004: Workaround
@@ -34,7 +34,7 @@ To work around this issue, you can run the following command:
 
 .. code-block:: console
 
-  nextron@asgard:~$ sudo -u asgard-management-center ln -s /etc/asgard-management-center/server.key /etc/asgard-management-center/controller.key
+  nextron@mc:~$ sudo -u asgard-management-center ln -s /etc/asgard-management-center/server.key /etc/asgard-management-center/controller.key
   [sudo] password for nextron:
 
 This will create a symbolic link from the ``server.key`` to the
@@ -94,7 +94,7 @@ by the destination host (change the host and port values as needed).
 .. code-block:: console
   :emphasize-lines: 3, 6
 
-  nextron@asgard2:~$ openssl s_client -host cockpit3.domain.local -port 7443
+  nextron@mc:~$ openssl s_client -host cockpit3.domain.local -port 7443
   CONNECTED(00000005)                        
   depth=0 O = Nextron Systems GmbH, CN = cockpit3.domain.local
   verify error:num=20:unable to get local issuer certificate
@@ -133,14 +133,14 @@ AMC#002: High number of duplicate assets
 In some edge cases within restricted endpoint configurations,
 you can encounter a problem which causes some agents to send
 a lot of asset requests. This is mostly caused by hardened systems,
-where the asgard agent is not able to write to its own configuration
+where the endpoint agent is not able to write to its own configuration
 file. One example is SELinux prohibiting write access to the needed
 YAML file.
 
 AMC#002: Workaround
 ~~~~~~~~~~~~~~~~~~~
 
-The asgard-agent process needs write access to the configuration file.
+The Endpoint Agent process needs write access to the configuration file.
 
 Make sure the following condition is present to avoid multiple asset
 requests from the same endpoint:

@@ -3,26 +3,27 @@
 Updates
 =======
 
-ASGARD Updates
-^^^^^^^^^^^^^^
+Management Center Updates
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-ASGARD will search for ASGARD updates on a daily basis. Available
+The Management Center will search for updates on a daily basis. Available
 updates will automatically be shown in the section ``Updates``. 
 
-As soon as an ASGARD update is available, a button ``Upgrade from ... to ...``
+As soon as an update is available, a button ``Upgrade from ... to ...``
 appears. Clicking this button will start the update process. The
-ASGARD service will be restarted and the user will be forced to
-re-login. Generally update MASTER ASGARD before the connected ASGARDs.
+Management Center service will be restarted and the user will be forced to
+re-login. Generally update the Master Management Center before the
+connected Management Centers.
 
-.. figure:: ../images/mc_update-asgard.png
-   :alt: Updating ASGARD
+.. figure:: ../images/mc_update.png
+   :alt: Updating the Management Center
 
-   Updating ASGARD
+   Updating the Management Center
 
 Updates of THOR and THOR Signatures
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, ASGARD will search for signature updates and THOR
+By default, the Management Center will search for signature updates and THOR
 updates on an hourly basis. These updates will be set to active
 automatically. Therefore, a triggered scan will always employ the
 current THOR version and current signature version. You may disable
@@ -47,8 +48,9 @@ Please be aware, that this is a global setting and will affect all scans!
 
 .. hint:: 
    You can trigger a Manual Check and download new THOR packages by clicking
-   ``Manually Check for Updates``. This can also be used in new ASGARD 
-   installations, as sometimes it takes a while until ASGARD does this automatically.
+   ``Manually Check for Updates``. This can also be used in new Management
+   Center installations, as sometimes it takes a while until the Management
+   Center does this automatically.
 
 Agent Updates
 ^^^^^^^^^^^^^

@@ -1,14 +1,14 @@
 Broken file and folder permissions
 ----------------------------------
 
-The ASGARD Agent folder has in a normal installation specific
-permissions set. The ASGARD Agent checks regularly
+The Endpoint Agent folder has in a normal installation specific
+permissions set. The Endpoint Agent checks regularly
 for broken permissions and tries to fix them. If for some reason this
 process fails, you have to check and change the permissions manually.
 
 .. code-block:: none
 
-   2023/03/31 12:02:35 ASGARD_THOR: Error: failed to repair permissions: set security info: Access is denied.
+   2023/03/31 12:02:35 MC_THOR: Error: failed to repair permissions: set security info: Access is denied.
 
 To do this we wrote a little PowerShell script which can help you with
 this process. Please test the script before you deploy it in your

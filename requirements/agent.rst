@@ -3,7 +3,7 @@
 Agent Requirements
 ------------------
 
-The ASGARD Agent, which needs to be installed on endpoints, is a lightweight
+The Endpoint Agent, which needs to be installed on endpoints, is a lightweight
 service which is used to establish a secure connection with your Management
 Center. Memory usage of the agent is around 50 MB, which makes it very unobtrusive.
 THOR uses up to 1.5 GB of RAM additionally when scanning is in progress. This

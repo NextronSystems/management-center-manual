@@ -51,7 +51,8 @@ rulesets.
 
 .. note::
     You need to commit and push your changes after editing a ruleset.
-    ASGARD has to restart the service controller to read new configurations.
+    The Management Center has to restart the service controller to read new
+    configurations.
     In order to prevent multiple restarts in the case of an admin performing
     several configuration changes in succession, the admin has to initiate
     the reloading of the new configuration by going to ``Service Control`` >
@@ -156,8 +157,9 @@ Rule and Response Updates
 
 If new rules or rule updates are provides by the Aurora signatures, the updates
 have to be applied by the user manually in order to be affecting Aurora agents
-managed by ASGARD. An indicator is shown in the WebUI and the rules changes can
-be reviewed and applied at ``Service Control`` > ``Sigma`` > ``Rule Updates``. 
+managed by the Management Center. An indicator is shown in the WebUI and
+the rules changes can be reviewed and applied at ``Service Control`` >
+``Sigma`` > ``Rule Updates``.
 
     .. figure:: ../images/sc_update-sigma-rules.png
        :alt: Sigma Rule Updates for Aurora

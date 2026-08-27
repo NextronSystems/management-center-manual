@@ -3,7 +3,7 @@
 Backup & Restore
 ================
 
-You can schedule, create, and restore backups of your ASGARD Management Center
+You can schedule, create, and restore backups of your Management Center
 from the ``Settings`` > ``Backup & Restore`` section.
 
 Additionally, if you have old backups which were created via SSH on the system,

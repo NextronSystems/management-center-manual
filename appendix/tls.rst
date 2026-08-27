@@ -1,9 +1,9 @@
-.. index:: Install TLS certificates on ASGARD and MASTER ASGARD
+.. index:: Install TLS certificates on Management Center and Master Management Center
 
-Install TLS certificates on ASGARD and MASTER ASGARD
-====================================================
+Install TLS certificates on Management Center and Master Management Center
+==========================================================================
 
-There are several methods to sign the ASGARD generated CSR
+There are several methods to sign the Management Center generated CSR
 request. This section describes the two most common procedures.
 
 Use Case 1 - CSR Signing with a Microsoft Based CA
@@ -107,22 +107,23 @@ On the bottom of the page click ``Upload TLS Certificate`` and select the
 exported certificate from the previous step.
 
 .. figure:: ../images/mc_upload-tls-cert.png
-   :alt: ASGARD Certificate Import
+   :alt: Certificate Import
 
-   ASGARD Certificate Import
+   Certificate Import
 
 If all steps were followed, a message box should pop up indicating
 that the certificate was successfully installed.
 
-Navigate to Settings >> Services and restart the ``ASGARD 2 Service`` by clicking ``Restart`` button.
+Navigate to Settings >> Services and restart the
+``Management Center Service`` by clicking ``Restart`` button.
                                 
 .. figure:: ../images/mc_manage-services.png
-   :alt: ASGARD service restart
+   :alt: Management Center service restart
 
-   ASGARD service restart
+   Management Center service restart
 
 Please take into consideration that it could take a few minutes
-until the ASGARD Service is restarted successfully.
+until the Management Center service is restarted successfully.
 
 After the service has been successfully restarted, the installed
 certificate will be used by your Management Center.
@@ -189,7 +190,7 @@ Example:
     [...]
 
 **The second method** of including all extensions from the CSR to the new certificate,
-is via an extension file (for example ``asgard-test01.ext``) containing all your subjectAltName entries.
+is via an extension file (for example ``mc-test01.ext``) containing all your subjectAltName entries.
 This tells openssl to use a extension for signing the CSR. In our case the extension contains a list of
 ``subjectAltName`` values.
 
@@ -199,8 +200,8 @@ values of your CSR:
 
 .. code-block:: console
 
-   root@ca:~# cat asgard-test01.ext
-   subjectAltName = DNS:asgard-test01.nextron, IP Address:172.28.28.101
+   root@ca:~# cat mc-test01.ext
+   subjectAltName = DNS:mc-test01.nextron, IP Address:172.28.28.101
 
 The content should be identical to the values you set in your CSR. You can
 inspect those with the following command:
@@ -208,11 +209,11 @@ inspect those with the following command:
 .. code-block:: console
    :emphasize-lines: 17
 
-   root@ca:~# openssl req -in asgard-test01.csr -noout -text                                                                                                                [31/146]
+   root@ca:~# openssl req -in mc-test01.csr -noout -text                                                                                                                [31/146]
    Certificate Request:                                                                                                                                                                          
     Data:                                                                                                                                                                                     
         Version: 1 (0x0)                                                                                                                                                                      
-        Subject: C = DE, ST = Hesse, O = Nextron, OU = Security IT, CN = asgard-test01.nextron                                                                                                                                            
+        Subject: C = DE, ST = Hesse, O = Nextron, OU = Security IT, CN = mc-test01.nextron                                                                                                                                            
         Subject Public Key Info:                                                                                                                                                              
             Public Key Algorithm: rsaEncryption                                                                                                                                               
                 Public-Key: (4096 bit)                                                                                                                                                        
@@ -224,7 +225,7 @@ inspect those with the following command:
         Attributes:
             Requested Extensions:
                 X509v3 Subject Alternative Name: 
-                    DNS:asgard-test01.nextron, IP Address:172.28.28.101
+                    DNS:mc-test01.nextron, IP Address:172.28.28.101
 
 Prepare the CA certificate, CA private key and the certificate signing request (and optionally your extension
 file, if you chose method 2).
@@ -240,7 +241,7 @@ Execute/adapt the following command depending on the method you chose before:
 
 .. code-block:: console
 
-   root@ca:~# openssl ca -cert cacert.pem -keyfile cakey.pem -in asgard-test01.csr -out asgard-test01.crt -days 3650
+   root@ca:~# openssl ca -cert cacert.pem -keyfile cakey.pem -in mc-test01.csr -out mc-test01.crt -days 3650
    Using configuration from /etc/pki/tls/openssl.conf
    Enter pass phrase for cakey.pem:
 
@@ -254,7 +255,7 @@ Execute/adapt the following command depending on the method you chose before:
 .. code-block:: console
    :emphasize-lines: 19
 
-   root@ca:~# openssl ca -cert cacert.pem -keyfile cakey.pem -in asgard-test01.csr -out asgard-test01.crt -days 3650 -extfile asgard-test01.ext
+   root@ca:~# openssl ca -cert cacert.pem -keyfile cakey.pem -in mc-test01.csr -out mc-test01.crt -days 3650 -extfile mc-test01.ext
    Using configuration from /etc/pki/tls/openssl.conf
    Enter pass phrase for cakey.pem:
    Check that the request matches the signature
@@ -269,10 +270,10 @@ Execute/adapt the following command depending on the method you chose before:
                stateOrProvinceName       = Hesse
                organizationName          = Nextron
                organizationalUnitName    = Security IT
-               commonName                = asgard-test01.nextron
+               commonName                = mc-test01.nextron
            X509v3 extensions:
                X509v3 Subject Alternative Name: 
-                   DNS:asgard-test01.nextron IP Address:172.28.28.101
+                   DNS:mc-test01.nextron IP Address:172.28.28.101
    Certificate is to be certified until Feb 20 09:58:10 2033 GMT (3650 days)
 
 Enter the passphrase for your CA's private key

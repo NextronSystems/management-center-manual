@@ -10,31 +10,31 @@ has been set during the setup step :ref:`setup/network:network configuration`
 
 This leads to a variety of different problems. 
 
-The most important problem is that ASGARD Agents that install on endpoints
-will never be able to resolve and connect to the ASGARD server. 
+The most important problem is that Endpoint Agents that install on endpoints
+will never be able to resolve and connect to the Management Center. 
 
-Errors that appear in these cases 
+Errors that appear in these cases
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: none
 
-   Apr 23 12:07:12 debian10-dev/10.10.30.118 ASGARD_AGENT: Error:
+   Apr 23 12:07:12 debian10-dev/10.10.30.118 MC_AGENT: Error:
    could not run: rpc error: code = Unavailable desc = connection
    error: desc = "transport: authentication handshake failed: x509:
-   certificate is valid for wrong-fqdn, not asgard.nextron.internal"
+   certificate is valid for wrong-fqdn, not mc.nextron.internal"
 
 How to Fix a non-existing or wrong FQDN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The FQDN is set at installation time and is composed by the hostname
-and the domain name. The ASGARD Agents require a resolvable FQDN to
-correctly operate and connect to the ASGARD Server.
+and the domain name. The Endpoint Agents require a resolvable FQDN to
+correctly operate and connect to the Management Center.
 One of the processes which are executed at installation time include
 the integration of the FQDN - which should be set during installation - into
-the ASGARD agents. If we incorrectly set the FQDN or leave any of those
-values empty, the agents will fail to connect to ASGARD.
+the Endpoint Agents. If we incorrectly set the FQDN or leave any of those
+values empty, the agents will fail to connect to the Management Center.
 
-With this fix we will set a new FQDN for the ASGARD Management Center, recreate
+With this fix we will set a new FQDN for the Management Center, recreate
 the internal certificates, and rebuild the agents.
 
 .. warning:: 
@@ -45,22 +45,22 @@ the internal certificates, and rebuild the agents.
 Set a valid FQDN
 ^^^^^^^^^^^^^^^^
 
-To set a valid FQDN for your ASGARD Management Center server, follow the steps below.
+To set a valid FQDN for your Management Center server, follow the steps below.
 We are assuming that your local DNS server already has an A-Record assigned, so your
-clients can resolve the new hostname/FQDN of your ASGARD Management Center.
+clients can resolve the new hostname/FQDN of your Management Center.
 
-Connect via SSH to the ASGARD Management Center:
+Connect via SSH to the Management Center:
 
 .. code-block:: console
 
-  user@somehost:~$ ssh nextron@asgard-mc.example.org
+  user@somehost:~$ ssh nextron@mc.example.org
 
 Edit the hosts file. Please be careful with the changes in this file,
 as this might make your system unusable!
 
 .. code-block:: console
 
-   nextron@asgard-mc:~$ sudoedit /etc/hosts
+   nextron@mc:~$ sudoedit /etc/hosts
    [sudo] password for nextron: 
 
 You need to change the following line (**do not change the IP-Address!**):
@@ -70,7 +70,7 @@ You need to change the following line (**do not change the IP-Address!**):
    :emphasize-lines: 2
 
    127.0.0.1       localhost
-   172.16.0.20     asgard-mc
+   172.16.0.20     mc
 
    # The following lines are desirable for IPv6 capable hosts
    ::1     localhost ip6-localhost ip6-loopback
@@ -84,7 +84,7 @@ To this (values are examples, please change accordingly!)
    :emphasize-lines: 2
 
    127.0.0.1       localhost
-   172.16.0.20     asgard-mc.example.org asgard-mc
+   172.16.0.20     mc.example.org mc
 
    # The following lines are desirable for IPv6 capable hosts
    ::1     localhost ip6-localhost ip6-loopback
@@ -92,7 +92,7 @@ To this (values are examples, please change accordingly!)
    ff02::2 ip6-allrouters
 
 .. note:: 
-   If you did not set a static IP-Address for your ASGARD Management Center
+   If you did not set a static IP-Address for your Management Center
    server, your IP-Address in the second line of the file might be ``127.0.1.1``.
    This is due to your server using DHCP. It is advised that you are using a 
    static IP-Address. To change this, please see :ref:`setup/configure_os:changing the ip-address`.
@@ -102,10 +102,10 @@ in the output:
 
 .. code-block:: console
 
-   nextron@asgard-mc:~$ hostname --fqdn
-   asgard-mc.example.org
-   nextron@asgard-mc:~$ hostname
-   asgard-mc
+   nextron@mc:~$ hostname --fqdn
+   mc.example.org
+   nextron@mc:~$ hostname
+   mc
 
 If the first command shows the FQDN and the second one the hostname without domain,
 your changes were set up correctly and you can continue to the next step.
@@ -113,14 +113,15 @@ your changes were set up correctly and you can continue to the next step.
 Recreate the TLS Certificate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We need to recreate the TLS certificate to make the Agent to ASGARD communication
+We need to recreate the TLS certificate to make the Agent to Management
+Center communication
 possible again. Create a new file which will contain the script with the fix.
 In this example we'll use nano as the text editor. Make sure that the system has
 a valid FQDN.
 
 .. code-block:: console
 
-   nextron@asgard-mc:~$ nano fix-fqdn.sh
+   nextron@mc:~$ nano fix-fqdn.sh
 
 Insert the following content into the text editor:
 
@@ -143,13 +144,13 @@ Give the created script execution permissions and execute it:
 
 .. code-block:: console
 
-   nextron@asgard-mc:~$ chmod +x fix-fqdn.sh
-   nextron@asgard-mc:~$ sudo ./fix-fqdn.sh
+   nextron@mc:~$ chmod +x fix-fqdn.sh
+   nextron@mc:~$ sudo ./fix-fqdn.sh
 
-You should now be able to reach the ASGARD Server via the new FQDN.
+You should now be able to reach the Management Center via the new FQDN.
 Navigate to ``https://<YOUR-FQDN>:8443``, which reflects the FQDN we set earlier.
 
-At this point you have to install the ASGARD agents on your endpoints again.
+At this point you have to install the Endpoint Agents on your endpoints again.
 Remember to review the network requirements section to ensure all needed ports
-are open to the ASGARD Management Center from your endpoints.
+are open to the Management Center from your endpoints.
 See :ref:`requirements/network:network requirements`

@@ -3,9 +3,10 @@
 Asset Management
 ================
 
-In the ``Assets`` view you can see all the connected ASGARD
-agents. New assets will be placed under ``Asset Requests`` and need a
-manual approval before being able to connect to your ASGARD (for auto
+In the ``Assets`` view you can see all the connected Endpoint
+Agents. New assets will be placed under ``Asset Requests`` and need a
+manual approval before being able to connect to your Management Center
+(for auto
 accept see :ref:`administration/advanced:advanced settings`).
 
 If the ``Duplicate Assets`` view is visible, you should try to remediate
@@ -15,7 +16,7 @@ effects on the duplicate hosts.
 .. warning::
    Assets in the ``Duplicate Assets`` view indicate that one or more
    agents are running on multiple endpoints. This might be caused by
-   cloning a system with an already installed ASGARD Agent. Undesirable
+   cloning a system with an already installed Endpoint Agent. Undesirable
    side effects of duplicate assets are alternating hostnames and tasks
    that fail immediately.
 
@@ -24,9 +25,9 @@ For remediation please see :ref:`troubleshooting/agent-debugging:duplicate asset
 Asset Overview
 ^^^^^^^^^^^^^^
 
-Management of all endpoints registered with ASGARD can be performed
-in Asset Management. The assets will be presented as a table with an
-individual ASGARD ID, their IP addresses and host names.
+Management of all endpoints registered with the Management Center can be
+performed in Asset Management. The assets will be presented as a table
+with an individual ID, their IP addresses and host names.
 
 .. figure:: ../images/mc_assets-view.png
    :alt: Asset View
@@ -41,7 +42,7 @@ remote file system.
 
     * Depending on the user's role, some of the control buttons may be disabled
     * The ``Run Scan`` button might be greyed out in new installations - this is
-      because the ASGARD Management Center did not download the THOR packages yet.
+      because the Management Center did not download the THOR packages yet.
       You can either wait for a few minutes, or see the chapter
       :ref:`administration/updates:updates of thor and thor signatures`,
       to trigger a download manually.
@@ -77,7 +78,7 @@ The asset management section has extensive filtering capabilities, e.g.
 it is easy to select only Linux endpoints that have been online today
 and have a particular label assigned. 
 
-Export Asset List 
+Export Asset List
 ~~~~~~~~~~~~~~~~~
 
 The Import/Export Section allows you to export your assets to a CSV formatted file. 
@@ -89,7 +90,7 @@ The import function allows you to add or remove labels on assets based on column
 the previously generated CSV formatted file. 
 
 .. note::
-   This function is not available in the Master ASGARD. 
+   This function is not available in the Master Management Center. 
 
 The import function processes the values in the columns ``Add Labels ...`` and ``Remove Labels ...``
 only. In order to change labels, use the already exported list, add values in these
@@ -102,10 +103,10 @@ will be stripped from the labels.
 
    Asset Labeling via CSV
 
-ASGARD Search Query
-^^^^^^^^^^^^^^^^^^^
+Search Query
+^^^^^^^^^^^^
 
-You can search for Assets in your Management Center with the ``ASGARD Search Query``.
+You can search for Assets in your Management Center with the ``Search Query``.
 This allows you to write more complex queries to search for assets. Additionally,
 this helps you to be more flexible with your scan/response tasks, since you can
 just specify a query and not set labels for all assets first. A good example of
@@ -121,7 +122,7 @@ This would run the task on all linux systems in the subnet 172.16.50.0/24.
 The following operators are available:
 
 .. csv-table::
-     :file: ../csv/asgard-query-operators.csv
+     :file: ../csv/mc-query-operators.csv
      :widths: 30, 70
      :delim: ;
      :header-rows: 1
@@ -135,7 +136,7 @@ You can create simple or complex queries this way. You can group/separate querie
 The following keys for the asset query are available:
 
 .. csv-table::
-     :file: ../csv/asgard-query-fields.csv
+     :file: ../csv/mc-query-fields.csv
      :widths: 50, 50
      :delim: ;
      :header-rows: 1
@@ -144,9 +145,9 @@ The following keys for the asset query are available:
    You can see which query-name a field has by enabling the column in your asset view
    and clicking into the query text field:
 
-   .. figure:: ../images/asgard_asset_query_fieldnames.png
+   .. figure:: ../images/asset_query_fieldnames.png
 
-The ASGARD Search Query is the preferred tool to manage scans and assets.
+The Search Query is the preferred tool to manage scans and assets.
 If you are using the Analysis Cockpit and need to labels, you can still use
 them.
 
@@ -155,15 +156,16 @@ Asset Migration
 
 .. hint::
    You have to enable the option ``Show Response Control Advanced Tasks``
-   in the ``Settings`` > ``Advanced`` section of your ASGARD Management
+   in the ``Settings`` > ``Advanced`` section of your Management
    Center to allow Asset Migration.
 
 You can move an asset from one Management Center to another via the Maintenance
 Module of the Response Control. To do this, navigate to ``Assets`` and select the
 assets you want to migrate. Alternatively you can navigate to ``Response Control``
 and add a new task. You can now click the ``Add Task`` button to open the Task Menu.
-Choose the ``Maintenance`` module and then the ``Move asset to another ASGARD`` Type.
-You have to upload an agent installer from the ASGARD you want to migrate the asset to.
+Choose the ``Maintenance`` module and then the
+``Move asset to another Management Center`` Type. You have to upload an
+agent installer from the Management Center you want to migrate the asset to.
 
 .. figure:: ../images/mc_migrate-asset.png
    :alt: Management Center Move Asset
@@ -190,8 +192,9 @@ you want to delete the assets.
 To see all the deleted assets, change your view from ``Active Only`` to ``Deleted Only``.
 
 .. warning::
-   Deleted assets can no longer communicate with the ASGARD. Please use with caution.
-   This cannot be undone, you have to manually fix the asset.
+   Deleted assets can no longer communicate with the Management Center.
+   Please use with caution. This cannot be undone, you have to manually
+   fix the asset.
 
 .. figure:: ../images/mc_deleted-only.png
    :alt: Deleted Assets

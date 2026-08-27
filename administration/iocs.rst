@@ -3,7 +3,7 @@
 IOC Management
 ==============
 
-The ASGARD Management Center allows you to create and manage your own IOCs.
+The Management Center allows you to create and manage your own IOCs.
 Those IOCs can be used with THOR and Aurora.
 
 What's the difference between IOCs, IOC Groups, IOC Rulesets, and IOC Files?
@@ -87,10 +87,10 @@ Integrating IOCs through MISP
 
 .. note::
    In order to use MISP events and their IOCs for scanning, you
-   need to link your ASGARD with a MISP first. Please see
+   need to link your Management Center with a MISP first. Please see
    :ref:`administration/additional:link misp` for reference.
 
-ASGARD provides an easy to use interface for integrating IOCs from
+The Management Center provides an easy to use interface for integrating IOCs from
 a connected MISP into THOR scans. In order to add rules from a MISP,
 navigate to ``IOC Management`` > ``MISP`` > ``MISP Events``, select
 the IOCs and add them to the desired ruleset by using the button in
@@ -127,12 +127,12 @@ In order to use a MISP ruleset in a scan, add the ruleset in the
 
    Scanning with MISP Ruleset
 
-MISP Attributes used by ASGARD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MISP Attributes used by the Management Center
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Since not all the information and attributes in a MISP event are
-relevant to ASGARD and the THOR scanner, we provide a list of
-attributes which will be used by ASGARD:
+relevant to the Management Center and the THOR scanner, we provide a
+list of attributes which will be used by the Management Center:
 
    * hostname
    * ip-dst
@@ -156,5 +156,5 @@ attributes which will be used by ASGARD:
 
 .. warning:: 
    Only attributes with the flag ``IDS`` set to ``true`` will be used
-   by ASGARD. Please make sure that the flag is set if you are
+   by the Management Center. Please make sure that the flag is set if you are
    intending to use certain events/attributes.

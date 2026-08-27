@@ -19,4 +19,4 @@ Used for THOR updates:
 - update2.nextron-systems.com
 
 We do not support setups in which the CA of the intercepting proxy
-is used on our ASGARD appliances. 
+is used on our appliances.

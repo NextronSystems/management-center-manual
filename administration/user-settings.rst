@@ -60,7 +60,8 @@ and click ``Deactivate Two Factor Authentication``.
    :alt: Deactivate 2FA
 
 .. note:: 
-   If a user is unable to log into ASGARD to disable their own 2FA,
+   If a user is unable to log into the Management Center to disable their
+   own 2FA,
    follow the instructions at :ref:`troubleshooting/2fa:resetting two factor authentication`
 
 API Key

@@ -3,11 +3,12 @@
 Changing the IP-Address
 -----------------------
 
-ASGARD's IP-Address can be changed in **/etc/network/interfaces**. The IP is configured with the address variable.
+The Management Center's IP-Address can be changed in
+**/etc/network/interfaces**. The IP is configured with the address variable.
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudoedit /etc/network/interfaces
+   nextron@mc:~$ sudoedit /etc/network/interfaces
 
 .. code-block:: none
 
@@ -24,11 +25,11 @@ The new IP can be applied with the command **sudo systemctl restart networking**
 Verifying DNS Settings
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To verify if ASGARD is using the correct DNS Server, you can inspect the file ``/etc/resolv.conf``:
+To verify if the Management Center is using the correct DNS Server, you can inspect the file ``/etc/resolv.conf``:
 
 .. code-block:: console
 
-   nextron@asgard:~$ cat /etc/resolv.conf 
+   nextron@mc:~$ cat /etc/resolv.conf 
    search example.org
    nameserver 172.16.200.2
 
@@ -36,4 +37,4 @@ If you see errors in this configuration, you can change it with the following co
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudoedit /etc/resolv.conf
+   nextron@mc:~$ sudoedit /etc/resolv.conf
