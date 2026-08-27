@@ -4,7 +4,7 @@ Maintenance
 Log Rotation and Retention
 --------------------------
 
-ASGARD is rotating logs automatically at a set time interval. It is
+The Management Center is rotating logs automatically at a set time interval. It is
 important to keep in mind how long logs will be stored on the system
 before they get purged. All logs will be rotated and zipped into one
 file monthly, for up to 14 months.
@@ -15,12 +15,12 @@ you can inspect ``/etc/logrotate.d/asgard``.
 Syslog Logs
 ~~~~~~~~~~~
 
-ASGARD will store all logs under ``/var/lib/nextron/asgard2/log/``.
+The Management Center will store all logs under ``/var/lib/nextron/asgard2/log/``.
 This does not include the Scan Logs, as those are handled separately.
 
 If you require a longer retention period, please copy the oldest log
 packages to another directory or to a dedicated log server. Do not
-modify the built-in rotation settings as this might interfere with ASGARD updates!
+modify the built-in rotation settings as this might interfere with the Management Center updates!
 
 .. list-table::
    :header-rows: 1
@@ -30,7 +30,7 @@ modify the built-in rotation settings as this might interfere with ASGARD update
      - Name
    * - Audit
      - asgard-audit.log
-   * - ASGARD Management Center
+   * - Management Center
      - asgard.log
    * - Agent Agent and Service Controller
      - agent.log
@@ -41,7 +41,7 @@ modify the built-in rotation settings as this might interfere with ASGARD update
 
 If you want to forward those logs automatically to a dedicated server,
 you can set up :ref:`usage/administration:Rsyslog Forwarding`. Forwarded
-logs will still reside on ASGARD.
+logs will still reside on the Management Center.
 
 Regain Disk Space
 -----------------
@@ -58,7 +58,7 @@ out, you have several options:
 Safe-to-Delete Files
 ~~~~~~~~~~~~~~~~~~~~
 
-The following files are safe to delete. They are not needed for ASGARD to operate.
+The following files are safe to delete. They are not needed for the Management Center to operate.
 
 - ``/var/lib/nextron/asgard2/log/*.gz``
 
@@ -89,16 +89,16 @@ period at ``Settings`` > ``Bifrost``.
 
 The listed files are the results of THOR scans (scan-results), Tasks
 except Scans (generic-results) and the sessions of remote consoles (remote-console).
-They are not needed for ASGARD to function, but the data is viewed and
-available for download in ASGARD. This means deleting these files will
-not break ASGARD, but you lose the information provided by the files.
+They are not needed for the Management Center to function, but the data is viewed and
+available for download in the Management Center. This means deleting these files will
+not break the Management Center, but you lose the information provided by the files.
 If you need the disk space and cannot increase the disk, we suggest to
 delete these files older than a given date, that you no longer need.
 This can be done with a find-remove combination using the command line:
 
 .. code-block:: console
 
-   root@asgard:~# find /var/lib/nextron/asgard2/<directory> -mtime +<days> -print0 | xargs -0 -r rm
+   root@mc:~# find /var/lib/nextron/asgard2/<directory> -mtime +<days> -print0 | xargs -0 -r rm
 
 Where ``<directory>`` is one of ``scan-results/*.gz``, ``generic-results/*`` or ``remote-console/protocol/*``
 and ``<days>`` the number of days you want to keep. Files and folders older than ``<days>`` days will be deleted.

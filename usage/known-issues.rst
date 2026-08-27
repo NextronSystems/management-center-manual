@@ -13,11 +13,11 @@ AMC#015: THOR License not valid yet (timezone difference)
     * - <= 2.16.3
       - N/A
 
-There is currently a bug in the ASGARD Management Center which
+There is currently a bug in the Management Center which
 can can cause problems during THOR license generation. This happens
 if the following conditions are given:
 
--  An asset which is located in a different timezone to your ASGARD Management
+-  An asset which is located in a different timezone to your Management
    Center
 
 - The difference between the two timezones is greater than 8 hours.
@@ -33,24 +33,24 @@ AMC#015: Workaround
 ~~~~~~~~~~~~~~~~~~~
 
 The current workaround is to avoid issuing THOR licenses on your
-ASGARD Management Center during a specific time window. We take
+Management Center during a specific time window. We take
 the time difference between your asset and your Management Center
 and subtract 8 hours. The resulting time is the time window,
 beginning at 00:00 AM local time of your Management Center, from
 which you should avoid issuing licenses. Below are two examples:
 
-- ASGARD Management Center timezone: UTC +11
+- Management Center timezone: UTC +11
 - Asset timezone: UTC -3
 
 This results in a time difference of 14 hours. We subtract 8 hours
 from that and are left with 6 hours. That means you should avoid
 issuing new licenses during the following time:
 
-00:00 AM until 06:00 AM of the ASGARD Management Center local time.
+00:00 AM until 06:00 AM of the Management Center local time.
 
 If you have the following scenario, you will not encounter the problem:
 
-- ASGARD Management Center timezone: UTC +2
+- Management Center timezone: UTC +2
 - Asset timezone: UTC -3
 
 The timezone difference is smaller than 8.
@@ -80,8 +80,8 @@ Since this is an issue with Microsoft Edge, we can not fix this.
 You have to disable the translation tool of Edge to make the
 pages functional.
 
-AMC#013: Master ASGARD custom IOCs in Scheduled Group Scan
-----------------------------------------------------------
+AMC#013: Master Management Center custom IOCs in Scheduled Group Scan
+---------------------------------------------------------------------
 
 .. list-table::
     :header-rows: 1
@@ -92,49 +92,52 @@ AMC#013: Master ASGARD custom IOCs in Scheduled Group Scan
     * - <= 2.15.3
       - 2.15.5
 
-Due to a bug in the handling of scheduled group scans in your Master ASGARD,
+Due to a bug in the handling of scheduled group scans in your Master Management Center,
 you will face an issue, were custom IOCs are not updated. This means that you would
 use an old version of your custom IOCs for this specific scheduled group scan, even
 if they have changed since the scheduled group scan was created. This scenario
 happens if the following conditions are given:
 
-- Scheduled Group Scan on your Master ASGARD for **one specific ASGARD**
+- Scheduled Group Scan on your Master Management Center for **one specific Management Center**
 - Your Custom IOCs changed **after** the scheduled group scan was created (compiled)
 
-This led to the Master ASGARD not pushing the Custom IOC changes to the specific
-ASGARD (which you created the scheduled group scan for), after your IOCs have changed
+This led to the Master Management Center not pushing the Custom IOC changes to the specific
+Management Center (which you created the scheduled group scan for), after
+your IOCs have changed
 and your IOC Ruleset was compiled.
 
 From version 2.15.5, you will receive the following warning, if you have a
 scheduled group scan active with this bug:
 
 .. warning:: 
-  **Warning**: Due to a bug in the Master ASGARD, some scheduled group scans
+  **Warning**: Due to a bug in the Master Management Center, some scheduled group scans
   might not be affected by custom signature updates. We highly recommend
   to stop and recreate the group scans with the following ids: ``59``
 
 AMC#013: Fix
 ~~~~~~~~~~~~
 
-After you installed the version 2.15.5 or newer in your Master ASGARD and all
-connected ASGARDs, make sure to fix any scheduled group scan which are being
+After you installed the version 2.15.5 or newer in your Master Management Center and all
+connected Management Centers, make sure to fix any scheduled group scan which are being
 reported by the above warning.
 
 To do this, go to ``Scan Control`` > ``Scheduled Group Scans`` and activate the
 ``ID`` column. Search for the specific scan with the reported ID.
 
-.. figure:: ../images/master-asgard-amc013.png
-   :alt: Master ASGARD AMC#013
+.. figure:: ../images/master-mc-amc013.png
+   :alt: Master Management Center AMC#013
 
 Copy your THOR
 Flags and disable the scheduled group scan. You can now recreate the scheduled
-group scan with the exact settings and your target ASGARD. Afterwards, you can
+group scan with the exact settings and your target Management Center.
+Afterwards, you can
 activate the scheduled group scan again, this time no warnings will appear.
 From this point onwards, any changes to your IOCs and IOC Rulesets within your Master
-ASGARD will also be reflected on the ASGARD from your new scheduled group scan.
+Management Center will also be reflected on the Management Center from your
+new scheduled group scan.
 
 Repeat this step for any scheduled group scans which show in the warning message of
-your Master ASGARD. Newly created scheduled group scans do not have this bug.
+your Master Management Center. Newly created scheduled group scans do not have this bug.
 
 AMC#012: Missing asgard2-agent.yaml
 -----------------------------------
@@ -148,11 +151,11 @@ AMC#012: Missing asgard2-agent.yaml
     * - asgard2-agent (1.6.5)
       - Planned end of April 2023
 
-Due to a bug in the installer of our ASGARD Agent, there is a possibility that
+Due to a bug in the installer of our Endpoint Agent, there is a possibility that
 the configuration file (``asgard2-agent.yaml``) gets renamed but not replaced
 by a more current version. This usually happens if the agent installer is being
 run a second time, after the agent is already installed. In some rare cases this
-can also happen when the agent is being updated via your ASGARD. All together,
+can also happen when the agent is being updated via your Management Center. All together,
 this leaves the agent in an undesirable state, which will cause no tasks/jobs
 to be executed due to the missing config file (task will be in ``Pending`` state
 or return an error).
@@ -224,7 +227,7 @@ rights on the endpoint are needed.
   exit
 
 .. hint:: 
-  If you are seeing a second asset with the same hostname in your ASGARD, the issue was
+  If you are seeing a second asset with the same hostname in your Management Center, the issue was
   most likely caused by re-installing the agent over an already installed agent. Try to
   avoid running the installer a second time on systems which already have an agent installed.
   You can find information when the installer was being run in the installer log
@@ -322,14 +325,14 @@ AMC#010: High number of duplicate assets
 In some edge cases within restricted endpoint configurations,
 you can encounter a problem which causes some agents to send
 a lot of asset requests. This is mostly caused by hardened systems,
-where the asgard agent is not able to write to its own configuration
+where the endpoint agent is not able to write to its own configuration
 file. One example is SELinux prohibiting write access to the needed
 YAML file.
 
 AMC#010: Workaround
 ~~~~~~~~~~~~~~~~~~~
 
-The asgard-agent process needs write access to the configuration file.
+The Endpoint Agent process needs write access to the configuration file.
 
 Make sure the following condition is present to avoid multiple asset
 requests from the same endpoint:
@@ -368,19 +371,19 @@ period of time, due to the file growing bigger and not being rotated.
 AMC#009: Workaround
 ~~~~~~~~~~~~~~~~~~~
 
-To fix that problem you have to connect via ssh to your ASGARD Management Center
+To fix that problem you have to connect via ssh to your Management Center
 and edit the following file (as root user):
 
 .. code-block:: console 
 
-    user@unix:~$ ssh nextron@asgard
+    user@unix:~$ ssh nextron@mc
 
 .. code-block:: console
 
-    nextron@asgard:~$ sudoedit /etc/logrotate.d/asgard
+    nextron@mc:~$ sudoedit /etc/logrotate.d/asgard
     [sudo] password for nextron:
 
-You will see the contents of the asgard logrotate file. The entry on the bottom of
+You will see the contents of the logrotate file. The entry on the bottom of
 the file will be the one you need to change. Please make sure to only change the
 following highlighted line:
 
@@ -430,7 +433,7 @@ with the next run. If you need to rotate the file immediately, run the following
 
 .. code-block:: console
 
-    nextron@asgard:~$ sudo logrotate -v /etc/logrotate.d/asgard
+    nextron@mc:~$ sudo logrotate -v /etc/logrotate.d/asgard
 
 You should see in your output something along the lines of the following:
 
@@ -464,17 +467,17 @@ After clicking on the asset timeline, the following error appears:
 AMC#008: Workaround
 ~~~~~~~~~~~~~~~~~~~
 
-To fix that problem you have to connect via ssh to your ASGARD Management Center and run the following commands. 
+To fix that problem you have to connect via ssh to your Management Center and run the following commands. 
 
 .. code-block:: console 
 
-    user@unix:~$ ssh nextron@asgard
+    user@unix:~$ ssh nextron@mc
 
 .. code-block:: console
 
-    nextron@asgard:~$ sudo touch /var/lib/nextron/asgard2/log/agent.log
+    nextron@mc:~$ sudo touch /var/lib/nextron/asgard2/log/agent.log
     [sudo] password for nextron: 
-    nextron@asgard:~$ sudo chown asgard2: /var/lib/nextron/asgard2/log/agent.log
+    nextron@mc:~$ sudo chown asgard2: /var/lib/nextron/asgard2/log/agent.log
 
 AMC#007: Sigma Rule Update Fails
 --------------------------------
@@ -546,7 +549,7 @@ AMC#005: Basename Missing Operand after SSH Login
     * - 2.0.0
       - >=2.14.5
 
-After logging into ASGARD Management Center via SSH right
+After logging into Management Center via SSH right
 after installing the base system, the following message can appear: 
 
 .. code-block:: none
@@ -556,7 +559,7 @@ after installing the base system, the following message can appear:
 
 It is caused by a unhandled condition in the MOTD (message of
 the day) script that evaluates the version of the scanners and
-signatures. After installing ASGARD it takes some minutes to
+signatures. After installing the Management Center it takes some minutes to
 retrieve and install all scanners from the update servers.
 
 The issue is known and can be ignored.
@@ -580,7 +583,7 @@ AMC#004: RPM Packages do not have a compatible architecture
       - Under investigation
 
 Some Linux systems return this error message when installing
-the RPM packages of the ASGARD agents. 
+the RPM packages of the Endpoint Agents. 
 
 .. code-block:: none
 
@@ -610,15 +613,15 @@ AMC#004: Workaround 2
 
 You can build a new RPM package and use it for automated installations.
 
-Log into the Asgard server which should be used by the clients to
+Log into the Management Center which should be used by the clients to
 connect to and execute the following steps:
 
 .. code-block:: console
 
-    nextron@asgard:~$ sudo -u asgard2 -s # Open a shell with the access rights of the asgard2 user
-    asgard2@asgard:~$ rpmbuild --target x86_64 --buildroot /var/lib/nextron/asgard2/templates/rpm/BUILDROOT/x86_64 -bb /var/lib/nextron/asgard2/templates/rpm/SPECS/asgard2-agent-amd64.spec
+    nextron@mc:~$ sudo -u asgard2 -s # Open a shell with the access rights of the asgard2 user
+    asgard2@mc:~$ rpmbuild --target x86_64 --buildroot /var/lib/nextron/asgard2/templates/rpm/BUILDROOT/x86_64 -bb /var/lib/nextron/asgard2/templates/rpm/SPECS/asgard2-agent-amd64.spec
 
-Use the following file instead of the RPM from the Agent Download section in the Asgard UI:
+Use the following file instead of the RPM from the Agent Download section in the Management Center UI:
 
 ``/var/lib/nextron/asgard2/templates/rpm/x86_64/asgard2-agent-1-1.0.0.x86_64.rpm``
 
@@ -629,9 +632,9 @@ One possibility to achieve this is to use the following commands:
 
 .. code-block:: console
 
-    asgard2@asgard:~$ exit # close the session of the asgard2 user if still open
-    nextron@asgard:~$ sudo cp /var/lib/nextron/asgard2/templates/rpm/x86_64/asgard2-agent-1-1.0.0.x86_64.rpm /home/nextron/
-    nextron@asgard:~$ sudo chown nextron:nextron /home/nextron/asgard2-agent-1-1.0.0.x86_64.rpm
+    asgard2@mc:~$ exit # close the session of the asgard2 user if still open
+    nextron@mc:~$ sudo cp /var/lib/nextron/asgard2/templates/rpm/x86_64/asgard2-agent-1-1.0.0.x86_64.rpm /home/nextron/
+    nextron@mc:~$ sudo chown nextron:nextron /home/nextron/asgard2-agent-1-1.0.0.x86_64.rpm
 
 The resulting RPM should no longer cause the described "unsupported
 architecture" error message when it is used with ``yum`` or ``dnf``.
@@ -641,8 +644,8 @@ AMC#004: Workaround 3
 
 There are rare cases where the package installation should be
 automated and the command line flags are not an option. In this
-cases it is possible to perform the ASGARD agent installation
-manually. This requires to collect some files from ASGARD and
+cases it is possible to perform the Endpoint Agent installation
+manually. This requires to collect some files from the Management Center and
 move them to the asset that should be connected.
 
 .. code-block:: bash
@@ -689,7 +692,7 @@ Afterwards the installation is done by running:
 
     user@host:~$ sudo /var/lib/asgard2-agent/asgard2-agent -install
 
-To uninstall the ASGARD agent without using the RPM package the following steps can be used:
+To uninstall the Endpoint Agent without using the RPM package the following steps can be used:
 
 .. code-block:: console
 
@@ -709,7 +712,7 @@ AMC#003: Error on newly installed Management Center
     * - 2.11.11
       - Open
 
-You just installed an ASGARD Management Center and get error messages such as
+You just installed a Management Center and get error messages such as
     
 .. code-block:: none
 
@@ -724,16 +727,17 @@ or
     Cannot read properties of null (reading 'forEach')
 
 This happens if you want to initiate THOR scans or access THOR scan settings
-before ASGARD was able to download the THOR packages from our update servers.
+before the Management Center was able to download the THOR packages from
+our update servers.
 
 AMC#003: Workaround
 ~~~~~~~~~~~~~~~~~~~
 
-Make sure ASGARD is able to access our update servers
+Make sure the Management Center is able to access our update servers
 (see ``System Status``: Connectivity Test or ``System Status`` > ``Diagnostics``
 and that you have imported a valid license (see ``Licensing``).
 
-You can either wait for ASGARD to download the THOR packages
+You can either wait for the Management Center to download the THOR packages
 automatically (check at ``Updates`` > ``THOR and Signatures``) or
 initiate a download of THOR packages and signatures manually by
 clicking the "Manually Check for Updates" button at ``Updates`` > ``THOR and Signatures``.
@@ -763,7 +767,7 @@ the "Edit false positives filters of this rule" action.
 
 If you need global false positive filter, you can edit the file
 ``/var/lib/nextron/asgard2/products/aurora-config/false-positives.cfg``
-directly via the ASGARD command line. In order for the changes to take effect it is important
+directly via the Management Center command line. In order for the changes to take effect it is important
 **NOT** to click the ``Service Control`` > ``Aurora`` > ``False Positive Filters`` > ``Save`` button.
 
 Instead go to ``Service Control`` > ``Aurora`` > ``Configurations``
@@ -801,7 +805,7 @@ Example with API endpoint ``/playbooks/search``:
     .. code-block:: console
 
        user@host:~$ curl -X 'GET' \
-         'https://asgard.local:8443/api/v1/playbooks/search?limit=1' \
+         'https://mc.local:8443/api/v1/playbooks/search?limit=1' \
          -H 'accept: application/json'
 
 
@@ -810,10 +814,10 @@ Example with API endpoint ``/playbooks/search``:
     .. code-block:: console
 
        user@host:~$ curl -X 'GET' \
-         'https://asgard.local:8443/api/v1/playbooks/search?limit=1' \
+         'https://mc.local:8443/api/v1/playbooks/search?limit=1' \
          -H 'accept: application/json' \
          -H 'Authorization: <your-API-key>'
 
 You also need the ``--insecure`` curl flag, if you are using the self-signed
-certificate that ASGARD shipped with.
+certificate that Management Center shipped with.
 

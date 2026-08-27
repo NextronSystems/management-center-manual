@@ -1,19 +1,18 @@
 Changelog
 =========
 
-This chapter contains all the changes of the ASGARD
-Management Center.
+This chapter contains all the changes of the Management Center.
 
-ASGARD Management Center
-^^^^^^^^^^^^^^^^^^^^^^^^
+Management Center
+^^^^^^^^^^^^^^^^^
 
-Changelog of ASGARD Management Center releases since version 2.0.0
+Changelog of Management Center releases since version 2.0.0
 
-ASGARD 2.17
-###########
+Management Center 2.17
+######################
 
-ASGARD 2.17.2
-~~~~~~~~~~~~~
+Management Center 2.17.2
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -32,11 +31,11 @@ ASGARD 2.17.2
     * - Bugfix
       - Fixed loading of sigma response rules, when corresponding sigma rules are missing
 
-ASGARD 2.16
-###########
+Management Center 2.16
+######################
 
-ASGARD 2.16.3
-~~~~~~~~~~~~~
+Management Center 2.16.3
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -53,8 +52,8 @@ ASGARD 2.16.3
     * - Bugfix
       - Fixed wording in MacOS binary signatures
 
-ASGARD 2.16.2
-~~~~~~~~~~~~~
+Management Center 2.16.2
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -71,29 +70,29 @@ ASGARD 2.16.2
     * - Feature
       - Added uuids to tables like THOR scans, Aurora services, group tasks and many more
     * - Change
-      - Improved license generation for assets, THOR and Aurora. Licenses will no longer be max. valid for 90 days. Instead, they are valid as long as the ASGARD license. We also added a small tolerance that allows you to slightly exceed the license limit.
+      - Improved license generation for assets, THOR and Aurora. Licenses will no longer be max. valid for 90 days. Instead, they are valid as long as the Management Center license. We also added a small tolerance that allows you to slightly exceed the license limit.
     * - Security
       - OS Security Fix
     * - Bugfix
-      - Fixed issues with regenerating IOC rulesets for scheduled group scans (Master ASGARD only)
+      - Fixed issues with regenerating IOC rulesets for scheduled group scans (Master Management Center only)
     * - Bugfix
-      - Fixed an ASGARD license issue in combination with Master ASGARD and Broker Network
+      - Fixed a Management Center license issue in combination with Master Management Center and Broker Network
     * - Bugfix
       - Fixed an MacOS signing issue
     * - Bugfix
       - Fixed small bug in agent installer for MacOS
     * - Bugfix
-      - Fixed freezing Broker Network configuration page (Master ASGARD only)
+      - Fixed freezing Broker Network configuration page (Master Management Center only)
     * - Bugfix
       - Fixed issues with delayed Full Disk Access on MacOS
     * - Bugfix
       - Fixed inaccurate RAM usage measurement on MacOS and AIX in THOR launcher and Playbook launcher
 
-ASGARD 2.15
-###########
+Management Center 2.15
+######################
 
-ASGARD 2.15.3
-~~~~~~~~~~~~~
+Management Center 2.15.3
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -116,7 +115,7 @@ ASGARD 2.15.3
     * - Bugfix
       - Fixed non-working gatekeeper to broker connection for two different host names
     * - Bugfix
-      - Removed some debug messages in asgard log
+      - Removed some debug messages in the ``asgard.log`` file
     * - Bugfix
       - Fixed a typo in logrotate config that caused agent access log to not be rotated
     * - Bugfix
@@ -128,7 +127,7 @@ ASGARD 2.15.3
     * - Bugfix
       - Removed raw code line in custom signature ioc table
     * - Bugfix
-      - Do not show 'labels: all' in group tasks that are based on ASGARD Query
+      - Do not show 'labels: all' in group tasks that are based on Search Query
     * - Bugfix
       - Fixed non-working deletion of agent installers that are tagged as legacy
     * - Bugfix
@@ -136,11 +135,11 @@ ASGARD 2.15.3
     * - Bugfix
       - Fixed crashing LogWatcher caused by Sigma rulesets without custom rules
 
-ASGARD 2.14
-###########
+Management Center 2.14
+######################
 
-ASGARD 2.14.6
-~~~~~~~~~~~~~
+Management Center 2.14.6
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -157,8 +156,8 @@ ASGARD 2.14.6
     * - Bugfix
       - Fixed non-working advanced labeling in group scan/task dialog
 
-ASGARD 2.14.5
-~~~~~~~~~~~~~
+Management Center 2.14.5
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -179,13 +178,13 @@ ASGARD 2.14.5
     * - Feature
       - Optionally create group tasks with an asset query instead of labels
     * - Feature
-      - The agent config can now be maintained from ASGARD, e.g. change proxy settings
+      - The agent config can now be maintained from the Management Center, e.g. change proxy settings
     * - Feature
-      - Move agent to a different ASGARD
+      - Move agent to a different Management Center
     * - Feature
       - Automatically resume THOR scans that have been terminated due to shutdown signals (e.g. on reboot)
     * - Feature
-      - Added a lot new ASGARD features to Master ASGARD, e.g. manage and download agent installers, manage Broker Network
+      - Added a lot new Management Center features to Master Management Center, e.g. manage and download agent installers, manage Broker Network
     * - Feature
       - Allows to delete assets
     * - Feature
@@ -203,7 +202,7 @@ ASGARD 2.14.5
     * - Feature
       - Added more columns in some tables, e.g. 'creator' in service configurations or 'active since' in services
     * - Feature
-      - Download ASGARD users as CSV
+      - Download Management Center users as CSV
     * - Feature
       - Set description for remote consoles
     * - Feature
@@ -211,7 +210,7 @@ ASGARD 2.14.5
     * - Feature
       - Bulk task / scan creation
     * - Change
-      - Require min. TLS 1.3 for all agent connections. To disable min. TLS 1.3, set "LegacyTLS=1" in the ASGARD config file.
+      - Require min. TLS 1.3 for all agent connections. To disable min. TLS 1.3, set "LegacyTLS=1" in the Management Center config file.
     * - Change
       - Disable "Add and activate" button for "Add group task", if "Scheduled start" is set
     * - Change
@@ -219,7 +218,7 @@ ASGARD 2.14.5
     * - Change
       - Set scan status to error if THOR scan result does not contain 'THOR scan finished' message
     * - Change
-      - Collect stdout/stderr at the end of each playbook step instead of streaming it directly to ASGARD
+      - Collect stdout/stderr at the end of each playbook step instead of streaming it directly to the Management Center
     * - Change
       - Automatically set THOR's max runtime to unlimited and removed THOR's max runtime argument from THOR flag list
     * - Change
@@ -259,11 +258,11 @@ ASGARD 2.14.5
     * - Bugfix
       - Fixed "in a few seconds" last seen timestamps that have been caused by either a wrong server or browser clock
     * - Bugfix
-      - Removed some Aurora and Sigma error messages in ASGARD log after fresh installation
+      - Removed some Aurora and Sigma error messages in the Management Center log after fresh installation
     * - Bugfix
       - Removed a race condition between automatic and manual update checks that may cause corrupt product version numbers
     * - Bugfix
-      - Fixed missing "enabled/disabled service" history entries on ASGARDs that are connected to a Master ASGARD
+      - Fixed missing "enabled/disabled service" history entries on Management Centers that are connected to a Master Management Center
     * - Bugfix
       - Fixed corrupt network interfaces search in asset table for new assets that had no interrogate job yet
     * - Bugfix
@@ -273,11 +272,11 @@ ASGARD 2.14.5
     * - Bugfix
       - Fixed non-working obfuscated agent for AIX
 
-ASGARD 2.13
-###########
+Management Center 2.13
+######################
 
-ASGARD 2.13.11
-~~~~~~~~~~~~~~
+Management Center 2.13.11
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -292,14 +291,14 @@ ASGARD 2.13.11
     * - Type
       - Description
     * - Bugfix
-      - Fixed possible deadlock in synchronization between Master ASGARD and ASGARD
+      - Fixed possible deadlock in synchronization between Master Management Center and Management Center
     * - Bugfix
-      - Fixed EOF error in synchronization between Master ASGARD and ASGARD
+      - Fixed EOF error in synchronization between Master Management Center and Management Center
     * - Bugfix
       - Removed a hard-coded limit that caused some missing data in UI
 
-ASGARD 2.13.8
-~~~~~~~~~~~~~
+Management Center 2.13.8
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -318,12 +317,12 @@ ASGARD 2.13.8
     * - Security
       - Trusted Proxies
     * - Bugfix
-      - Fixed missing description for ASGARDs on Master ASGARD
+      - Fixed missing description for Management Centers on Master Management Center
     * - Bugfix
-      - Fixed bug in first sync between ASGARD and Master ASGARD
+      - Fixed bug in first sync between the Management Center and Master Management Center
 
-ASGARD 2.13.7
-~~~~~~~~~~~~~
+Management Center 2.13.7
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -340,8 +339,8 @@ ASGARD 2.13.7
     * - Security
       - OS Security Fix
 
-ASGARD 2.13.6
-~~~~~~~~~~~~~
+Management Center 2.13.6
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -364,11 +363,11 @@ ASGARD 2.13.6
     * - Bugfix
       - short C2 IP addresses such as 1.1.1.1 are no longer getting a 'short' hint message
 
-ASGARD 2.13.5
-~~~~~~~~~~~~~
+Management Center 2.13.5
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. important:: 
-   Master ASGARD must be upgraded before upgrading the connected ASGARDs
+   Master Management Center must be upgraded before upgrading the connected Management Centers
 
 .. list-table:: 
     :header-rows: 1
@@ -405,7 +404,7 @@ ASGARD 2.13.5
     * - Feature
       - Custom IOC rulesets and MISP rulesets support for Aurora Agent
     * - Feature
-      - The Master ASGARD can now generate THOR download links and provide a License API, too
+      - The Master Management Center can now generate THOR download links and provide a License API, too
     * - Feature
       - Added 'Auto Refresh' to most tables that can automatically refresh the table in a specified interval
     * - Feature
@@ -421,7 +420,7 @@ ASGARD 2.13.5
     * - Feature
       - Show warning if automatic THOR Signature updates are disabled and the currently used THOR Signatures are outdated
     * - Feature
-      - Show warning if ASGARD license expires soon
+      - Show warning if Management Center license expires soon
     * - Feature
       - Show warning if a configured scheduled group scan is running with an outdated THOR version
     * - Feature
@@ -435,7 +434,7 @@ ASGARD 2.13.5
     * - Feature
       - New Sigma response flag "lowprivonly" that applies responses only on processes with low privileges
     * - Feature
-      - Logging time stats and network traffic of Master ASGARD synchronization
+      - Logging time stats and network traffic of Master Management Center synchronization
     * - Feature
       - Show services that use ioc / misp / sigma ruleset when compiling / deleting ruleset
     * - Feature
@@ -473,11 +472,11 @@ ASGARD 2.13.5
     * - Change
       - Other smaller UX stuff
     * - Change
-      - Improved performance between Master ASGARD and ASGARD
+      - Improved performance between Master Management Center and Management Center
     * - Change
       - Table columns are not clickable anymore, use the expand button in the first column instead
     * - Change
-      - Added hostname of ASGARD to CSR generator
+      - Added hostname of the Management Center to CSR generator
     * - Change
       - Playbook steps can now be managed in the right sidebar instead of the expanded table row in the playbook table
     * - Change
@@ -513,17 +512,17 @@ ASGARD 2.13.5
     * - Bugfix
       - Some collected Aurora or LogWatcher events were corrupt
     * - Bugfix
-      - Fixed synchronization issues between Master ASGARD and ASGARDs caused by time sync issues
+      - Fixed synchronization issues between Master Management Center and Management Centers caused by time sync issues
     * - Bugfix
-      - Fixed non-working 'Agent Update Available' and 'Service Controller Update Available' indicators on Master ASGARD
+      - Fixed non-working 'Agent Update Available' and 'Service Controller Update Available' indicators on Master Management Center
     * - Bugfix
       - Added autoremove to upgrade routine to prevent issues with boot partition
 
-ASGARD 2.12
-###########
+Management Center 2.12
+######################
 
-ASGARD 2.12.10
-~~~~~~~~~~~~~~
+Management Center 2.12.10
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -540,8 +539,8 @@ ASGARD 2.12.10
     * - Bugfix
       - Fixed some missing MISP attributes in MISP events
 
-ASGARD 2.12.9
-~~~~~~~~~~~~~
+Management Center 2.12.9
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -558,8 +557,8 @@ ASGARD 2.12.9
     * - Bugfix
       - Fixed non-working tls certificate upload
 
-ASGARD 2.12.8
-~~~~~~~~~~~~~
+Management Center 2.12.8
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -626,7 +625,7 @@ ASGARD 2.12.8
     * - Bugfix
       - Fixed an issue that causes some API keys to be corrupt
     * - Bugfix
-      - Fixed non-working 'Install Service Controller' playbook on Master ASGARD
+      - Fixed non-working 'Install Service Controller' playbook on Master Management Center
     * - Bugfix
       - Updated interrogate job to detect 'Windows 11' correctly
     * - Bugfix
@@ -640,11 +639,11 @@ ASGARD 2.12.8
     * - Bugfix
       - Fixed some missing MISP iocs in THOR download package
     * - Bugfix
-      - Fixed permissions on some files that caused backup process of ASGARD config files on Master ASGARD to not work properly
+      - Fixed permissions on some files that caused backup process of the Management Center config files on Master Management Center to not work properly
     * - Bugfix
       - Fixed encryption issues with custom signatures for THOR Lite
     * - Bugfix
-      - Fixed missing import in ntp config that causes ntp to not work properly on some ASGARDs
+      - Fixed missing import in ntp config that causes ntp to not work properly on some Management Centers
     * - Bugfix
       - Fixed tasks that are pending forever due to unknown task module
     * - Bugfix
@@ -652,11 +651,11 @@ ASGARD 2.12.8
     * - Bugfix
       - Fixed wrong file extension of stdout and stderr file in group task result package
 
-ASGARD 2.11
-###########
+Management Center 2.11
+######################
 
-ASGARD 2.11.11
-~~~~~~~~~~~~~~
+Management Center 2.11.11
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -667,10 +666,10 @@ ASGARD 2.11.11
 .. list-table::
     :header-rows: 1
 
-    * - IMPORTANT: Please read before you upgrade your ASGARD!
+    * - IMPORTANT: Please read before you upgrade your Management Center!
     * - The upgrade can take up to one hour in large installations, do not reboot during installation
     * - The API has been revised. This will potentially break existing API integrations
-    * - Master ASGARD must be upgraded before upgrading the connected ASGARDs
+    * - Master Management Center must be upgraded before upgrading the connected Management Centers
     * - To enable new Service Control section add Service Control right to respective roles (Settings > Roles)
     * - Existing group scans will be stopped and can not be restarted or resumed and must therefore be recreated
     * - Scheduled group scans will continue working unless custom IOCs are in use. If custom IOCs are in use, scheduled group scans must be stopped and recreated in order to function properly
@@ -699,11 +698,11 @@ ASGARD 2.11.11
     * - Feature
       - CPU-, RAM- and DISK-usage are now automatically refreshing in UI every second
     * - Feature
-      - New ASGARD status light in UI (green = no overload, yellow = temporary overloaded, red = overloaded)
+      - New Management Center status light in UI (green = no overload, yellow = temporary overloaded, red = overloaded)
     * - Feature
       - CSV exports now contain more information, added CSV export to many more tables
     * - Feature
-      - ASGARD can now handle multiple licenses
+      - The Management Center can now handle multiple licenses
     * - Feature
       - Licenses for archived assets are invalidated after 3 month and the license count is reduced accordingly
     * - Feature
@@ -715,7 +714,7 @@ ASGARD 2.11.11
     * - Feature
       - Improved LDAP settings and testing options
     * - Feature
-      - The asset timeline is now available on Master ASGARD
+      - The asset timeline is now available on Master Management Center
     * - Feature
       - Repack agent installers from UI
     * - Feature
@@ -729,9 +728,9 @@ ASGARD 2.11.11
     * - Change
       - Improved security by adding more strict http headers to UI
     * - Change
-      - The Master ASGARD now requires that all connected ASGARDs are at least version 2.11.0
+      - The Master Management Center now requires that all connected Management Centers are at least version 2.11.0
     * - Change
-      - Regenerated ASGARD's certificate for agent communication with SAN extension
+      - Regenerated the Management Center's certificate for agent communication with SAN extension
     * - Change
       - The agent stream API now terminates streams that are inactive for over 10 minutes
     * - Change
@@ -739,13 +738,13 @@ ASGARD 2.11.11
     * - Change
       - Improved performance by removing some mutexes and using more specific mutexes for critical data
     * - Change
-      - Master ASGARD now synchronizes scanners and signatures with the connected ASGARDs
+      - Master Management Center now synchronizes scanners and signatures with the connected Management Centers
 
-ASGARD 2.10
-###########
+Management Center 2.10
+######################
 
-ASGARD 2.10.10
-~~~~~~~~~~~~~~
+Management Center 2.10.10
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -762,8 +761,8 @@ ASGARD 2.10.10
     * - Change
       - Added a maximum of users that will be collected with interrogate
 
-ASGARD 2.10.9
-~~~~~~~~~~~~~
+Management Center 2.10.9
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -788,7 +787,7 @@ ASGARD 2.10.9
     * - Change
       - Improved IOC type detection of custom IOCs
     * - Bugfix
-      - Fixed non-working playbook step "Download File" from Master ASGARD
+      - Fixed non-working playbook step "Download File" from Master Management Center
     * - Bugfix
       - Fixed empty task table of a group task in response control
     * - Bugfix
@@ -798,8 +797,8 @@ ASGARD 2.10.9
     * - Bugfix
       - Fixed non-working 'last x days' filter in response control's task table
 
-ASGARD 2.10.8
-~~~~~~~~~~~~~
+Management Center 2.10.8
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -822,12 +821,12 @@ ASGARD 2.10.8
     * - Change
       - Updated Sigma Rules
     * - Bugfix
-      - In some cases the ASGARD Agents and Master ASGARD sent many DNS requests for a few seconds
+      - In some cases the Endpoint Agents and Master Management Center sent many DNS requests for a few seconds
     * - Bugfix
       - Fixed ldap configuration issues
 
-ASGARD 2.10.3
-~~~~~~~~~~~~~
+Management Center 2.10.3
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -846,8 +845,8 @@ ASGARD 2.10.3
     * - Bugfix
       - Fixed corrupt agent download links on some browsers
 
-ASGARD 2.10.2
-~~~~~~~~~~~~~
+Management Center 2.10.2
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -878,7 +877,7 @@ ASGARD 2.10.2
     * - Change
       - Improved LDAP with timeouts, retries and added BindDN/BindPassword to support Active Directory
     * - Change
-      - Refactored synchronization with Master ASGARD 2 and Analysis Cockpit 3 to improve MySQL workload
+      - Refactored synchronization with Master Management Center 2 and Analysis Cockpit 3 to improve MySQL workload
     * - Change
       - Apply hostname and other system information on asset request accept
     * - Change
@@ -886,15 +885,15 @@ ASGARD 2.10.2
     * - Bugfix
       - Do not abort THOR scan if license type could not be determined, the system will be treated as server, instead
     * - Bugfix
-      - Fixed corrupt group scan duplication on Master ASGARD
+      - Fixed corrupt group scan duplication on Master Management Center
     * - Bugfix
-      - Fixed corrupt Asset Request deny on non-Master ASGARD
+      - Fixed corrupt Asset Request deny on non-Master Management Center
 
-ASGARD 2.6
-##########
+Management Center 2.6
+#####################
 
-ASGARD 2.6.2
-~~~~~~~~~~~~
+Management Center 2.6.2
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -933,11 +932,11 @@ ASGARD 2.6.2
     * - Bugfix
       - No proxy for initial Analysis Cockpit 3 connection
 
-ASGARD 2.5
-##########
+Management Center 2.5
+#####################
 
-ASGARD 2.5.7
-~~~~~~~~~~~~
+Management Center 2.5.7
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -958,8 +957,8 @@ ASGARD 2.5.7
     * - Bugfix
       - Fixed removal of THOR config files if content is empty on update
 
-ASGARD 2.5.6
-~~~~~~~~~~~~
+Management Center 2.5.6
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -976,15 +975,15 @@ ASGARD 2.5.6
     * - Feature
       - Encrypt custom IOCs and MISP IOCs in the download packages
     * - Feature
-      - Download THOR packages with IOCs from Master ASGARD 2 on ASGARD 2
+      - Download THOR packages with IOCs from Master Management Center 2 on Management Center 2
     * - Change
-      - Master ASGARD 2 now synchronizes the custom IOCs to the connected ASGARDs per default
+      - Master Management Center 2 now synchronizes the custom IOCs to the connected Management Centers per default
     * - Bugfix
       - Fixed asset synchronization with Analysis Cockpit 2
     * - Bugfix
-      - Fixed proxy issues between Master ASGARD 2 and ASGARD 2 and between ASGARD 2 and Analysis Cockpit 3
+      - Fixed proxy issues between Master Management Center 2 and Management Center 2 and between Management Center 2 and Analysis Cockpit 3
     * - Bugfix
-      - Fixed rejection of custom ioc deletion when Master ASGARD 2 is connected
+      - Fixed rejection of custom ioc deletion when Master Management Center 2 is connected
     * - Bugfix
       - Fixed browser cache issues in THOR config management
     * - Bugfix
@@ -992,8 +991,8 @@ ASGARD 2.5.6
     * - Bugfix
       - Fixed calculation of used RAM in the Overview section
 
-ASGARD 2.5.4
-~~~~~~~~~~~~
+Management Center 2.5.4
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1010,8 +1009,8 @@ ASGARD 2.5.4
     * - Bugfix
       - Added default false_positive_filters.cfg in THOR packages if not configured via GUI
 
-ASGARD 2.5.3
-~~~~~~~~~~~~
+Management Center 2.5.3
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1028,8 +1027,8 @@ ASGARD 2.5.3
     * - Bugfix
       - Fixed connectivity issues with Analysis Cockpit 2
 
-ASGARD 2.5.2
-~~~~~~~~~~~~
+Management Center 2.5.2
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1060,7 +1059,7 @@ ASGARD 2.5.2
     * - Feature
       - Added watcher to THOR launcher that will terminate THOR if system resources run out
     * - Feature
-      - Download ASGARD's ca.pem via GUI that will be used for Agent- and THOR communcation
+      - Download the Management Center's ca.pem via GUI that will be used for Agent- and THOR communcation
     * - Feature
       - Manage THOR config files via GUI (Direcory Excludes, False Positive Filters)
     * - Feature
@@ -1080,11 +1079,11 @@ ASGARD 2.5.2
     * - Bugfix
       - Fixed corrupt THOR Manual download link in IOC Management
 
-ASGARD 2.4
-##########
+Management Center 2.4
+#####################
 
-ASGARD 2.4.4
-~~~~~~~~~~~~
+Management Center 2.4.4
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1101,8 +1100,8 @@ ASGARD 2.4.4
     * - Bugfix
       - Fixed disabled delete and edit buttons for playbook steps
 
-ASGARD 2.4.3
-~~~~~~~~~~~~
+Management Center 2.4.3
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1123,12 +1122,12 @@ ASGARD 2.4.3
     * - Change
       - Improved audit logging for Bifrost settings
     * - Bugfix
-      - Fixed sporadically wrong task stats graph in grouped task details view (Master ASGARD only)
+      - Fixed sporadically wrong task stats graph in grouped task details view (Master Management Center only)
     * - Bugfix
       - Added 'missingok' to logrotate config
 
-ASGARD 2.4.2
-~~~~~~~~~~~~
+Management Center 2.4.2
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1143,10 +1142,10 @@ ASGARD 2.4.2
     * - Type
       - Description
     * - Change
-      - Improved differentiation between ASGARD and Master ASGARD by adding separate logo and page title
+      - Improved differentiation between the Management Center and Master Management Center by adding separate logo and page title
 
-ASGARD 2.4.1
-~~~~~~~~~~~~
+Management Center 2.4.1
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1161,10 +1160,10 @@ ASGARD 2.4.1
     * - Type
       - Description
     * - Bugfix
-      - Added missing column in asset request's table when upgrading from ASGARD 2.3
+      - Added missing column in asset request's table when upgrading from Management Center 2.3
 
-ASGARD 2.4.0
-~~~~~~~~~~~~~
+Management Center 2.4.0
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1179,7 +1178,7 @@ ASGARD 2.4.0
     * - Type
       - Description
     * - Feature
-      - Master ASGARD v2
+      - Master Management Center v2
     * - Feature
       - Added 'Collected Evidences' section that unites incoming evidences from multiple sources
     * - Feature
@@ -1205,11 +1204,11 @@ ASGARD 2.4.0
     * - Bugfix
       - Fixed process leak that may occur on too many page clicks that causes missing system info on overview page
 
-ASGARD 2.3
-##########
+Management Center 2.3
+#####################
 
-ASGARD 2.3.3
-~~~~~~~~~~~~~
+Management Center 2.3.3
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1226,8 +1225,8 @@ ASGARD 2.3.3
     * - Bugfix
       - Removed legacy auto-update config that may cause unwanted THOR/Signatures updates in background
 
-ASGARD 2.3.2
-~~~~~~~~~~~~
+Management Center 2.3.2
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1250,7 +1249,7 @@ ASGARD 2.3.2
     * - Feature
       - New playbook - Kill process
     * - Feature
-      - New playbook - Uninstall ASGARD 1 Agent
+      - New playbook - Uninstall Management Center 1 Agent
     * - Feature
       - MISP Rulesets don't have to be generated manually anymore. Adding MISP Events to a ruleset that doesn't exist will automatically create a new one
     * - Feature
@@ -1264,13 +1263,13 @@ ASGARD 2.3.2
     * - Change
       - Update filename of memory dumps from mem.raw to mem.aff4
     * - Change
-      - Default admin role will now have all rights (doesn't affect ASGARDs that were upgraded to 2.3)
+      - Default admin role will now have all rights (doesn't affect Management Centers that were upgraded to 2.3)
     * - Change
       - Wordings
     * - Change
       - Download tokens are not based on query parameters anymore
     * - Change
-      - Reduced default validity for self-signed ASGARD certificate
+      - Reduced default validity for self-signed certificate
     * - Change
       - License adjustments
     * - Change
@@ -1286,11 +1285,11 @@ ASGARD 2.3.2
     * - Bugfix
       - Fixed THOR flag synchronization issues due to too large description
 
-ASGARD 2.2
-##########
+Management Center 2.2
+#####################
 
-ASGARD 2.2.1
-~~~~~~~~~~~~
+Management Center 2.2.1
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1307,8 +1306,8 @@ ASGARD 2.2.1
     * - Security
       - Always clear all temporary files and use random names for temp directories
 
-ASGARD 2.2.0
-~~~~~~~~~~~~
+Management Center 2.2.0
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1351,7 +1350,7 @@ ASGARD 2.2.0
     * - Feature
       - Specify max. file size / dir size using 'KB', 'MB', ...
     * - Feature
-      - Show badge in sidebar if ASGARD update is available
+      - Show badge in sidebar if Management Center update is available
     * - Feature
       - Resizable remote console
     * - Feature
@@ -1409,15 +1408,15 @@ ASGARD 2.2.0
     * - Bugfix
       - Do not hide other labels when searching for a label
     * - Bugfix
-      - Fixed wrong disk usage on ASGARDs that were installed with an ISO
+      - Fixed wrong disk usage on Management Centers that were installed with an ISO
     * - Bugfix
       - Generate a server license for an asset that already has a workstation license but now requires a server license
 
-ASGARD 2.1
-##########
+Management Center 2.1
+#####################
 
-ASGARD 2.1.0
-~~~~~~~~~~~~
+Management Center 2.1.0
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1432,7 +1431,7 @@ ASGARD 2.1.0
     * - Type
       - Description
     * - Feature
-      - Master ASGARD Support
+      - Master Management Center Support
     * - Feature
       - LDAP Authorization
     * - Feature
@@ -1470,11 +1469,11 @@ ASGARD 2.1.0
     * - Bugfix
       - Security Fixes - Improved TLS cipher suites and http headers
 
-ASGARD 2.0
-##########
+Management Center 2.0
+#####################
 
-ASGARD 2.0.3
-~~~~~~~~~~~~
+Management Center 2.0.3
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1491,8 +1490,8 @@ ASGARD 2.0.3
     * - Bugfix
       - Added missing upgrade script to /etc/nextron/asgard2
 
-ASGARD 2.0.2
-~~~~~~~~~~~~
+Management Center 2.0.2
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1509,8 +1508,8 @@ ASGARD 2.0.2
     * - Bugfix
       - Fixed gz issues on log forwarding to Analysis Cockpit
 
-ASGARD 2.0.1
-~~~~~~~~~~~~
+Management Center 2.0.1
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1535,8 +1534,8 @@ ASGARD 2.0.1
     * - Bugfix
       - Fixed upgrade procedure
 
-ASGARD 2.0.0
-~~~~~~~~~~~~
+Management Center 2.0.0
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 
     :header-rows: 1
@@ -1553,10 +1552,10 @@ ASGARD 2.0.0
     * - Major Release
       - Initial release
 
-ASGARD Agent
-^^^^^^^^^^^^
+Endpoint Agent
+^^^^^^^^^^^^^^
 
-Changelog of ASGARD Agent releases since version 1.2.0
+Changelog of Endpoint Agent releases since version 1.2.0
 
 Agent 1.6.5
 ###########
@@ -1574,7 +1573,7 @@ Agent 1.6.5
     * - Type
       - Description
     * - Feature
-      - Support for ASGARD Broker
+      - Support for Broker
     * - Change
       - Improved proxy support
     * - Change
@@ -1644,7 +1643,7 @@ Agent 1.4.2
     * - Change
       - Signed MacOS binaries with a new certificate
     * - Fix
-      - In some cases the ASGARD Agents sent many DNS requests for a few seconds
+      - In some cases the Endpoint Agents sent many DNS requests for a few seconds
     * - Fix
       - Fixed non-starting task after module version upgrade in some cases
 
@@ -1684,10 +1683,10 @@ Agent 1.2.0
     * - Major Release
       - Initial release
 
-ASGARD Service Controller
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Service Controller
+^^^^^^^^^^^^^^^^^^
 
-Changelog of ASGARD Service Controller releases since version 2.0.5
+Changelog of Service Controller releases since version 2.0.5
 
 Service Controller 2.1.2
 ########################
@@ -1705,7 +1704,7 @@ Service Controller 2.1.2
     * - Type
       - Description
     * - Feature
-      - Support for ASGARD Broker
+      - Support for Broker
     * - Change
       - Improved proxy support
     * - Change

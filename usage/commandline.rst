@@ -7,26 +7,29 @@ Performance Tuning
 Overview
 ^^^^^^^^
 
-The ASGARD agent polls the ASGARD server frequently for new tasks to execute.
+The Endpoint Agent polls the Management Center frequently for new tasks to execute.
 The default polling interval depends on the number of connected endpoints. In
 larger environments the polling interval increases dynamically up to 10 minutes
-for a configuration with 25.000 endpoints connected to a single ASGARD. 
+for a configuration with 25.000 endpoints connected to a single Management
+Center.
 
-Additionally, ASGARD is configured to serve a maximum of 100 concurrent asset
+Additionally, the Management Center is configured to serve a maximum of 100
+concurrent asset
 connections and 25 concurrent asset streams. Asset connections are short polls
 from the agent such as answering the question "do you have a new task for me?".
 Asset streams are intense polls such as downloading THOR to the agent or
-uploading scan results back to ASGARD. 
+uploading scan results back to the Management Center. 
 
-Requests that exceed the limits will receive an answer from ASGARD to repeat the
+Requests that exceed the limits will receive an answer from the Management Center to repeat the
 request after N seconds, where N is calculated based on the current load.
 
-This factory preset behavior insures your ASGARD stays stable and responsive even if your
-ASGARD's system resources are limited. Furthermore, you most likely can't overload your
+This factory preset behavior insures your Management Center stays stable and responsive even if your
+the Management Center's system resources are limited. Furthermore, you most likely can't overload your
 network or firewalls with high numbers of requests or downloads.
 
-In order to modify ASGARDs performance settings edit ``/etc/nextron/asgard2/asgard.conf``
-and restart the ASGARD service.
+In order to modify the Management Center's performance settings edit
+``/etc/nextron/asgard2/asgard.conf``
+and restart the Management Center service.
 
 The default values are: 
 
@@ -49,19 +52,20 @@ The default values are:
 
 These values should work fine in most scenarios – regardless of the size
 of the installation. However, you may want to decrease PingRateMax
-in order to achieve a better responsiveness of your ASGARD infrastructure. 
+in order to achieve a better responsiveness of your Management Center infrastructure. 
 
-Overloading ASGARD
-^^^^^^^^^^^^^^^^^^
+Overloading the Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 While temporary stream overloads are quite normal, connection overloads
 should not happen. If they do, either adjust your PingRateMax, your LoadConnMax or both. 
 
-ASGARD will indicate an overload with the "Connection Overload line"
+The Management Center will indicate an overload with the "Connection Overload line"
 and the "Stream Overload line" within the graphs in the overview
-section (see picture below). If an ASGARD is in an overload situation
+section (see picture below). If a Management Center is in an overload situation
 it will postpone connections and streams but will not lose or drop
-tasks or be harmed in any way. ASGARD will recover to normal load automatically.
+tasks or be harmed in any way. The Management Center will recover to normal
+load automatically.
 
 .. figure:: ../images/asset-connections-and-streams1.png
    :alt: Asset Connections and Asset Streams
@@ -72,7 +76,7 @@ Stream overloads can happen temporarily (e.g. if you schedule a grouped
 scan or grouped task with an unlimited rate). The picture below
 shows such a normal overload situation that was caused by starting
 a grouped scan with an unlimited rate. This is the expected behavior.
-ASGARD will manage the load automatically and postpone streams until
+The Management Center will manage the load automatically and postpone streams until
 the load has returned to normal.
 
 .. figure:: ../images/asset-connections-and-streams2.png
@@ -81,14 +85,14 @@ the load has returned to normal.
    Asset Streams in an overload situation
 
 The "Busy Streams" line indicates the number of streams currently active. 
-s you might have guessed, the picture above was taken on an ASGARD in
+s you might have guessed, the picture above was taken on a Management Center in
 default configuration where the number of concurrent streams is set
 to the default value of 25.
 
 Managing Logs
 -------------
 
-ASGARD will store all logs under ``/var/lib/nextron/asgard2/log/``
+The Management Center will store all logs under ``/var/lib/nextron/asgard2/log/``
 
 All logs in this directory will be rotated and automatically cleared
 after 14 months, please see :ref:`usage/maintenance:Log Rotation and Retention` for more information.
@@ -96,7 +100,7 @@ after 14 months, please see :ref:`usage/maintenance:Log Rotation and Retention` 
 Please copy the oldest log packages to another directory or to a dedicated
 log server in case you require longer retention periods.
 **Do not modify the built-in rotation settings** as this might
-interfere with ASGARD updates!
+interfere with the Management Center updates!
 
 .. list-table::
    :header-rows: 1
@@ -108,9 +112,9 @@ interfere with ASGARD updates!
    * - Audit
      - asgard-audit.log
      - Audit Log [1]_
-   * - ASGARD Management Center
+   * - Management Center
      - asgard.log
-     - ASGARD Log [1]_
+     - Management Center Log [1]_
    * - Agent Agent and Service Controller
      - agent.log
      - Agent Log [1]_
@@ -128,7 +132,7 @@ The logs will always be stored here, even if you have :ref:`usage/administration
 Scan Logs
 ^^^^^^^^^
 
-ASGARD will store all scan logs under ``/var/lib/nextron/asgard2/scan-results``
+The Management Center will store all scan logs under ``/var/lib/nextron/asgard2/scan-results``
 
 All Scans will generate two files, ``thor-<ID>.txt.gz`` and ``thor-report-<ID>.html.gz``.
 The first file will be the raw THOR Scan Log(s) and the second file will be
@@ -144,7 +148,8 @@ any connected Analysis Cockpit.
 Agent and Agent Installer Update
 --------------------------------
 
-When ASGARD has a new agent version available you can see an indicator
+When the Management Center has a new agent version available you can see
+an indicator
 on the ``Update`` menu item as well as on the sub menu ``Update`` > ``Agents``.
 There are two tasks to perform, updating the agents on your assets and
 updating the agent installer for all future asset deployments.
@@ -152,7 +157,7 @@ updating the agent installer for all future asset deployments.
 Agent Update
 ^^^^^^^^^^^^
 
-If this is the first agent update performed on this ASGARD you might need
+If this is the first agent update performed on this Management Center you might need
 to enable the ``Update Agent`` module under ``Settings`` > ``Advanced`` > ``Show Advanced Tasks``.
 
 Then you need to run the ``Update Agent`` module. You can do this on a per
@@ -187,7 +192,7 @@ the following command to update the agent installers:
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo asgard2-repacker
+   nextron@mc:~$ sudo asgard2-repacker
 
 Or you can execute the agent installer update from within the WebUI at
 ``Updates`` > ``Agents`` > ``Repack Agent Installers`` at the bottom.
@@ -200,7 +205,7 @@ Or you can execute the agent installer update from within the WebUI at
 Creating Custom Agent Installer
 -------------------------------
 
-ASGARD supports creation of custom installers. Custom installers can be
+The Management Center supports creation of custom installers. Custom installers can be
 configured in a way that agents show up with a preset label or with a
 preset proxy configuration.
 
@@ -223,7 +228,7 @@ select the Installer(s) and Click the ``Delete`` button in the top right corner.
 Creating Custom Agent Installer From CLI (deprecated)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to create your custom ASGARD agent, save the current agents stored in
+In order to create your custom Endpoint Agent, save the current agents stored in
 ``/var/lib/nextron/asgard2/installer/`` to a directory of your choosing and run
 ``sudo asgard2-repacker`` with one or more of the following flags:
 
@@ -235,27 +240,27 @@ Add initial labels to clients comma separated list, e.g. ``[label1,label2,label3
 
 Proxies to be used by agents comma separated list, e.g. ``[proxy1.nextron:3128,proxy2.nextron:3128]``
 
-Example: In order to create an installer for servers that initially show up in
-ASGARD with the label ``SQL-Servers`` use:
+Example: In order to create an installer for servers that initially show up in the Management Center with the label ``SQL-Servers`` use:
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo asgard2-repacker -label SQL-Servers
+   nextron@mc:~$ sudo asgard2-repacker -label SQL-Servers
 
 Your newly generated agents will show up in ``/var/lib/nextron/asgard2/installer``
 and will immediately be available for download from the login page. You can store
 multiple custom agents under ``/var/lib/nextron/asgard2/installer/``. In this case
-all agents will be available for download from ASGARDs login page.
+all agents will be available for download from the Management Center's login
+page.
 
 You can obfuscate the default asgard2-agent name with a custom one. The chosen name
 will generate new agents which can be deployed to the endpoints. These agents will
-create a service with the chosen name and will have no reference to ASGARD.
+create a service with the chosen name and will have no reference to the Management Center.
 
 ``-name string``
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo asgard2-repacker -name javax
+   nextron@mc:~$ sudo asgard2-repacker -name javax
 
 This command will create a new agent for all operating systems.
 This is specially designed for cases where an agent obfuscation is required.
@@ -264,7 +269,7 @@ An installed agent with the name "javax" would look like this:
 
 .. code-block:: console
 
-   nextron@asgard:~$ systemctl status javax
+   nextron@mc:~$ systemctl status javax
    javax.service
    Loaded: loaded (/etc/systemd/system/javax.service; enabled; vendor preset: enabled)
    Active: active (running) since Thu 2020-xx-xx 16:47:22 CET; 5s ago
@@ -277,7 +282,7 @@ An installed agent with the name "javax" would look like this:
 Backup and Restore
 ------------------
 
-All of our ASGARD servers come with predefined backup and restore scripts.
+All of our Management Centers come with predefined backup and restore scripts.
 You can use them to keep a backup available in case something stops working.
 
 .. warning::
@@ -297,13 +302,13 @@ Backup
 The command ``asgard2-backup`` can be used to generate a backup of
 all configurations, assets, tags, user accounts, tasks etc., except:
 
-* Log files (ASGARD, THOR)
+* Log files (Management Center, THOR)
 * Playbook results (collected evidence)
 * Quarantined samples (Bifrost)
 
 .. code-block:: console 
 
-   nextron@asgard:~$ sudo asgard2-backup
+   nextron@mc:~$ sudo asgard2-backup
    Writing backup to '/var/lib/nextron/asgard2/backups/20200427-1553.tar'
    tar: Removing leading '/' from member names
    tar: Removing leading '/' from hard link targets
@@ -315,9 +320,9 @@ If you want to transfer the backup to a different system, make sure to copy the
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo cp /var/lib/nextron/asgard2/backups/20200427-1553.tar /home/nextron
-   nextron@asgard:~$ sudo chown nextron:nextron /home/nextron/20200427-1553.tar
-   nextron@asgard:~$ ls -l
+   nextron@mc:~$ sudo cp /var/lib/nextron/asgard2/backups/20200427-1553.tar /home/nextron
+   nextron@mc:~$ sudo chown nextron:nextron /home/nextron/20200427-1553.tar
+   nextron@mc:~$ ls -l
    total 596496
    -rw-r--r-- 1 nextron nextron 309217280 Nov  1 12:01 20200427-1553.tar
 
@@ -327,7 +332,7 @@ transfer the backup file to a different system.
 .. hint::
    Our recommendation is to run the backup as a cronjob during a time, when
    no tasks are running or are scheduled to run. The reason for this is that
-   our sample script will stop the ASGARD service before the backup to avoid any
+   our sample script will stop the Management Center service before the backup to avoid any
    inconsistency with the data.
 
 Here is an example script and cronjob entry to create backups on a schedule:
@@ -342,9 +347,9 @@ You can edit the crontab of the root user with the following commands:
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo su
+   nextron@mc:~$ sudo su
    [sudo] password for nextron:
-   root@asgard:~# crontab -e
+   root@mc:~# crontab -e
 
 .. code-block:: none
 
@@ -362,9 +367,9 @@ You can use the ``asgard2-restore`` command to restore a backup.
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo asgard2-restore
+   nextron@mc:~$ sudo asgard2-restore
    Usage: /usr/sbin/asgard2-restore <BACKUP FILE>
-   nextron@asgard:~$ sudo asgard2-restore /var/lib/nextron/asgard2/backups/20200427-1553.tar
+   nextron@mc:~$ sudo asgard2-restore /var/lib/nextron/asgard2/backups/20200427-1553.tar
    Stopping services... Removed /etc/systemd/system/multi-user.target.wants/asgard2.service.
    done.
    etc/nextron/asgard2/
@@ -382,9 +387,9 @@ You can use the ``asgard2-restore`` command to restore a backup.
    Starting services... Created symlink /etc/systemd/system/multi-user.target.wants/asgard2.service → lib/systemd/system/asgard2.service. done.
 
 .. note::
-   The version of the ASGARD were the backup will be restored should
+   The version of the Management Center were the backup will be restored should
    be the same as the version which was present while the backup was
-   created. If you need an older version of ASGARD, please contact our
+   created. If you need an older version of the Management Center, please contact our
    support team.
 
 Disable Remote Console Globally
@@ -393,10 +398,10 @@ Remote Console on connected endpoints can be disabled centrally by creating the 
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo touch /etc/nextron/asgard2/disable_console
+   nextron@mc:~$ sudo touch /etc/nextron/asgard2/disable_console
 
 To re-enable Remote Console simply remove the created file
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo rm /etc/nextron/asgard2/disable_console
+   nextron@mc:~$ sudo rm /etc/nextron/asgard2/disable_console

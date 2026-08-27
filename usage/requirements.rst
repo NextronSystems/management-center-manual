@@ -2,13 +2,14 @@
 Before You Begin
 ================
 
-Agent to ASGARD Communication
------------------------------
+Agent to Management Center Communication
+----------------------------------------
 
 There are a few things to consider before you start with the installation.
-The communication between ASGARD and the ASGARD agent is unidirectional.
-The ASGARD agent polls ASGARD in a given time frame and ask for tasks to
-execute. There is no active triggering from ASGARD to the ASGARD agent –
+The communication between the Management Center and the Endpoint Agent is unidirectional.
+The Endpoint Agent polls the Management Center in a given time frame and
+ask for tasks to
+execute. There is no active triggering from the Management Center to the Endpoint Agent –
 we have designed it that way, because we believe that opening a port on
 all connected endpoints should and can be avoided. 
 
@@ -18,7 +19,8 @@ Performance Considerations
 In environments with up to 500 endpoints, the default polling interval
 is 20 seconds. In larger environments the polling interval increases
 automatically up to one minute for 2.000 endpoints and 10 minutes for
-a configuration with 25.000 endpoints connected to a single ASGARD. 
+a configuration with 25.000 endpoints connected to a single Management
+Center.
 
 Obviously, large environments are not as responsive as small environments
 when it comes to opening remote shells or executing urgent response
@@ -31,20 +33,21 @@ the polling behavior can be modified. For details, refer to
 :ref:`usage/commandline:Performance Tuning`.
 The hardware requirements in the next chapter assume that the default polling interval is used. 
 
-Using a Proxy between ASGARD Agent and ASGARD
----------------------------------------------
+Using a Proxy between Endpoint Agent and Management Center
+----------------------------------------------------------
 
-ASGARD supports using a standard http proxy for the entire Agent to
-ASGARD communication. In order to use a proxy, the ASGARD agent must
+The Management Center supports using a standard http proxy for the entire
+Agent to Management Center communication. In order to use a proxy, the
+Endpoint Agent must
 be repacked after installation. For details, see :ref:`usage/commandline:Creating Custom Agent Installer`.
 
 Hardware Requirements
 ---------------------
 
-ASGARDs hardware requirements depend on the number of connected
+The Management Center's hardware requirements depend on the number of connected
 endpoints and also on the intended use. For example, you should
 consider using bigger hard disks if you are planning to use Bifrost
-or ASGARD's evidence collection feature extensively.
+or the Management Center's evidence collection feature extensively.
 
 .. list-table::
    :header-rows: 1
@@ -67,7 +70,7 @@ or ASGARD's evidence collection feature extensively.
 Agent Requirements
 ------------------
 
-The ASGARD Agent, which is installed on endpoints, uses up to 10MB of RAM.
+The Endpoint Agent, which is installed on endpoints, uses up to 10MB of RAM.
 THOR uses up to 300 MB of RAM additionally when scanning is in progress. 
 
 The agent will use up to 50 MB of hard disk. Together with THOR and its
@@ -80,18 +83,18 @@ There are no requirements pertaining to the CPU as scans can be scheduled
 in a way that THOR reduces its own process priority and limits its CPU
 usage to a configurable percentage.
 
-Supported operating systems are the ones `supported by THOR <https://thor-manual.nextron-systems.com/en/latest/usage/requirements.html#supported>`__.
+Supported operating systems are the ones `supported by THOR <https://thor-manual.nextron-systems.com/en/latest/usage/requirements.html#operating-systems>`__.
 Not supported are the operating systems with limited or special THOR support.
 
 Network Requirements
 --------------------
 
-ASGARD and other systems which will have to communicate with each other,
+The Management Center and other systems which will have to communicate with each other,
 need the following ports opened within the network. For a detailed and up
 to date list of our update and licensing servers, please visit https://www.nextron-systems.com/hosts/.
 
-From ASGARD Agent to ASGARD Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Endpoint Agent to Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -103,18 +106,18 @@ From ASGARD Agent to ASGARD Server
      - 443/tcp
    * - Syslog Forwarder (optional)
      - 514/tcp, 514/udp
-   * - ASGARD online check (optional)
+   * - Management Center online check (optional)
      - ICMP
 
 The syslog port is optional, since your agents will work fine without it.
 Please see :ref:`usage/administration:syslog forwarding` for more information.
 
 .. hint:: 
-  Your ASGARD Agents will check if they can reach your ASGARD
+  Your Endpoint Agents will check if they can reach your Management Center
   via HTTPs. ICMP is not necessary, but helps during troubleshooting.
 
-From Management Workstation to ASGARD Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Management Workstation to Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -127,8 +130,8 @@ From Management Workstation to ASGARD Server
    * - Command line administration
      - 22/tcp
 
-From ASGARD to SIEM
-^^^^^^^^^^^^^^^^^^^
+From Management Center to SIEM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -139,8 +142,8 @@ From ASGARD to SIEM
    * - Syslog forwarder
      - 514/tcp, 514/udp
 
-From ASGARD to Analysis Cockpit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Management Center to Analysis Cockpit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -153,10 +156,10 @@ From ASGARD to Analysis Cockpit
    * - Syslog forwarder (optional)
      - 514/tcp, 514/udp
 
-From ASGARD and Master ASGARD to the Internet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Management Center and Master Management Center to the Internet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ASGARD systems are configured to retrieve updates from the
+The Management Centers are configured to retrieve updates from the
 following remote systems via HTTPS on port 443/tcp:
 
 .. list-table:: 
@@ -165,7 +168,7 @@ following remote systems via HTTPS on port 443/tcp:
 
    * - Product
      - Remote Systems
-   * - ASGARD packages
+   * - Management Center packages
      - update3.nextron-systems.com
    * - THOR updates
      - update1.nextron-systems.com
@@ -173,13 +176,14 @@ following remote systems via HTTPS on port 443/tcp:
      - update2.nextron-systems.com
 
 All proxy systems should be configured to allow access to these URLs
-without TLS/SSL interception. (ASGARD uses client-side SSL certificates
+without TLS/SSL interception. (The Management Center uses client-side SSL
+certificates
 for authentication). It is possible to configure a proxy server, username
-and password during the setup process of the ASGARD platform. Only
+and password during the setup process of the Management Center platform. Only
 BASIC authentication is supported (no NTLM authentication support).
 
-From Master ASGARD to ASGARD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Master Management Center to Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -187,15 +191,15 @@ From Master ASGARD to ASGARD
 
    * - Direction
      - Port
-   * - From MASTER ASGARD v2 to ASGARD v2
+   * - From Master Management Center v2 to Management Center v2
      - 5443/tcp
-   * - From MASTER ASGARD v2 to ASGARD v1
+   * - From Master Management Center v2 to Management Center v1
      - 9443/tcp
 
-You cannot manage ASGARD v2 systems from a MASTER ASGARD v1.
+You cannot manage Management Center v2 systems from a Master Management Center v1.
 
-From Management Workstation to MASTER ASGARD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Management Workstation to Master Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -211,7 +215,7 @@ From Management Workstation to MASTER ASGARD
 Time Synchronization
 ^^^^^^^^^^^^^^^^^^^^
 
-ASGARD tries to reach the public Debian time servers by default.
+The Management Center tries to reach the public Debian time servers by default.
 
 .. list-table:: 
    :header-rows: 1
@@ -231,13 +235,13 @@ The NTP server configuration can be changed.
 DNS
 ^^^
 
-ASGARD needs to be able to resolve internal and external IP addresses.
+The Management Center needs to be able to resolve internal and external IP addresses.
 
 .. warning:: 
-  Please make sure that you install your ASGARD with a ``domain name``
+  Please make sure that you install your Management Center with a ``domain name``
   (see :ref:`usage/setup:network configuration`). If you do not set the
-  Domain Name and install the ASGARD package, your clients won't be able
-  to connect to your ASGARD.
+  Domain Name and install the Management Center package, your clients won't be able
+  to connect to your Management Center.
 
   All components you install should have a proper domain name configured
   to avoid issues further during the configuration.
