@@ -7,7 +7,7 @@ Create a new ESX VM and Mount the ISO
 
 Create a new VM with your virtualization software. In this case, we will use VMWare ESX managed through a VMWare VCenter.
 
-The new VM must be configured with a Linux base system and Debian GNU/Linux 10 (64 bits) as target version. It is recommended to upload the ASGARD or MASTER ASGARD ISO to an accessible data store and mount the same to your newly created VM. 
+The new VM must be configured with a Linux base system and Debian GNU/Linux 10 (64 bits) as target version. It is recommended to upload the Management Center or Master Management Center ISO to an accessible data store and mount the same to your newly created VM. 
 
 .. figure:: ../images/setup_esx1.png
    :alt: New Virtual Machine - ESX
@@ -22,17 +22,18 @@ The new VM must be configured with a Linux base system and Debian GNU/Linux 10 (
    :alt: New Virtual Machine - ESX
 
 Please make sure to select a suitable v-switch or physical interface that
-reflects the IP address scheme you are planning to use for the new ASGARD.
+reflects the IP address scheme you are planning to use for the new
+Management Center.
 Only use one Hard Disk for the installation.
 
 Navigate through the installer
 ------------------------------
 
-The installation Process is started by clicking on ASGARD Graphical install.
+The installation Process is started by clicking on the Management Center Graphical install.
 The installer then loads the additional components from the ISO and lets you select location and language.
 
 .. figure:: ../images/setup_iso_installer.png
-   :alt: ISO Installer - ASGARD
+   :alt: ISO Installer
 
 .. figure:: ../images/setup_language.png
    :alt: Select a language
@@ -51,9 +52,11 @@ The installer then loads the additional components from the ISO and lets you sel
 
 
 If DHCP is available, network parameters will be configured automatically.
-Without DHCP, ASGARD drops into the manual network configuration dialogue. 
+Without DHCP, the installer drops into the manual network configuration
+dialogue.
 
-Without DHCP, ASGARD proceeds with the manual network configuration dialogue.
+Without DHCP, the installer proceeds with the manual network configuration
+dialogue.
 
 Network Configuration
 ---------------------
@@ -71,7 +74,7 @@ Network Configuration
    :alt: Configure the network
 
 .. warning::
-   ASGARD needs to be able to resolve internal and external IP addresses.
+   The Management Center needs to be able to resolve internal and external IP addresses.
 
 .. figure:: ../images/setup_network5.png
    :alt: Configure the network
@@ -82,14 +85,14 @@ Network Configuration
 .. important::
    **Important:** Make sure that the combination of hostname and domain
    creates an FQDN that can be resolved from the endpoints on which you
-   intend to install the ASGARD agents. If you've configured a FQDN (hostname +
+   intend to install the Endpoint Agents. If you've configured a FQDN (hostname +
    domain) that cannot be resolved on the clients, no agent will be able
-   to find and reconnect to the ASGARD server.
+   to find and reconnect to the Management Center.
 
    This is especially important since your Management Center will create
    some certificates during the installation, which will not contain an
    IP Address as its Subject Alternative Name (SAN), but only the FQDN!
-   You will not be able to connect your ASGARD Management Center with
+   You will not be able to connect your Management Center with
    your Analysis Cockpit via IP Address.
 
 .. figure:: ../images/setup_network7.png
@@ -107,7 +110,7 @@ Partitioning the Hard Disk
 --------------------------
 
 .. warning:: 
-   ASGARD is intended to be installed with only one disk.
+   The Management Center is intended to be installed with only one disk.
    Do not configure your server with multiple disks.
    The system won't configure additional disks. Make sure
    that your disk has the recommended size. See
@@ -126,22 +129,23 @@ Proxy Configuration
 -------------------
 
 If you are using a proxy to access the internet, enter the proxy details in the next step.
-Please note, ``Internet connectivity is required`` for the next step – the installation of the ASGARD service. 
+Please note, ``Internet connectivity is required`` for the next step – the installation of the Management Center service. 
 
 .. figure:: ../images/setup_proxy.png
    :alt: Finish the installation
 
-The base installation is now complete. In the next step we will install the ASGARD service.
+The base installation is now complete. In the next step we will install the Management Center service.
 For this step ``Internet connectivity is required``.
 
-Install the ASGARD Management Center Services
----------------------------------------------
+Install the Management Center Services
+--------------------------------------
 
 Use SSH to connect to the appliance using the user ``nextron`` and the password you
 specified during the installation (if you were using an old ISO to install the base
 system, the password is ``nextron``). Now you can run the following command: 
 
-``sudo nextronInstaller -asgard`` (caution: upper case “i" in the middle). This will install ASGARD.
+``sudo nextronInstaller -asgard`` (caution: upper case “i" in the middle). This will install the Management
+Center.
 
 .. figure:: ../images/setup_nextronInstaller.png
    :alt: running the nextronInstaller
@@ -166,7 +170,7 @@ If you have to change your proxy configuration before you run the
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudoedit /etc/apt/apt.conf.d/proxy
+   nextron@mc:~$ sudoedit /etc/apt/apt.conf.d/proxy
 
 The format of the proxy in this configuration file is as follows:
 
@@ -185,11 +189,11 @@ Example:
 Changing the IP-Address
 -----------------------
 
-ASGARD's IP-Address can be changed in **/etc/network/interfaces**. The IP is configured with the address variable.
+the Management Center's IP-Address can be changed in **/etc/network/interfaces**. The IP is configured with the address variable.
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo vi /etc/network/interfaces
+   nextron@mc:~$ sudo vi /etc/network/interfaces
 
 .. code-block:: none
 
@@ -206,11 +210,12 @@ The new IP can be applied with the command **sudo systemctl restart networking**
 Verifying DNS Settings
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To verify if ASGARD is using the correct DNS Server, you can inspect the file ``/etc/resolv.conf``:
+To verify if the Management Center is using the correct DNS Server, you can
+inspect the file ``/etc/resolv.conf``:
 
 .. code-block:: console
 
-   nextron@asgard:~$ cat /etc/resolv.conf 
+   nextron@mc:~$ cat /etc/resolv.conf 
    search example.org
    nameserver 172.16.200.2
 
@@ -218,7 +223,7 @@ If you see errors in this configuration, you can change it with the following co
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudoedit /etc/resolv.conf
+   nextron@mc:~$ sudoedit /etc/resolv.conf
 
 First steps in the VM
 ---------------------
@@ -226,7 +231,7 @@ First steps in the VM
 Change the Command Line Password
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Login to ASGARD and type ``passwd`` in order to change the password for the default
+Login to the Management Center and type ``passwd`` in order to change the password for the default
 user ``nextron``. The default password is ``nextron``.
 
 .. warning::
@@ -236,7 +241,7 @@ user ``nextron``. The default password is ``nextron``.
 Change the Web Password
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Login to the ASGARD Web interface with user ``admin`` and password ``admin``.
+Login to the Management Center Web interface with user ``admin`` and password ``admin``.
 
 The admin user has limited/restricted access to some sections to ensure the correct
 audit of certain actions. In order to access restricted functions which require an

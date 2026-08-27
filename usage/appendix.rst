@@ -1,10 +1,10 @@
 Appendix
 ========
 
-Installing ASGARD Agent via Powershell Script
----------------------------------------------
+Installing Endpoint Agent via Powershell Script
+-----------------------------------------------
 
-You can find a simple script to install the ASGARD Agent via
+You can find a simple script to install the Endpoint Agent via
 Powershell. Place the installer and script in the same folder.
 Change the script as needed.
 
@@ -12,10 +12,10 @@ Change the script as needed.
    :language: powershell
    :linenos:
 
-Deploy ASGARD Agents via SCCM
------------------------------
+Deploy Endpoint Agents via SCCM
+-------------------------------
 
-To deploy the ASGARD Agent (or any other .exe installer) via SCCM, you
+To deploy the Endpoint Agent (or any other .exe installer) via SCCM, you
 have to write a Powershell script with a few conditions to mark an
 installation correctly as successful or failed.
 
@@ -38,18 +38,18 @@ You can use this part of the script to detect if the installation was successful
 
    $servicename = "asgard2-agent"
    if (Get-Service -Name $servicename -ErrorAction SilentlyContinue) {
-      Write-Host "ASGARD Agent installed"
+      Write-Host "Endpoint Agent installed"
       exit 0
    } else {
-      $Host.UI.WriteErrorLine("ASGARD Agent not installed")
+      $Host.UI.WriteErrorLine("Endpoint Agent not installed")
       exit 1
    }
 
 Broken file and folder permissions
 ----------------------------------
 
-The ASGARD Agent folder has in a normal installation specific
-permissions set. The ASGARD Agent checks regularly
+The Endpoint Agent folder has in a normal installation specific
+permissions set. The Endpoint Agent checks regularly
 for broken permissions and tries to fix them. If for some reason this
 process fails, you have to check and change the permissions manually.
 
@@ -75,12 +75,12 @@ needs administrative permissions.
    Only use this script if the agent is showing errors that permissions
    can not be set.
 
-Installing ASGARD Agent on a Golden Image
------------------------------------------
+Installing Endpoint Agent on a Golden Image
+-------------------------------------------
 
-If you want to implement the ASGARD Agent into your Golden Image, you
+If you want to implement the Endpoint Agent into your Golden Image, you
 can do this by following the steps in this section. Make sure to download
-the right Agent Installer package from your ASGARD.
+the right Agent Installer package from your Management Center.
 
 You have two options to deploy an Agent on your Golden Image, with the
 first one being the easier method.
@@ -89,11 +89,11 @@ Offline Installation
 ^^^^^^^^^^^^^^^^^^^^
 
 .. note:: 
-   Before continuing, make sure the host can't reach your ASGARD.
+   Before continuing, make sure the host can't reach your Management Center.
 
 In this method we make sure that the host system, which is being prepared
-for the Golden Image, is either offline or can't reach the ASGARD. Go ahead
-and install your ASGARD agent as you do normally. Once the installation is
+for the Golden Image, is either offline or can't reach the Management Center. Go ahead
+and install your Endpoint Agent as you do normally. Once the installation is
 done, you can stop the ``asgard2-agent`` service.
 
 Windows (administrative command prompt):
@@ -108,9 +108,9 @@ Linux:
 
    user@golden:~$ sudo systemctl stop asgard2-agent.service
 
-You ASGARD Agent should be ready now. You have to make sure that the Agent
-is not communicating with your ASGARD during the whole process. If the agent
-is for some reason communicating with the ASGARD and creating an Asset 
+You Endpoint Agent should be ready now. You have to make sure that the Agent
+is not communicating with your Management Center during the whole process. If the agent
+is for some reason communicating with the Management Center and creating an Asset 
 Request, make sure that you stop the ``asgard2-agent`` service again and
 inspect the following file:
 
@@ -119,13 +119,13 @@ inspect the following file:
 
 The file should not contain the marked lines in the next example. If both lines
 exist, make sure you delete them and save the file. Make also sure to deny the
-Asset Request in your ASGARD to avoid confusion:
+Asset Request in your Management Center to avoid confusion:
 
 .. code-block:: yaml
    :linenos:
    :emphasize-lines: 2-3
 
-   host: yourasgard.domain.local:443
+   host: yourmc.domain.local:443
    token: +uW6HrF3kxmLNZYqKTKuZt [...]
    registered: true
    proxy: []
@@ -142,8 +142,8 @@ Online Installation
 ^^^^^^^^^^^^^^^^^^^
 
 If for some reason you can not prevent your host, which is being used for
-the Golden Image, to communicate with your ASGARD, then follow the next
-steps. Go ahead and install your ASGARD agent as you do normally. Once the
+the Golden Image, to communicate with your Management Center, then follow the next
+steps. Go ahead and install your Endpoint Agent as you do normally. Once the
 installation is done, you can stop the ``asgard2-agent`` service.
 
 Windows (administrative command prompt):
@@ -159,8 +159,7 @@ Linux:
    user@golden:~$ sudo systemctl stop asgard2-agent.service
 
 Once the service is stopped, we have to alter the configuration file of the
-agent. This is necessary because your agent will have communicated with your
-ASGARD by now, thus having generated an ``token``, which should be unique.
+agent. This is necessary because your agent will have communicated with your Management Center by now, thus having generated an ``token``, which should be unique.
 If you would create your Golden Image now, you would have the
 systems, installed with the Golden Image, appear as ``Duplicate Asset`` (see
 :ref:`usage/troubleshooting:duplicate assets remediation`).
@@ -174,7 +173,7 @@ Open the ``asgard2-agent.yaml`` file and delete the marked lines in our example.
    :linenos:
    :emphasize-lines: 2-3
 
-   host: yourasgard.domain.local:443
+   host: yourmc.domain.local:443
    token: +uW6HrF3kxmLNZYqKTKuZt [...]
    registered: true
    proxy: []
@@ -184,19 +183,19 @@ Open the ``asgard2-agent.yaml`` file and delete the marked lines in our example.
 
 After you deleted the two lines and saved the file, your host is ready. Make
 sure those two lines are not present, as well as your ``asgard2-agent`` service
-is still not running. We delete the ``token`` because it is unique to ASGARD.
+is still not running. We delete the ``token`` because it is unique to the Management Center.
 If two agents are presenting the same token, they will be flagged as duplicate
 assets. The ``registered`` value tells the agent if it has to send a new asset
 request or not. Once it is set to ``true`` it would not send a new request.
 
 .. hint::
    Make sure to deny the Asset Request, which we just created while installing
-   the agent on our host, in ASGARD. This is to avoid confusion down the road.
+   the agent on our host, in the Management Center. This is to avoid confusion down the road.
 
-Install TLS certificates on ASGARD and MASTER ASGARD
-----------------------------------------------------
+Install TLS certificates on Management Center and Master Management Center
+--------------------------------------------------------------------------
 
-There are several methods to sign the ASGARD generated CSR
+There are several methods to sign the Management Center generated CSR
 request. This section describes the two most common procedures.
 
 Use Case 1 - CSR Signing with a Microsoft Based CA
@@ -300,28 +299,28 @@ On the bottom of the page click ``Upload TLS Certificate`` and select the
 exported certificate from the previous step.
 
 .. figure:: ../images/upload-tls-certificate.png
-   :alt: ASGARD Certificate Import
+   :alt: Certificate Import
 
-   ASGARD Certificate Import
+   Certificate Import
 
 If all steps were followed, a message box should pop up indicating
 that the certificate was successfully installed.
 
-Navigate to Settings >> Services and restart the ``ASGARD 2 Service`` by clicking ``Restart`` button.
+Navigate to Settings >> Services and restart the ``Management Center 2 Service`` by clicking ``Restart`` button.
                                 
-.. figure:: ../images/asgard-service-restart.png
-   :alt: ASGARD service restart
+.. figure:: ../images/service-restart.png
+   :alt: Management Center service restart
 
-   ASGARD service restart
+   Management Center service restart
 
-Please take into consideration that it could take a few minutes until the ASGARD Service is restarted successfully.
+Please take into consideration that it could take a few minutes until the Management Center Service is restarted successfully.
 
 After the service has been successfully restarted, the installed certificate is shown in the browser.
 
-.. figure:: ../images/asgard-cert-check.png
-   :alt: ASGARD certificate installation check
+.. figure:: ../images/cert-check.png
+   :alt: Certificate installation check
 
-   ASGARD certificate installation check
+   Certificate installation check
 
 Use Case 2 - CSR Signing with an OpenSSL Based CA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -385,7 +384,7 @@ Example:
     [...]
 
 **The second method** of including all extensions from the CSR to the new certificate,
-is via an extension file (for example ``asgard-test01.ext``) containing all your subjectAltName entries.
+is via an extension file (for example ``mc-test01.ext``) containing all your subjectAltName entries.
 This tells openssl to use a extension for signing the CSR. In our case the extension contains a list of
 ``subjectAltName`` values.
 
@@ -395,8 +394,8 @@ values of your CSR:
 
 .. code-block:: console
 
-   root@ca:~# cat asgard-test01.ext
-   subjectAltName = DNS:asgard-test01.nextron, IP Address:172.28.28.101
+   root@ca:~# cat mc-test01.ext
+   subjectAltName = DNS:mc-test01.nextron, IP Address:172.28.28.101
 
 The content should be identical to the values you set in your CSR. You can
 inspect those with the following command:
@@ -404,11 +403,11 @@ inspect those with the following command:
 .. code-block:: console
    :emphasize-lines: 17
 
-   root@ca:~# openssl req -in asgard-test01.csr -noout -text                                                                                                                [31/146]
+   root@ca:~# openssl req -in mc-test01.csr -noout -text                                                                                                                [31/146]
    Certificate Request:                                                                                                                                                                          
     Data:                                                                                                                                                                                     
         Version: 1 (0x0)                                                                                                                                                                      
-        Subject: C = DE, ST = Hesse, O = Nextron, OU = Security IT, CN = asgard-test01.nextron                                                                                                                                            
+        Subject: C = DE, ST = Hesse, O = Nextron, OU = Security IT, CN = mc-test01.nextron                                                                                                                                            
         Subject Public Key Info:                                                                                                                                                              
             Public Key Algorithm: rsaEncryption                                                                                                                                               
                 Public-Key: (4096 bit)                                                                                                                                                        
@@ -420,7 +419,7 @@ inspect those with the following command:
         Attributes:
             Requested Extensions:
                 X509v3 Subject Alternative Name: 
-                    DNS:asgard-test01.nextron, IP Address:172.28.28.101
+                    DNS:mc-test01.nextron, IP Address:172.28.28.101
 
 Prepare the CA certificate, CA private key and the certificate signing request (and optionally your extension
 file, if you chose method 2).
@@ -436,7 +435,7 @@ Execute/adapt the following command depending on the method you chose before:
 
 .. code-block:: console
 
-   root@ca:~# openssl ca -cert cacert.pem -keyfile cakey.pem -in asgard-test01.csr -out asgard-test01.crt -days 3650
+   root@ca:~# openssl ca -cert cacert.pem -keyfile cakey.pem -in mc-test01.csr -out mc-test01.crt -days 3650
    Using configuration from /etc/pki/tls/openssl.conf
    Enter pass phrase for cakey.pem:
 
@@ -450,7 +449,7 @@ Execute/adapt the following command depending on the method you chose before:
 .. code-block:: console
    :emphasize-lines: 19
 
-   root@ca:~# openssl ca -cert cacert.pem -keyfile cakey.pem -in asgard-test01.csr -out asgard-test01.crt -days 3650 -extfile asgard-test01.ext
+   root@ca:~# openssl ca -cert cacert.pem -keyfile cakey.pem -in mc-test01.csr -out mc-test01.crt -days 3650 -extfile mc-test01.ext
    Using configuration from /etc/pki/tls/openssl.conf
    Enter pass phrase for cakey.pem:
    Check that the request matches the signature
@@ -465,10 +464,10 @@ Execute/adapt the following command depending on the method you chose before:
                stateOrProvinceName       = Hesse
                organizationName          = Nextron
                organizationalUnitName    = Security IT
-               commonName                = asgard-test01.nextron
+               commonName                = mc-test01.nextron
            X509v3 extensions:
                X509v3 Subject Alternative Name: 
-                   DNS:asgard-test01.nextron IP Address:172.28.28.101
+                   DNS:mc-test01.nextron IP Address:172.28.28.101
    Certificate is to be certified until Feb 20 09:58:10 2033 GMT (3650 days)
 
 Enter the passphrase for your CA's private key
@@ -502,13 +501,13 @@ As a result, the signed certificate will be available with the indicated filenam
 As a last step, the generated certificate can be imported
 following the :ref:`usage/administration:tls certificate installation` steps.
 
-Agent Migration from ASGARD v1 to v2
-------------------------------------
+Agent Migration from Management Center v1 to v2
+-----------------------------------------------
 
-This document will guide customers with an existing ASGARD
-version 1.x to perform an agent migration to ASGARD version 2.x.
+This document will guide customers with an existing Management Center
+version 1.x to perform an agent migration to Management Center version 2.x.
 
-The new release of ASGARD Management Center brings not only
+The new release of Management Center brings not only
 a redesigned interface, but also major changes in the architecture
 and usability, making it faster, more robust and easier to use.
 
@@ -522,23 +521,23 @@ Account Data and Network Access
 
 Ensure you have access and credentials to the following systems, as well as connectivity as follows:
 
-- **ASGARD Management Center version 1**
+- **Management Center version 1**
   
   - Administrative Web User
 
   - Credentials for the ssh user: bsk
 
-- **ASGARD Management Center version 2**
+- **Management Center version 2**
 
   - Administrative Web User
 
   - Credentials for the ssh user: nextron
 
-- **Connectivity between ASGARD 1 and ASGARD 2**
+- **Connectivity between Management Center 1 and Management Center 2**
 
   - Required only if new agents are transferred via SCP
 
-- **Client/Server System(s) connected to ASGARD v1 needs connectivity to ASGARD v2**
+- **Client/Server System(s) connected to Management Center v1 needs connectivity to Management Center v2**
 - **Access to a new update server**
 
   - update1.nextron-systems.com
@@ -558,36 +557,36 @@ Identify the agents you want to migrate and perform the following actions on eac
 Identify the system to be migrated
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Connect to your ASGARD Management Center version 1.x and identify the system you plan to migrate.
+Connect to your Management Center version 1.x and identify the system you plan to migrate.
 
 .. figure:: ../images/migrate1.png
    :alt: Overview of Assets
 
    Overview of Assets
 
-Transfer the new ASGARD Windows agent to the ASGARD version 1.x Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Transfer the new Endpoint Agent for Windows to the Management Center version 1.x Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Connect to your new ASGARD version 2.x server over SSH and transfer
-the new windows agent to the old ASGARD version 1.x server.
+Connect to your new Management Center version 2.x server over SSH and transfer
+the new windows agent to the old Management Center version 1.x server.
 
-This step will allow the old ASGARD version 1.x server to distribute the new agent.
+This step will allow the old Management Center version 1.x server to distribute the new agent.
 
 .. note::
-   In this step you require the password of your ASGARD version
-   1.x and your ASGARD version 2.x
+   In this step you require the password of your Management Center version
+   1.x and your Management Center version 2.x
 
-Connect to ASGARD version 2 over SSH
-""""""""""""""""""""""""""""""""""""
+Connect to Management Center version 2 over SSH
+"""""""""""""""""""""""""""""""""""""""""""""""
 
 .. code-block:: console
 
-   user@unix:~$ ssh nextron@asgard-v2.domain
-   nextron@asgard-v2.domain's password:  
-   nextron@asgard-v2:~$
+   user@unix:~$ ssh nextron@mc-v2.domain
+   nextron@mc-v2.domain's password:  
+   nextron@mc-v2:~$
 
-Copy the new agent(s) to ASGARD version 1.x
-"""""""""""""""""""""""""""""""""""""""""""
+Copy the new agent(s) to Management Center version 1.x
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 You will find all new agents under ``/var/lib/nextron/asgard2/installer``\ ,
 this example will cover a migration of a windows x64 system. Please see
@@ -595,38 +594,38 @@ the following chapters for Linux/macOS hosts.
 
 .. code-block:: console
 
-   nextron@asgard-v2:~$ sudo su -
+   nextron@mc-v2:~$ sudo su -
    [sudo] password for nextron: 
-   root@asgard-v2:~# cd /var/lib/nextron/asgard2/installer/
-   root@asgard-v2:~# scp asgard2-agent-windows-amd64.exe bsk@asgard-v1.domain:
-   bsk@asgard-v1.domain's password: 
+   root@mc-v2:~# cd /var/lib/nextron/asgard2/installer/
+   root@mc-v2:~# scp asgard2-agent-windows-amd64.exe bsk@mc-v1.domain:
+   bsk@mc-v1.domain's password: 
    asgard2-agent-windows-amd64.exe                                100% 8380KB 116.9MB/s   00:00
-   root@asgard-v2:~# 
+   root@mc-v2:~# 
 
 .. figure:: ../images/migrate2.png
-   :alt: New agent distribution to old ASGARD v1.x Server
+   :alt: New agent distribution to old Management Center v1.x Server
 
-   New agent distribution to old ASGARD v1.x Server
+   New agent distribution to old Management Center v1.x Server
 
-Check that the new agent has been transferred to the old ASGARD version 1.x Server
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Check that the new agent has been transferred to the old Management Center version 1.x Server
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 .. code-block:: console
 
-   user@unix:~$ ssh bsk@asgard-v1.domain
-   bsk@asgard-v1.domain's password:  
-   bsk@asgard-v1:~$ ls -l
+   user@unix:~$ ssh bsk@mc-v1.domain
+   bsk@mc-v1.domain's password:  
+   bsk@mc-v1:~$ ls -l
    total 8380
    -r--r--r-- 1 bsk bsk 8580773 Feb 23 09:14 asgard2-agent-windows-amd64.exe
-   bsk@asgard-v1:~$ chmod 744 asgard2-agent-windows-amd64.exe
-   bsk@asgard-v1:~$ ls -l
+   bsk@mc-v1:~$ chmod 744 asgard2-agent-windows-amd64.exe
+   bsk@mc-v1:~$ ls -l
    total 8380
    -rwxr--r-- 1 bsk bsk 8580773 Feb 23 09:14 asgard2-agent-windows-amd64.exe
 
 .. figure:: ../images/migrate3.png
-   :alt:  Listing of agents on ASGARD version 1.x
+   :alt:  Listing of agents on Management Center version 1.x
 
-   Listing of agents on ASGARD version 1.x
+   Listing of agents on Management Center version 1.x
 
 .. _Sign the new agents:
 
@@ -635,7 +634,7 @@ Sign the new agents
 
 .. code-block:: console
 
-   bsk@asgard-v1:~$ sudo grr_config_updater upload_exe --file asgard2-agent-windows-amd64.exe --dest_path aff4:/asgard-v1.domain/asgard2-agent-windows-amd64.exe --platform windows --arch amd64
+   bsk@mc-v1:~$ sudo grr_config_updater upload_exe --file asgard2-agent-windows-amd64.exe --dest_path aff4:/mc-v1.domain/asgard2-agent-windows-amd64.exe --platform windows --arch amd64
    
 Please modify the ``aff4:/`` part of the command above to reflect your hostname.
 
@@ -647,14 +646,14 @@ Please modify the ``aff4:/`` part of the command above to reflect your hostname.
    Signing of executable(s)
 
 .. note::
-   Remember to save the ``--dest_path``. In our case it is ``aff4:/asgardv1.nextron/asgard2-agent-windows-amd64.exe``
+   Remember to save the ``--dest_path``. In our case it is ``aff4:/mcv1.nextron/asgard2-agent-windows-amd64.exe``
 
 Switch to Advanced Mode within GRR
 """"""""""""""""""""""""""""""""""
 
-Open your ASGARD version 1.x web interface and navigate to the
+Open your Management Center version 1.x web interface and navigate to the
 ``Response Control`` view. You will be prompted for a username and password,
-use the same login information as you use to log into ASGARD.
+use the same login information as you use to log into the Management Center.
 
 Once you reach the Response Control Section (GRR) please navigate
 to the top right corner (settings gear) and switch to the
@@ -700,7 +699,7 @@ and click Launch.
    Launch Binary
 
 The used binary name was extracted from step :ref:`usage/appendix:Sign the new agents`.
-In this example ``aff4:/asgardv1.nextron/asgard2-agent-windows-amd64.exe``
+In this example ``aff4:/mcv1.nextron/asgard2-agent-windows-amd64.exe``
 
 .. figure:: ../images/migrate9.png
    :alt: Confirmation after launching the binary
@@ -728,11 +727,11 @@ An example shell script for Debian based systems could look like this:
 
    #!/bin/bash
    cd /tmp
-   wget -O agent-linux.deb --no-check-certificate https://asgardv2:8443/agent-installers?asgard2-agent-linux-amd64.deb
+   wget -O agent-linux.deb --no-check-certificate https://mcv2:8443/agent-installers?asgard2-agent-linux-amd64.deb
    dpkg -i /tmp/agent-linux.deb
    rm -f /tmp/agent-linux.deb
 
-Save this script in your ASGARD v1.x and sign/upload it to GRR as
+Save this script in your Management Center v1.x and sign/upload it to GRR as
 described in section :ref:`usage/appendix:Sign the new agents`
 , afterwards you will be able to launch a HUNT to your connected Linux Systems. 
 
@@ -752,11 +751,11 @@ An example shell script for macOS based systems could look like this:
 
    #!/bin/bash
    cd /tmp
-   curl -o agent-darwin.pkg -k "https://asgardv2.bsk:8443/agent-installers?asgard2-agent-macos-amd64.pkg"
+   curl -o agent-darwin.pkg -k "https://mcv2.bsk:8443/agent-installers?asgard2-agent-macos-amd64.pkg"
    sudo installer -pkg /tmp/agent-darwin.pkg -target /
    rm -f /tmp/agent-darwin.pkg
 
-Save this script in your ASGARDv1 and sign/upload it to GRR as
+Save this script in your Management Center v1 and sign/upload it to GRR as
 described in section :ref:`usage/appendix:Sign the new agents`,
 afterwards you will be able to launch a HUNT to your connected ``macOS Systems``. 
 
@@ -764,20 +763,20 @@ Migration check and completion
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After the above steps have been executed, the agent should be
-reporting to the new ASGARD version 2.x server.
+reporting to the new Management Center version 2.x server.
 
 At this moment the system will have 2 agents installed, the
-agent reporting to ASGARD version 1.x and the agent reporting
-to ASGARD version 2.x
+agent reporting to Management Center version 1.x and the agent reporting
+to Management Center version 2.x
 
 Accept the agent request
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once a new agent is reporting to ASGARD version 2.x it will
+Once a new agent is reporting to Management Center version 2.x it will
 automatically create a request to be part of the same. We need
 to accept that request.
 
-Log into ASGARD version 2.x and navigate to the Asset Management – Requests.
+Log into Management Center version 2.x and navigate to the Asset Management – Requests.
 
 .. figure:: ../images/asset-management-requests.png
    :alt: Asset Management (Requests)
@@ -801,18 +800,19 @@ Will there be any problem running both agents (v1, v2) at the same time?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are no known issues running both agents at the same time.
-The new ASGARD v2 agent is more lightweight and has better performance.
+The new Management Center v2 agent is more lightweight and has better performance.
 The expected RAM utilization in idle mode demonstrated in our tests puts
 the new agent in a very good position, consuming only 1 MB.
 
-Will I need more resources for my new ASGARD v2 server?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Will I need more resources for my new Management Center v2 server?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please refer to :ref:`usage/requirements:hardware requirements` for specific sizing.
 The overall tests performed highlight that both, server and agents, have better
-performance, which will allow more agents to be  management per ASGARD (compared to version 1).
+performance, which will allow more agents to be managed per Management
+Center (compared to version 1).
 
-Can I import my memory dumps and file collections made on ASGARD v1?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Can I import my memory dumps and file collections made on Management Center v1?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Unfortunately, importing memory dumps and/or file collections made on ASGARD v1 is not possible.
+Unfortunately, importing memory dumps and/or file collections made on Management Center v1 is not possible.

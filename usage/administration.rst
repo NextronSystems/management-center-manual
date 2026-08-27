@@ -7,8 +7,8 @@ Administration
 License Management
 ------------------
 
-Login to ASGARD, navigate to ``Licensing``, click 
-``Upload ASGARD Management Center License`` and upload a valid license. 
+Login to the Management Center, navigate to ``Licensing``, click 
+``Upload Management Center License`` and upload a valid license. 
 
 
 .. figure:: ../images/install-a-license.png
@@ -28,10 +28,10 @@ The initial system status page provides a summary of the
 most important system components. 
 
 It also includes the current resource consumption (disk,
-CPU and memory) and lists the currently installed ASGARD
+CPU and memory) and lists the currently installed Management Center
 software version along with available versions of THOR.
 Additionally, the connection status to the update servers,
-MASTER ASGARD and Cockpit are shown with a graph that shows
+Master Management Center and Cockpit are shown with a graph that shows
 asset connections and asset streams.
 
 .. note::
@@ -81,8 +81,8 @@ Complete logs can be found at ``/var/lib/nextron/asgard2/log``.
 Available logs and their content:
 
 - Audit: Containing user login/-off, changes done over the UI.
-- ASGARD Management Center: Overall status of the MC, general errors and warnings.
-- ASGARD Agent and Service Controller: Status of the agents deployed on assets.
+- Management Center: Overall status of the MC, general errors and warnings.
+- Endpoint Agent and Service Controller: Status of the agents deployed on assets.
 - THOR via Syslog: Received syslog events of THOR scans. Partial results if a scan did not complete.
 - Aurora: All Aurora events:
 - Aurora Event Producers: The top 10 of event producing processes per endpoint.
@@ -91,13 +91,13 @@ Available logs and their content:
 - LogWatcher: All LogWatcher events.
 - Diagnostic Pack: Button for generating and downloading a diagnostic pack that may be asked for by support.
 
-ASGARD Agent Deployment
------------------------
+Endpoint Agent Deployment
+-------------------------
 
-In order to register a new endpoint to the ASGARD Management Center,
-download and install the ASGARD Agent on the system you want to register. 
+In order to register a new endpoint to the Management Center,
+download and install the Endpoint Agent on the system you want to register. 
 
-The ASGARD Agent can be directly downloaded from the ASGARD login
+The Endpoint Agent can be directly downloaded from the Management Center login
 screen through the button ``Download Agent Installers``. A list
 of available agents for various operating systems appears. 
 
@@ -112,29 +112,31 @@ of available agents for various operating systems appears.
 
    Agents Overview
 
-After the installation, the endpoints will connect to ASGARD, register
+After the installation, the endpoints will connect to the Management Center, register
 automatically and appear in the Asset Management Section in the tab
 ``Requests``. Please allow two or three minutes for systems to show
-up. The agents use the hostname to connect to ASGARD, ensure that
-your endpoints can resolve and reach the ASGARD hostname.
+up. The agents use the hostname to connect to the Management Center, ensure that
+your endpoints can resolve and reach the Management Center hostname.
 
 .. note::
-   Full administrative privileges are required for the ASGARD agent
+   Full administrative privileges are required for the Endpoint Agent
    and THOR to operate properly.
 
-In the requests tab, select the agents you want ASGARD to manage and
+In the requests tab, select the agents you want the Management Center to
+manage and
 click ``Accept``. After that, the endpoint shows up in the asset tab
 and is now ready to be managed or scanned.
 
-.. figure:: ../images/accepting-asgard-agent-requests.png
-   :alt: Accepting ASGARD Agent Requests
+.. figure:: ../images/accepting-agent-requests.png
+   :alt: Accepting Endpoint Agent Requests
 
-   Accepting ASGARD Agent Requests
+   Accepting Endpoint Agent Requests
 
-A registered agent will poll to the ASGARD Management Center at a given
+A registered agent will poll to the Management Center at a given
 interval between 10 seconds and 600 seconds – depending on the number of
 connected endpoints (see :ref:`usage/commandline:Performance Tuning` for
-details). If ASGARD has scheduled a task for the endpoint (for example:
+details). If the Management Center has scheduled a task for the endpoint
+(for example:
 run THOR scan) it will be executed directly after the poll.
 
 Windows Agent Deployment
@@ -144,16 +146,16 @@ Since the Agent Installer for Windows is a normal ``.exe`` file and not a
 ``.msi`` file, you need to write your own scripts to deploy the agent via
 your management system of choice. We have written an example script in 
 PowerShell, which should work for most of the tools. Please see the section
-:ref:`usage/appendix:Installing ASGARD Agent via Powershell Script` and
-:ref:`usage/appendix:deploy asgard agents via sccm`.
+:ref:`usage/appendix:Installing Endpoint Agent via Powershell Script` and
+:ref:`usage/appendix:deploy endpoint agents via sccm`.
 
-Alternatively, if you want to deploy the ASGARD Agent manually, you can
+Alternatively, if you want to deploy the Endpoint Agent manually, you can
 just execute the installer by hand.
 
 Linux Agent Deployment
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To deploy the ASGARD Agent on a linux system, you can use the following
+To deploy the Endpoint Agent on a linux system, you can use the following
 commands:
 
 .. code-block:: console
@@ -195,7 +197,7 @@ Please always keep in mind to check your systems after performing any of
 the described actions to ensure that all security mechanisms are in
 place and are re-activated after performing the described actions.
 
-Please follow the below steps to install the ASGARD Agent on macOS.
+Please follow the below steps to install the Endpoint Agent on macOS.
 
 1. Open a new terminal session
 
@@ -232,8 +234,8 @@ On a system with activated Gatekeeper, the output has to be ``assessments enable
 macOS Full Disk Access
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Since macOS version 13 (Ventura) the ASGARD Agent needs full disk access
-to function properly. After you have deployed the ASGARD Agent, you need
+Since macOS version 13 (Ventura) the Endpoint Agent needs full disk access
+to function properly. After you have deployed the Endpoint Agent, you need
 to grant the service the required access permissions. Please keep in mind
 that administrative privileges on the machine are needed to perform this
 change.
@@ -254,17 +256,17 @@ You need to enable the ``asgard2-agent-service`` slider:
 .. note:: 
    There is no workaround to this step, since it is an integral
    part of the security design of Apple devices. If you are having trouble
-   with THOR scans via ASGARD on macOS, please check if the ``Full Disk
-   Access`` permission for the ASGARD agent was granted. Since macOS version
+   with THOR scans via the Management Center on macOS, please check if the ``Full Disk
+   Access`` permission for the Endpoint Agent was granted. Since macOS version
    10.14 (Mojave), you need to grant the same permissions if you want to
    scan removable volumes.
 
 Asset Management
 ----------------
 
-In the ``Asset Management`` view you can see all the connected ASGARD
-agents. New assets will be placed under ``Asset Requests`` and need a
-manual approval before being able to connect to your ASGARD (for auto
+In the ``Asset Management`` view you can see all the connected Endpoint
+Agents. New assets will be placed under ``Asset Requests`` and need a
+manual approval before being able to connect to your Management Center (for auto
 accept see :ref:`usage/administration:Advanced`).
 
 If the ``Duplicate Assets`` view is visible, you should try to remediate
@@ -274,7 +276,7 @@ effects on the duplicate hosts.
 .. warning::
    Assets in the ``Duplicate Assets`` view indicate, that one or more
    agents are running on multiple endpoints. This might be caused by
-   cloning a system with an already installed ASGARD 2 Agent. Undesirable
+   cloning a system with an already installed Management Center 2 Agent. Undesirable
    side effects of duplicate assets are alternating hostnames and tasks
    that fail immediately.
 
@@ -283,9 +285,9 @@ For remediation please see :ref:`usage/troubleshooting:Duplicate Assets Remediat
 Asset Overview
 ^^^^^^^^^^^^^^
 
-Management of all endpoints registered with ASGARD can be performed
+Management of all endpoints registered with the Management Center can be performed
 in Asset Management. The assets will be presented as a table with an
-individual ASGARD ID, their IP addresses and host names.
+individual ID, their IP addresses and host names.
 
 .. figure:: ../images/asset-view.png
    :alt: Asset View
@@ -304,10 +306,10 @@ the endpoints ping rate to a few seconds instead of a maximum of 10 minutes.
 
 .. note::
 
-    * The internal ping between the ASGARD agent and ASGARD is based on HTTPS not ICMP
+    * The internal ping between the Endpoint Agent and the Management Center is based on HTTPS not ICMP
     * Depending on the user's role some of the control buttons may be disabled
     * The ``Run Scan`` button might be greyed out in new installations - this is
-      because ASGARD did not download the THOR packages yet. You can either wait for a
+      because the Management Center did not download the THOR packages yet. You can either wait for a
       few minutes, or see the chapter :ref:`usage/administration:updates of thor and thor signatures`,
       to trigger a download manually.
 
@@ -352,7 +354,7 @@ The asset management section has extensive filtering capabilities, e.g.
 it is easy to select only Linux endpoints that have been online today
 and have a particular label assigned. 
 
-Export Asset List 
+Export Asset List
 ~~~~~~~~~~~~~~~~~
 
 The Import/Export Section allows you to export your assets to a CSV formatted file. 
@@ -374,10 +376,10 @@ will be stripped from the labels.
 
    Asset Labeling via CSV
 
-ASGARD Query
+Search Query
 ^^^^^^^^^^^^
 
-You can search for Assets in your ASGARD with the ``ASGARD Query``. This allows
+You can search for Assets in your Management Center with the ``Search Query``. This allows
 you to write more complex queries to search for assets. Additionally, this
 helps you to be more flexible with your scan/response tasks, since you can
 just specify a query and don't have to set labels first. A good example of
@@ -393,7 +395,7 @@ This would run the task on all linux systems in the subnet 172.16.50.0/24.
 The following operators are available:
 
 .. csv-table::
-     :file: ../csv/asgard-query-operators.csv
+     :file: ../csv/mc-query-operators.csv
      :widths: 30, 70
      :delim: ;
      :header-rows: 1
@@ -407,7 +409,7 @@ You can create simple or complex queries this way. You can group/separate querie
 The following keys for the asset query are available:
 
 .. csv-table::
-     :file: ../csv/asgard-query-fields.csv
+     :file: ../csv/mc-query-fields.csv
      :widths: 50, 50
      :delim: ;
      :header-rows: 1
@@ -416,28 +418,30 @@ The following keys for the asset query are available:
    You can see which query-name a field has by enabling the column in your asset view
    and clicking into the query text field:
 
-   .. figure:: ../images/asgard_asset_query_fieldnames.png
+   .. figure:: ../images/asset_query_fieldnames.png
 
 Asset Migration
 ^^^^^^^^^^^^^^^
 
-You can move an asset from one ASGARD to another via the Maintenance Module of Response
+You can move an asset from one Management Center to another via the Maintenance Module of Response
 Control. To do this, navigate to ``Asset Management`` and select the assets you want to
 migrate. Alternatively you can navigate to ``Response Control`` and add a new task.
 You can now Click the ``Add Task`` button to open the Task Menu. Choose the ``Maintenance``
-Module and then the ``Move asset to another ASGARD`` Type. You have to upload an agent
-installer from the ASGARD you want to migrate the asset to.
+Module and then the ``Move asset to another Management Center`` Type. You have to upload an agent
+installer from the Management Center you want to migrate the asset to.
 
-.. figure:: ../images/master-asgard-move-asset.png
-   :alt: MASTER ASGARD Move Asset
+.. figure:: ../images/master-mc-move-asset.png
+   :alt: Master Management Center Move Asset
 
 .. note::
    The target OS or Arch of the installer doesn't matter, we will only use the installers
    configuration data for the migration.
 
-The task will fail if the migrated asset is unable to communicate with the new ASGARD.
-In this case, the asset will remain on the ASGARD which issued the migration task. Only
-the asset will be migrated (it shows up as a brand new asset on your new ASGARD), no
+The task will fail if the migrated asset is unable to communicate with the
+new Management Center.
+In this case, the asset will remain on the Management Center which issued the migration task. Only
+the asset will be migrated (it shows up as a brand new asset on your new
+Management Center), no
 scan or response tasks and also no logs will be migrated.
 
 Delete Assets
@@ -453,7 +457,7 @@ you want to delete the asset.
 To see all the deleted assets, change your view from ``Active Only`` to ``Deleted Only``.
 
 .. warning::
-   Deleted assets can no longer communicate with the ASGARD. Please use with caution.
+   Deleted assets can no longer communicate with the Management Center. Please use with caution.
 
 .. figure:: ../images/asset-view-deleted-assets.png
    :alt: Deleted Assets
@@ -463,28 +467,28 @@ To see all the deleted assets, change your view from ``Active Only`` to ``Delete
 Scan Control
 ------------
 
-The Scan Control in your ASGARD allows you to run different kind of Scans on one
+The Scan Control in your Management Center allows you to run different kind of Scans on one
 or multiple assets. Additionally, you can create Scan Templates to use with new
 Scans, so the different options don't need to be configured for every new scan.
 False-Positive Filters can be set to exclude certain files from scan results,
 or even whole directories can be excluded.
 
-Your ASGARD will also take care of THOR scans which stopped (e.g. the asset
-rebooted or lost connection to your ASGARD during a scan), so that a scan
+Your Management Center will also take care of THOR scans which stopped (e.g. the asset
+rebooted or lost connection to your Management Center during a scan), so that a scan
 will not fail if the asset is temporarily offline.
 
 Managing Scan Templates
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Scan templates are the most convenient way to make use of THOR's rich set of
-scan options. Starting with ``ASGARD 1.10``, it is possible to define scan parameters
+scan options. Starting with ``Management Center 1.10``, it is possible to define scan parameters
 for THOR 10 and store them in different templates for later use in single scans
 and grouped scans. 
 
 Imagine you want to use dedicated scan options for different system groups (e.g.
 Linux Servers, Domain Controllers, Workstations, etc.) and make sure to use exactly
 the same set of scan options every time you scan a particular group of systems.
-With ASGARD you can now add a scan template for every group.
+With the Management Center you can now add a scan template for every group.
 
 A popular use case for scan templates is providing additional resource control – for
 example telling THOR to set the lowest process priority for itself and never
@@ -497,9 +501,9 @@ and a comprehensive resource control is enabled by default.
 For more details please refer to the `THOR manual <https://thor-manual.nextron-systems.com/en/latest/>`_.
 Only use the scan templates if you want to deviate from the default for a reason.
 
-Scan templates are protected from being modified by ASGARD users without the
+Scan templates are protected from being modified by the Management Center users without the
 "Manage Scan Templates"-permission and can also be restricted from being used
-by ASGARD users in case the flag "ForceStandardArgs" is set for this user.
+by the Management Center users in case the flag "ForceStandardArgs" is set for this user.
 (See section :ref:`usage/administration:User Management` for details).
 
 By clicking the ``Import Scan Template`` button you can import a previously exported scan template.
@@ -580,7 +584,7 @@ section and click the "stop" (square) button for the scan you want to stop.
 
    Stopping a Single Scan
 
-Download Scan Results 
+Download Scan Results
 ~~~~~~~~~~~~~~~~~~~~~
 
 After the scan completion, you can download the scan results via the
@@ -629,12 +633,13 @@ mentioned parameters, the following parameters can be set:
        or you can use the ``Advanced`` target options, which makes use of
        labels or asset queries. Leaving this option empty will scan all assets.
    * - **Limit**
-     - ASGARD will not send additional scans to the agents when the client
+     - The Management Center will not send additional scans to the agents when the client
        limit is reached. Therefore you need to set a limit higher than the
        number of hosts you want to scan or enter ``0`` for no limit. If
-       you are using MASTER ASGARD, this limit is applied on each single selected ASGARD.
+       you are using a Master Management Center, this limit is applied on each
+       single selected Management Center.
    * - **Rate**
-     - The number of scans per minute that are issued by ASGARD. This is
+     - The number of scans per minute that are issued by the Management Center. This is
        where the network load can be controlled. Additionally, it is recommended
        to use this parameter in virtualized and oversubscribed environments in
        order to limit the number of parallel scans on your endpoints.
@@ -672,7 +677,7 @@ The Status field can have the following values:
      - The group scan has not yet started. Either click play or wait
        for the scheduled start date (the job will start in a 5 minute window around the scheduled time).
    * - **Active**
-     - Scan is started, ASGARD will issue scans with the given parameters.
+     - Scan is started, the Management Center will issue scans with the given parameters.
    * - **Inactive**
      - No additional scan jobs are being issued. All single scans that are currently running will continue to do so.
    * - **Completed**
@@ -724,7 +729,7 @@ THOR Excludes and False-Positive Filters
 
 In THOR you can define `directory and file excludes <https://thor-manual.nextron-systems.com/en/latest/usage/configuration.html#files-and-directories>`_
 and `false positive filters <https://thor-manual.nextron-systems.com/en/latest/usage/configuration.html#false-positives>`_.
-With ASGARD 2.13+ these features can be globally defined in ASGARD at ``Scan Control`` > ``THOR Config``.
+With Management Center 2.13+ these features can be globally defined in the Management Center at ``Scan Control`` > ``THOR Config``.
 
 .. figure:: ../images/scan-exclude-and-fp.png
    :alt: Scan Control - Global Directory Exclude and FP Filtering
@@ -760,7 +765,7 @@ separated with the colon sign ``:``
      - Possible Values
    * - 1
      - Server
-     - The receiving server, ``%asgard-host%`` is the ASGARD which issued the Scan for the Agent
+     - The receiving server, ``%asgard-host%`` is the Management Center which issued the Scan for the Agent
      - FQDN or IP of remote host
    * - 2
      - Port
@@ -802,7 +807,7 @@ Examples:
 
 If you choose to use the ``--syslog`` flag, please make sure that the
 necessary ports are allowed within your network/firewall. If you decide
-to forward your logs via ASGARD to a SIEM, please have a look at
+to forward your logs via the Management Center to a SIEM, please have a look at
 :ref:`usage/administration:Rsyslog Forwarding`.
 
 .. note::
@@ -830,7 +835,7 @@ tasks can be:
   - Upgrade Agent
   - Upgrade Service Controller
   - Configure the asset's proxy
-  - Move asset to another ASGARD
+  - Move asset to another Management Center
 
 Opening a Remote Shell on an endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -862,20 +867,21 @@ and click the play button in the bottom row.
 
    Replay Remote Shell Session
 
-ASGARD users can only see their own remote shell session. Only users with
+Management Center users can only see their own remote shell session. Only users with
 the ``RemoteConsoleProtocol`` permission are able to replay all sessions from all users.
 
 Response Control with Pre-Defined Playbooks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In addition to controlling THOR scans, ASGARD Management Center contains
-extensive response functions. Through ASGARD, you can start or stop processes,
+In addition to controlling THOR scans, Management Center contains
+extensive response functions. Through the Management Center, you can start
+or stop processes,
 modify and delete files or registry entries, quarantine endpoints, collect
 triage packages and execute literally any command on connected systems.
 All with one click and executed on one endpoint or groups of endpoints.
 
 It is also possible to download specific suspicious files. You can transfer
-a suspicious file to the ASGARD Management Center and analyze it in a Sandbox. 
+a suspicious file to the Management Center and analyze it in a Sandbox. 
 
 
 .. figure:: ../images/built-in-playbooks.png
@@ -894,9 +900,9 @@ Column. This will lead you to a dialogue where you can select the desired action
 
 In this example, we collect a full triage package.
 
-ASGARD ships with pre-defined playbooks for the following tasks:
+The Management Center ships with pre-defined playbooks for the following tasks:
 
-* Collect ASGARD Agent Log
+* Collect Endpoint Agent Log
 * Create and Collect Aurora Agent Diagnostics Pack (Windows only)
 * Collect full triage pack (Windows only)
 * Isolate endpoint (Windows only)
@@ -906,7 +912,7 @@ ASGARD ships with pre-defined playbooks for the following tasks:
 * Collect Aurora diagnostics pack
 * Execute command and collect stdout and stderr
 
-Nextron provides additional playbooks via ASGARD updates.
+Nextron provides additional playbooks via the Management Center updates.
 
 .. warning::
     The collection of memory can set the systems under high load and
@@ -919,7 +925,7 @@ Nextron provides additional playbooks via ASGARD updates.
     settings and loaded modules, thus we cannot guarantee a successful
     collection. Additionally, memory dumps require temporary free
     disk space on the system drive and consume a significant amount
-    of disk space  on ASGARD as well. The ASGARD agent checks if there
+    of disk space  on the Management Center as well. The Endpoint Agent checks if there
     is enough memory on the  system drive and adds a 50% safety buffer.
     If there is not enough free disk  space, the memory dump will fail.  
 
@@ -963,7 +969,7 @@ can be added using the ``Add Step`` button.
    Add Playbook Entry
 
 If you need custom files for your playbook (scripts, configurations, binaries, etc.)
-you can select local files to be uploaded to ASGARD during the creation of the playbook
+you can select local files to be uploaded to the Management Center during the creation of the playbook
 step (by selecting "Upload New File" in the file drop-down). You can manage these
 files at ``Response Control`` > ``Playbook Files`` and upload or update files using
 the ``Upload Playbook File`` button.
@@ -974,9 +980,9 @@ the ``Upload Playbook File`` button.
    Manage Playbook Files
 
 You can have up to 16 steps in each playbook that are executed sequentially. Every
-step can be either "download something from ASGARD to the endpoint", "execute a
-command line" or "upload something from the endpoint to ASGARD". If you run a
-command line the stdout and stderr are reported back to ASGARD. 
+step can be either "download something from the Management Center to the endpoint", "execute a
+command line" or "upload something from the endpoint to the Management Center". If you run a
+command line the stdout and stderr are reported back to the Management Center. 
 
 Change the Asset(s) Proxy
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -995,7 +1001,7 @@ can be set, though only one FQDN/IP-Address per field can be set.
 Service Control
 ---------------
 
-Service Control is ASGARD's way of deploying real-time services on endpoints.
+Service Control is the Management Center's way of deploying real-time services on endpoints.
 Currently there exist the Aurora and the LogWatcher service. To use any of those
 two, the service controller has to be installed on an asset.
 
@@ -1003,10 +1009,10 @@ Service Controller Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To install asgard2-service-controller on an asset you need to install the asgard2-agent
-first. If you already have installed asgard2-agent on an asset and accepted it in ASGARD,
-you can use the **"Install ASGARD Service Controller"** playbook to deploy the service
+first. If you already have installed asgard2-agent on an asset and accepted it in the Management Center,
+you can use the **"Install Service Controller"** playbook to deploy the service
 controller on an asset or you can manually download and execute the asgard2-service-controller
-installer from the ASGARD downloads page.
+installer from the Management Center downloads page.
 
 .. figure:: ../images/sc-install.png
    :alt: Install Service Controller
@@ -1016,7 +1022,7 @@ installer from the ASGARD downloads page.
 Service Controller Update
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If an ASGARD update comes with a new service controller version, you need to update
+If a Management Center update comes with a new service controller version, you need to update
 the service controller on the already rolled-out assets. You can do this using an
 "Update Agent" task. For a single asset the task can be run in ``Asset Management`` >
 ``Assets`` > ``Run Task`` (play button action) or analogous as a (scheduled) group task
@@ -1081,7 +1087,8 @@ and then ``Add to Ruleset``. A rule can be assigned to multiple rulesets.
 
 .. note::
     You need to commit and push your changes after editing a ruleset.
-    ASGARD has to restart the service controller to read new configurations.
+    The Management Center has to restart the service controller to read new
+    configurations.
     In order to prevent multiple restarts in the case of a user performing
     several configuration changes in succession, the user has to initiate
     the reloading of the new configuration by going to ``Service Control`` >
@@ -1185,7 +1192,7 @@ Rule and Response Updates
 
 If new rules or rule updates are provides by the Aurora signatures, the updates
 have to be applied by the user manually in order to be affecting Aurora agents
-managed by ASGARD. An indicator is shown in the WebUI and the rules changes can
+managed by the Management Center. An indicator is shown in the WebUI and the rules changes can
 be reviewed and applied at ``Service Control`` > ``Sigma`` > ``Rule Updates``. 
 
     .. figure:: ../images/sigma-rule-updates.png
@@ -1359,8 +1366,8 @@ response actions under ``Service Control`` > ``Aurora`` > ``Response Action Logs
 Best Practices for Managing Aurora
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Install the ASGARD agent on the asset (see :ref:`usage/administration:ASGARD Agent Deployment`)
-2. Install the ASGARD service controller on the asset (see :ref:`usage/administration:Service Controller Installation`)
+1. Install the Endpoint Agent on the asset (see :ref:`usage/administration:Endpoint Agent Deployment`)
+2. Install the Management Center service controller on the asset (see :ref:`usage/administration:Service Controller Installation`)
 3. Deploy the Aurora Service on the asset using the ``[Default] Standard configuration with critical and high Sigma rules``
 4. configuration (see :ref:`usage/administration:Deploy Aurora on Asset`)
 
@@ -1399,7 +1406,7 @@ message in the ``Service Control`` > ``Aurora`` > ``Response Action Logs``:
 
 More tests are available from the
 `Function Tests section of the Aurora manual <https://aurora-agent-manual.nextron-systems.com/en/latest/usage/function-tests.html>`_.
-Those tests only generate detection events but no responses. If your ASGARD Management
+Those tests only generate detection events but no responses. If your Management
 Center is connected to an Analysis Cockpit, you can see the detection events at ``Events`` >
 ``Aurora Events`` or in the Windows EventLog of the asset.
 
@@ -1409,14 +1416,14 @@ LogWatcher Service
 
 The LogWatcher real-time service monitors the Windows Event Log using
 predefined rules in the Sigma format and creates an alert that is forwarded
-to ASGARD Analysis Cockpit if a match was found. The LogWatcher service is no
-longer shown by default on newly installed ASGARDs. To enable it go to ``Settings`` >
+to Analysis Cockpit if a match was found. The LogWatcher service is no
+longer shown by default on newly installed Management Centers. To enable it go to ``Settings`` >
 ``Advanced`` and enable the ``Show LogWatcher`` checkbox.
 
 Prerequisites
 ~~~~~~~~~~~~~
 
-In order to make full use of ASGARD LogWatcher you need a Windows Audit Policy
+In order to make full use of the Management Center LogWatcher you need a Windows Audit Policy
 and Sysmon, both with a reasonable configuration, in place. We expect organizations
 to take care of providing a sane configuration by their own. This section helps
 in giving starting points, if needed.
@@ -1461,9 +1468,9 @@ Sysmon Installation
 is part of Microsoft Sysinternals and therefore has to be installed as a
 third party tool. The preferred way to distribute Sysmon and its configuration
 is using your organization's device management. If you do not have access to one,
-you can use ASGARD's playbook feature to distribute Sysmon and update its
+you can use the Management Center's playbook feature to distribute Sysmon and update its
 configuration. Documentation which describes the playbook creation and that
-offers maintenance scripts can be found in our `asgard-playbooks repository <https://github.com/NextronSystems/asgard-playbooks>`_.
+offers maintenance scripts can be found in our `management-center-playbooks repository <https://github.com/NextronSystems/management-center-playbooks>`_.
 
 Operation
 ~~~~~~~~~
@@ -1599,10 +1606,10 @@ Integrating IOCs through MISP
 
 .. note::
    In order to use MISP events and their IOCs for scanning, you
-   need to link your ASGARD with a MISP first. Please see
+   need to link your Management Center with a MISP first. Please see
    :ref:`usage/administration:link misp` for reference.
 
-ASGARD provides an easy to use interface for integrating IOCs from
+The Management Center provides an easy to use interface for integrating IOCs from
 a connected MISP into THOR scans. In order to add rules from a MISP,
 navigate to ``IOC Management`` > ``MISP`` > ``MISP Events``, select
 the IOCs and add them to the desired ruleset by using the button in
@@ -1639,12 +1646,12 @@ In order to use a MISP ruleset in a scan, add the ruleset in the
 
    Adding a MISP Ruleset to a Scan 
 
-MISP Attributes used by ASGARD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MISP Attributes used by the Management Center
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Since not all the information and attributes in a MISP event are
-relevant to ASGARD and the THOR scanner, we provide a list of
-attributes which will be used by ASGARD:
+relevant to the Management Center and the THOR scanner, we provide a list of
+attributes which will be used by the Management Center:
 
    * hostname
    * ip-dst
@@ -1668,16 +1675,16 @@ attributes which will be used by ASGARD:
 
 .. warning:: 
    Only attributes with the flag ``IDS`` set to ``true`` will be used
-   by ASGARD. Please make sure that the flag is set if you are
+   by the Management Center. Please make sure that the flag is set if you are
    intending to use certain events/attributes.
 
-Evidence Collection 
+Evidence Collection
 -------------------
 
 Collected Evidences
 ^^^^^^^^^^^^^^^^^^^
 
-ASGARD provides two forms of collected evidence: 
+The Management Center provides two forms of collected evidence: 
 
 1. Playbook output (file or memory collection, command output)
 2. Sample quarantine (sent by THOR via Bifrost protocol during the scan)
@@ -1709,7 +1716,7 @@ Generate Download Links
 The ``Downloads`` section lets you create and download a full
 THOR package including scanner, custom IOCs and MISP rulesets
 along with a valid license for a specific host. This package can
-then be used for systems that cannot be equipped with an ASGARD
+then be used for systems that cannot be equipped with a Management Center
 agent for some reason. For example, this can be used on air gapped
 networks. Copy the package to a flash drive or CD ROM and use it
 where needed.
@@ -1717,7 +1724,7 @@ where needed.
 You can choose to disable the download token altogether using
 ``Disable Download Token``. If disabled, anyone with network
 access can download and issue licenses, which may lead to
-unwanted exhaustion of the ASGARD license pool. You can reset
+unwanted exhaustion of the Management Center license pool. You can reset
 the download token by disabling and then re-enabling it using ``New Download Token``.
 
 .. figure:: ../images/download-thor-package.png
@@ -1732,11 +1739,11 @@ correct scanner, operating system and target hostname (not FQDN),
 you can copy the download link and use it to retrieve a full
 scanner package including a license file for that host. These download
 links can be sent to administrators or team members that don't have
-access to ASGARD management center. Remember that the recipients of
-that link still need to be able to reach ASGARD's web server port
+access to the Management Center. Remember that the recipients of
+that link still need to be able to reach the Management Center's web server port
 (443/tcp). The token can be used to download THOR or a THOR license
-without an ASGARD account. Attention: If you disable the token,
-anybody can download THOR from this ASGARD or can generate licenses.
+without a Management Center account. Attention: If you disable the token,
+anybody can download THOR from this Management Center or can generate licenses.
 
 .. note::
    The scanner package will not contain a license file if you don't
@@ -1778,10 +1785,10 @@ Use Case 3 - Use the URL in Scripts
 By default, the generated download link is protected with a
 token that makes it impossible to download a package or
 generate a license without knowing that token. This token
-is specific to every ASGARD instance.  
+is specific to every Management Center instance.  
 
 You can use that URL in Bash or PowerShell scripts to automate
-scans on systems without an installed ASGARD agent. 
+scans on systems without an installed Endpoint Agent. 
 
 .. code-block:: powershell 
 
@@ -1791,22 +1798,22 @@ scans on systems without an installed ASGARD agent.
 Licensing
 ---------
 
-ASGARD requires an Issuer-License in order to scan systems.
+The Management Center requires an Issuer-License in order to scan systems.
 The Issuer-License contains the number of asset-, server- and
-workstation systems that can be scanned with ASGARD Management
+workstation systems that can be scanned with the Management
 Center as well as the Aurora or LogWatcher service licenses.
 
-ASGARD will automatically issue a valid single-license for a
+The Management Center will automatically issue a valid single-license for a
 particular system during its initial THOR scan. 
 
-The screenshot below shows the licensing section of an ASGARD.
+The screenshot below shows the licensing section of a Management Center.
 
-.. figure:: ../images/asgard-licensing.png
-   :alt: ASGARD licensing
+.. figure:: ../images/licensing.png
+   :alt: Licensing
 
-   ASGARD licensing
+   Licensing
 
-In addition, ASGARD can create single-licenses that can be used
+In addition, the Management Center can create single-licenses that can be used
 for agent-less scanning. In this case the license is generated
 and downloaded through the Web frontend. 
 
@@ -1832,26 +1839,26 @@ action is performed (playbook or remote console access).
 Updates
 -------
 
-ASGARD Updates
-^^^^^^^^^^^^^^
+Management Center Updates
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-ASGARD will search for ASGARD updates on a daily basis. Available
+The Management Center will search for updates on a daily basis. Available
 updates will automatically be shown in the section ``Updates``. 
 
-As soon as an ASGARD update is available, a button ``Upgrade from ... to ...``
+As soon as a Management Center update is available, a button ``Upgrade from ... to ...``
 appears. Clicking this button will start the update process. The
-ASGARD service will be restarted and the user will be forced to
-re-login. Generally update MASTER ASGARD before the connected ASGARDs.
+Management Center service will be restarted and the user will be forced to
+re-login. Generally update Master Management Center before the connected Management Centers.
 
-.. figure:: ../images/updating-asgard.png
-   :alt: Updating ASGARD
+.. figure:: ../images/updating-mc.png
+   :alt: Updating the Management Center
 
-   Updating ASGARD
+   Updating the Management Center
 
 Updates of THOR and THOR Signatures
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, ASGARD will search for signature updates and THOR
+By default, the Management Center will search for signature updates and THOR
 updates on an hourly basis. These updates will be set to active
 automatically. Therefore, a triggered scan will always employ the
 current THOR version and current signature version. You may disable
@@ -1876,8 +1883,9 @@ Please be aware, that this is a global setting and will affect all scans!
 
 .. hint:: 
    You can trigger a Manual Check and download new THOR packages by clicking
-   ``Manually Check for Updates``. This can also be used in new ASGARD 
-   installations, as sometimes it takes a while until ASGARD does this automatically.
+   ``Manually Check for Updates``. This can also be used in new Management
+   Center installations, as sometimes it takes a while until the Management
+   Center does this automatically.
 
 Agent Updates
 ^^^^^^^^^^^^^
@@ -1916,13 +1924,13 @@ You can download a list of all users in CSV format.
 Roles
 ^^^^^
 
-By default, ASGARD ships with the following pre-configured
+By default, the Management Center ships with the following pre-configured
 user roles. The pre-configured roles can be modified or
-deleted. The ASGARD role model is fully configurable.
+deleted. The Management Center role model is fully configurable.
 
 
 .. figure:: ../images/user-roles-factory-default.png
-   :alt: ASGARD User Roles
+   :alt: User Roles
 
    User Roles – Factory Defaults 
 
@@ -1952,7 +1960,7 @@ Rights
    * - Service Control
      - User can manage services on endpoint, e.g. Aurora or LogWatcher
 
-Restrictions 
+Restrictions
 ^^^^^^^^^^^^
 
 .. list-table:: 
@@ -1977,17 +1985,17 @@ LDAP Configuration
 
 In order to configure LDAP, navigate to ``Settings`` > ``LDAP``.
 In the left column you can test and configure the LDAP connection itself.
-In the right column, the mapping of LDAP groups to ASGARD groups
+In the right column, the mapping of LDAP groups to the Management Center groups
 (and its associated permissions) is defined.
 
-First check if your LDAP server is reachable by ASGARD by clicking "Test Connection".
+First check if your LDAP server is reachable by the Management Center by clicking "Test Connection".
 
 .. figure:: ../images/ldap-server.png
    :alt: Configure the LDAP Server
 
    Configure the LDAP Server
 
-Then check the bind user you want to use for ASGARD. Read
+Then check the bind user you want to use for the Management Center. Read
 permissions on the bind user are sufficient. To find out
 the distinguished name you can use an LDAP browser or query
 using the PowerShell AD module command ``Get-ADUser <username>``.
@@ -2002,8 +2010,9 @@ users and their preferred attributes in your LDAP structure.
 A default for LDAP and AD in a flat structure is given in the
 **"Use recommended filters"** drop-down menu, but you can
 adapt it to your liking. The test button shows you if a login
-with that user would be successful and which groups ASGARD identified
-and could be used for a mapping to ASGARD groups. 
+with that user would be successful and which groups the Management Center
+identified
+and could be used for a mapping to the Management Center groups. 
 
 .. figure:: ../images/ldap-filter.png
    :alt: Configure the LDAP User and Group Filters
@@ -2022,13 +2031,13 @@ to ``(&(objectClass=user)(objectCategory=user)(userPrincipalName=%s))``
    save it, so that you can use it for testing purposes anytime,
    without changing your working configuration.
 
-After the LDAP configuration is set up, you need to provide role mapping from LDAP groups to ASGARD groups.
+After the LDAP configuration is set up, you need to provide role mapping from LDAP groups to the Management Center groups.
 This is done in the right column by using the ``Add LDAP Role`` feature.
 
 .. figure:: ../images/ldap-role.png
-   :alt: LDAP Group to ASGARD Role Mapping
+   :alt: LDAP Group to Role Mapping
 
-   LDAP Group to ASGARD Role Mapping
+   LDAP Group to Role Mapping
 
 Additional Settings
 -------------------
@@ -2050,22 +2059,22 @@ The following log sources can be forwarded individually:
 
    * - Log
      - Description
-   * - ASGARD Log
-     - Everything related to the ASGARD service, processes, task and scan jobs
-   * - ASGARD Audit Log
+   * - Management Center Log
+     - Everything related to the Management Center service, processes, task and scan jobs
+   * - Management Center Audit Log
      - Detailed audit log of all user activity within the system
    * - Agent Log
-     - All ASGARD agent activities
+     - All Endpoint Agent activities
    * - THOR Log
      - THOR scan results
    * - Thor Log (Realtime)
      - The THOR (Realtime) logs are the same logs as THOR logs,
        except that they are collected via udp syslog instead of
        https. To forward THOR logs in realtime, you have to
-       configure your scans to forward syslog to ASGARD, see
+       configure your scans to forward syslog to the Management Center, see
        :ref:`usage/administration:Syslog Forwarding`). Make
        sure the necessary firewall rules are in place to allow
-       the asset to communicate with the ASGARD.
+       the asset to communicate with the Management Center.
    * - Aurora Log
      - Aurora Logs
 
@@ -2073,7 +2082,7 @@ TLS Certificate Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instead of using the pre-installed self-signed TLS Certificate,
-users can upload their own TLS Certificate for ASGARD. 
+users can upload their own TLS Certificate for the Management Center. 
 
 .. figure:: ../images/generate-csr.png
    :alt: Generate a Certificate Signing Request (CSR)
@@ -2095,13 +2104,14 @@ Subsequently, this TLS Certificate can be uploaded in the ``Settings`` > ``TLS``
    Upload a TLS Certificate
 
 .. note:: 
-   Please see :ref:`usage/appendix:install tls certificates on asgard and master asgard`
-   for a guide on how to sign the CSR and install it in your ASGARD.
+   Please see
+   :ref:`usage/appendix:install tls certificates on management center and master management center`
+   for a guide on how to sign the CSR and install it in your Management Center.
 
 Manage Services
 ^^^^^^^^^^^^^^^
 
-The individual ASGARD services can be managed in ``Settings`` > ``Services``.
+The individual Management Center services can be managed in ``Settings`` > ``Services``.
 The services can be stopped or restarted with the respective buttons in the ``Actions`` column. 
 
 .. figure:: ../images/manage-services.png
@@ -2126,11 +2136,10 @@ the upper right corner.
 Settings for Bifrost
 ^^^^^^^^^^^^^^^^^^^^
 
-Bifrost allows you to automatically upload suspicious files to your
-ASGARD during a THOR scan. If an Analysis Cockpit is connected,
+Bifrost allows you to automatically upload suspicious files to your Management Center during a THOR scan. If an Analysis Cockpit is connected,
 these files get automatically forwarded to the Analysis Cockpit
 in order to drop them into a connected Sandbox system. However,
-the collected files will stay on ASGARD for the amount of time
+the collected files will stay on the Management Center for the amount of time
 specified in ``Retention time`` (0 days represent an indefinite amount of time). 
 
 .. figure:: ../images/settings-for-bifrost.png
@@ -2142,9 +2151,9 @@ The collected files can be downloaded in the ``Evidence Collection``
 section. All files are zip archived and password protected with the password ``infected``.
 
 In order to automatically collect suspicious files, you have to
-create a scan with Bifrost enabled. Check the ``Send Suspicious Files to ASGARD``
+create a scan with Bifrost enabled. Check the ``Send Suspicious Files to the Management Center``
 option to send samples to the system set as ``bifrost2Server``. Use the placeholder 
-``%asgard-host%`` to use the hostname of you ASGARD instance as the Bifrost server.
+``%asgard-host%`` to use the hostname of you Management Center instance as the Bifrost server.
 
 .. figure:: ../images/scan-option-for-bifrost.png
    :alt: Bifrost Options
@@ -2152,7 +2161,7 @@ option to send samples to the system set as ``bifrost2Server``. Use the placehol
    Scan option for Bifrost 
 
 This will collect all files with a score of 60 or higher and make
-them available for download in ASGARDs ``Collected Files`` section.
+them available for download in Management Centers ``Collected Files`` section.
 
 For Details on how to automatically forward to a sandbox system please
 refer to the `Analysis Cockpit Manual <https://analysis-cockpit-manual.nextron-systems.com/en/latest>`_ .
@@ -2171,20 +2180,20 @@ type and click ``Update Analysis Cockpit``.
 
    Linking the Analysis Cockpit 
 
-The Cockpit's API key can be found at ``Settings`` > ``ASGARDs`` > ``Connect ASGARD``.
+The Cockpit's API key can be found at ``Settings`` > ``Management Centers`` > ``Connect Management Center``.
 
 .. figure:: ../images/settings-ac.png
    :alt: Analysis Cockpit API Key
 
    Analysis Cockpit API Key
 
-ASGARD must be able to connect to the Analysis Cockpit
+The Management Center must be able to connect to the Analysis Cockpit
 on port 443/TCP for a successful integration. Once connected,
-the Cockpit will show up in ASGARDs ``System Status`` > ``Overview``
+the Cockpit will show up in Management Centers ``System Status`` > ``Overview``
 section together with the other connectivity tests. 
 
 Please wait up to five minutes for the status to
-change on ASGARD's system status page. It will change from ``Not linked`` to ``Online``.
+change on the Management Center's system status page. It will change from ``Not linked`` to ``Online``.
 
 .. figure:: ../images/connectivity-status.png
    :alt: image87
@@ -2194,14 +2203,14 @@ change on ASGARD's system status page. It will change from ``Not linked`` to ``O
 Link MISP
 ^^^^^^^^^
 
-In order to connect to a MISP with your ASGARD Management Center,
+In order to connect to a MISP with your Management Center,
 navigate to ``Settings`` > ``MISP``. Insert the MISP's address,
 along with the API Key and click ``Test and Link MISP``.
 
-.. figure:: ../images/linking-a-misp-to-asgard.png
-   :alt: Linking a MISP to ASGARD
+.. figure:: ../images/linking-a-misp.png
+   :alt: Linking a MISP to the Management Center
 
-   Linking a MISP to ASGARD
+   Linking a MISP to the Management Center
 
 The MISP connectivity status is shown in the ``Overview`` section.
 Please allow five minutes for the connection status to indicate the
@@ -2216,8 +2225,8 @@ correct status, and also MISP rules to be downloaded and shown in
 Change Proxy Settings
 ^^^^^^^^^^^^^^^^^^^^^
 
-In this dialogue, you can add or modify ASGARDs proxy
-configuration. Please note, you need to restart the ASGARD
+In this dialogue, you can add or modify the Management Center's proxy
+configuration. Please note, you need to restart the Management Center
 service (Tab ``Services``) afterwards. 
 
 .. figure:: ../images/change-proxy-settings.png
@@ -2228,30 +2237,30 @@ service (Tab ``Services``) afterwards.
 .. warning::
    This will also overwrite any changes made to the file
    ``/etc/apt/apt.conf.d/proxy`` on your system. If you
-   changed the file before installation of your ASGARD
+   changed the file before installation of your Management Center
    services (:ref:`usage/setup:changing proxy configuration`),
    you can safely go ahead and change your proxy settings.
 
-Link MASTER ASGARD
-^^^^^^^^^^^^^^^^^^
+Link Master Management Center
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to control your ASGARD with a MASTER ASGARD,
-you must generate a One-Time Code and use it in the "Add ASGARD"
-dialogue within the MASTER ASGARD frontend. 
+In order to control your Management Center with a Master Management Center,
+you must generate a One-Time Code and use it in the "Add Management Center"
+dialogue within the Master Management Center frontend. 
 
 
-.. figure:: ../images/link-master-asgard.png
-   :alt: Link MASTER ASGARD
+.. figure:: ../images/link-master-mc.png
+   :alt: Link Master Management Center
 
-   Link MASTER ASGARD
+   Link Master Management Center
 
 Advanced
 ^^^^^^^^
 
 The Advanced tab lets you specify additional global settings.
 The session timeout for web-based UI can be configured. Default
-is one hour. If ``Show Advanced Tasks`` is set, ASGARD will
-show system maintenance jobs (e.g. update ASGARD Agent on endpoints)
+is one hour. If ``Show Advanced Tasks`` is set, the Management Center will
+show system maintenance jobs (e.g. update Endpoint Agent on endpoints)
 within the response control section. 
 
 Inactive assets can be hidden in the Asset Management Section
@@ -2321,7 +2330,7 @@ and click ``Deactivate Two Factor Authentication``.
    :alt: Deactivate 2FA
 
 .. note:: 
-   If a user is unable to log into ASGARD to disable their own 2FA,
+   If a user is unable to log into the Management Center to disable their own 2FA,
    follow the instructions at :ref:`usage/troubleshooting:reset two factor authentication for a specific user`
 
 API Key
@@ -2345,20 +2354,20 @@ once after it has been generated.
    Instead, use the download token from the ``Downloads`` menu
    (:ref:`usage/administration:generate download links`).
 
-Uninstall ASGARD Agents 
------------------------
+Uninstall Endpoint Agents
+-------------------------
 
-The following listings contain commands to uninstall ASGARD Agents on endpoints. 
+The following listings contain commands to uninstall Endpoint Agents on endpoints. 
 
 .. note::
    The commands contain names used by the default installer packages.
    In cases in which you've generated custom installer packages with
    a custom service and binary name, adjust the commands accordingly. 
 
-Uninstall ASGARD Agents on Windows
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Uninstall Endpoint Agents on Windows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You need administrative privileges to remove the ASGARD Agent from Windows.
+You need administrative privileges to remove the Endpoint Agent from Windows.
 Open a command prompt with administrative privileges and run the following commands:
 
 .. code-block:: doscon
@@ -2372,10 +2381,10 @@ Open a command prompt with administrative privileges and run the following comma
    C:\Windows\system32>rmdir /S /Q C:\ProgramData\thor
 
 .. note::
-   Line 3 and 4 are only necessary if the new service controller (on ASGARD 2.11+) has been installed. 
+   Line 3 and 4 are only necessary if the new service controller (on Management Center 2.11+) has been installed. 
 
-Uninstall ASGARD Agents on Linux
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Uninstall Endpoint Agents on Linux
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 RPMs via ``yum``
 
@@ -2402,8 +2411,8 @@ Manual uninstall
    root@host:~# rm -r /var/lib/nextron/asgard2-agent
    root@host:~# rm -r /var/lib/thor
 
-Uninstall ASGARD Agents on macOS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Uninstall Endpoint Agents on macOS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console 
 
@@ -2411,7 +2420,7 @@ Uninstall ASGARD Agents on macOS
    user@mac:~$ sudo rm -r /var/lib/asgard2-agent/asgard2-agent
    user@mac:~$ sudo rm -r /var/lib/thor
 
-Uninstall ASGARD Service Controller
+Uninstall Service Controller
 ----------------------------------- 
 
 .. note::
@@ -2419,10 +2428,10 @@ Uninstall ASGARD Service Controller
    In cases in which you've generated custom installer packages with
    a custom service and binary name, adjust the commands accordingly. 
 
-If you want to uninstall the ASGARD Service Controller and Agent,
-see section :ref:`usage/administration:Uninstall ASGARD Agents`.
+If you want to uninstall the Service Controller and Agent,
+see section :ref:`usage/administration:Uninstall Endpoint Agents`.
 
-If you only want to uninstall the ASGARD Service Controller execute:
+If you only want to uninstall the Service Controller execute:
 
 .. code-block:: doscon
 

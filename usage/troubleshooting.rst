@@ -4,16 +4,16 @@ Troubleshooting
 Diagnostic Pack
 ---------------
 
-The diagnostic package is an archive generated on ASGARD server to help
+The diagnostic package is an archive generated on Management Center to help
 Nextron support engineers with the debugging of your problem. It contains
-the system configuration and log data of an ASGARD instance. 
+the system configuration and log data of a Management Center instance. 
 
 You can generate a Diagnostic Package in ``Systems Status > Tab: Logs > Diagnostics Package``. 
 
-.. figure:: ../images/asgard-diagnostic-1.png
+.. figure:: ../images/diagnostic-1.png
    :alt: Diagnostics Pack
 
-.. figure:: ../images/asgard-diagnostic-2.png
+.. figure:: ../images/diagnostic-2.png
    :alt: Diagnostics Pack Download View
 
 The package can have a size that cannot be shared via Email. In this case you can either
@@ -36,7 +36,7 @@ or ``/var/lib/asgard2-agent/`` for Windows and Linux/macOS, respectively.
 
    write_log: true
 
-After making these changes, restart the ASGARD service. You can then
+After making these changes, restart the Management Center service. You can then
 find log entries and possible error messages in the file ``asgard2-agent.log``
 in the same directory as the configuration file.
 
@@ -73,25 +73,25 @@ On Linux, open a shell as root (sudo).
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo su -
+   nextron@mc:~$ sudo su -
    [sudo] password for nextron: 
-   root@asgard:~# 
-   root@asgard:~# export GRPC_GO_LOG_SEVERITY_LEVEL=info
-   root@asgard:~# export GODEBUG=http2debug=2
+   root@mc:~# 
+   root@mc:~# export GRPC_GO_LOG_SEVERITY_LEVEL=info
+   root@mc:~# export GODEBUG=http2debug=2
 
 Navigate into the agent's program directory and start it to see all output messages.
 
 .. code-block:: console 
 
-   root@asgard:~# systemctl stop asgard2-agent
-   root@asgard:~# cd /var/lib/asgard2-agent/
-   root@asgard:/var/lib/asgard2-agent# ./asgard2-agent
+   root@mc:~# systemctl stop asgard2-agent
+   root@mc:~# cd /var/lib/asgard2-agent/
+   root@mc:/var/lib/asgard2-agent# ./asgard2-agent
 
 Interrupt the agent with ``CTRL+C``. Don't forget to start the Linux service after the debugging session. 
 
 .. code-block:: console 
 
-   root@asgard:/var/lib/asgard2-agent# systemctl start asgard2-agent
+   root@mc:/var/lib/asgard2-agent# systemctl start asgard2-agent
 
 Aurora Diagnostics Pack
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -111,7 +111,7 @@ Duplicate Assets Remediation
 
 If you are seeing the ``Duplicate Assets`` view in your ``Asset Management``,
 you need to fix the issue to avoid unwanted behavior of this asset. To
-fix the issue, you need to uninstall the current ASGARD agent, delete the
+fix the issue, you need to uninstall the current Endpoint Agent, delete the
 configuration files, and redeploy a fresh copy.
 
 .. figure:: ../images/troubleshooting-duplicate-assets.png
@@ -119,22 +119,22 @@ configuration files, and redeploy a fresh copy.
 
    Troubleshooting Duplicate Assets
 
-- To uninstall the ASGARD agent, please follow the instructions in :ref:`usage/administration:Uninstall ASGARD Agents`.
+- To uninstall the Endpoint Agent, please follow the instructions in :ref:`usage/administration:Uninstall Endpoint Agents`.
 - To delete the configuration files, make sure that the following folder is 
   deleted before installing a new agent:
 
   * Windows: ``C:\Windows\System32\asgard2-agent\``
   * Linux: ``/var/lib/asgard2-agent/``
 
-- To install the ASGARD agent, please follow the instructions in :ref:`usage/administration:ASGARD Agent Deployment`.
+- To install the Endpoint Agent, please follow the instructions in :ref:`usage/administration:Endpoint Agent Deployment`.
 
-It is also recommended to redeploy the ASGARD Service Controller.
+It is also recommended to redeploy the Service Controller.
 
-- To uninstall the ASGARD Service Controller, please follow the
-  instructions in :ref:`usage/administration:Uninstall ASGARD Service Controller`.
-- To install the ASGARD Service Controller, please follow the
+- To uninstall the Service Controller, please follow the
+  instructions in :ref:`usage/administration:Uninstall Service Controller`.
+- To install the Service Controller, please follow the
   instructions in :ref:`usage/administration:Service Controller Installation`.
-  You need to wait a few minutes until the asset is connected to your ASGARD
+  You need to wait a few minutes until the asset is connected to your Management Center
   before you continue with this step. Please note that you might need to accept the ``Asset Request``.
 
 SSL Interception
@@ -156,9 +156,9 @@ Used for THOR updates:
 - update2.nextron-systems.com
 
 We do not support setups in which the CA of the intercepting proxy
-is used on our ASGARD appliances. 
+is used on our Management Center appliances. 
 
-Using Hostname instead of FQDN 
+Using Hostname instead of FQDN
 ------------------------------
 
 The most common error is to define a simple hostname instead of a valid
@@ -168,10 +168,10 @@ has been set during the setup step :ref:`usage/setup:network configuration`
 
 This leads to a variety of different problems. 
 
-The most important problem is that ASGARD Agents that install on endpoints
-will never be able to resolve and connect to the ASGARD server. 
+The most important problem is that Endpoint Agents that install on endpoints
+will never be able to resolve and connect to the Management Center. 
 
-Errors that appear in these cases 
+Errors that appear in these cases
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: none
@@ -179,20 +179,20 @@ Errors that appear in these cases
    Apr 23 12:07:12 debian10-dev/10.10.30.118 ASGARD_AGENT: Error:
    could not run: rpc error: code = Unavailable desc = connection
    error: desc = "transport: authentication handshake failed: x509:
-   certificate is valid for wrong-fqdn, not asgard.nextron.internal"
+   certificate is valid for wrong-fqdn, not mc.nextron.internal"
 
 How to Fix a non-existing or wrong FQDN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The FQDN is set at installation time and is composed by the hostname
-and the domain name. The ASGARD Agents require a resolvable FQDN to
-correctly operate and connect to the ASGARD Server.
+and the domain name. The Endpoint Agents require a resolvable FQDN to
+correctly operate and connect to the Management Center.
 One of the processes which are executed at installation time include
 the integration of the FQDN - which should be set during installation - into
-the ASGARD agents. If we incorrectly set the FQDN or leave any of those
-values empty, the agents will fail to connect to ASGARD.
+the Endpoint Agents. If we incorrectly set the FQDN or leave any of those
+values empty, the agents will fail to connect to the Management Center.
 
-With this fix we will set a new FQDN for the ASGARD Management Center, recreate
+With this fix we will set a new FQDN for the Management Center, recreate
 the internal certificates, and rebuild the agents.
 
 .. warning:: 
@@ -203,22 +203,22 @@ the internal certificates, and rebuild the agents.
 Set a valid FQDN
 ^^^^^^^^^^^^^^^^
 
-To set a valid FQDN for your ASGARD Management Center server, follow the steps below.
+To set a valid FQDN for your Management Center server, follow the steps below.
 We are assuming that your local DNS server already has an A-Record assigned, so your
-clients can resolve the new hostname/FQDN of your ASGARD Management Center.
+clients can resolve the new hostname/FQDN of your Management Center.
 
-Connect via SSH to the ASGARD Management Center:
+Connect via SSH to the Management Center:
 
 .. code-block:: console
 
-  user@somehost:~$ ssh nextron@asgard-mc.example.org
+  user@somehost:~$ ssh nextron@mc.example.org
 
 Edit the hosts file. Please be careful with the changes in this file,
 as this might make your system unusable!
 
 .. code-block:: console
 
-   nextron@asgard-mc:~$ sudoedit /etc/hosts
+   nextron@mc:~$ sudoedit /etc/hosts
    [sudo] password for nextron: 
 
 You need to change the following line (**do not change the IP-Address!**):
@@ -228,7 +228,7 @@ You need to change the following line (**do not change the IP-Address!**):
    :emphasize-lines: 2
 
    127.0.0.1       localhost
-   172.16.0.20     asgard-mc
+   172.16.0.20     mc
 
    # The following lines are desirable for IPv6 capable hosts
    ::1     localhost ip6-localhost ip6-loopback
@@ -242,7 +242,7 @@ To this (values are examples, please change accordingly!)
    :emphasize-lines: 2
 
    127.0.0.1       localhost
-   172.16.0.20     asgard-mc.example.org asgard-mc
+   172.16.0.20     mc.example.org mc
 
    # The following lines are desirable for IPv6 capable hosts
    ::1     localhost ip6-localhost ip6-loopback
@@ -250,7 +250,7 @@ To this (values are examples, please change accordingly!)
    ff02::2 ip6-allrouters
 
 .. note:: 
-   If you did not set a static IP-Address for your ASGARD Management Center
+   If you did not set a static IP-Address for your Management Center
    server, your IP-Address in the second line of the file might be ``127.0.1.1``.
    This is due to your server using DHCP. It is advised that you are using a 
    static IP-Address. To change this, please see :ref:`usage/setup:changing the ip-address`.
@@ -260,10 +260,10 @@ in the output:
 
 .. code-block:: console
 
-   nextron@asgard-mc:~$ hostname --fqdn
-   asgard-mc.example.org
-   nextron@asgard-mc:~$ hostname
-   asgard-mc
+   nextron@mc:~$ hostname --fqdn
+   mc.example.org
+   nextron@mc:~$ hostname
+   mc
 
 If the first command shows the FQDN and the second one the hostname without domain,
 your changes were set up correctly and you can continue to the next step.
@@ -271,14 +271,14 @@ your changes were set up correctly and you can continue to the next step.
 Recreate the TLS Certificate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We need to recreate the TLS certificate to make the Agent to ASGARD communication
+We need to recreate the TLS certificate to make the Agent to the Management Center communication
 possible again. Create a new file which will contain the script with the fix.
 In this example we'll use nano as the text editor. Make sure that the system has
 a valid FQDN.
 
 .. code-block:: console
 
-   nextron@asgard-mc:~$ nano fix-fqdn.sh
+   nextron@mc:~$ nano fix-fqdn.sh
 
 Insert the following content into the text editor:
 
@@ -301,24 +301,25 @@ Give the created script execution permissions and execute it:
 
 .. code-block:: console
 
-   nextron@asgard-mc:~$ chmod +x fix-fqdn.sh
-   nextron@asgard-mc:~$ sudo ./fix-fqdn.sh
+   nextron@mc:~$ chmod +x fix-fqdn.sh
+   nextron@mc:~$ sudo ./fix-fqdn.sh
 
-You should now be able to reach the ASGARD Server via the new FQDN.
+You should now be able to reach the Management Center via the new FQDN.
 Navigate to ``https://<YOUR-FQDN>:8443``, which reflects the FQDN we set earlier.
 
-At this point you have to install the ASGARD agents on your endpoints again.
+At this point you have to install the Endpoint Agents on your endpoints again.
 Remember to review the network requirements section to ensure all needed ports
-are open to the ASGARD Management Center from your endpoints.
+are open to the Management Center from your endpoints.
 See :ref:`usage/requirements:network requirements`
 
-ASGARD Errors
--------------
+Management Center Errors
+------------------------
 
 ASGARD noticed that the THOR scan failed
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In some cases THOR fails to complete its scan and ASGARD reports the following error. 
+In some cases THOR fails to complete its scan and the Management Center
+reports the following error.
 
 .. code-block:: none
 
@@ -343,7 +344,7 @@ Resetting TLS/SSL Certificates
 Web GUI: Regenerate the Self-Signed Certificate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ASGARD ships with a self-signed certificate for its web interface
+The Management Center ships with a self-signed certificate for its web interface
 that expires after 182 days. If you do not use your own CA
 infrastructure and want to renew the certificate or want to revert
 from a broken state, you can recreate a self-signed certificate.
@@ -351,20 +352,21 @@ To do so log in using SSH and execute:
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo openssl req -new -newkey rsa:4096 -days 182 -nodes -x509 -subj "/O=Nextron Systems GmbH/CN=$(hostname --fqdn)" -keyout /etc/nextron/asgard2/server.key -out /etc/nextron/asgard2/server.pem
+   nextron@mc:~$ sudo openssl req -new -newkey rsa:4096 -days 182 -nodes -x509 -subj "/O=Nextron Systems GmbH/CN=$(hostname --fqdn)" -keyout /etc/nextron/asgard2/server.key -out /etc/nextron/asgard2/server.pem
 
-You need to restart ASGARD in order for the changes to take effect.
+You need to restart the Management Center in order for the changes to take
+effect.
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo systemctl restart asgard2.service
+   nextron@mc:~$ sudo systemctl restart asgard2.service
 
-Regenerate ASGARD Server Certificate Agent Communication 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Regenerate Management Center Certificate Agent Communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please see chapter :ref:`usage/troubleshooting:using hostname instead of fqdn`.
 
-Admin User Password Reset 
+Admin User Password Reset
 -------------------------
 
 If you've lost the password of the local ``admin`` user (Web GUI) but
@@ -373,14 +375,14 @@ line using the following command.
 
 .. code-block:: console 
 
-   nextron@asgard:~$ sudo mysql asgard -e "UPDATE users SET password = 'YmIc6P_6jdbeEL0HY4xIcpYstmM' WHERE name = 'admin';"
+   nextron@mc:~$ sudo mysql asgard -e "UPDATE users SET password = 'YmIc6P_6jdbeEL0HY4xIcpYstmM' WHERE name = 'admin';"
 
 This resets the password to ``admin``. You should then change that password immediately.
 
 Reset Two Factor Authentication for a specific User
 ---------------------------------------------------
 
-If you or another user lost their second factor (2FA) to log into the ASGARD Web UI,
+If you or another user lost their second factor (2FA) to log into the Management Center Web UI,
 you have to reset the users MFA Settings. If you cannot access the Web UI, use
 the Command Line method.
 
@@ -390,7 +392,7 @@ We recommend to use the first option via the WebUI.
 Using the Web UI
 ~~~~~~~~~~~~~~~~
 
-Log into ASGARDs Web UI as a user with administrative privileges.
+Log into Management Centers Web UI as a user with administrative privileges.
 
 Navigate to ``Settings`` > ``Authentication > Users`` and edit the user
 you want to reset 2FA for. On the bottom of the popup you will see that
@@ -402,32 +404,32 @@ necessary).
    :alt: Disable 2FA via WebUI
 
 After you edited the user, the ``Two Factor Authentication`` will be disabled
-and the user can log into ASGARD without 2FA.
+and the user can log into the Management Center without 2FA.
 
 Using the Command Line Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
-   This method needs SSH access to ASGARD.
+   This method needs SSH access to the Management Center.
 
-Log into your ASGARD via SSH. You can reset the users MFA Settings with
+Log into your Management Center via SSH. You can reset the users MFA Settings with
 the following command (in this example we assume that the user is called ``john``):
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo mysql asgard --execute "UPDATE users SET tfa_valid = 0 WHERE name = 'john';"
+   nextron@mc:~$ sudo mysql asgard --execute "UPDATE users SET tfa_valid = 0 WHERE name = 'john';"
 
 .. warning:: 
    This will disable the 2FA settings directly in the database. Please make sure
    the command and especially the username is correct.
 
 If you don't know the exact username for a user, you can use the following command
-to get all the usernames and the 2FA status from ASGARD (if ``tfa_valid`` has a value
+to get all the usernames and the 2FA status from the Management Center (if ``tfa_valid`` has a value
 of ``1``, this means the user has Two Factor Authentication enabled).
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo mysql asgard --execute "select name,tfa_valid from users;"
+   nextron@mc:~$ sudo mysql asgard --execute "select name,tfa_valid from users;"
    +----------+-----------+
    | name     | tfa_valid |
    +----------+-----------+
@@ -447,7 +449,7 @@ current installation, please log into your server and execute the following comm
 
 .. code-block:: console
 
-    nextron@asgard:~$ timedatectl
+    nextron@mc:~$ timedatectl
                    Local time: Mon 2022-10-24 09:52:03 BST
                Universal time: Mon 2022-10-24 08:52:03 UTC
                      RTC time: Mon 2022-10-24 08:52:04
@@ -465,8 +467,8 @@ Now that you have the correct timezone you can set it the following way:
 
 .. code-block:: console
 
-	nextron@asgard:~$ sudo timedatectl set-timezone Europe/Prague
-	nextron@asgard:~$ timedatectl
+	nextron@mc:~$ sudo timedatectl set-timezone Europe/Prague
+	nextron@mc:~$ timedatectl
  	               Local time: Mon 2022-10-24 10:56:45 CEST
             	   Universal time: Mon 2022-10-24 08:56:45 UTC
  	                 RTC time: Mon 2022-10-24 08:56:46
