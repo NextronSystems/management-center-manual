@@ -109,12 +109,12 @@ Release Date: Fri, 15 May 2026 14:07:00 +0200
   - LDAP Roles
 
   For more information, refer to the `database migration guide
-  <https://knowledge.nextron-systems.com/asgard-management-center/db-breaking-changes-guide>`_
+  <https://knowledge.nextron-systems.com/management-center/db-breaking-changes-guide>`_
 
 - Various API endpoints have been updated to use UUIDs instead of integer IDs.
   Refer to the updated API documentation for details. A list of all changes is
   available in the `API breaking changes guide
-  <https://knowledge.nextron-systems.com/asgard-management-center/api-breaking-changes-guide>`_
+  <https://knowledge.nextron-systems.com/management-center/api-breaking-changes-guide>`_
 - The config has been migrated from key-value pairs to a structured YAML format.
 - Product update behavior changed. v4 uses version pinning and constraints to control
   which THOR, Aurora, and signature versions are used. Each product can be configured
@@ -126,8 +126,8 @@ Release Date: Fri, 15 May 2026 14:07:00 +0200
   converted during the update process. The Collect File and Collect Directory playbooks
   now support a password for encrypting the resulting ZIP. Collected files will include
   the base directory name in their path (e.g., report/file.txt instead of file.txt)
-- Endpoint license handling has been revised: THOR and Aurora endpoint licenses now
-  expire after a maximum of 90 days, ensuring that licenses assigned to decommissioned
+- Endpoint license handling has been revised: THOR, Aurora and Agent Endpoint licenses now
+  reset after a maximum of 90 days, ensuring that licenses assigned to decommissioned
   or inactive systems automatically return to the license pool. Licenses already
   assigned to assets before the update will not be affected.
 - Legacy components removed: Bifrost sample quarantine and LogWatcher real-time event
