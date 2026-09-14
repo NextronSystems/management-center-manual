@@ -27,10 +27,10 @@ The following changes require careful migration planning:
 - **Database Schema**: Primary keys migrated to UUIDs for
   Assets, Asset Requests, Tasks/Scans, Group Tasks/Scans,
   Scheduled Group Tasks/Scans, MISP data, Users, Roles, and LDAP Roles.
-  See the `Database Migration Guide <https://knowledge.nextron-systems.com/asgard-management-center/db-breaking-changes-guide>`_
+  See the `Database Migration Guide <https://knowledge.nextron-systems.com/management-center/db-breaking-changes-guide>`_
   for details.
 - **API Updates**: Various endpoints now use UUIDs instead of integer IDs.
-  See the `API Breaking Changes Guide <https://knowledge.nextron-systems.com/asgard-management-center/api-breaking-changes-guide>`_
+  See the `API Breaking Changes Guide <https://knowledge.nextron-systems.com/management-center/api-breaking-changes-guide>`_
   for details.
 - **Configuration**: Configuration is migrated from key-value pairs to
   structured YAML format
@@ -84,7 +84,7 @@ Frequently Asked Questions
   - Yes, v4 introduces significant API changes. Many endpoints now use UUIDs
     instead of integer IDs, and product update management now uses version
     pinnings. Review the
-    `API Breaking Changes Guide <https://knowledge.nextron-systems.com/asgard-management-center/api-breaking-changes-guide>`_
+    `API Breaking Changes Guide <https://knowledge.nextron-systems.com/management-center/api-breaking-changes-guide>`_
     for details about all breaking changes.
 
 - Where can I find help if I encounter issues during the upgrade?
