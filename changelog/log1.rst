@@ -1,6 +1,23 @@
 Management Center v4.1
 ======================
 
+Management Center 4.1.6
+-----------------------
+
+Release Date: 
+
+.. list-table::
+    :header-rows: 1
+    :widths: 15, 85
+
+    * - Type
+      - Description
+    * - Bugfix
+      - Product packages are no longer re-uploaded to every ASGARD on every sync round. The Master ASGARD
+        now asks each instance which versions it already holds and uploads only the packages that are missing,
+        which takes a round from roughly 66 KB per package per ASGARD down to a few hundred bytes. This
+        requires the ASGARDs to be upgraded as well; those on an older version keep receiving the full uploads
+
 Management Center 4.1.5
 -----------------------
 
