@@ -4,7 +4,7 @@ Management Center v4.2
 Management Center 4.2.0
 -----------------------
 
-Release Date: 
+Release Date: Wed, 23 Sep 2026 11:30:00 +0200
 
 ----
 
@@ -126,11 +126,19 @@ Release Date:
 - On a Master ASGARD, the IP-based fallback settings are shown once per
   managed ASGARD. The fallbacks live in each Management Center's own
   database and only reach agents through its installers.
+- The column preferences of the Users and Roles tables are reset during
+  the update. Their columns are now named after the fields the server
+  filters and sorts by, and a stored preference selects columns by their
+  previous names, so both tables return to their default column set.
 - Audit events name the initiator's roles in a new "role_ids" array. A local
   account holds exactly one role, but an SSO or LDAP user can hold several,
   through a group mapped to several roles or through several mapped groups.
   The scalar "role_id" of earlier releases is no longer emitted, rather than
   changing that key's type under existing consumers.
+- The Users API keeps its "role_id" key but now returns an array of role
+  objects in it, where earlier releases returned a single role ID, since an
+  SSO or LDAP user can hold several roles. Consumers that read "role_id" as
+  a scalar need to be adjusted.
 
 ----
 
@@ -139,6 +147,20 @@ Release Date:
 - Fixed the session-expiry re-login dialog rejecting LDAP accounts. LDAP
   usernames no longer carry the "ldap:" prefix of earlier releases, so the
   dialog authenticates against the directory under the username it knows.
+- Fixed StartTLS connections to an LDAP directory failing when no server
+  name was configured. The certificate is verified against the host that
+  was dialed, and the Server Name field is now offered for StartTLS as
+  well, not only for SSL/TLS.
+- Testing an LDAP configuration no longer requires the fields the test does
+  not use: a connection test needs the host, a bind test the bind
+  credentials, and an authentication test the search settings. An
+  incomplete configuration is still refused when it is saved while enabled,
+  and a missing field is now named on the input it belongs to.
+- Log rotation now caps every log file at 5 GB, down from the 20 GB and
+  50 GB of earlier releases, so a log that grows quickly between the daily
+  or monthly rotations is rotated before it fills the disk.
+- Reduce network traffic between the Master ASGARD and Management Center by
+  excluding the obsolete products/nextron directory from synchronization.
 
 ----
 
