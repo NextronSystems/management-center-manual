@@ -29,7 +29,7 @@ Release Date: Thu, 25 Jun 2026 15:20:00 +0200
     * - Bugfix
       - Fixed assets failing to update their system information and software inventory when the agent reported duplicate software entries.
     * - Bugfix
-      - Fixed Analysis Cockpit synchronization failing with "unknown grouped task" when a scan referenced a group scan who's uuid was never synced, affected group scans are now re-synced automatically to recover.
+      - Fixed Analysis Cockpit synchronization failing with "unknown grouped task" when a scan referenced a group scan whose UUID was never synced, affected group scans are now re-synced automatically to recover.
     * - Bugfix
       - Adjusted logging behavior for specific audit events so they are recorded in the intended audit log file.
 
@@ -62,7 +62,7 @@ Release Date: Wed, 03 Jun 2026 09:53:00 +0200
     * - Bugfix
       - Fixed a bug that prevented legacy hash migrations for very old hashes from working.
     * - Bugfix
-      - Fixed ldap users not being able to save preferences in the UI.
+      - Fixed LDAP users not being able to save preferences in the UI.
 
 Management Center 4.0.1
 -----------------------
