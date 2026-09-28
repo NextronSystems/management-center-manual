@@ -27,6 +27,31 @@ Access the user roles in ``Settings`` > ``Roles``.
 
 You can download a list of all users in CSV format.
 
+The overview lists local accounts as well as accounts provisioned
+through LDAP and Single Sign-On. The ``Type`` field indicates the
+origin of an account:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30, 70
+
+   * - Type
+     - Description
+   * - Local
+     - Account created and managed in the Management Center
+   * - LDAP
+     - Account provisioned from the directory
+       (see :ref:`administration/users:ldap configuration`)
+   * - SSO
+     - Account provisioned by the identity provider
+       (see :ref:`administration/sso:single sign-on`)
+
+Regardless of their origin, all accounts carry roles, permissions and
+preferences in the same way. Fields that are managed outside the
+Management Center cannot be edited here: the password and role fields
+are hidden for LDAP users, and SSO users are read-only except for the
+``Disabled`` toggle.
+
 User Defaults
 ^^^^^^^^^^^^^
 
@@ -34,10 +59,60 @@ You can set user defaults to preselect certain options when
 a new user is created. These are not strict enforcements. They
 set the default values when the User Creation modal is opened.
 
+The dialog also holds the password policy and the automatic
+deactivation of inactive users. In contrast to the preselected
+options, these two settings are enforced.
+
 .. figure:: ../images/mc_user-defaults.png
    :alt: User Defaults
 
    User Defaults
+
+Password Policy
+~~~~~~~~~~~~~~~
+
+The password policy applies to local accounts and is enforced whenever
+a password is set or changed. Passwords of LDAP and Single Sign-On
+users are governed by the directory or the identity provider.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30, 70
+
+   * - Setting
+     - Description
+   * - Minimum Length
+     - Shortest accepted password. The default is 15 characters, in
+       line with NIST SP 800-63B
+   * - Minimum Length with 2FA
+     - Separate, typically lower minimum for users who have
+       two-factor authentication enabled
+   * - Maximum Length
+     - Longest accepted password
+   * - Character Classes
+     - Require a digit, a symbol, an upper case or a lower case
+       character
+   * - NIST SP 800-63B Mode
+     - Enforces the recommendations of NIST SP 800-63B - This will flag
+       any of the above settings if they are not adhering to the NIST SP
+       800-63B standard
+
+.. note::
+   The policy is applied the next time a password is changed. Existing
+   passwords remain valid until then. To apply a new policy
+   immediately, enforce a password change for the affected users.
+
+Automatic Deactivation
+~~~~~~~~~~~~~~~~~~~~~~
+
+Local users can be deactivated automatically after a configurable
+number of days without a login. The value set in the user defaults
+applies to newly created users and can be adjusted for each user
+individually. A deactivated user can be enabled again by an
+administrator.
+
+LDAP and Single Sign-On accounts are governed by the directory or the
+identity provider and are not deactivated this way.
 
 Roles
 ^^^^^

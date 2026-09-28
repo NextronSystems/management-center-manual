@@ -4,7 +4,7 @@ Management Center v4.1
 Management Center 4.1.6
 -----------------------
 
-Release Date: 
+Release Date: Tue, 15 Sep 2026 15:10:00 +0200
 
 .. list-table::
     :header-rows: 1
