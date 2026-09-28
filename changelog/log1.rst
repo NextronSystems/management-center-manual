@@ -13,10 +13,9 @@ Release Date: Tue, 15 Sep 2026 15:10:00 +0200
     * - Type
       - Description
     * - Bugfix
-      - Product packages are no longer re-uploaded to every ASGARD on every sync round. The Master ASGARD
-        now asks each instance which versions it already holds and uploads only the packages that are missing,
-        which takes a round from roughly 66 KB per package per ASGARD down to a few hundred bytes. This
-        requires the ASGARDs to be upgraded as well; those on an older version keep receiving the full uploads
+      - Product packages are no longer re-uploaded to every Management Center during each sync cycle.
+        The Master Management Center now checks which versions are already available and uploads only missing packages, reducing traffic from roughly 66 KB per package and Management Center to a few hundred bytes.
+        Management Centers must be upgraded to benefit from this optimization. Older versions will continue to receive full package uploads.
 
 Management Center 4.1.5
 -----------------------
