@@ -123,8 +123,8 @@ Release Date: Wed, 23 Sep 2026 11:30:00 +0200
   automatically during the update.
 - Interface preferences of LDAP users are migrated to the standard user
   preferences, so they survive as regular per-user settings.
-- On a Master ASGARD, the IP-based fallback settings are shown once per
-  managed ASGARD. The fallbacks live in each Management Center's own
+- On a Master Management Center, the IP-based fallback settings are shown once per
+  Management Center. The fallbacks live in each Management Center's own
   database and only reach agents through its installers.
 - The column preferences of the Users and Roles tables are reset during
   the update. Their columns are now named after the fields the server
@@ -159,7 +159,7 @@ Release Date: Wed, 23 Sep 2026 11:30:00 +0200
 - Log rotation now caps every log file at 5 GB, down from the 20 GB and
   50 GB of earlier releases, so a log that grows quickly between the daily
   or monthly rotations is rotated before it fills the disk.
-- Reduce network traffic between the Master ASGARD and Management Center by
+- Reduce network traffic between the Master Management Center and Management Center by
   excluding the obsolete products/nextron directory from synchronization.
 
 ----
@@ -167,7 +167,7 @@ Release Date: Wed, 23 Sep 2026 11:30:00 +0200
 **Security**
 
 - The read-only restriction is now enforced for every API request, on a
-  Master ASGARD before the request is forwarded to a managed ASGARD.
+  Master Management Center before the request is forwarded to a Management Center.
 - Sessions are revalidated against the user store on every request, so
   disabling or deleting a user ends their existing sessions instead of
   leaving them valid until the session times out.
