@@ -10,6 +10,8 @@ agent installation, and routine tasks in the Web UI.
     :caption: Contents
 
     status
+    users
+    sso
     agent
     uninstall
     assets
@@ -27,7 +29,6 @@ agent installation, and routine tasks in the Web UI.
     download
     license
     updates
-    users
     additional
     advanced
     user-settings
