@@ -71,7 +71,7 @@ Process Excludes
 If Aurora uses too many CPU cycles, the most common reason is a high-volume
 event producer on the system, such as antivirus or communication software. To
 analyze the issue and define process exclusions, go to ``Service Control`` >
-``Aurora`` > ``Process Exclusions``
+``Aurora`` > ``Process Exclusions``.
 
 .. figure:: ../images/mc_aurora-process-exclusions.png
    :alt: Define Aurora Process Exclusion

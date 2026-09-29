@@ -1,6 +1,6 @@
-.. index:: IP Based Fallback
+.. index:: IP-Based Fallback
 
-IP Based Fallback
+IP-Based Fallback
 =================
 
 IP-Based Fallback provides backup connectivity for agents when DNS
@@ -13,9 +13,9 @@ Go to ``Settings`` > ``IP-Based Fallback`` and add one or more fallback IP
 addresses for your Management Center FQDN.
 
 .. figure:: ../images/mc_ip-based-fallback.png
-   :alt: IP Based Fallback
+   :alt: IP-Based Fallback
 
-   IP Based Fallback
+   IP-Based Fallback
 
 .. note::
    Endpoints must run agent version **1.7.0** or newer. Older versions do not

@@ -55,7 +55,7 @@ users can upload their own TLS certificate for the Management Center.
 
 To achieve the best possible compatibility with the
 most common browsers, we recommend using the system's FQDN
-in both fields ``Common Name`` AND ``Hostnames``.
+in both the ``Common Name`` and ``Hostnames`` fields.
 
 Generating a CSR on the command line is not supported.
 

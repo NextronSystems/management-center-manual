@@ -1,7 +1,7 @@
 .. Index:: ESXi
 
-Create a new ESX VM and Mount the ISO
--------------------------------------
+Create a New ESXi VM and Mount the ISO
+--------------------------------------
 
 Create a new VM with your virtualization software. This example uses
 VMware ESXi managed through VMware vCenter.

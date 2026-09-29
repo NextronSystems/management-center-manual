@@ -6,7 +6,7 @@ Response Control
 Response Control is used to execute tasks on your agents. These tasks
 can be:
 
-* Run Playbook (pre-defined or custom)
+* Run Playbook (predefined or custom)
 * Run Interrogate (collect system information)
 * Open Remote Console
 * Maintenance
@@ -26,7 +26,7 @@ including:
 These tasks can only be started from the Details view of an asset,
 but appear here for audit purposes.
 
-Opening a Remote Console on an endpoint
+Opening a Remote Console on an Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To open a remote console on an endpoint, open the Asset
@@ -63,8 +63,8 @@ sessions from all users.
    The permission ``View Remote Console Log`` requires the ``Response Control``
    permission.
 
-Response Control with Pre-Defined Playbooks
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Response Control with Predefined Playbooks
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to controlling THOR scans, the Management Center contains
 extensive response functions. Through your Management Center, you can
@@ -93,7 +93,7 @@ corner. A dialog opens where you can select the desired action.
 
 In this example, we collect the Endpoint Agent Logs.
 
-The Management Center ships with pre-defined playbooks for the following tasks:
+The Management Center ships with predefined playbooks for the following tasks:
 
 * Collect Endpoint Agent Log
 * Create and Collect Aurora Agent Diagnostics Pack (Windows only)
@@ -162,7 +162,7 @@ the ``Add Step`` button.
 
 You can create the following types of playbook steps:
 
-- Run Command Line on Endsystem
+- Run Command Line on Endpoint
 - Upload File to Management Center
 - Download File from Management Center
 

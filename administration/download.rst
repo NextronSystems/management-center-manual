@@ -26,7 +26,7 @@ After you generate a download token and select the
 correct scanner, operating system and target hostname (not FQDN),
 you can copy the download link and use it to retrieve a full
 scanner package including a license file for that host. These download
-links can be sent to administrators or team members that don't have
+links can be sent to administrators or team members who do not have
 access to Management Center. Recipients of
 that link still need to be able to reach the Management Center's web
 server port (443/tcp). The token can be used to download THOR or a THOR
@@ -42,14 +42,14 @@ license without a Management Center account.
    Incident Response license, you must provide it separately.
 
 
-Use Case 1 - Share the URL without Hostname
+Use Case 1 – Share the URL without Hostname
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can generate download links without an included license by
 leaving the `hostname` field empty. A valid license (e.g. "Incident Response")
 must be placed in the program folder after the download and extraction.
 
-Use Case 2 - Share the URL with Hostname
+Use Case 2 – Share the URL with Hostname
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By including the hostname in the form, a license will be generated
@@ -70,7 +70,7 @@ the THOR version (`win`, `linux`, `osx`) to generate the correct URL.
    .../thor?os=windows&type=workstation&scanner=thor10%40latest&hostname=mywinwks1...
    .../thor?os=linux&type=server&scanner=thor10%40latest&hostname=mylinuxsrv1...
 
-Use Case 3 - Use the URL in Scripts
+Use Case 3 – Use the URL in Scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default, the generated download link is protected with a

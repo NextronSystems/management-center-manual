@@ -1,10 +1,10 @@
-.. index:: Bypass Apple verification during installation of asgard2-agent
+.. index:: Bypass Apple Verification During Installation of asgard2-agent
 
-Bypass Apple verification during installation of asgard2-agent
+Bypass Apple Verification During Installation of asgard2-agent
 ==============================================================
 
 This section describes workarounds for IT administrators and IT packaging
-teams that need to bypass Apple verification and install the personalized
+teams who need to bypass Apple verification and install the personalized
 ``asgard2-agent`` on macOS Big Sur or newer workstations.
 
 

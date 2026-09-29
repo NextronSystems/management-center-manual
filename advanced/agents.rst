@@ -4,7 +4,7 @@ Agent and Agent Installer Update
 ================================
 
 When a new Endpoint Agent version is available, an indicator appears on the
-``Update`` menu item and on the ``Update`` > ``Agents`` submenu. Two tasks are
+``Updates`` menu item and on the ``Updates`` > ``Agents`` submenu. Two tasks are
 required: update the agents on your assets and update the agent installer for
 future asset deployments.
 

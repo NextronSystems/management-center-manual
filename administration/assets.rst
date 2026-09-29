@@ -38,8 +38,8 @@ remote file system.
 
 .. note::
 
-    * Depending on the user's role, some of the control buttons may be disabled
-    * The ``Run Scan`` button might be greyed out in new installations because
+    * Depending on the user's role, some of the control buttons may be disabled.
+    * The ``Run Scan`` button might be grayed out in new installations because
       Management Center has not downloaded the THOR packages yet.
       You can either wait for a few minutes, or see the chapter
       :ref:`administration/updates:version pinning`,
@@ -120,7 +120,7 @@ The following operators are available:
      :delim: ;
      :header-rows: 1
 
-You can create simple or complex queries this way. Use brackets to group
+You can create simple or complex queries this way. Use parentheses to group
 queries:
 
 ``(system = "linux" and interfaces = "172.28.30.0/24") or (system = "windows" and interfaces = "172.28.50.0/24")``
