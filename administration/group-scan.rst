@@ -54,16 +54,16 @@ parameters already described, you can also configure the following:
        your endpoints.
    * - **Max. Concurrent Scans**
      - Limits the number of concurrent scans running at once. When the limit is reached,
-       no new scans will be started until one of the running scans is completed or failed.
+       no new scans will be started until one of the running scans has completed or failed.
    * - **Max. Runtime**
-     - A started scan is cancelled after exceeding the maximum runtime. This is
+     - A started scan is canceled after exceeding the maximum runtime. This is
        used to stop hanging or unresponsive scans.
 
 After configuring your group scan, you can either **Add the Group Scan** or
 **Add and Activate the Group Scan**. Adding the group scan without activating
 it parks the scan until it is activated, at which point scans are issued.
 
-List of all Group Scans
+List of All Group Scans
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 The list of all group scans contains, among other items, the unique scan ID
@@ -100,7 +100,7 @@ Starting a Group Scan
 ~~~~~~~~~~~~~~~~~~~~~
 
 Start a group scan by clicking the "play" button in the "Actions" column.
-The scan is then listed as "Started".
+The scan is then listed as Active.
 
 Details of a Group Scan
 ~~~~~~~~~~~~~~~~~~~~~~~

@@ -219,7 +219,7 @@ SSL/TLS certificate presented by an intercepting entity and therefore do
 not support SSL/TLS interception.
 
 Because our products are often used in potentially compromised environments,
-the integrity of our software and update packages has highest priority.
+the integrity of our software and update packages has the highest priority.
 
 Architecture Overview
 ^^^^^^^^^^^^^^^^^^^^^

@@ -73,7 +73,7 @@ Thunderstorm Configuration
 --------------------------
 
 You can change certain settings for Thunderstorm in the
-Thunderstorm overview page. Click the cog icon in the
+Thunderstorm overview page. Click the gear icon in the
 upper-right corner to open the settings page.
 
 .. figure:: ../images/mc_thunderstorm-configuration.png

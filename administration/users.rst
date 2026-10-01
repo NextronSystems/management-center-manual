@@ -90,11 +90,11 @@ users are governed by the directory or the identity provider.
    * - Maximum Length
      - Longest accepted password
    * - Character Classes
-     - Require a digit, a symbol, an upper case or a lower case
+     - Require a digit, a symbol, an uppercase or lowercase
        character
    * - NIST SP 800-63B Mode
      - Enforces the recommendations of NIST SP 800-63B - This will flag
-       any of the above settings if they are not adhering to the NIST SP
+       any of the above settings if they do not adhere to the NIST SP
        800-63B standard
 
 .. note::
@@ -180,7 +180,7 @@ LDAP Configuration
 To configure LDAP, navigate to ``Settings`` > ``LDAP``.
 In the left column you can test and configure the LDAP connection itself.
 In the right column, the mapping of LDAP groups to Management Center
-groups (and its associated permissions) is defined.
+groups (and their associated permissions) is defined.
 
 First, check whether your LDAP server is reachable by the Management
 Center by clicking "Test Connection".
@@ -214,7 +214,7 @@ A default for LDAP and AD in a flat structure is given in the
 **"Use recommended filters"** drop-down menu, but you can
 adapt it to your environment. The test button shows whether a login
 with that user would be successful and which groups the Management
-Center identified and could be used for a mapping to Management Center
+Center identified and that could be used for a mapping to Management Center
 groups.
 
 .. figure:: ../images/mc_ldap-filter.png

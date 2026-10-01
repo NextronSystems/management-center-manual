@@ -7,7 +7,7 @@ Scan Control in your Management Center allows you to run different kinds of
 scans on one or multiple assets. You can also create ``Scan Templates`` for
 new scans, so default options do not need to be configured for every scan.
 ``Scan Templates`` can also restrict which users are allowed to execute new
-scans with them. ``False-Positive Filters`` can exclude specific files or
+scans with them. ``False Positive Filters`` can exclude specific files or
 entire directories from scan results.
 
 Your Management Center also handles stopped THOR scans, for example if an
@@ -33,7 +33,7 @@ Managing Scan Templates
 
 Scan templates are the most convenient way to make use of THOR's rich set of
 scan options. You can define scan parameters for THOR 10 and store
-them in different templates for later use in single scans and grouped scans.
+them in different templates for later use in single scans and group scans.
 Scan templates are also useful if you want to automate scanning via the API,
 because you only need to specify the template instead of every option. This
 also means you can change the template without changing your API request.
@@ -91,7 +91,7 @@ consists of all users who do not have the "Force Scan Template" restriction
 set. By default, these are all users who are not members of the group
 "Operator Level 1".
 
-THOR Excludes and False-Positive Filters
+THOR Excludes and False Positive Filters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In THOR you can define `directory and file excludes <https://thor-manual.nextron-systems.com/en/latest/usage/configuration.html#files-and-directories>`_

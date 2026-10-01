@@ -1,6 +1,6 @@
 .. Index:: Installer
 
-Navigate through the installer
+Navigate Through the Installer
 ------------------------------
 
 Start the installation process by selecting **Graphical install**.
