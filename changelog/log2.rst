@@ -1,6 +1,39 @@
 Management Center v4.2
 ======================
 
+Management Center 4.2.1
+-----------------------
+
+Release Date: Wed, 30 Sep 2026 16:00:00 +0200
+
+.. list-table::
+    :header-rows: 1
+    :widths: 15, 85
+
+    * - Type
+      - Description
+    * - Bugfix
+      - Fixed a Master Management Center on 4.2.0 being unable to reach
+        Management Centers on versions before 4.2.0, which failed with the error
+        "invalid tunneled auth metadata".
+        If you already run Management Centers on 4.2.0, upgrade them to 4.2.1
+        before the Master Management Center: a Master Management Center on 4.2.1
+        cannot reach Management Centers on 4.2.0, while Management Centers on
+        4.2.1 still work with a Master Management Center on 4.2.0.
+    * - Bugfix
+      - Fixed the hostname search in the target selection of the "Add Task",
+        "Add Scan" and "Collect File" dialogs. The search had no effect, so only
+        the first assets in the list could be selected
+    * - Bugfix
+      - Fixed audit log entries for playbooks, tasks, services, the Master
+        Management Center link and the remote console not naming the user or
+        source IP. Remote console audit entries now also record the task ID, and
+        closing a remote console session writes an audit entry with the session
+        duration
+    * - Bugfix
+      - Fixed the System Load tab in the asset details never connecting and
+        showing no data
+
 Management Center 4.2.0
 -----------------------
 
