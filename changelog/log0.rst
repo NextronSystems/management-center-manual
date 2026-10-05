@@ -29,7 +29,7 @@ Release Date: Thu, 25 Jun 2026 15:20:00 +0200
     * - Bugfix
       - Fixed assets failing to update their system information and software inventory when the agent reported duplicate software entries.
     * - Bugfix
-      - Fixed Analysis Cockpit synchronization failing with "unknown grouped task" when a scan referenced a group scan who's uuid was never synced, affected group scans are now re-synced automatically to recover.
+      - Fixed Analysis Cockpit synchronization failing with "unknown grouped task" when a scan referenced a group scan whose UUID was never synced; affected group scans are now re-synced automatically to recover.
     * - Bugfix
       - Adjusted logging behavior for specific audit events so they are recorded in the intended audit log file.
 
@@ -62,7 +62,7 @@ Release Date: Wed, 03 Jun 2026 09:53:00 +0200
     * - Bugfix
       - Fixed a bug that prevented legacy hash migrations for very old hashes from working.
     * - Bugfix
-      - Fixed ldap users not being able to save preferences in the UI.
+      - Fixed LDAP users not being able to save preferences in the UI.
 
 Management Center 4.0.1
 -----------------------
@@ -76,13 +76,13 @@ Release Date: Mon,  1 Jun 2026 11:07:00 +0200
     * - Type
       - Description
     * - Bugfix
-      - Fixed agents not restarting after their asset was deleted, preventing them from creating a new asset request
+      - Fixed agents not restarting after their asset was deleted, preventing them from creating a new asset request.
     * - Bugfix
-      - Fixed incorrect migration of LDAP host entries containing a protocol prefix
+      - Fixed incorrect migration of LDAP host entries containing a protocol prefix.
     * - Bugfix
-      - Fixed missing UUIDs for group tasks and scheduled group tasks on Master Management Centers
+      - Fixed missing UUIDs for group tasks and scheduled group tasks on Master Management Centers.
     * - Bugfix
-      - Fixed large syncs to Master Management Center exceeding the MariaDB transaction placeholder limit
+      - Fixed large syncs to Master Management Center exceeding the MariaDB transaction placeholder limit.
     * - Bugfix
       - Fixed 2FA failing after upgrade by encrypting TOTP secrets at rest and auto-migrating legacy v3 and v4.0.0 secrets to the new format.
 
@@ -109,12 +109,12 @@ Release Date: Fri, 15 May 2026 14:07:00 +0200
   - LDAP Roles
 
   For more information, refer to the `database migration guide
-  <https://knowledge.nextron-systems.com/management-center/db-breaking-changes-guide>`_
+  <https://knowledge.nextron-systems.com/management-center/db-breaking-changes-guide>`_.
 
 - Various API endpoints have been updated to use UUIDs instead of integer IDs.
   Refer to the updated API documentation for details. A list of all changes is
   available in the `API breaking changes guide
-  <https://knowledge.nextron-systems.com/management-center/api-breaking-changes-guide>`_
+  <https://knowledge.nextron-systems.com/management-center/api-breaking-changes-guide>`_.
 - The config has been migrated from key-value pairs to a structured YAML format.
 - Product update behavior changed. v4 uses version pinning and constraints to control
   which THOR, Aurora, and signature versions are used. Each product can be configured
@@ -125,7 +125,7 @@ Release Date: Fri, 15 May 2026 14:07:00 +0200
   collected by the Collect File and Collect Directory playbooks will be automatically
   converted during the update process. The Collect File and Collect Directory playbooks
   now support a password for encrypting the resulting ZIP. Collected files will include
-  the base directory name in their path (e.g., report/file.txt instead of file.txt)
+  the base directory name in their path (e.g., report/file.txt instead of file.txt).
 - Endpoint license handling has been revised: THOR, Aurora and Agent Endpoint licenses now
   reset after a maximum of 90 days, ensuring that licenses assigned to decommissioned
   or inactive systems automatically return to the license pool. Licenses already
@@ -152,7 +152,7 @@ Release Date: Fri, 15 May 2026 14:07:00 +0200
   been added. The option can be enabled with a checkbox in the Scan Settings for single,
   group, and scheduled scans.
 - Encrypted Evidence Collection: Collect File and Collect Directory playbooks now
-  support password-encrypted zip files.
+  support password-encrypted ZIP files.
 - Improved Update Version Control: More control over product versions with
   constraint-based pinning.
 
@@ -169,12 +169,12 @@ Release Date: Fri, 15 May 2026 14:07:00 +0200
 **Improvements**
 
 - MISP entities (except the rulesets) are now stored with an internal UUID, the original
-  ID is preserved in a new column `source_id`
+  ID is preserved in a new column `source_id`.
 - Scans Table > Scan Arguments now only shows actually set arguments, empty values are
-  hidden for a cleaner look
-- API Keys now use improved security standards for storage
-- Custom Hash and C2 IOCs now support assigning a custom score to each IOC
-- Generating and downloading a Diagnostics Pack now requires admin privileges
+  hidden for a cleaner look.
+- API Keys now use improved security standards for storage.
+- Custom Hash and C2 IOCs now support assigning a custom score to each IOC.
+- Generating and downloading a Diagnostics Pack now requires admin privileges.
 
 ----
 
@@ -191,12 +191,12 @@ Release Date: Fri, 15 May 2026 14:07:00 +0200
 
 **Bugfixes**
 
-- Fixed wrong value being stored for `3 day` option in Advanced Settings > Hide
-  Assets/Resume Deadline
-- Fixed wrong thunderstorm collector example on Thunderstorm page
-- Assets can no longer be deleted while they have any active service
-- Fixed new license installs not replacing the old client certificate
-- Fixed path-splitting in File Browser for macOS agents
+- Fixed wrong value being stored for `3-day` option in Advanced Settings > Hide
+  Assets/Resume Deadline.
+- Fixed wrong Thunderstorm collector example on Thunderstorm page.
+- Assets can no longer be deleted while they have any active service.
+- Fixed new license installs not replacing the old client certificate.
+- Fixed path-splitting in File Browser for macOS agents.
 - Fixed File Browser ZIPs from Windows assets containing backslashes instead of forward
-  slashes
-- Fixed Playbook CommandLine output not being collected when command failed
+  slashes.
+- Fixed Playbook CommandLine output not being collected when command failed.

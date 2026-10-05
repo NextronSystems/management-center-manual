@@ -63,8 +63,7 @@ that should work with most tools. See
 :ref:`appendix/scripts:installing endpoint agent via powershell script` and
 :ref:`appendix/scripts:deploy endpoint agents via sccm`.
 
-Alternatively, if you want to deploy the Endpoint Agent manually, you can
-run the installer manually.
+Alternatively, you can run the installer manually.
 
 Linux Agent Deployment
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -73,7 +72,7 @@ To deploy the Endpoint Agent on a Linux system, use the following
 commands:
 
 .. code-block:: console
-   :caption: Debian based systems
+   :caption: Debian-based systems
 
    user@unix:~/Downloads$ sudo dpkg -i asgard2-agent-linux-amd64.deb
 
@@ -110,7 +109,7 @@ You can verify the signature by executing the following command in Terminal:
    ...
 
 If you encounter installation issues, see
-:ref:`appendix/gatekeeper:Bypass Apple verification during installation of asgard2-agent`.
+:ref:`appendix/gatekeeper:Bypass Apple Verification During Installation of asgard2-agent`.
 
 macOS Full Disk Access
 ~~~~~~~~~~~~~~~~~~~~~~

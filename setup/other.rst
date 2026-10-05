@@ -1,6 +1,6 @@
 .. Index:: Other Installer Steps
 
-Choosing a password
+Choosing a Password
 -------------------
 
 .. figure:: ../images/setup_password.png

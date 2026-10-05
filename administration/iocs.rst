@@ -52,7 +52,7 @@ Once you create an IOC Ruleset that contains IOCs, it can be used for scanning w
 
    IOC Ruleset in THOR Scan
 
-Anytime you add, remove or change IOCs within one of your IOC Groups,
+Whenever you add, remove, or change IOCs within one of your IOC Groups,
 you must recompile the IOC Ruleset. To do this, navigate to the
 ``IOC Rulesets`` page and click the "gear" icon (1) in the Ruleset's row.
 You can optionally set IOC Rulesets to "Autocompile".
@@ -62,7 +62,7 @@ You can optionally set IOC Rulesets to "Autocompile".
 
    Compile IOC Ruleset
 
-Scan only with Custom IOCs
+Scan Only with Custom IOCs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These rulesets can be selected in the "IOC Rulesets" field while

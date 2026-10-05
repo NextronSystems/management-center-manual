@@ -30,7 +30,7 @@ and downloaded through the web frontend.
 The following systems require a workstation license to be scanned:
 
 * Windows 7 / 8 / 10 / 11
-* Mac OS
+* macOS
 
 The following systems require a server license to be scanned:
 

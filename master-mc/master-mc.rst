@@ -56,13 +56,13 @@ On your Management Center, go to ``Settings`` >
 ``Master Management Center``, generate a one-time code and copy it.
 
 .. figure:: ../images/mc_master-link-code.png
-   :alt: Generate One Time Token
+   :alt: Generate One-Time Code
 
-   Generate One Time Token on the Management Center
+   Generate One-Time Code on the Management Center
 
 In the Master Management Center go to ``Connected Management Centers``,
 click the ``Add Management Center`` button in the upper-right corner,
-and use the hostname and one-time token to connect that Management
+and use the hostname and one-time code to connect that Management
 Center. You can use a description to provide more information about that
 Management Center, e.g. ``DMZ 1`` or ``Region EMEA - HQ 1``.
 

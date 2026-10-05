@@ -41,9 +41,9 @@ details show an error message and guidance on steps that typically help
 resolve the issue.
 
 .. figure:: ../images/mc_diagnostics.png
-   :alt: Overview Over Periodic Diagnostic Checks
+   :alt: Overview of Periodic Diagnostic Checks
 
-   Overview Over Periodic Diagnostic Checks
+   Overview of Periodic Diagnostic Checks
 
 The indicator in the upper-right corner shows whether any checks failed by
 displaying a warning or error icon (yellow or red). Click the icon to view

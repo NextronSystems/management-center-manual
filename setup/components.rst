@@ -15,7 +15,7 @@ focuses on the ``Management Center``):
    license and product (``Master Management Center``)
    in the Nextron Universal Installer.
 
-- Management Center; alternatively if your license permits:
+- Management Center; alternatively, if your license permits:
   
   * Broker
   * Gatekeeper
@@ -31,7 +31,7 @@ focuses on the ``Management Center``):
 
   * Security Center (Backend Only)
   * Security Center (Frontend Only)
-  * Security Center (All-in-one, unrecommended)
+  * Security Center (All-in-one, not recommended)
 
 .. note::
    You can only install one product on one server because the

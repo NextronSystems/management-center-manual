@@ -63,7 +63,7 @@ then click ``Add to Ruleset``. A rule can be assigned to multiple rulesets.
     
        Uncompiled Changes Indicator
 
-Choosing which Rules to Activate
+Choosing Which Rules to Activate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We do not recommend enabling all available rules on an asset. Start with all
@@ -92,7 +92,7 @@ Another useful way to pivot the Sigma rule database is to use MITRE ATT&CK® IDs
 
 You can also search the title or description field of the rules. To search
 the rule itself, use the "Rule" column. The "Rule" column is not shown by
-default and must be added with the gear wheel button.
+default and must be added with the gear icon.
 
     .. figure:: ../images/sc_choose-rules3.png
        :alt: Search by Rule Title or Description
@@ -127,7 +127,7 @@ in your environment. You have multiple options to address this.
     "Compiled Rule" row in the rule's drop-down menu.
 
     To review tuned rules, add the "Filters" column to your view using the
-    gear wheels icon, then show all non-empty rows by using the ``NOT -``
+    gear icon, then show all non-empty rows by using the ``NOT -``
     column filter.
 
 3. If the rule adds too much noise and tuning is not practical, you can remove
@@ -144,7 +144,7 @@ Adding Custom Rules
 
 Custom rules can be added using the Sigma format according to the
 `specification <https://github.com/SigmaHQ/sigma/wiki/Specification>`_. You can
-upload single files or a ZIP compressed archive. This can be done at
+upload single files or a ZIP-compressed archive. This can be done at
 ``Service Control`` > ``Sigma`` > ``Rules`` > ``Upload Rules``.
 
     .. figure:: ../images/sc_custom-rule.png

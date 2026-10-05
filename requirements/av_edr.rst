@@ -68,13 +68,13 @@ approach above.
   * - 
     - %SYSTEMROOT%\\System32\\asgard2-agent\\asgard2-agent_sc-service.exe
   * - 
-    - %SYSTEMROOT%\\Temp\\asgard2-agent\\ (and all sub folders)
+    - %SYSTEMROOT%\\Temp\\asgard2-agent\\ (and all subfolders)
   * - **Especially**
     - %SYSTEMROOT%\\Temp\\asgard2-agent\\[random]\\thor\\thor.exe
   * - **And/Or**
     - %SYSTEMROOT%\\Temp\\asgard2-agent\\[random]\\thor\\thor64.exe
   * -
-    - %SYSTEMROOT%\\Temp\\asgard2-agent-sc\\ (and all sub folders)
+    - %SYSTEMROOT%\\Temp\\asgard2-agent-sc\\ (and all subfolders)
   * - **Especially**
     - %SYSTEMROOT%\\Temp\\asgard2-agent-sc\\aurora\\[random]\\aurora\\aurora-agent.exe
   * - **And/Or**
@@ -157,7 +157,7 @@ McAfee On-Access Scan
     -
   * - **Exclusions**
 
-      (include sub folders)
+      (include subfolders)
     - %SYSTEMROOT%\\System32\\asgard2-agent\\
   * -
     - %SYSTEMROOT%\\Temp\\asgard2-agent\\
